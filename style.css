@@ -1,0 +1,25 @@
+/* Hero */ .hero{padding:96px 0}.container{width:min(1100px,92%);margin:0 auto}
+/* HERO SLIDER */
+.hero{position:relative;overflow:hidden}
+.hero-bg{position:absolute;inset:0}
+.slide{position:absolute;inset:0;background-size:cover;background-position:center;opacity:0;transition:opacity 900ms ease}
+.slide.show{opacity:1}
+.hero-overlay{position:absolute;inset:0;
+  background:
+    linear-gradient(180deg, rgba(0,0,0,.35), rgba(0,0,0,.35)),
+    radial-gradient(60% 60% at 50% 40%, rgba(244,140,32,.35), transparent 70%);
+  backdrop-filter: blur(1px);
+}
+.hero .eyebrow{letter-spacing:.2em;font-weight:700;color:#cfd6e1;opacity:.9;margin:0 0 8px}
+.hero h1{color:#fff;text-shadow:0 2px 14px rgba(0,0,0,.35)}
+.hero p{color:#e6ebf2}
+.hero .sub{color:var(--brand)}
+.hero .btn{box-shadow:0 10px 25px rgba(244,140,32,.3)}
+.hero .btn.btn-secondary{background:rgba(255,255,255,.06); border:2px solid rgba(255,255,255,.2); color:#fff}
+.hero-kpis{display:flex;gap:14px;margin-top:18px;flex-wrap:wrap}
+.hero-kpis > div{display:flex;gap:8px;align-items:center;background:rgba(17,24,39,.55); border:1px solid rgba(255,255,255,.15); padding:10px 14px;border-radius:14px;color:#fff}
+.hero-kpis strong{font-size:1.05rem}
+.hero-kpis span{opacity:.85}
+
+/* ensure container sits above overlay */
+.hero .container{position:relative;z-index:2}
