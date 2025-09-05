@@ -161,29 +161,60 @@
     <div class="container">
       <h2 class="section-title">Solicita tu cotización</h2>
       <form id="quoteForm" class="form">
-        <div class="grid form-grid">
-          <label>Nombre<input type="text" name="name" required placeholder="Tu nombre completo" /></label>
-          <label>Correo<input type="email" name="email" required placeholder="tucorreo@ejemplo.com" /></label>
-          <label>Teléfono (WhatsApp)<input type="tel" name="phone" required placeholder="+1 809..." /></label>
-          <label>Origen<input type="text" name="origin" required placeholder="Santo Domingo (SDQ)" /></label>
-          <label>Destino<input type="text" name="destination" required placeholder="Madrid (MAD)" /></label>
-          <label>Tipo de mascota
-            <select name="petType" required>
-              <option value="" disabled selected>Selecciona</option>
-              <option>Perro</option><option>Gato</option><option>Otro</option>
-            </select>
-          </label>
-          <label>Peso (mascota + jaula)<input type="number" name="weight" step="0.1" placeholder="kg" /></label>
-          <label>Medidas de jaula (L x A x H)<input type="text" name="crate" placeholder="en cm o pulgadas" /></label>
-          <label>Fecha estimada<input type="date" name="date" /></label>
-        </div>
-        <label>Mensaje<textarea name="message" rows="4" placeholder="Cuéntanos cualquier detalle adicional"></textarea></label>
-        <div class="form-actions">
-          <button type="submit" class="btn">Enviar</button>
-          <button type="button" class="btn btn-secondary" id="btnWhatsapp">WhatsApp</button>
-        </div>
-        <p class="form-note">Al enviar aceptas que te contactemos por correo o WhatsApp. Nunca compartimos tus datos.</p>
-      </form>
+  <div class="grid form-grid">
+    <label>Nombre
+      <input type="text" name="name" required placeholder="Tu nombre completo" />
+    </label>
+
+    <label>Correo
+      <input type="email" name="email" required placeholder="tucorreo@ejemplo.com" />
+    </label>
+
+    <label>Teléfono (WhatsApp)
+      <input type="tel" name="phone" required placeholder="+1 809..." />
+    </label>
+
+    <label>Origen
+      <input type="text" name="origin" required placeholder="Santo Domingo (SDQ)" />
+    </label>
+
+    <label>Destino
+      <input type="text" name="destination" required placeholder="Madrid (MAD)" />
+    </label>
+
+    <label>Tipo de mascota
+      <select name="petType" required>
+        <option value="" disabled selected>Selecciona</option>
+        <option>Perro</option><option>Gato</option><option>Otro</option>
+      </select>
+    </label>
+
+    <label>Peso (mascota + jaula)
+      <input type="number" name="weight" step="0.1" placeholder="kg" />
+    </label>
+
+    <label>Medidas de jaula (L x A x H)
+      <input type="text" name="crate" placeholder="en cm o pulgadas" />
+    </label>
+
+    <label>Fecha estimada
+      <input type="date" name="date" />
+    </label>
+
+    <!-- ✅ Mensaje dentro de la grilla y a todo el ancho -->
+    <label class="full">Cuéntanos cualquier detalle adicional
+      <textarea name="message" rows="4" placeholder="Edad, raza, aerolínea preferida, restricciones, etc."></textarea>
+    </label>
+  </div>
+
+  <div class="form-actions">
+    <button type="submit" class="btn">Enviar</button>
+    <button type="button" class="btn btn-secondary" id="btnWhatsapp">WhatsApp</button>
+  </div>
+
+  <p class="form-note">Al enviar aceptas que te contactemos por correo o WhatsApp. Nunca compartimos tus datos.</p>
+</form>
+      
     </div>
   </section>
 
