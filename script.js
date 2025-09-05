@@ -115,3 +115,13 @@ document.querySelectorAll('.tabs').forEach(tabs=>{
     panel.scrollIntoView({behavior:'smooth', block:'start'});
   }
 })();
+
+// Botón "Volver arriba"
+const back = document.getElementById('backtop');
+if (back){
+  const toggleBack = () => back.classList.toggle('show', window.scrollY > 400);
+  window.addEventListener('scroll', toggleBack, { passive:true });
+  toggleBack();
+  back.addEventListener('click', () => window.scrollTo({ top:0, behavior:'smooth' }));
+}
+
