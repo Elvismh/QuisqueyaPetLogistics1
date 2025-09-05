@@ -27,6 +27,12 @@
     i = (i+1) % imgs.length;
   }, 6000);
 })();
+// Mobile nav toggle
+const toggle = document.querySelector('.nav-toggle');
+const nav    = document.querySelector('.nav');
+if (toggle && nav) {
+  toggle.addEventListener('click', () => nav.classList.toggle('open'));
+}
 
 // --- Deep link for requisitos page (open specific destination) ---
 (function(){
