@@ -7,24 +7,25 @@
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
+
+  <!-- Header -->
   <header class="header" id="inicio">
-  <div class="container header-inner">
-    <a href="index.html" class="brand">
-      <img src="assets/logo.png" alt="Logo Quisqueya Pet Logistics" class="logo" />
-      <span>Quisqueya Pet Logistics</span>
-    </a>
+    <div class="container header-inner">
+      <a href="index.html" class="brand">
+        <img src="assets/logo.png" class="logo" alt="Logo" />
+        <span>Quisqueya Pet Logistics</span>
+      </a>
+      <nav class="nav">
+        <a href="#servicios">Servicios</a>
+        <a href="requisitos/index.html">Requisitos de viaje</a>
+        <a href="#faq">Preguntas</a>
+        <a href="#contacto" class="btn btn-sm">Cotiza</a>
+      </nav>
+      <button class="nav-toggle" aria-label="Abrir menú">☰</button>
+    </div>
+  </header>
 
-    <nav class="nav">
-      <a href="#servicios">Servicios</a>
-      <a href="requisitos/index.html">Requisitos de viaje</a>
-      <a href="#faq">Preguntas</a>
-      <a href="#contacto" class="btn btn-sm">Cotiza</a>
-    </nav>
-
-    <button class="nav-toggle" aria-label="Abrir menú">☰</button>
-  </div>
-</header>
-
+  <!-- Hero con slider -->
   <section class="hero hero-slider">
     <div class="hero-bg">
       <div class="slide slide-a"></div>
@@ -50,7 +51,133 @@
     </div>
   </section>
 
-  <!-- (aquí puedes dejar tus otras secciones: servicios, contacto, etc.) -->
+  <!-- Destinos -->
+  <section id="destinos" class="section alt">
+    <div class="container">
+      <h2 class="section-title">Destinos frecuentes</h2>
+      <div class="grid cards">
+        <a class="card" href="destinos/espana.html">
+          <img src="assets/hero-1.jpg" alt="España" />
+          <div class="card-body"><h3>España</h3><p>Checklist + formulario listo</p></div>
+        </a>
+        <a class="card" href="destinos/panama.html">
+          <img src="assets/hero-2.jpg" alt="Panamá" />
+          <div class="card-body"><h3>Panamá</h3><p>Checklist + formulario</p></div>
+        </a>
+        <a class="card" href="destinos/usa.html">
+          <img src="assets/hero-3.jpg" alt="USA" />
+          <div class="card-body"><h3>Estados Unidos</h3><p>Checklist + formulario</p></div>
+        </a>
+        <a class="card" href="destinos/chile.html">
+          <img src="assets/hero-4.jpg" alt="Chile" />
+          <div class="card-body"><h3>Chile</h3><p>Checklist + formulario</p></div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Servicios -->
+  <section id="servicios" class="section">
+    <div class="container">
+      <h2 class="section-title">Nuestros Servicios</h2>
+      <div class="grid cards">
+        <article class="card">
+          <img src="assets/service-transport.jpg" alt="Transporte" />
+          <div class="card-body">
+            <h3>Transporte Aéreo y Terrestre</h3>
+            <p>Coordinación de envíos desde RD hacia múltiples destinos. Asesoría en jaulas IATA y trámites.</p>
+          </div>
+        </article>
+        <article class="card">
+          <img src="assets/service-hotel.jpg" alt="Documentación" />
+          <div class="card-body">
+            <h3>Logística y Documentación</h3>
+            <p>Certificados de salud, permisos zoosanitarios y gestión aduanal con aliados.</p>
+          </div>
+        </article>
+        <article class="card">
+          <img src="assets/service-recreation.jpg" alt="Acompañamiento" />
+          <div class="card-body">
+            <h3>Acompañamiento 1:1</h3>
+            <p>Te guiamos desde el pesaje hasta la entrega en destino. Comunicación clara y seguimiento.</p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ¿Cómo trabajamos? -->
+  <section class="section steps">
+    <div class="container">
+      <h2 class="section-title">¿Cómo trabajamos?</h2>
+      <ol class="stepper">
+        <li><span>1</span> Evaluación y cotización (peso, medidas, destino, aerolínea).</li>
+        <li><span>2</span> Preparación de documentos y reserva.</li>
+        <li><span>3</span> Pesaje y entrega en aeropuerto (D-1).</li>
+        <li><span>4</span> Seguimiento de vuelo y coordinación de retiro en destino.</li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- FAQs -->
+  <section id="faq" class="section">
+    <div class="container">
+      <h2 class="section-title">Preguntas frecuentes</h2>
+      <div class="accordion">
+        <details>
+          <summary>¿Con cuánta anticipación debo iniciar?</summary>
+          <p>Recomendamos 4–8 semanas antes; si hay serología, planificar 3–4 meses.</p>
+        </details>
+        <details>
+          <summary>¿Aceptan mascotas sedadas?</summary>
+          <p>No, por seguridad las aerolíneas lo desaconsejan.</p>
+        </details>
+        <details>
+          <summary>¿Recogen a mi mascota en casa?</summary>
+          <p>Sí, logística puerta a puerta con aliados en Santo Domingo y otras ciudades.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- Cotiza -->
+  <section id="contacto" class="section contact">
+    <div class="container">
+      <h2 class="section-title">Solicita tu cotización</h2>
+      <form id="quoteForm" class="form">
+        <div class="grid form-grid">
+          <label>Nombre<input type="text" name="name" required placeholder="Tu nombre completo" /></label>
+          <label>Correo<input type="email" name="email" required placeholder="tucorreo@ejemplo.com" /></label>
+          <label>Teléfono (WhatsApp)<input type="tel" name="phone" required placeholder="+1 809..." /></label>
+          <label>Origen<input type="text" name="origin" required placeholder="Santo Domingo (SDQ)" /></label>
+          <label>Destino<input type="text" name="destination" required placeholder="Madrid (MAD)" /></label>
+          <label>Tipo de mascota
+            <select name="petType" required>
+              <option value="" disabled selected>Selecciona</option>
+              <option>Perro</option><option>Gato</option><option>Otro</option>
+            </select>
+          </label>
+          <label>Peso (mascota + jaula)<input type="number" name="weight" step="0.1" placeholder="kg" /></label>
+          <label>Medidas de jaula (L x A x H)<input type="text" name="crate" placeholder="en cm o pulgadas" /></label>
+          <label>Fecha estimada<input type="date" name="date" /></label>
+        </div>
+        <label>Mensaje<textarea name="message" rows="4" placeholder="Cuéntanos cualquier detalle adicional"></textarea></label>
+        <div class="form-actions">
+          <button type="submit" class="btn">Enviar</button>
+          <button type="button" class="btn btn-secondary" id="btnWhatsapp">WhatsApp</button>
+        </div>
+        <p class="form-note">Al enviar aceptas que te contactemos por correo o WhatsApp. Nunca compartimos tus datos.</p>
+      </form>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container footer-inner">
+      <p>© 2025 Quisqueya Pet Logistics · Santo Domingo, RD</p>
+      <a href="#inicio" class="top">↑ Volver arriba</a>
+    </div>
+  </footer>
 
   <script src="script.js"></script>
 </body>
