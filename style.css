@@ -107,3 +107,15 @@ input,select,textarea{border:1px solid #e5e7eb;border-radius:12px;padding:10px 1
 .tab-panel.active{display:block}
 .checklist{margin:0;padding-left:18px}
 .cta-inline{display:flex;gap:10px;margin-top:10px;flex-wrap:wrap}
+
+/* Alineación y ancho del campo "Mensaje" */
+.form-grid>label.full{grid-column:1 / -1}
+
+/* Garantiza que los controles llenen la columna */
+.form-grid>label input,
+.form-grid>label select,
+.form-grid>label textarea{width:100%}
+
+.form textarea{min-height:120px}
+.form label{font-weight:600}
+
