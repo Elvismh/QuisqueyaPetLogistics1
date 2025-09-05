@@ -204,4 +204,49 @@ input,select,textarea{border:1px solid #e5e7eb;border-radius:12px;padding:10px 1
   /* (opcional) color del bullet en navegadores que lo soportan */
   .checklist li::marker{ color:#9aa3b2 }
 }
+/* ===== Requisitos por destino: contraste correcto en ambos temas ===== */
+
+/* Variables de panel y pills */
+:root{
+  --panel-bg:#ffffff;
+  --panel-ink:#111827;
+  --pill-bg:#ffffff;
+  --pill-ink:#1f2a37;
+}
+@media (prefers-color-scheme: dark){
+  :root{
+    --panel-bg:#0f1626;     /* fondo oscuro del panel */
+    --panel-ink:#e5e7eb;    /* texto claro dentro del panel */
+    --pill-bg:#111827;      /* pills inactivos oscuros */
+    --pill-ink:#e5e7eb;     /* texto claro en pill inactivo */
+  }
+}
+
+/* Pills (pestañas) */
+.tabs{ gap:12px }
+.tab{
+  background:var(--pill-bg) !important;
+  color:var(--pill-ink) !important;
+  border:1px solid #1f2937;
+}
+.tab.active{
+  background:var(--brand) !important;
+  border-color:var(--brand) !important;
+  color:#fff !important;
+}
+
+/* Panel de contenido y texto interior */
+.tab-panels{
+  background:var(--panel-bg) !important;
+  color:var(--panel-ink) !important;
+  border:1px solid #1f2937;
+  box-shadow:0 14px 32px rgba(0,0,0,.20);
+}
+.tab-panel{ color:inherit !important }
+.checklist{ color:inherit !important }
+.checklist li strong{ color:inherit !important }
+/* (opcional) viñeta más visible en dark */
+@media (prefers-color-scheme: dark){
+  .checklist li::marker{ color:#9aa3b2 }
+}
 
