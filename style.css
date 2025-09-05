@@ -177,4 +177,31 @@ input,select,textarea{border:1px solid #e5e7eb;border-radius:12px;padding:10px 1
     color:#fff;
   }
 }
+/* ====== Requisitos por destino: Dark mode ====== */
+@media (prefers-color-scheme: dark){
+  /* Pestañas (pills) */
+  .tabs { gap: 12px }
+  .tab{
+    background:#111827;            /* pill oscura */
+    color:#e5e7eb;                 /* texto claro */
+    border:1px solid #1f2937;
+  }
+  .tab.active{
+    background:var(--brand);       /* la activa sigue naranja */
+    border-color:var(--brand);
+    color:#fff;
+  }
+
+  /* Panel de contenido */
+  .tab-panels{
+    background:#0f1626;            /* caja del contenido oscura */
+    border:1px solid #1f2937;
+    box-shadow: 0 14px 32px rgba(0,0,0,.45);
+  }
+  .tab-panel{ color:#e5e7eb }      /* texto legible dentro del panel */
+  .checklist { color:inherit }     /* hereda el color correcto */
+  .checklist li strong{ color:inherit }
+  /* (opcional) color del bullet en navegadores que lo soportan */
+  .checklist li::marker{ color:#9aa3b2 }
+}
 
