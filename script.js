@@ -5,10 +5,10 @@
   const b = document.querySelector('.slide-b');
   if(!a || !b) return;
   const imgs = [
-    'assets/hero-1.jpg',
-    'assets/hero-2.jpg',
-    'assets/hero-3.jpg',
-    'assets/hero-4.jpg'
+    'assets/hero-1.webp',
+    'assets/hero-2.webp',
+    'assets/hero-3.webp',
+    'assets/hero-4.webp'
   ];
   let i = 0, usingA = true;
   const setBg = (el, url) => el.style.backgroundImage = `url('${url}')`;
