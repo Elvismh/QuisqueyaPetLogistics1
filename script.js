@@ -1,9 +1,15 @@
-// Mobile nav toggle
+// ================== Ajustes negocio ==================
+const BUSINESS_EMAIL = "quisqueyapetlogistics@gmail.com"; // cambia si deseas
+const BUSINESS_WHATS = "+18292673330";                     // cambia si deseas
+// Opcional: endpoint Formspree (si lo usas). Si lo dejas "", no se usa.
+const FORM_ENDPOINT  = ""; // p.ej. "https://formspree.io/f/abcd1234"
+
+// ================== Mobile nav ==================
 const toggle = document.querySelector('.nav-toggle');
 const nav    = document.querySelector('.nav');
 if (toggle && nav) toggle.addEventListener('click', () => nav.classList.toggle('open'));
 
-// --- Hero slider ---
+// ================== Hero slider (.webp) ==================
 (function(){
   const a = document.querySelector('.slide-a');
   const b = document.querySelector('.slide-b');
@@ -33,8 +39,9 @@ if (toggle && nav) toggle.addEventListener('click', () => nav.classList.toggle('
   }, 6000);
 })();
 
-// --- Formulario: mailto + WhatsApp ---
+// ================== Form: mailto + WhatsApp + (opcional) Formspree ==================
 const form = document.getElementById('quoteForm');
+
 function formToText(fd){
   const get = k => (fd.get(k) || '').toString().trim();
   return `Nueva solicitud de cotización
@@ -50,19 +57,61 @@ Fecha: ${get('date')}
 Mensaje: ${get('message')}`;
 }
 
-// ✅ Cambia estos 2 por tus datos reales
-const businessEmail = "quisqueyapetlogistics@gmail.com";
-const businessWhats = "+18292673330";
-
-form?.addEventListener('submit', (e)=>{
+form?.addEventListener('submit', async (e)=>{
   e.preventDefault();
   const fd = new FormData(form);
-  const body = encodeURIComponent(formToText(fd));
-  window.location.href = `mailto:${businessEmail}?subject=Cotización%20Quisqueya%20Pet%20Logistics&body=${body}`;
+  const bodyText = formToText(fd);
+
+  // Si configuraste Formspree, intenta enviar con fetch
+  if (FORM_ENDPOINT) {
+    try{
+      const res = await fetch(FORM_ENDPOINT, {
+        method:'POST',
+        headers:{'Accept':'application/json'},
+        body: fd
+      });
+      if (res.ok) {
+        alert('¡Gracias! Recibimos tu solicitud. Te contactaremos pronto.');
+        form.reset();
+        return;
+      }
+    }catch{/* cae a mailto si falla */}
+  }
+
+  // Fallback: mailto
+  const body = encodeURIComponent(bodyText);
+  window.location.href = `mailto:${BUSINESS_EMAIL}?subject=Cotización%20Quisqueya%20Pet%20Logistics&body=${body}`;
 });
 
 document.getElementById('btnWhatsapp')?.addEventListener('click', ()=>{
-  const fd = new FormData(form);
+  const fd = new FormData(form || undefined);
   const txt = encodeURIComponent(formToText(fd));
-  window.open(`https://wa.me/${businessWhats.replace(/\\D/g,'')}?text=${txt}`,'_blank');
+  window.open(`https://wa.me/${BUSINESS_WHATS.replace(/\D/g,'')}?text=${txt}`,'_blank','noopener');
 });
+
+// ================== Pestañas + Deep link (página requisitos) ==================
+document.querySelectorAll('.tabs').forEach(tabs=>{
+  tabs.addEventListener('click', (e)=>{
+    const btn = e.target.closest('.tab');
+    if(!btn) return;
+    const id = btn.dataset.tab;
+    const root = tabs.parentElement;
+    root.querySelectorAll('.tab').forEach(b=>b.classList.remove('active'));
+    root.querySelectorAll('.tab-panel').forEach(p=>p.classList.remove('active'));
+    btn.classList.add('active');
+    const panel = root.querySelector('#'+id);
+    if(panel) panel.classList.add('active');
+  });
+});
+
+(function(){
+  const params = new URLSearchParams(location.search);
+  const dest = params.get('dest'); // europa | caribe | usa | latam
+  if(!dest) return;
+  const btn = document.querySelector(`.tab[data-tab="${dest}"]`);
+  const panel = document.getElementById(dest);
+  if(btn && panel){
+    btn.click();
+    panel.scrollIntoView({behavior:'smooth', block:'start'});
+  }
+})();
