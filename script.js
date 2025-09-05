@@ -10,10 +10,10 @@ if (toggle && nav) toggle.addEventListener('click', () => nav.classList.toggle('
   if(!a || !b) return;
 
   const imgs = [
-    'assets/hero-1.jpg',
-    'assets/hero-2.jpg',
-    'assets/hero-3.jpg',
-    'assets/hero-4.jpg'
+    'assets/hero-1.webp',
+    'assets/hero-2.webp',
+    'assets/hero-3.webp',
+    'assets/hero-4.webp'
   ];
 
   // Preload
