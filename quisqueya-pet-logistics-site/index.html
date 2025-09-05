@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Quisqueya Pet Logistics</title>
+  <meta name="description" content="Transporte y logística de mascotas desde República Dominicana. Cotizaciones, requisitos de viaje y atención profesional." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+  <script defer src="script.js"></script>
+</head>
+<body>
+  <header class="header" id="inicio">
+    <div class="container header-inner">
+      <a href="#" class="brand">
+        <img src="assets/logo.png" alt="Logo Quisqueya Pet Logistics" class="logo" />
+        <span>Quisqueya Pet Logistics</span>
+      </a>
+      <nav class="nav">
+        <a href="#servicios">Servicios</a>
+        <a href="#requisitos">Requisitos de viaje</a>
+        <a href="#faq">Preguntas</a>
+        <a href="#contacto" class="btn btn-sm">Cotiza</a>
+      </nav>
+      <button class="nav-toggle" aria-label="Abrir menú">☰</button>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="container hero-content">
+      <h1>Conectamos a tu mascota con el mundo<br><span class="sub">con seguridad y confianza.</span></h1>
+      <p>Transporte nacional e internacional, gestión de documentos y acompañamiento en cada paso.</p>
+      <div class="hero-ctas">
+        <a href="#contacto" class="btn">Solicitar cotización</a>
+        <a href="#requisitos" class="btn btn-secondary">Ver requisitos</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="destinos" class="section alt">
+    <div class="container">
+      <h2 class="section-title">Destinos frecuentes</h2>
+      <div class="grid cards">
+        <a class="card" href="destinos/espana.html">
+          <img src="assets/service-transport.jpg" alt="España" />
+          <div class="card-body"><h3>España</h3><p>Checklist + formulario listo</p></div>
+        </a>
+        <a class="card" href="destinos/panama.html">
+          <img src="assets/service-transport.jpg" alt="Panamá" />
+          <div class="card-body"><h3>Panamá</h3><p>Checklist + formulario listo</p></div>
+        </a>
+        <a class="card" href="destinos/usa.html">
+          <img src="assets/service-transport.jpg" alt="Estados Unidos" />
+          <div class="card-body"><h3>Estados Unidos</h3><p>Checklist + formulario</p></div>
+        </a>
+        <a class="card" href="destinos/chile.html">
+          <img src="assets/service-transport.jpg" alt="Chile" />
+          <div class="card-body"><h3>Chile</h3><p>Checklist + formulario</p></div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section id="servicios"  class="section">
+    <div class="container">
+      <h2 class="section-title">Nuestros Servicios</h2>
+      <div class="grid cards">
+        <article class="card">
+          <img src="assets/service-transport.jpg" alt="Transporte para mascotas" />
+          <div class="card-body">
+            <h3>Transporte Aéreo y Terrestre</h3>
+            <p>Coordinación de envíos desde RD hacia múltiples destinos. Asesoría en jaulas IATA y trámites.</p>
+          </div>
+        </article>
+        <article class="card">
+          <img src="assets/service-hotel.jpg" alt="Hospedaje para mascotas" />
+          <div class="card-body">
+            <h3>Logística y Documentación</h3>
+            <p>Certificados de salud, permisos zoosanitarios y gestión aduanal con aliados estratégicos.</p>
+          </div>
+        </article>
+        <article class="card">
+          <img src="assets/service-recreation.jpg" alt="Áreas de recreación" />
+          <div class="card-body">
+            <h3>Acompañamiento 1:1</h3>
+            <p>Te guiamos desde el pesaje hasta la entrega en destino. Comunicación clara y seguimiento.</p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section steps">
+    <div class="container">
+      <h2 class="section-title">¿Cómo trabajamos?</h2>
+      <ol class="stepper">
+        <li><span>1</span> Evaluación y cotización (peso, medidas, destino, aerolínea).</li>
+        <li><span>2</span> Preparación de documentos y reserva.</li>
+        <li><span>3</span> Pesaje y entrega en aeropuerto (D-1).</li>
+        <li><span>4</span> Seguimiento de vuelo y coordinación de retiro en destino.</li>
+      </ol>
+    </div>
+  </section>
+
+  <section id="requisitos" class="section alt">
+    <div class="container">
+      <h2 class="section-title">Requisitos de viaje</h2>
+
+      <div class="tabs" role="tablist">
+        <button class="tab active" data-tab="espana" role="tab" aria-selected="true">RD ➜ España</button>
+        <button class="tab" data-tab="generales" role="tab">RD ➜ Otros destinos</button>
+      </div>
+
+      <div class="tab-panels">
+        <div class="tab-panel active" id="espana" role="tabpanel">
+          <ul class="checklist">
+            <li><strong>Microchip ISO 11784/11785</strong> antes de vacunar contra la rabia.</li>
+            <li><strong>Vacuna antirrábica vigente</strong> (21 días desde primovacunación).</li>
+            <li><strong>Certificado zoosanitario de la UE</strong> (modelo para entrada no comercial) emitido por veterinario oficial, con <em>Owner Declaration</em>. Válido 10 días para entrar a la UE.</li>
+            <li><strong>Entrada por Punto de Control designado</strong> para viajeros en España; inspección de identidad y documentos.</li>
+            <li><strong>Test serológico de rabia (≥0.5 IU/ml)</strong> si el país de origen <em>no está</em> en el Anexo II del Reg. (UE) 577/2013. Verificar estatus vigente del país antes de programar el vuelo.</li>
+            <li>Tratamiento contra <em>Echinococcus</em> <strong>no requerido para España</strong> (sí para Irlanda, Malta, Finlandia, Noruega).</li>
+          </ul>
+          <p class="note">Nota: Los requisitos pueden cambiar. Confirmamos cada caso con las autoridades y la aerolínea.</p>
+        </div>
+
+        <div class="tab-panel" id="generales" role="tabpanel">
+          <div class="accordion">
+            <details open>
+              <summary>Checklist base</summary>
+              <ul class="checklist">
+                <li>Identificación con microchip ISO.</li>
+                <li>Vacuna antirrábica vigente (y espera de 21 días tras la primera dosis).</li>
+                <li>Certificado de salud y/o certificado oficial según destino.</li>
+                <li>Prueba serológica de rabia si el destino lo exige (países no listados en Anexo II UE, Reino Unido, etc.).</li>
+                <li>Jaula homologada IATA con medidas correctas (L x A x H) y bebedero.</li>
+                <li>Entrada por punto de control designado; coordinación con <em>broker</em> si aplica.</li>
+              </ul>
+            </details>
+            <details>
+              <summary>Documentación por tipo de viaje</summary>
+              <ul>
+                <li><strong>No comercial (dueño viaja ±5 días):</strong> certificado no comercial + declaración del propietario.</li>
+                <li><strong>Comercial / solo carga:</strong> certificado comercial y requisitos adicionales del país de destino.</li>
+              </ul>
+            </details>
+          </div>
+        </div>
+      </div>
+
+      <div class="cta-inline">
+        <a href="#contacto" class="btn">Quiero que verifiquen mi caso</a>
+        <a href="#" id="whatsapp-requisitos" class="btn btn-secondary">Enviar dudas por WhatsApp</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="faq" class="section">
+    <div class="container">
+      <h2 class="section-title">Preguntas frecuentes</h2>
+      <div class="accordion">
+        <details>
+          <summary>¿Con cuánta anticipación debo iniciar el proceso?</summary>
+          <p>Recomendamos iniciar 4–8 semanas antes. Si se requiere prueba serológica, planificar 3–4 meses.</p>
+        </details>
+        <details>
+          <summary>¿Aceptan mascotas sedadas?</summary>
+          <p>No. Las aerolíneas y veterinarios desaconsejan la sedación por seguridad.</p>
+        </details>
+        <details>
+          <summary>¿Pueden recoger a mi mascota en casa?</summary>
+          <p>Sí, ofrecemos logística puerta a puerta con aliados en Santo Domingo y otras ciudades.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <section id="contacto" class="section contact">
+    <div class="container">
+      <h2 class="section-title">Solicita tu cotización</h2>
+      <form id="quoteForm" class="form">
+        <div class="grid form-grid">
+          <label>Nombre
+            <input type="text" name="name" required placeholder="Tu nombre completo" />
+          </label>
+          <label>Correo
+            <input type="email" name="email" required placeholder="tucorreo@ejemplo.com" />
+          </label>
+          <label>Teléfono (WhatsApp)
+            <input type="tel" name="phone" required placeholder="+1 809..." />
+          </label>
+          <label>Origen
+            <input type="text" name="origin" required placeholder="Santo Domingo (SDQ)" />
+          </label>
+          <label>Destino
+            <input type="text" name="destination" required placeholder="Madrid (MAD)" />
+          </label>
+          <label>Tipo de mascota
+            <select name="petType" required>
+              <option value="" disabled selected>Selecciona</option>
+              <option>Perro</option>
+              <option>Gato</option>
+              <option>Otro</option>
+            </select>
+          </label>
+          <label>Peso (mascota + jaula)
+            <input type="number" name="weight" step="0.1" placeholder="kg" />
+          </label>
+          <label>Medidas de jaula (L x A x H)
+            <input type="text" name="crate" placeholder="en cm o pulgadas" />
+          </label>
+          <label>Fecha estimada
+            <input type="date" name="date" />
+          </label>
+        </div>
+        <label>Mensaje
+          <textarea name="message" rows="4" placeholder="Cuéntanos cualquier detalle adicional"></textarea>
+        </label>
+        <div class="form-actions">
+          <button type="submit" class="btn">Enviar</button>
+          <button type="button" class="btn btn-secondary" id="btnWhatsapp">WhatsApp</button>
+        </div>
+        <p class="form-note">Al enviar aceptas que te contactemos por correo o WhatsApp. Nunca compartimos tus datos.</p>
+      </form>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <p>© 2025 Quisqueya Pet Logistics · Santo Domingo, RD</p>
+      <a href="#inicio" class="top">↑ Volver arriba</a>
+    </div>
+  </footer>
+</body>
+</html>
