@@ -159,4 +159,22 @@ input,select,textarea{border:1px solid #e5e7eb;border-radius:12px;padding:10px 1
   .btn.btn-secondary{ border-color:rgba(255,255,255,.28); color:#fff }
   .hero .eyebrow, .hero h1, .hero p{ color:#fff } /* sigue legible sobre la foto */
 }
+/* Contraste correcto del Stepper en modo oscuro */
+@media (prefers-color-scheme: dark){
+  /* Tarjetas del stepper: fondo oscuro + texto claro */
+  .stepper li{
+    background:#121826;              /* similar a var(--card) pero un pelín más claro */
+    color:#e5e7eb;                    /* igual que var(--ink) en dark */
+    border:1px solid #1f2937;         /* borde sutil para separar del fondo */
+    box-shadow: 0 10px 28px rgba(0,0,0,.35);
+  }
+  /* Si algún navegador hereda color distinto dentro del li */
+  .stepper li, .stepper li *{ color:inherit }
+
+  /* Badge con el número: que resalte un poco más */
+  .stepper li span{
+    background:#8b5cf6;              /* morado más luminoso */
+    color:#fff;
+  }
+}
 
