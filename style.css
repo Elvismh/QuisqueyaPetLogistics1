@@ -315,3 +315,81 @@ input,select,textarea{border:1px solid #e5e7eb;border-radius:12px;padding:10px 1
     color:#9aa3b2 !important;
   }
 }
+/* ===== TÍTULO HERO “potente” ===== */
+.hero-title{
+  margin: 0 0 .35rem;
+  font-weight: 900;
+  /* tamaño fluido y compacto */
+  font-size: clamp(32px, 5.4vw, 64px);
+  line-height: 1.05;
+  letter-spacing: -0.01em;
+  color: #fff;
+  text-wrap: balance;              /* mejor corte de líneas si el navegador lo soporta */
+  text-shadow: 0 10px 28px rgba(0,0,0,.35);  /* más legibilidad sobre foto */
+  animation: heroRise .6s ease both;         /* entrada sutil */
+}
+
+/* Segunda línea un poco más grande para crear ritmo */
+.hero-title .line2{
+  font-size: clamp(34px, 5.8vw, 68px);
+}
+
+/* “tu mascota” con efecto marcador */
+.hero-title .hl{
+  position: relative;
+  z-index: 0;
+}
+.hero-title .hl::after{
+  content:"";
+  position:absolute; left:-2px; right:-2px; bottom:.12em;
+  height:.38em;
+  background: rgba(244,140,32,.35);   /* naranja marca suavizado */
+  filter: blur(1px);
+  border-radius:.3em;
+  z-index:-1;
+}
+
+/* “mundo” con degradado animado */
+.hero-title .grad{
+  background: linear-gradient(90deg,#f7b057 0%,#f48c20 45%,#ffb76b 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: gradPan 8s ease-in-out infinite alternate;
+}
+
+/* Barra luminosa debajo del título */
+.title-glow{
+  width:min(520px, 60vw);
+  height:10px;
+  border-radius:999px;
+  margin:.35rem auto 1.1rem;
+  background: radial-gradient(80% 140% at 50% 50%, rgba(244,140,32,.55), rgba(244,140,32,0) 70%);
+  filter: blur(6px);
+  animation: glowPulse 3.8s ease-in-out infinite;
+}
+
+/* Micro-animaciones */
+@keyframes gradPan{
+  0%  { filter: drop-shadow(0 8px 22px rgba(244,140,32,.18)); }
+  100%{ filter: drop-shadow(0 10px 28px rgba(244,140,32,.28)); }
+}
+@keyframes glowPulse{
+  0%,100%{ opacity:.55; transform:scaleX(.98); }
+  50%     { opacity:.85; transform:scaleX(1); }
+}
+@keyframes heroRise{
+  from{ opacity:0; transform:translateY(10px) scale(.985); }
+  to  { opacity:1; transform:none; }
+}
+
+/* Respeta accesibilidad: si el usuario reduce movimiento */
+@media (prefers-reduced-motion: reduce){
+  .hero-title, .title-glow, .hero-title .grad{ animation:none }
+}
+
+/* En dark ya estás cubriendo contraste con la overlay;
+   si quieres elevar aún más: */
+@media (prefers-color-scheme: dark){
+  .title-glow{ filter: blur(7px) brightness(1.1) }
+}
