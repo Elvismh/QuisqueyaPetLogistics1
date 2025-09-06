@@ -22,7 +22,7 @@
   --pill-ink:#1f2a37;   /* texto pill inactiva */
 
   /* Overlay del HERO (ajusta a gusto) */
-  --hero-orange-alpha:.35;  /* fuerza del naranja */
+  --hero-orange-alpha:.60;  /* fuerza del naranja */
   --hero-vignette-top:.35;  /* sombreado superior */
   --hero-vignette-bot:.55;  /* sombreado inferior */
 }
@@ -139,7 +139,7 @@ input,select,textarea{border:1px solid #e5e7eb;border-radius:12px;padding:10px 1
   /* 1) Tinte anaranjado (marca) con un radial suave centrado arriba
      2) Viñeta oscura para legibilidad del texto                  */
   background:
-    radial-gradient(110% 70% at 100% 100%,
+    radial-gradient(110% 70% at 50% 50%,
       rgba(244,140,32,var(--hero-orange-alpha)) 0%,
       rgba(244,140,32,calc(var(--hero-orange-alpha) * .55)) 45%,
       rgba(244,140,32,0) 70%),
