@@ -109,5 +109,64 @@
   </footer>
 
   <script src="../script.js"></script>
+  /* =========================================
+   FIX FINAL · Requisitos por destino (contraste)
+   ========================================= */
+/* Pills (pestañas) – estado base */
+.section .container .tabs .tab{
+  background:#ffffff !important;
+  color:#1f2a37 !important;
+  border:1px solid #1f2937 !important;
+}
+.section .container .tabs .tab.active{
+  background:var(--brand) !important;
+  border-color:var(--brand) !important;
+  color:#fff !important;
+}
+
+/* Panel + contenido en LIGHT */
+@media (prefers-color-scheme: light), (prefers-color-scheme: no-preference){
+  .section .container .tab-panels{
+    background:#ffffff !important;
+    color:#111827 !important;
+    border:1px solid #e5e7eb !important;
+    box-shadow:0 14px 32px rgba(0,0,0,.15) !important;
+  }
+  .section .container .tab-panels .tab-panel,
+  .section .container .tab-panels .checklist,
+  .section .container .tab-panels .checklist li,
+  .section .container .tab-panels .checklist li strong{
+    color:#111827 !important;
+    opacity:1 !important;
+  }
+}
+
+/* Panel + contenido en DARK */
+@media (prefers-color-scheme: dark){
+  /* pills inactivas oscuras */
+  .section .container .tabs .tab{
+    background:#111827 !important;
+    color:#e5e7eb !important;
+    border:1px solid #1f2937 !important;
+  }
+  /* panel oscuro + texto claro */
+  .section .container .tab-panels{
+    background:#0f1626 !important;
+    color:#e5e7eb !important;
+    border:1px solid #1f2937 !important;
+    box-shadow:0 14px 32px rgba(0,0,0,.45) !important;
+  }
+  .section .container .tab-panels .tab-panel,
+  .section .container .tab-panels .checklist,
+  .section .container .tab-panels .checklist li,
+  .section .container .tab-panels .checklist li strong{
+    color:#e5e7eb !important;
+    opacity:1 !important;        /* por si algo aplicó opacidad */
+  }
+  .section .container .tab-panels .checklist li::marker{
+    color:#9aa3b2 !important;
+  }
+}
+
 </body>
 </html>
