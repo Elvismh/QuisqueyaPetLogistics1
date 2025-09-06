@@ -554,3 +554,105 @@ input,select,textarea{border:1px solid #e5e7eb;border-radius:12px;padding:10px 1
   .hero-badge{ border-color: rgba(255,255,255,.25) }
   .title-glow{ filter: blur(6px) brightness(1.06) }
 }
+/* ===========================
+   H E R O  ·  C O M P A C T
+   =========================== */
+
+/* Contenedor más angosto para que todo respire mejor */
+.hero.compact .container{
+  max-width: 920px;
+}
+
+/* Título más pequeño y con menos salto entre líneas */
+.hero.compact .hero-title{
+  font-size: clamp(36px, 5.0vw, 62px);
+  line-height: 1.05;
+  margin: .2rem 0 .4rem;
+}
+.hero.compact .hero-title .line2{
+  font-size: clamp(38px, 5.4vw, 66px);
+}
+
+/* Subrayado sutil del “highlight” */
+.hero.compact .hero-title .hl::after{
+  height: .28em;
+}
+
+/* “mundo” degradado igual pero sin brillos agresivos */
+.hero.compact .hero-title .grad{
+  filter: none;
+}
+
+/* Barra glow más corta y baja */
+.hero.compact .title-glow{
+  width: min(420px, 52vw);
+  height: 7px;
+  margin: .25rem auto .8rem;
+}
+
+/* Eyebrow (LOGÍSTICA…) más pequeño */
+.hero.compact .eyebrow{
+  font-size: clamp(11px, 1vw, 12px);
+  padding: .28rem .5rem;
+  border-radius: 999px;
+}
+
+/* Badge más compacto */
+.hero.compact .hero-badge{
+  font-size: .9rem;
+  padding: .45rem .75rem;
+  border-radius: 12px;
+  gap: .5rem;
+}
+
+/* Subtítulo más discreto */
+.hero.compact p.hero-lead,
+.hero.compact > .container > p{
+  font-size: clamp(15px, 1.4vw, 18px);
+  margin: .6rem auto .8rem;
+}
+
+/* Botones más bajitos y con radios suaves */
+.hero.compact .btn{
+  height: 48px;
+  padding: 0 16px;
+  border-radius: 12px;
+}
+.hero.compact .btn--primary,
+.hero.compact .btn:not(.btn-secondary){
+  box-shadow: 0 10px 22px rgba(244,140,32,.22);
+}
+.hero.compact .btn--ghost,
+.hero.compact .btn.btn-secondary{
+  box-shadow: 0 8px 18px rgba(0,0,0,.16) inset, 0 8px 16px rgba(0,0,0,.18);
+}
+
+/* KPI chips: menos “protagónicos” */
+.hero.compact .hero-kpis{
+  gap: 8px;
+  margin-top: 10px;
+}
+.hero.compact .hero-kpis>div{
+  padding: 6px 10px;
+  font-size: .92rem;
+  border-radius: 12px;
+  background: rgba(17,24,39,.45);
+}
+
+/* En pantallas muy grandes, limita aún más el ancho */
+@media (min-width: 1440px){
+  .hero.compact .container{ max-width: 880px; }
+}
+
+/* En móviles reduce un poco más el título y btns */
+@media (max-width: 680px){
+  .hero.compact .hero-title{
+    font-size: clamp(30px, 9vw, 38px);
+  }
+  .hero.compact .hero-title .line2{
+    font-size: clamp(30px, 9.2vw, 40px);
+  }
+  .hero.compact .btn{
+    height: 46px;
+  }
+}
