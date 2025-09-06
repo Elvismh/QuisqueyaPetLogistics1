@@ -1,17 +1,35 @@
+/* ===========================
+   Quisqueya Pet Logistics · CSS
+   =========================== */
+
 /* ====== Tokens ====== */
 :root{
-  --brand:#f48c20;      /* naranja marca */
-  --accent:#6f3fd4;     /* morado acento */
+  /* Marca */
+  --brand:#f48c20;
+  --accent:#6f3fd4;
+
+  /* Base (light) */
   --bg:#ffffff;
   --ink:#111827;
   --muted:#6b7280;
   --card:#ffffff;
-  --radius:16px;
   --shadow:0 10px 30px rgba(0,0,0,.08);
+
+  /* Tabs/Requisitos (light) */
+  --panel-bg:#ffffff;   /* fondo del panel de requisitos */
+  --panel-ink:#111827;  /* texto dentro del panel */
+  --pill-bg:#ffffff;    /* pill inactiva */
+  --pill-ink:#1f2a37;   /* texto pill inactiva */
 }
+
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
-body{margin:0;font:16px/1.6 system-ui,-apple-system,Segoe UI,Roboto,Inter,Arial,sans-serif;color:var(--ink);background:var(--bg)}
+body{
+  margin:0;
+  font:16px/1.6 system-ui,-apple-system,Segoe UI,Roboto,Inter,Arial,sans-serif;
+  color:var(--ink);
+  background:var(--bg);
+}
 img{max-width:100%;height:auto;display:block}
 
 /* ====== Layout ====== */
@@ -21,7 +39,11 @@ img{max-width:100%;height:auto;display:block}
 .section-title{font-size:clamp(24px,3.2vw,36px);margin:0 0 18px}
 
 /* ====== Header ====== */
-.header{position:sticky;top:0;z-index:50;background:#fff;border-bottom:1px solid #eee;backdrop-filter:saturate(1.4) blur(6px)}
+.header{
+  position:sticky;top:0;z-index:50;
+  background:#fff;border-bottom:1px solid #eee;
+  backdrop-filter:saturate(1.4) blur(6px)
+}
 .header-inner{display:flex;align-items:center;justify-content:space-between;padding:12px 0}
 .brand{display:flex;align-items:center;gap:12px;text-decoration:none;color:var(--ink);font-weight:800}
 .logo{width:40px;height:40px;object-fit:contain}
@@ -32,12 +54,18 @@ img{max-width:100%;height:auto;display:block}
 .nav-toggle{display:none;background:transparent;border:0;font-size:24px}
 @media (max-width:860px){
   .nav{display:none}
-  .nav.open{display:flex;flex-direction:column;position:absolute;right:4%;top:56px;background:#fff;padding:10px;border-radius:12px;box-shadow:var(--shadow)}
+  .nav.open{
+    display:flex;flex-direction:column;position:absolute;right:4%;top:56px;
+    background:#fff;padding:10px;border-radius:12px;box-shadow:var(--shadow)
+  }
   .nav-toggle{display:block}
 }
 
 /* ====== Buttons ====== */
-.btn{background:var(--brand);color:#fff;border:0;border-radius:14px;padding:12px 16px;font-weight:800;text-decoration:none;display:inline-block}
+.btn{
+  background:var(--brand);color:#fff;border:0;border-radius:14px;
+  padding:12px 16px;font-weight:800;text-decoration:none;display:inline-block
+}
 .btn:hover{filter:brightness(.97)}
 .btn.btn-secondary{background:rgba(255,255,255,.06);border:2px solid rgba(255,255,255,.35);color:#fff}
 
@@ -46,7 +74,10 @@ img{max-width:100%;height:auto;display:block}
 .cards{grid-template-columns:repeat(12,1fr)}
 @media (max-width:900px){ .cards{grid-template-columns:repeat(6,1fr)} }
 @media (max-width:640px){ .cards{grid-template-columns:repeat(2,1fr)} }
-.card{grid-column:span 6;background:var(--card);border-radius:18px;box-shadow:var(--shadow);overflow:hidden;display:flex;flex-direction:column}
+.card{
+  grid-column:span 6;background:var(--card);border-radius:18px;
+  box-shadow:var(--shadow);overflow:hidden;display:flex;flex-direction:column
+}
 .card img{width:100%;height:220px;object-fit:cover}
 .card-body{padding:14px}
 .card-body h3{margin:8px 0 6px}
@@ -55,7 +86,10 @@ img{max-width:100%;height:auto;display:block}
 /* ====== Stepper ====== */
 .stepper{list-style:none;padding:0;margin:0;display:grid;gap:12px}
 .stepper li{background:#fff;border-radius:14px;box-shadow:var(--shadow);padding:14px}
-.stepper li span{display:inline-grid;place-items:center;width:28px;height:28px;border-radius:999px;background:var(--accent);color:#fff;font-weight:800;margin-right:8px}
+.stepper li span{
+  display:inline-grid;place-items:center;width:28px;height:28px;border-radius:999px;
+  background:var(--accent);color:#fff;font-weight:800;margin-right:8px
+}
 
 /* ====== Accordion (FAQ) ====== */
 .accordion details{background:#fff;border-radius:14px;box-shadow:var(--shadow);padding:12px}
@@ -70,6 +104,14 @@ img{max-width:100%;height:auto;display:block}
 input,select,textarea{border:1px solid #e5e7eb;border-radius:12px;padding:10px 12px;font:inherit}
 .form-actions{display:flex;gap:10px;margin-top:10px}
 .form-note{color:var(--muted);font-size:.9rem;margin:10px 0 0}
+
+/* Campo mensaje a todo el ancho */
+.form-grid>label.full{grid-column:1 / -1}
+.form-grid>label input,
+.form-grid>label select,
+.form-grid>label textarea{width:100%}
+.form textarea{min-height:120px}
+.form label{font-weight:600}
 
 /* ====== Footer ====== */
 .footer{border-top:1px solid #eee;background:#fafafa}
@@ -94,35 +136,45 @@ input,select,textarea{border:1px solid #e5e7eb;border-radius:12px;padding:10px 1
 .hero h1{text-shadow:0 2px 14px rgba(0,0,0,.35)}
 .hero .sub{color:var(--brand)}
 .hero .btn{box-shadow:0 10px 25px rgba(244,140,32,.3)}
-.hero-kpis{display:flex;gap:14px;margin-top:18px;flex-wrap:wrap}
-.hero-kpis>div{display:flex;gap:8px;align-items:center;background:rgba(17,24,39,.55);
-  border:1px solid rgba(255,255,255,.15);padding:10px 14px;border-radius:14px;color:#fff}
+.hero-kpis{
+  display:flex;gap:14px;margin-top:18px;flex-wrap:wrap
+}
+.hero-kpis>div{
+  display:flex;gap:8px;align-items:center;
+  background:rgba(17,24,39,.55);
+  border:1px solid rgba(255,255,255,.15);
+  padding:10px 14px;border-radius:14px;color:#fff
+}
 
-/* ====== Tabs (página requisitos) ====== */
-.tabs{display:flex;gap:10px;flex-wrap:wrap;margin:10px 0 12px}
-.tab{background:#fff;border:1px solid #e5e7eb;border-radius:999px;padding:8px 12px;cursor:pointer;font-weight:700}
-.tab.active{background:var(--brand);border-color:var(--brand);color:#fff}
-.tab-panels{background:#fff;border-radius:18px;box-shadow:var(--shadow);padding:14px}
-.tab-panel{display:none}
-.tab-panel.active{display:block}
-.checklist{margin:0;padding-left:18px}
-.cta-inline{display:flex;gap:10px;margin-top:10px;flex-wrap:wrap}
-
-/* Alineación y ancho del campo "Mensaje" */
-.form-grid>label.full{grid-column:1 / -1}
-
-/* Garantiza que los controles llenen la columna */
-.form-grid>label input,
-.form-grid>label select,
-.form-grid>label textarea{width:100%}
-
-.form textarea{min-height:120px}
-.form label{font-weight:600}
-
-/* ====== Hero centrado ====== */
+/* Hero centrado */
 .hero.center .hero-content{ text-align:center; max-width:900px; margin-inline:auto }
 .hero.center .hero-ctas{ display:flex; gap:10px; justify-content:center; flex-wrap:wrap }
 .hero.center .hero-kpis{ justify-content:center }
+
+/* ====== Tabs / Requisitos por destino ====== */
+/* (usamos variables por tema, ver bloque dark más abajo) */
+.tabs{display:flex;gap:12px;flex-wrap:wrap;margin:10px 0 12px}
+.tab{
+  background:var(--pill-bg);
+  color:var(--pill-ink);
+  border:1px solid #1f2937;
+  border-radius:999px;
+  padding:8px 12px;
+  cursor:pointer;font-weight:700
+}
+.tab.active{background:var(--brand);border-color:var(--brand);color:#fff}
+.tab-panels{
+  background:var(--panel-bg);
+  color:var(--panel-ink);
+  border-radius:18px;
+  box-shadow:var(--shadow);
+  padding:14px;
+  border:1px solid #e5e7eb;
+}
+.tab-panel{display:none;color:inherit}
+.tab-panel.active{display:block}
+.checklist{margin:0;padding-left:18px;color:inherit}
+.checklist li strong{color:inherit}
 
 /* ====== Botón flotante "Volver arriba" ====== */
 .backtop{
@@ -139,7 +191,7 @@ input,select,textarea{border:1px solid #e5e7eb;border-radius:12px;padding:10px 1
 @media (max-width:640px){ .backtop{ width:44px; height:44px; right:14px; bottom:14px } }
 @media (prefers-reduced-motion: reduce){ .backtop{ transition: none } }
 
-/* ====== Dark mode automático (tokens y superficies) ====== */
+/* ====== Dark mode automático ====== */
 @media (prefers-color-scheme: dark){
   :root{
     --bg:#0b0f19;
@@ -147,163 +199,35 @@ input,select,textarea{border:1px solid #e5e7eb;border-radius:12px;padding:10px 1
     --muted:#a3a9b6;
     --card:#111827;
     --shadow: 0 18px 40px rgba(0,0,0,.5);
+
+    /* Tabs/Requisitos (dark) */
+    --panel-bg:#0f1626;   /* panel oscuro */
+    --panel-ink:#e5e7eb;  /* texto claro dentro del panel */
+    --pill-bg:#111827;    /* pill inactiva oscura */
+    --pill-ink:#e5e7eb;   /* texto pill inactiva */
   }
+
   body{ background:var(--bg); color:var(--ink) }
   .section.alt{ background:linear-gradient(180deg,#0e1422,#0b0f19) }
   .header{ background:rgba(17,24,39,.85); border-bottom-color:#1f2937 }
   .brand{ color:#e5e7eb }
   .nav a{ color:#e5e7eb }
   .nav a:hover{ color:#c4b5fd }
-  .card, .form, .accordion details{ background:var(--card); box-shadow:var(--shadow); border-color:#1f2937 }
+  .card, .form, .accordion details{
+    background:var(--card); box-shadow:var(--shadow); border-color:#1f2937
+  }
   .footer{ background:#0e1422; border-top-color:#1f2937 }
   .btn.btn-secondary{ border-color:rgba(255,255,255,.28); color:#fff }
-  .hero .eyebrow, .hero h1, .hero p{ color:#fff } /* sigue legible sobre la foto */
-}
-/* Contraste correcto del Stepper en modo oscuro */
-@media (prefers-color-scheme: dark){
-  /* Tarjetas del stepper: fondo oscuro + texto claro */
+  .hero .eyebrow, .hero h1, .hero p{ color:#fff }
+
+  /* Stepper contraste */
   .stepper li{
-    background:#121826;              /* similar a var(--card) pero un pelín más claro */
-    color:#e5e7eb;                    /* igual que var(--ink) en dark */
-    border:1px solid #1f2937;         /* borde sutil para separar del fondo */
+    background:#121826;color:#e5e7eb;border:1px solid #1f2937;
     box-shadow: 0 10px 28px rgba(0,0,0,.35);
   }
-  /* Si algún navegador hereda color distinto dentro del li */
   .stepper li, .stepper li *{ color:inherit }
+  .stepper li span{ background:#8b5cf6;color:#fff }
 
-  /* Badge con el número: que resalte un poco más */
-  .stepper li span{
-    background:#8b5cf6;              /* morado más luminoso */
-    color:#fff;
-  }
-}
-/* ====== Requisitos por destino: Dark mode ====== */
-@media (prefers-color-scheme: dark){
-  /* Pestañas (pills) */
-  .tabs { gap: 12px }
-  .tab{
-    background:#111827;            /* pill oscura */
-    color:#e5e7eb;                 /* texto claro */
-    border:1px solid #1f2937;
-  }
-  .tab.active{
-    background:var(--brand);       /* la activa sigue naranja */
-    border-color:var(--brand);
-    color:#fff;
-  }
-
-  /* Panel de contenido */
-  .tab-panels{
-    background:#0f1626;            /* caja del contenido oscura */
-    border:1px solid #1f2937;
-    box-shadow: 0 14px 32px rgba(0,0,0,.45);
-  }
-  .tab-panel{ color:#e5e7eb }      /* texto legible dentro del panel */
-  .checklist { color:inherit }     /* hereda el color correcto */
-  .checklist li strong{ color:inherit }
-  /* (opcional) color del bullet en navegadores que lo soportan */
+  /* Requisitos: bullets más visibles en dark */
   .checklist li::marker{ color:#9aa3b2 }
 }
-/* ===== Requisitos por destino: contraste correcto en ambos temas ===== */
-
-/* Variables de panel y pills */
-:root{
-  --panel-bg:#ffffff;
-  --panel-ink:#111827;
-  --pill-bg:#ffffff;
-  --pill-ink:#1f2a37;
-}
-@media (prefers-color-scheme: dark){
-  :root{
-    --panel-bg:#0f1626;     /* fondo oscuro del panel */
-    --panel-ink:#e5e7eb;    /* texto claro dentro del panel */
-    --pill-bg:#111827;      /* pills inactivos oscuros */
-    --pill-ink:#e5e7eb;     /* texto claro en pill inactivo */
-  }
-}
-
-/* Pills (pestañas) */
-.tabs{ gap:12px }
-.tab{
-  background:var(--pill-bg) !important;
-  color:var(--pill-ink) !important;
-  border:1px solid #1f2937;
-}
-.tab.active{
-  background:var(--brand) !important;
-  border-color:var(--brand) !important;
-  color:#fff !important;
-}
-
-/* Panel de contenido y texto interior */
-.tab-panels{
-  background:var(--panel-bg) !important;
-  color:var(--panel-ink) !important;
-  border:1px solid #1f2937;
-  box-shadow:0 14px 32px rgba(0,0,0,.20);
-}
-.tab-panel{ color:inherit !important }
-.checklist{ color:inherit !important }
-.checklist li strong{ color:inherit !important }
-/* (opcional) viñeta más visible en dark */
-@media (prefers-color-scheme: dark){
-  .checklist li::marker{ color:#9aa3b2 }
-}
-/* === FIX DEFINITIVO DE CONTRASTE EN "Requisitos por destino" === */
-/* Más especificidad + !important para ganar a cualquier regla previa */
-
-/* Light mode (por si alguna regla previa impone dark por error) */
-.section .container .tab-panels{
-  background:#ffffff !important;
-  color:#111827 !important;
-  border:1px solid #e5e7eb !important;
-}
-.section .container .tab-panels .tab-panel,
-.section .container .tab-panels .checklist,
-.section .container .tab-panels .checklist li,
-.section .container .tab-panels .checklist li strong{
-  color:inherit !important;
-  opacity:1 !important;
-}
-
-/* Pills (etiquetas de pestañas) */
-.section .container .tabs .tab{
-  background:#ffffff !important;
-  color:#1f2a37 !important;
-  border:1px solid #1f2937 !important;
-}
-.section .container .tabs .tab.active{
-  background:var(--brand) !important;
-  border-color:var(--brand) !important;
-  color:#fff !important;
-}
-
-/* Dark mode: panel y texto CLAROS sobre fondo oscuro */
-@media (prefers-color-scheme: dark){
-  .section .container .tab-panels{
-    background:#0f1626 !important;   /* fondo oscuro del panel */
-    color:#e5e7eb !important;        /* texto claro */
-    border:1px solid #1f2937 !important;
-    box-shadow:0 14px 32px rgba(0,0,0,.45) !important;
-  }
-  .section .container .tab-panels .tab-panel,
-  .section .container .tab-panels .checklist,
-  .section .container .tab-panels .checklist li,
-  .section .container .tab-panels .checklist li strong{
-    color:#e5e7eb !important;
-    opacity:1 !important;            /* evita que se vea “lavado” */
-  }
-  .section .container .tabs .tab{
-    background:#111827 !important;
-    color:#e5e7eb !important;
-    border:1px solid #1f2937 !important;
-  }
-  .section .container .tabs .tab.active{
-    background:var(--brand) !important;
-    border-color:var(--brand) !important;
-    color:#fff !important;
-  }
-  /* viñetas más visibles */
-  .section .container .tab-panels .checklist li::marker{ color:#9aa3b2 !important; }
-}
-
