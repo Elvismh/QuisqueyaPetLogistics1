@@ -168,6 +168,61 @@
     color:#9aa3b2 !important;
   }
 }
+<style id="req-contrast-fix">
+/* Pills (pestañas) – base */
+.section .container .tabs .tab{
+  background:#ffffff !important;
+  color:#1f2a37 !important;
+  border:1px solid #1f2937 !important;
+}
+.section .container .tabs .tab.active{
+  background:#f48c20 !important;
+  border-color:#f48c20 !important;
+  color:#fff !important;
+}
+
+/* LIGHT: panel blanco + texto oscuro */
+@media (prefers-color-scheme: light), (prefers-color-scheme: no-preference){
+  .section .container .tab-panels{
+    background:#ffffff !important;
+    color:#111827 !important;
+    border:1px solid #e5e7eb !important;
+    box-shadow:0 14px 32px rgba(0,0,0,.15) !important;
+  }
+  .section .container .tab-panels .tab-panel,
+  .section .container .tab-panels .checklist,
+  .section .container .tab-panels .checklist li,
+  .section .container .tab-panels .checklist li strong{
+    color:#111827 !important;
+    opacity:1 !important;
+  }
+}
+
+/* DARK: panel oscuro + texto claro */
+@media (prefers-color-scheme: dark){
+  .section .container .tabs .tab{
+    background:#111827 !important;
+    color:#e5e7eb !important;
+    border:1px solid #1f2937 !important;
+  }
+  .section .container .tab-panels{
+    background:#0f1626 !important;
+    color:#e5e7eb !important;
+    border:1px solid #1f2937 !important;
+    box-shadow:0 14px 32px rgba(0,0,0,.45) !important;
+  }
+  .section .container .tab-panels .tab-panel,
+  .section .container .tab-panels .checklist,
+  .section .container .tab-panels .checklist li,
+  .section .container .tab-panels .checklist li strong{
+    color:#e5e7eb !important;
+    opacity:1 !important;
+  }
+  .section .container .tab-panels .checklist li::marker{
+    color:#9aa3b2 !important;
+  }
+}
+</style>
 
 </body>
 </html>
