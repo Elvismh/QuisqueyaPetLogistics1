@@ -656,3 +656,41 @@ input,select,textarea{border:1px solid #e5e7eb;border-radius:12px;padding:10px 1
     height: 46px;
   }
 }
+/* Contenedor de los botones del hero */
+.hero-cta,
+.cta,
+.cta-actions {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+/* Estilo base para ambos botones */
+.btn,
+.hero-cta a {
+  display: inline-flex;               /* centra con flex */
+  align-items: center;                /* centro vertical */
+  justify-content: center;            /* centro horizontal */
+  padding: 0 22px;
+  min-height: 52px;                   /* alto uniforme */
+  border-radius: 12px;
+  font-weight: 700;
+  line-height: 1;                     /* evita desajuste vertical */
+  text-decoration: none;
+  white-space: nowrap;                /* no partir el texto */
+}
+
+/* Variantes (ajusta colores a tu marca) */
+.btn-solid { background: #F08A23; color: #fff; border: 0; }
+.btn-outline { background: rgba(0,0,0,.35); color: #fff; border: 2px solid #fff; }
+
+/* Accesibilidad y estados */
+.btn:focus-visible { outline: 2px solid #fff; outline-offset: 2px; }
+.btn:hover { transform: translateY(-1px); }
+.btn:active { transform: translateY(0); }
+
+/* Opcional: en móvil, apilarlos */
+@media (max-width: 640px) {
+  .hero-cta, .cta, .cta-actions { flex-direction: column; }
+  .btn, .hero-cta a { width: 100%; }
+}
