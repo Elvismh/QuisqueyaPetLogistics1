@@ -20,6 +20,11 @@
   --panel-ink:#111827;  /* texto dentro del panel */
   --pill-bg:#ffffff;    /* pill inactiva */
   --pill-ink:#1f2a37;   /* texto pill inactiva */
+
+  /* Overlay del HERO (ajusta a gusto) */
+  --hero-orange-alpha:.28;  /* fuerza del naranja */
+  --hero-vignette-top:.35;  /* sombreado superior */
+  --hero-vignette-bot:.55;  /* sombreado inferior */
 }
 
 *{box-sizing:border-box}
@@ -124,13 +129,28 @@ input,select,textarea{border:1px solid #e5e7eb;border-radius:12px;padding:10px 1
 .hero-bg{position:absolute;inset:0}
 .slide{position:absolute;inset:0;background-size:cover;background-position:center;opacity:0;transition:opacity 900ms ease}
 .slide.show{opacity:1}
+
+/* Difuminado anaranjado + viñeteado para TODAS las portadas */
 .hero-overlay{
-  position:absolute;inset:0;
+  position:absolute;
+  inset:0;
+  pointer-events:none; /* no bloquea clicks */
+
+  /* 1) Tinte anaranjado (marca) con un radial suave centrado arriba
+     2) Viñeta oscura para legibilidad del texto                  */
   background:
-    linear-gradient(180deg, rgba(0,0,0,.22), rgba(0,0,0,.22)),
-    radial-gradient(60% 60% at 50% 40%, rgba(244,140,32,.22), transparent 70%);
+    radial-gradient(110% 70% at 50% 32%,
+      rgba(244,140,32,var(--hero-orange-alpha)) 0%,
+      rgba(244,140,32,calc(var(--hero-orange-alpha) * .55)) 45%,
+      rgba(244,140,32,0) 70%),
+    linear-gradient(180deg,
+      rgba(17,24,39,var(--hero-vignette-top)) 0%,
+      rgba(17,24,39,.45) 60%,
+      rgba(17,24,39,var(--hero-vignette-bot)) 100%);
+
   backdrop-filter: blur(2px);
 }
+
 .hero .container{position:relative;z-index:2}
 .hero .eyebrow,.hero h1,.hero p{color:#fff}
 .hero h1{text-shadow:0 2px 14px rgba(0,0,0,.35)}
@@ -205,6 +225,11 @@ input,select,textarea{border:1px solid #e5e7eb;border-radius:12px;padding:10px 1
     --panel-ink:#e5e7eb;  /* texto claro dentro del panel */
     --pill-bg:#111827;    /* pill inactiva oscura */
     --pill-ink:#e5e7eb;   /* texto pill inactiva */
+
+    /* Overlay del HERO – ajustes para dark */
+    --hero-orange-alpha:.26;
+    --hero-vignette-top:.42;
+    --hero-vignette-bot:.62;
   }
 
   body{ background:var(--bg); color:var(--ink) }
@@ -231,6 +256,7 @@ input,select,textarea{border:1px solid #e5e7eb;border-radius:12px;padding:10px 1
   /* Requisitos: bullets más visibles en dark */
   .checklist li::marker{ color:#9aa3b2 }
 }
+
 /* =========================================
    FIX FINAL · Requisitos por destino (contraste)
    ========================================= */
