@@ -1,48 +1,46 @@
 // ---------- Utilidades ----------
-const $ = (sel, ctx=document) => ctx.querySelector(sel);
+const $  = (sel, ctx=document) => ctx.querySelector(sel);
 const $$ = (sel, ctx=document) => [...ctx.querySelectorAll(sel)];
 
 // ---------- Navegación móvil ----------
 (() => {
   const toggle = $('.nav-toggle');
-  const nav = $('#mainNav');
+  const nav = $('#mainNav') || $('.nav');        // funciona en home y requisitos
   if (!toggle || !nav) return;
   toggle.addEventListener('click', () => nav.classList.toggle('open'));
 })();
 
 // ---------- Botón volver arriba (flotante y del footer) ----------
 (() => {
-  const back = $('#backtop');
-  const footerBack = $('#footerBackTop');
-
-  // si no existe en esta página, no hacemos nada
-  if (!back && !footerBack) return;
+  const backBtn    = $('#backtop');
+  const footerBtn  = $('#footerBackTop');
+  const anyTopLink = $$('.top'); // cualquier enlace con clase .top
 
   const goTop = e => { e && e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }); };
 
-  if (back) {
-    const toggleBack = () => back.classList.toggle('show', window.scrollY > 400);
+  if (backBtn) {
+    const toggleBack = () => backBtn.classList.toggle('show', window.scrollY > 400);
     window.addEventListener('scroll', toggleBack, { passive: true });
     toggleBack();
-    back.addEventListener('click', goTop);
+    backBtn.addEventListener('click', goTop);
   }
-  if (footerBack) footerBack.addEventListener('click', goTop);
+  if (footerBtn) footerBtn.addEventListener('click', goTop);
+  anyTopLink.forEach(a => a.addEventListener('click', goTop));
 })();
 
 // ---------- Slider portada (home) ----------
 (() => {
-  const hero = $('.hero');
   const bg = $('.hero-bg');
-  if (!hero || !bg) return; // esta página no tiene slider
+  if (!bg) return; // esta página no tiene slider
 
-  // RUTAS (ajústalas a tu carpeta de imágenes)
+  // RUTAS corregidas (sin subcarpeta "hero")
   const images = [
-    'assets/hero/hero-1.webp',
-    'assets/hero/hero-2.webp',
-    'assets/hero/hero-3.webp'
+    'assets/hero-1.webp',
+    'assets/hero-2.webp',
+    'assets/hero-3.webp'
   ];
 
-  // crea las slides una sola vez
+  // crea las slides
   bg.innerHTML = '';
   images.forEach(src => {
     const d = document.createElement('div');
@@ -50,6 +48,9 @@ const $$ = (sel, ctx=document) => [...ctx.querySelectorAll(sel)];
     d.style.backgroundImage = `url("${src}")`;
     bg.appendChild(d);
   });
+  const overlay = document.createElement('div');
+  overlay.className = 'hero-overlay';
+  bg.appendChild(overlay);
 
   const slides = $$('.slide', bg);
   let i = 0;
@@ -57,16 +58,13 @@ const $$ = (sel, ctx=document) => [...ctx.querySelectorAll(sel)];
 
   if (slides.length) show(0);
   if (slides.length > 1) {
-    setInterval(() => {
-      i = (i + 1) % slides.length;
-      show(i);
-    }, 6000);
+    setInterval(() => { i = (i + 1) % slides.length; show(i); }, 6000);
   }
 })();
 
 // ---------- Tabs (página de Requisitos) ----------
 (() => {
-  const tabs = $$('.tabs .tab');
+  const tabs   = $$('.tabs .tab');
   const panels = $$('.tab-panel');
   if (!tabs.length || !panels.length) return;
 
@@ -85,4 +83,12 @@ const $$ = (sel, ctx=document) => [...ctx.querySelectorAll(sel)];
   };
 
   tabs.forEach(b => b.addEventListener('click', () => activate(b.dataset.tab)));
+
+  // Permite abrir ya seleccionada por query ?dest=...
+  const params = new URLSearchParams(location.search);
+  const dest = params.get('dest');
+  if (dest) {
+    const btn = $(`.tabs .tab[data-tab="${dest}"]`);
+    if (btn) btn.click();
+  }
 })();
