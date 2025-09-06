@@ -22,7 +22,7 @@
   --pill-ink:#1f2a37;   /* texto pill inactiva */
 
   /* Overlay del HERO (ajusta a gusto) */
-  --hero-orange-alpha:.28;  /* fuerza del naranja */
+  --hero-orange-alpha:.35;  /* fuerza del naranja */
   --hero-vignette-top:.35;  /* sombreado superior */
   --hero-vignette-bot:.55;  /* sombreado inferior */
 }
