@@ -1,228 +1,224 @@
 <!doctype html>
 <html lang="es">
 <head>
-  <meta name="color-scheme" content="light dark">
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="color-scheme" content="light dark" />
   <title>Requisitos por destino · Quisqueya Pet Logistics</title>
-  <link rel="stylesheet" href="../style.css?v=9">
+  <link rel="stylesheet" href="../style.css?v=12" />
 </head>
 <body>
 
-  <!-- Header reducido -->
+  <!-- Header / Nav -->
   <header class="header">
     <div class="container header-inner">
-      <a href="../index.html" class="brand">
-        <img src="../assets/logo.png" class="logo" alt="Logo" />
+      <a href="../index.html" class="brand" aria-label="Inicio">
+        <span style="font-size:22px">🐶</span>
         <span>Quisqueya Pet Logistics</span>
       </a>
-      <nav class="nav">
-        <a href="../index.html#servicios">Servicios</a>
-        <a href="./index.html" class="btn btn-sm">Requisitos por destino</a>
-        <a href="../index.html#faq">Preguntas</a>
-        <a href="../index.html#contacto" class="btn btn-sm">Cotiza</a>
+      <nav>
+        <button class="nav-toggle" aria-label="Abrir menú">☰</button>
+        <div class="nav" id="mainNav">
+          <a href="../index.html#servicios">Servicios</a>
+          <a class="btn btn-sm" href="./index.html">Requisitos por destino</a>
+          <a href="../index.html#faq">Preguntas</a>
+          <a class="btn btn-sm" href="../index.html#contacto">Cotiza</a>
+        </div>
       </nav>
-      <button class="nav-toggle" aria-label="Abrir menú">☰</button>
     </div>
   </header>
 
+  <!-- Requisitos por destino -->
   <section class="section" style="padding-top:48px">
     <div class="container">
       <h1 class="section-title">Requisitos por destino</h1>
       <p>Selecciona una región para ver el checklist y la documentación. Podemos verificar tu caso y la normativa vigente.</p>
 
-      <div class="tabs" role="tablist">
-        <button class="tab" data-tab="europa" role="tab">Europa</button>
-        <button class="tab" data-tab="caribe" role="tab">Caribe</button>
-        <button class="tab active" data-tab="usa" role="tab" aria-selected="true">USA</button>
-        <button class="tab" data-tab="latam" role="tab">Latinoamérica</button>
+      <!-- Tabs -->
+      <div class="tabs" role="tablist" aria-label="Regiones">
+        <button class="tab" data-tab="europa" role="tab" aria-controls="europa" aria-selected="false">Europa</button>
+        <button class="tab" data-tab="caribe" role="tab" aria-controls="caribe" aria-selected="false">Caribe</button>
+        <button class="tab active" data-tab="usa" role="tab" aria-controls="usa" aria-selected="true">USA</button>
+        <button class="tab" data-tab="latam" role="tab" aria-controls="latam" aria-selected="false">Latinoamérica</button>
       </div>
 
-     <div class="tab-panels" id="reqPanel">
+      <!-- Paneles (envolver TODO en #reqPanel) -->
+      <div class="tab-panels" id="reqPanel">
         <!-- EUROPA -->
-        <div class="tab-panel" id="europa" role="tabpanel">
+        <div class="tab-panel" id="europa" role="tabpanel" aria-labelledby="europa-tab" hidden>
           <ul class="checklist">
             <li><strong>Microchip ISO 11784/11785</strong> antes de la vacuna antirrábica.</li>
             <li><strong>Vacuna antirrábica vigente</strong> (≥21 días desde primovacunación).</li>
-            <li><strong>Certificado zoosanitario de la UE</strong> (no comercial) + declaración del propietario. Válido 10 días para ingresar.</li>
+            <li><strong>Certificado zoosanitario de la UE</strong> (no comercial) + declaración del propietario.</li>
             <li><strong>Entrada por Punto de Control designado</strong> en país de llegada; verificación de identidad y documentos.</li>
             <li><strong>Serología de rabia (≥0.5 IU/ml)</strong> si el país de origen no está en la lista UE correspondiente.</li>
-            <li>Jaula homologada IATA y reserva confirmada.</li>
           </ul>
           <div class="cta-inline">
-            <a href="../index.html#contacto" class="btn">Verificar mi caso</a>
-            <a class="btn btn-secondary" target="_blank" rel="noopener" href="https://wa.me/18292673330?text=Requisitos%20para%20Europa">WhatsApp</a>
+            <a class="btn" href="../index.html#contacto">Quiero cotizar</a>
           </div>
         </div>
 
         <!-- CARIBE -->
-        <div class="tab-panel" id="caribe" role="tabpanel">
+        <div class="tab-panel" id="caribe" role="tabpanel" aria-labelledby="caribe-tab" hidden>
           <ul class="checklist">
-            <li>Certificado de salud emitido por veterinario oficial.</li>
-            <li>Vacuna antirrábica vigente (y otras vacunas según isla).</li>
-            <li><strong>Permiso de importación</strong> en varias islas (solicitud previa).</li>
-            <li>Posible <strong>inspección al arribo</strong> y tasas locales.</li>
-            <li>Jaula homologada IATA; broker recomendado.</li>
+            <li><strong>Certificado zoosanitario</strong> conforme al país de destino (p. ej., BAHA, SENASA, etc.).</li>
+            <li><strong>Vacuna antirrábica vigente</strong>; refuerzos según país.</li>
+            <li><strong>Permiso de importación</strong> cuando aplique; inspección a la llegada.</li>
+            <li><strong>Jaula IATA</strong>, medidas correctas y reserva confirmada.</li>
           </ul>
           <div class="cta-inline">
-            <a href="../index.html#contacto" class="btn">Consultar mi destino</a>
-            <a class="btn btn-secondary" target="_blank" rel="noopener" href="https://wa.me/18292673330?text=Requisitos%20para%20Caribe">WhatsApp</a>
+            <a class="btn" href="../index.html#contacto">Consultar rutas Caribe</a>
           </div>
         </div>
 
-        <!-- USA -->
-        <div class="tab-panel active" id="usa" role="tabpanel">
+        <!-- USA (ACTIVO por defecto) -->
+        <div class="tab-panel active" id="usa" role="tabpanel" aria-labelledby="usa-tab">
           <ul class="checklist">
-            <li>Vacuna antirrábica vigente según normativa CDC/estado.</li>
+            <li><strong>Vacuna antirrábica vigente</strong> según normativa CDC/estado.</li>
             <li>Ingreso por <strong>aeropuerto habilitado</strong>; posible revisión CDC/USDA.</li>
             <li>Para carga (guía aérea), coordinar con <strong>broker</strong> en destino.</li>
-            <li>Jaula homologada IATA, medidas correctas y reserva confirmada.</li>
+            <li><strong>Jaula homologada IATA</strong>, medidas correctas y reserva confirmada.</li>
           </ul>
           <div class="cta-inline">
-            <a href="../index.html#contacto" class="btn">Verificar rutas USA</a>
-            <a class="btn btn-secondary" target="_blank" rel="noopener" href="https://wa.me/18292673330?text=Requisitos%20para%20USA">WhatsApp</a>
+            <a class="btn" href="../index.html#contacto">Verificar rutas USA</a>
           </div>
         </div>
 
-        <!-- LATINOAMÉRICA -->
-        <div class="tab-panel" id="latam" role="tabpanel">
+        <!-- LATAM -->
+        <div class="tab-panel" id="latam" role="tabpanel" aria-labelledby="latam-tab" hidden>
           <ul class="checklist">
-            <li>Certificado zoosanitario de exportación desde RD.</li>
-            <li>Vacuna antirrábica vigente; otras vacunas según país (SAG, ICA, SENASA, etc.).</li>
+            <li><strong>Certificado zoosanitario de exportación</strong> desde RD.</li>
+            <li><strong>Vacuna antirrábica vigente</strong>; otras vacunas según país (SAG, ICA, SENASA, etc.).</li>
             <li>Posible <strong>permiso de importación</strong> y revisión documental al arribo.</li>
-            <li>Jaula homologada IATA y reserva confirmada.</li>
+            <li><strong>Jaula IATA</strong> y reserva confirmada.</li>
           </ul>
           <div class="cta-inline">
-            <a href="../index.html#contacto" class="btn">Quiero cotizar</a>
-            <a class="btn btn-secondary" target="_blank" rel="noopener" href="https://wa.me/18292673330?text=Requisitos%20para%20Latinoam%C3%A9rica">WhatsApp</a>
+            <a class="btn" href="../index.html#contacto">Quiero cotizar</a>
           </div>
         </div>
       </div>
+      <!-- /#reqPanel -->
     </div>
   </section>
 
+  <!-- Footer -->
   <footer class="footer">
     <div class="container footer-inner">
-      <p>© 2025 Quisqueya Pet Logistics · Requisitos</p>
-      <a href="#inicio" class="top">↑ Volver arriba</a>
+      <small>© 2025 Quisqueya Pet Logistics · Requisitos</small>
+      <a class="top" href="#top" id="footerBackTop">↑ Volver arriba</a>
     </div>
   </footer>
 
-  <script src="../script.js"></script>
-  
-/* =========================================
-   FIX FINAL · Requisitos por destino (contraste)
-   ========================================= */
-/* Pills (pestañas) – estado base */
-.section .container .tabs .tab{
-  background:#ffffff !important;
-  color:#1f2a37 !important;
-  border:1px solid #1f2937 !important;
-}
-.section .container .tabs .tab.active{
-  background:var(--brand) !important;
-  border-color:var(--brand) !important;
-  color:#fff !important;
-}
+  <!-- Botón flotante volver arriba -->
+  <button id="backtop" class="backtop" aria-label="Volver arriba" title="Volver arriba">↑</button>
 
-/* Panel + contenido en LIGHT */
-@media (prefers-color-scheme: light), (prefers-color-scheme: no-preference){
-  .section .container .tab-panels{
-    background:#ffffff !important;
-    color:#111827 !important;
-    border:1px solid #e5e7eb !important;
-    box-shadow:0 14px 32px rgba(0,0,0,.15) !important;
-  }
-  .section .container .tab-panels .tab-panel,
-  .section .container .tab-panels .checklist,
-  .section .container .tab-panels .checklist li,
-  .section .container .tab-panels .checklist li strong{
-    color:#111827 !important;
-    opacity:1 !important;
-  }
-}
+  <!-- ===== JS Tabs + BackTop ===== -->
+  <script>
+    // Mobile nav
+    const toggleBtn = document.querySelector('.nav-toggle');
+    const nav = document.getElementById('mainNav');
+    if (toggleBtn && nav) toggleBtn.addEventListener('click', ()=> nav.classList.toggle('open'));
 
-/* Panel + contenido en DARK */
-@media (prefers-color-scheme: dark){
-  /* pills inactivas oscuras */
-  .section .container .tabs .tab{
-    background:#111827 !important;
-    color:#e5e7eb !important;
-    border:1px solid #1f2937 !important;
-  }
-  /* panel oscuro + texto claro */
-  .section .container .tab-panels{
-    background:#0f1626 !important;
-    color:#e5e7eb !important;
-    border:1px solid #1f2937 !important;
-    box-shadow:0 14px 32px rgba(0,0,0,.45) !important;
-  }
-  .section .container .tab-panels .tab-panel,
-  .section .container .tab-panels .checklist,
-  .section .container .tab-panels .checklist li,
-  .section .container .tab-panels .checklist li strong{
-    color:#e5e7eb !important;
-    opacity:1 !important;        /* por si algo aplicó opacidad */
-  }
-  .section .container .tab-panels .checklist li::marker{
-    color:#9aa3b2 !important;
-  }
-}
-<style id="req-contrast-fix">
-/* Pills (pestañas) – base */
-.section .container .tabs .tab{
-  background:#ffffff !important;
-  color:#1f2a37 !important;
-  border:1px solid #1f2937 !important;
-}
-.section .container .tabs .tab.active{
-  background:#f48c20 !important;
-  border-color:#f48c20 !important;
-  color:#fff !important;
-}
+    // Tabs
+    const tabs = document.querySelectorAll('.tabs .tab');
+    const panels = document.querySelectorAll('.tab-panel');
+    function activateTab(id){
+      tabs.forEach(t=>{
+        const active = t.dataset.tab === id;
+        t.classList.toggle('active', active);
+        t.setAttribute('aria-selected', active ? 'true':'false');
+      });
+      panels.forEach(p=>{
+        const show = p.id === id;
+        p.classList.toggle('active', show);
+        p.toggleAttribute('hidden', !show);
+        p.setAttribute('aria-hidden', show ? 'false' : 'true');
+      });
+    }
+    tabs.forEach(btn=>{
+      btn.addEventListener('click', ()=> activateTab(btn.dataset.tab));
+    });
 
-/* LIGHT: panel blanco + texto oscuro */
-@media (prefers-color-scheme: light), (prefers-color-scheme: no-preference){
-  .section .container .tab-panels{
-    background:#ffffff !important;
-    color:#111827 !important;
-    border:1px solid #e5e7eb !important;
-    box-shadow:0 14px 32px rgba(0,0,0,.15) !important;
-  }
-  .section .container .tab-panels .tab-panel,
-  .section .container .tab-panels .checklist,
-  .section .container .tab-panels .checklist li,
-  .section .container .tab-panels .checklist li strong{
-    color:#111827 !important;
-    opacity:1 !important;
-  }
-}
+    // Back-to-top (flotante y footer)
+    const back = document.getElementById('backtop');
+    const footerBack = document.getElementById('footerBackTop');
+    const toggleBack = () => back.classList.toggle('show', window.scrollY > 400);
+    window.addEventListener('scroll', toggleBack, {passive:true});
+    toggleBack();
+    const goTop = e => { e && e.preventDefault(); window.scrollTo({top:0,behavior:'smooth'}); };
+    back.addEventListener('click', goTop);
+    footerBack && footerBack.addEventListener('click', goTop);
+  </script>
 
-/* DARK: panel oscuro + texto claro */
-@media (prefers-color-scheme: dark){
-  .section .container .tabs .tab{
-    background:#111827 !important;
-    color:#e5e7eb !important;
-    border:1px solid #1f2937 !important;
-  }
-  .section .container .tab-panels{
-    background:#0f1626 !important;
-    color:#e5e7eb !important;
-    border:1px solid #1f2937 !important;
-    box-shadow:0 14px 32px rgba(0,0,0,.45) !important;
-  }
-  .section .container .tab-panels .tab-panel,
-  .section .container .tab-panels .checklist,
-  .section .container .tab-panels .checklist li,
-  .section .container .tab-panels .checklist li strong{
-    color:#e5e7eb !important;
-    opacity:1 !important;
-  }
-  .section .container .tab-panels .checklist li::marker{
-    color:#9aa3b2 !important;
-  }
-}
-</style>
+  <!-- ===== FIX contraste (CSS inline + refuerzo JS) ===== -->
+  <style>
+    /* Pills en dark/light */
+    .tabs .tab{
+      background:#111827 !important;
+      color:#e5e7eb !important;
+      border:1px solid #1f2937 !important;
+    }
+    .tabs .tab.active{
+      background:#f48c20 !important;
+      border-color:#f48c20 !important;
+      color:#fff !important;
+    }
+    @media (prefers-color-scheme: light), (prefers-color-scheme: no-preference){
+      .tabs .tab{ background:#ffffff !important; color:#1f2a37 !important; border-color:#1f2937 !important; }
+    }
+
+    /* Panel por id (gana con especificidad + !important) */
+    #reqPanel{
+      background:#0f1626 !important;
+      color:#e5e7eb !important;
+      border:1px solid #1f2937 !important;
+      box-shadow:0 14px 32px rgba(0,0,0,.45) !important;
+    }
+    @media (prefers-color-scheme: light), (prefers-color-scheme: no-preference){
+      #reqPanel{
+        background:#ffffff !important;
+        color:#111827 !important;
+        border:1px solid #e5e7eb !important;
+        box-shadow:0 14px 32px rgba(0,0,0,.15) !important;
+      }
+    }
+
+    /* Todos los textos dentro del panel: color/opacity seguros */
+    #reqPanel, #reqPanel .tab-panel, #reqPanel .checklist,
+    #reqPanel .checklist li, #reqPanel .checklist li strong, #reqPanel *{
+      color:inherit !important; opacity:1 !important; filter:none !important; mix-blend-mode:normal !important;
+    }
+    @media (prefers-color-scheme: dark){
+      #reqPanel .checklist li::marker{ color:#9aa3b2 !important; }
+    }
+  </style>
+
+  <script>
+    // Refuerzo en tiempo de ejecución por si algún estilo externo pisa el panel
+    (function(){
+      const isDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+      const panel = document.getElementById('reqPanel');
+      if (!panel) return;
+      const setImp = (el,prop,val)=>el.style.setProperty(prop,val,'important');
+
+      const apply = () => {
+        if (isDark) {
+          setImp(panel,'background','#0f1626'); setImp(panel,'color','#e5e7eb'); setImp(panel,'border-color','#1f2937');
+          panel.querySelectorAll('.tab-panel, .checklist, .checklist li, .checklist li strong, *')
+            .forEach(el=>{ setImp(el,'color','#e5e7eb'); setImp(el,'opacity','1'); setImp(el,'filter','none'); setImp(el,'mix-blend-mode','normal'); });
+          document.querySelectorAll('.tabs .tab:not(.active)').forEach(el=>{ setImp(el,'background','#111827'); setImp(el,'color','#e5e7eb'); setImp(el,'border-color','#1f2937'); });
+          document.querySelectorAll('.tabs .tab.active').forEach(el=>{ setImp(el,'background','#f48c20'); setImp(el,'color','#fff'); setImp(el,'border-color','#f48c20'); });
+        } else {
+          setImp(panel,'background','#ffffff'); setImp(panel,'color','#111827'); setImp(panel,'border-color','#e5e7eb');
+          panel.querySelectorAll('.tab-panel, .checklist, .checklist li, .checklist li strong, *')
+            .forEach(el=>{ setImp(el,'color','#111827'); setImp(el,'opacity','1'); setImp(el,'filter','none'); setImp(el,'mix-blend-mode','normal'); });
+          document.querySelectorAll('.tabs .tab:not(.active)').forEach(el=>{ setImp(el,'background','#ffffff'); setImp(el,'color','#1f2a37'); setImp(el,'border-color','#1f2937'); });
+          document.querySelectorAll('.tabs .tab.active').forEach(el=>{ setImp(el,'background','#f48c20'); setImp(el,'color','#fff'); setImp(el,'border-color','#f48c20'); });
+        }
+      };
+      apply(); requestAnimationFrame(apply); setTimeout(apply, 200);
+    })();
+  </script>
 
 </body>
 </html>
