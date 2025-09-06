@@ -124,4 +124,29 @@ if (back){
   toggleBack();
   back.addEventListener('click', () => window.scrollTo({ top:0, behavior:'smooth' }));
 }
+<script>
+(function(){
+  const isDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+  const panel = document.querySelector('.tab-panels');
+  if (!panel) return;
+
+  if (isDark) {
+    panel.style.setProperty('background', '#0f1626', 'important');
+    panel.style.setProperty('color', '#e5e7eb', 'important');
+    panel.style.setProperty('border-color', '#1f2937', 'important');
+
+    document.querySelectorAll('.tab-panels .tab-panel, .tab-panels .checklist, .tab-panels .checklist li, .tab-panels .checklist li strong').forEach(el=>{
+      el.style.setProperty('color', '#e5e7eb', 'important');
+      el.style.setProperty('opacity', '1', 'important');
+    });
+
+    // pills inactivas
+    document.querySelectorAll('.tabs .tab:not(.active)').forEach(el=>{
+      el.style.setProperty('background', '#111827', 'important');
+      el.style.setProperty('color', '#e5e7eb', 'important');
+      el.style.setProperty('border-color', '#1f2937', 'important');
+    });
+  }
+})();
+</script>
 
