@@ -1,152 +1,88 @@
-// ================== Ajustes negocio ==================
-const BUSINESS_EMAIL = "quisqueyapetlogistics@gmail.com"; // cambia si deseas
-const BUSINESS_WHATS = "+18292673330";                     // cambia si deseas
-// Opcional: endpoint Formspree (si lo usas). Si lo dejas "", no se usa.
-const FORM_ENDPOINT  = ""; // p.ej. "https://formspree.io/f/abcd1234"
+// ---------- Utilidades ----------
+const $ = (sel, ctx=document) => ctx.querySelector(sel);
+const $$ = (sel, ctx=document) => [...ctx.querySelectorAll(sel)];
 
-// ================== Mobile nav ==================
-const toggle = document.querySelector('.nav-toggle');
-const nav    = document.querySelector('.nav');
-if (toggle && nav) toggle.addEventListener('click', () => nav.classList.toggle('open'));
+// ---------- Navegación móvil ----------
+(() => {
+  const toggle = $('.nav-toggle');
+  const nav = $('#mainNav');
+  if (!toggle || !nav) return;
+  toggle.addEventListener('click', () => nav.classList.toggle('open'));
+})();
 
-// ================== Hero slider (.webp) ==================
-(function(){
-  const a = document.querySelector('.slide-a');
-  const b = document.querySelector('.slide-b');
-  if(!a || !b) return;
+// ---------- Botón volver arriba (flotante y del footer) ----------
+(() => {
+  const back = $('#backtop');
+  const footerBack = $('#footerBackTop');
 
-  const imgs = [
-    'assets/hero-1.webp',
-    'assets/hero-2.webp',
-    'assets/hero-3.webp',
-    'assets/hero-4.webp'
+  // si no existe en esta página, no hacemos nada
+  if (!back && !footerBack) return;
+
+  const goTop = e => { e && e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }); };
+
+  if (back) {
+    const toggleBack = () => back.classList.toggle('show', window.scrollY > 400);
+    window.addEventListener('scroll', toggleBack, { passive: true });
+    toggleBack();
+    back.addEventListener('click', goTop);
+  }
+  if (footerBack) footerBack.addEventListener('click', goTop);
+})();
+
+// ---------- Slider portada (home) ----------
+(() => {
+  const hero = $('.hero');
+  const bg = $('.hero-bg');
+  if (!hero || !bg) return; // esta página no tiene slider
+
+  // RUTAS (ajústalas a tu carpeta de imágenes)
+  const images = [
+    'assets/hero/hero-1.webp',
+    'assets/hero/hero-2.webp',
+    'assets/hero/hero-3.webp'
   ];
 
-  // Preload
-  imgs.forEach(src => { const i=new Image(); i.src=src; });
-
-  let i = 0, usingA = true;
-  const setBg = (el, url) => el.style.backgroundImage = `url('${url}')`;
-  setBg(a, imgs[0]); a.classList.add('show');
-  setBg(b, imgs[1]);
-
-  setInterval(()=>{
-    const next = imgs[(i+1) % imgs.length];
-    if(usingA){ setBg(b,next); b.classList.add('show'); a.classList.remove('show'); }
-    else       { setBg(a,next); a.classList.add('show'); b.classList.remove('show'); }
-    usingA = !usingA;
-    i = (i+1) % imgs.length;
-  }, 6000);
-})();
-
-// ================== Form: mailto + WhatsApp + (opcional) Formspree ==================
-const form = document.getElementById('quoteForm');
-
-function formToText(fd){
-  const get = k => (fd.get(k) || '').toString().trim();
-  return `Nueva solicitud de cotización
-Nombre: ${get('name')}
-Correo: ${get('email')}
-Teléfono: ${get('phone')}
-Origen: ${get('origin')}
-Destino: ${get('destination')}
-Mascota: ${get('petType')}
-Peso+jaula: ${get('weight')}
-Jaula: ${get('crate')}
-Fecha: ${get('date')}
-Mensaje: ${get('message')}`;
-}
-
-form?.addEventListener('submit', async (e)=>{
-  e.preventDefault();
-  const fd = new FormData(form);
-  const bodyText = formToText(fd);
-
-  // Si configuraste Formspree, intenta enviar con fetch
-  if (FORM_ENDPOINT) {
-    try{
-      const res = await fetch(FORM_ENDPOINT, {
-        method:'POST',
-        headers:{'Accept':'application/json'},
-        body: fd
-      });
-      if (res.ok) {
-        alert('¡Gracias! Recibimos tu solicitud. Te contactaremos pronto.');
-        form.reset();
-        return;
-      }
-    }catch{/* cae a mailto si falla */}
-  }
-
-  // Fallback: mailto
-  const body = encodeURIComponent(bodyText);
-  window.location.href = `mailto:${BUSINESS_EMAIL}?subject=Cotización%20Quisqueya%20Pet%20Logistics&body=${body}`;
-});
-
-document.getElementById('btnWhatsapp')?.addEventListener('click', ()=>{
-  const fd = new FormData(form || undefined);
-  const txt = encodeURIComponent(formToText(fd));
-  window.open(`https://wa.me/${BUSINESS_WHATS.replace(/\D/g,'')}?text=${txt}`,'_blank','noopener');
-});
-
-// ================== Pestañas + Deep link (página requisitos) ==================
-document.querySelectorAll('.tabs').forEach(tabs=>{
-  tabs.addEventListener('click', (e)=>{
-    const btn = e.target.closest('.tab');
-    if(!btn) return;
-    const id = btn.dataset.tab;
-    const root = tabs.parentElement;
-    root.querySelectorAll('.tab').forEach(b=>b.classList.remove('active'));
-    root.querySelectorAll('.tab-panel').forEach(p=>p.classList.remove('active'));
-    btn.classList.add('active');
-    const panel = root.querySelector('#'+id);
-    if(panel) panel.classList.add('active');
+  // crea las slides una sola vez
+  bg.innerHTML = '';
+  images.forEach(src => {
+    const d = document.createElement('div');
+    d.className = 'slide';
+    d.style.backgroundImage = `url("${src}")`;
+    bg.appendChild(d);
   });
-});
 
-(function(){
-  const params = new URLSearchParams(location.search);
-  const dest = params.get('dest'); // europa | caribe | usa | latam
-  if(!dest) return;
-  const btn = document.querySelector(`.tab[data-tab="${dest}"]`);
-  const panel = document.getElementById(dest);
-  if(btn && panel){
-    btn.click();
-    panel.scrollIntoView({behavior:'smooth', block:'start'});
+  const slides = $$('.slide', bg);
+  let i = 0;
+  const show = idx => slides.forEach((s, k) => s.classList.toggle('show', k === idx));
+
+  if (slides.length) show(0);
+  if (slides.length > 1) {
+    setInterval(() => {
+      i = (i + 1) % slides.length;
+      show(i);
+    }, 6000);
   }
 })();
 
-// Botón "Volver arriba"
-const back = document.getElementById('backtop');
-if (back){
-  const toggleBack = () => back.classList.toggle('show', window.scrollY > 400);
-  window.addEventListener('scroll', toggleBack, { passive:true });
-  toggleBack();
-  back.addEventListener('click', () => window.scrollTo({ top:0, behavior:'smooth' }));
-}
-<script>
-(function(){
-  const isDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
-  const panel = document.querySelector('.tab-panels');
-  if (!panel) return;
+// ---------- Tabs (página de Requisitos) ----------
+(() => {
+  const tabs = $$('.tabs .tab');
+  const panels = $$('.tab-panel');
+  if (!tabs.length || !panels.length) return;
 
-  if (isDark) {
-    panel.style.setProperty('background', '#0f1626', 'important');
-    panel.style.setProperty('color', '#e5e7eb', 'important');
-    panel.style.setProperty('border-color', '#1f2937', 'important');
-
-    document.querySelectorAll('.tab-panels .tab-panel, .tab-panels .checklist, .tab-panels .checklist li, .tab-panels .checklist li strong').forEach(el=>{
-      el.style.setProperty('color', '#e5e7eb', 'important');
-      el.style.setProperty('opacity', '1', 'important');
+  const activate = id => {
+    tabs.forEach(t => {
+      const active = t.dataset.tab === id;
+      t.classList.toggle('active', active);
+      t.setAttribute('aria-selected', active ? 'true' : 'false');
     });
-
-    // pills inactivas
-    document.querySelectorAll('.tabs .tab:not(.active)').forEach(el=>{
-      el.style.setProperty('background', '#111827', 'important');
-      el.style.setProperty('color', '#e5e7eb', 'important');
-      el.style.setProperty('border-color', '#1f2937', 'important');
+    panels.forEach(p => {
+      const show = p.id === id;
+      p.classList.toggle('active', show);
+      p.toggleAttribute('hidden', !show);
+      p.setAttribute('aria-hidden', show ? 'false' : 'true');
     });
-  }
+  };
+
+  tabs.forEach(b => b.addEventListener('click', () => activate(b.dataset.tab)));
 })();
-</script>
-
