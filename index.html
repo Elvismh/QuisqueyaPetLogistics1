@@ -27,36 +27,47 @@
   </header>
 
   <!-- Hero con slider -->
- <section class="hero hero-slider center">
- <section class="hero center compact">
-    <div class="hero-bg">
-      <div class="slide slide-a"></div>
-      <div class="slide slide-b"></div>
-      <div class="hero-overlay"></div>
-    </div>
-
-    <div class="container hero-content">
-      <p class="eyebrow">LOGÍSTICA AÉREA Y TERRESTRE</p>
-     <h1 class="hero-title">
-  Conectamos <span class="hl">tu mascota</span><br>
-  <span class="line2">con el <span class="grad">mundo</span></span>
-</h1>
-<div class="title-glow" aria-hidden="true"></div>
-      <p class="hero-badge" aria-hidden="true">✈️ + 🐾  Rutas y cuidado premium</p>
-      <p>Transporte nacional e internacional, gestión de documentos y acompañamiento en cada paso.</p>
-
-      <div class="hero-ctas">
-        <a href="#contacto" class="btn">Solicitar cotización</a>
-        <a href="requisitos/index.html" class="btn btn-secondary">Ver requisitos</a>
-      </div>
-
-      <div class="hero-kpis">
-        <div><strong>24/7</strong><span>Soporte</span></div>
-        <div><strong>+30</strong><span>Rutas</span></div>
-        <div><strong>99%</strong><span>Entregas a tiempo</span></div>
+<section id="hero" class="hero" aria-label="Portada">
+  <!-- SLIDE 1 -->
+  <div class="hero-slide is-active" style="--bg:url('img/hero-1.webp')">
+    <div class="hero-layer"></div>
+    <div class="hero-inner">
+      <div class="reveal">
+        <h1 class="hero-title">LOGÍSTICA AÉREA Y TERRESTRE</h1>
+        <p class="hero-sub">Conectamos tu mascota con el mundo</p>
       </div>
     </div>
-  </section>
+  </div>
+
+  <!-- SLIDE 2 -->
+  <div class="hero-slide" style="--bg:url('img/hero-2.webp')">
+    <div class="hero-layer"></div>
+    <div class="hero-inner">
+      <div class="reveal">
+        <h1 class="hero-title">✈️ + 🐾 Rutas y cuidado premium</h1>
+        <p class="hero-sub">
+          Transporte nacional e internacional, gestión de documentos y acompañamiento en cada paso.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 3 -->
+  <div class="hero-slide" style="--bg:url('img/hero-3.webp')">
+    <div class="hero-layer"></div>
+    <div class="hero-inner">
+      <div class="reveal">
+        <div class="hero-cta">
+          <a href="#cotizar" class="btn btn-solid">Solicitar cotización</a>
+          <a href="#requisitos" class="btn btn-outline">Ver requisitos</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Puntos de navegación (se crean solos por JS) -->
+  <nav class="hero-dots" aria-label="Cambiar imagen"></nav>
+</section>
 
   <!-- Requisitos según el destino -->
   <section id="requisitos-destino" class="section alt">
