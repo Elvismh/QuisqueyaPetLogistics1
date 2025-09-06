@@ -249,4 +249,61 @@ input,select,textarea{border:1px solid #e5e7eb;border-radius:12px;padding:10px 1
 @media (prefers-color-scheme: dark){
   .checklist li::marker{ color:#9aa3b2 }
 }
+/* === FIX DEFINITIVO DE CONTRASTE EN "Requisitos por destino" === */
+/* Más especificidad + !important para ganar a cualquier regla previa */
+
+/* Light mode (por si alguna regla previa impone dark por error) */
+.section .container .tab-panels{
+  background:#ffffff !important;
+  color:#111827 !important;
+  border:1px solid #e5e7eb !important;
+}
+.section .container .tab-panels .tab-panel,
+.section .container .tab-panels .checklist,
+.section .container .tab-panels .checklist li,
+.section .container .tab-panels .checklist li strong{
+  color:inherit !important;
+  opacity:1 !important;
+}
+
+/* Pills (etiquetas de pestañas) */
+.section .container .tabs .tab{
+  background:#ffffff !important;
+  color:#1f2a37 !important;
+  border:1px solid #1f2937 !important;
+}
+.section .container .tabs .tab.active{
+  background:var(--brand) !important;
+  border-color:var(--brand) !important;
+  color:#fff !important;
+}
+
+/* Dark mode: panel y texto CLAROS sobre fondo oscuro */
+@media (prefers-color-scheme: dark){
+  .section .container .tab-panels{
+    background:#0f1626 !important;   /* fondo oscuro del panel */
+    color:#e5e7eb !important;        /* texto claro */
+    border:1px solid #1f2937 !important;
+    box-shadow:0 14px 32px rgba(0,0,0,.45) !important;
+  }
+  .section .container .tab-panels .tab-panel,
+  .section .container .tab-panels .checklist,
+  .section .container .tab-panels .checklist li,
+  .section .container .tab-panels .checklist li strong{
+    color:#e5e7eb !important;
+    opacity:1 !important;            /* evita que se vea “lavado” */
+  }
+  .section .container .tabs .tab{
+    background:#111827 !important;
+    color:#e5e7eb !important;
+    border:1px solid #1f2937 !important;
+  }
+  .section .container .tabs .tab.active{
+    background:var(--brand) !important;
+    border-color:var(--brand) !important;
+    color:#fff !important;
+  }
+  /* viñetas más visibles */
+  .section .container .tab-panels .checklist li::marker{ color:#9aa3b2 !important; }
+}
 
