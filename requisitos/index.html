@@ -1,34 +1,25 @@
 <!doctype html>
 <html lang="es">
 <head>
-  <link rel="stylesheet" href="../style.css?v=14">
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <meta name="color-scheme" content="light dark" />
   <title>Requisitos por destino · Quisqueya Pet Logistics</title>
-  <link rel="stylesheet" href="../style.css?v=12" />
+  <link rel="stylesheet" href="../style.css?v=20" />
 </head>
 <body>
 
-  <!-- Header / Nav -->
- <header class="header">
-  <div class="container header-inner">
-    <a href="../index.html" class="brand" aria-label="Inicio">
-      <img class="logo" src="../assets/logo.png" alt="Quisqueya Pet Logistics" width="40" height="40" />
-      <span>Quisqueya Pet Logistics</span>
-    </a>
-    <!-- ...nav... -->
-  </div>
-</header>
-
-      <nav>
-        <button class="nav-toggle" aria-label="Abrir menú">☰</button>
-        <div class="nav" id="mainNav">
-          <a href="../index.html#servicios">Servicios</a>
-          <a class="btn btn-sm" href="./index.html">Requisitos por destino</a>
-          <a href="../index.html#faq">Preguntas</a>
-          <a class="btn btn-sm" href="../index.html#contacto">Cotiza</a>
-        </div>
+  <!-- Header / Nav (minimal) -->
+  <header class="header">
+    <div class="container header-inner">
+      <a href="../index.html" class="brand" aria-label="Inicio">
+        <img class="logo" src="../assets/logo.png" alt="Quisqueya Pet Logistics" width="40" height="40" />
+        <span>Quisqueya Pet Logistics</span>
+      </a>
+      <button class="nav-toggle" aria-label="Abrir menú">☰</button>
+      <nav class="nav" id="mainNav">
+        <a href="../index.html#servicios">Servicios</a>
+        <a class="btn btn-sm" href="./index.html">Requisitos por destino</a>
       </nav>
     </div>
   </header>
@@ -47,7 +38,7 @@
         <button class="tab" data-tab="latam" role="tab" aria-controls="latam" aria-selected="false">Latinoamérica</button>
       </div>
 
-      <!-- Paneles (envolver TODO en #reqPanel) -->
+      <!-- Paneles -->
       <div class="tab-panels" id="reqPanel">
         <!-- EUROPA -->
         <div class="tab-panel" id="europa" role="tabpanel" aria-labelledby="europa-tab" hidden>
@@ -55,28 +46,24 @@
             <li><strong>Microchip ISO 11784/11785</strong> antes de la vacuna antirrábica.</li>
             <li><strong>Vacuna antirrábica vigente</strong> (≥21 días desde primovacunación).</li>
             <li><strong>Certificado zoosanitario de la UE</strong> (no comercial) + declaración del propietario.</li>
-            <li><strong>Entrada por Punto de Control designado</strong> en país de llegada; verificación de identidad y documentos.</li>
-            <li><strong>Serología de rabia (≥0.5 IU/ml)</strong> si el país de origen no está en la lista UE correspondiente.</li>
+            <li><strong>Entrada por Punto de Control designado</strong> y verificación de identidad y documentos.</li>
+            <li><strong>Serología de rabia (≥0.5 IU/ml)</strong> si el país origen no está en la lista UE correspondiente.</li>
           </ul>
-          <div class="cta-inline">
-            <a class="btn" href="../index.html#contacto">Quiero cotizar</a>
-          </div>
+          <div class="cta-inline"><a class="btn" href="../index.html#contacto">Quiero cotizar</a></div>
         </div>
 
         <!-- CARIBE -->
         <div class="tab-panel" id="caribe" role="tabpanel" aria-labelledby="caribe-tab" hidden>
           <ul class="checklist">
-            <li><strong>Certificado zoosanitario</strong> conforme al país de destino (p. ej., BAHA, SENASA, etc.).</li>
+            <li><strong>Certificado zoosanitario</strong> conforme al país de destino (BAHA, SENASA, etc.).</li>
             <li><strong>Vacuna antirrábica vigente</strong>; refuerzos según país.</li>
             <li><strong>Permiso de importación</strong> cuando aplique; inspección a la llegada.</li>
             <li><strong>Jaula IATA</strong>, medidas correctas y reserva confirmada.</li>
           </ul>
-          <div class="cta-inline">
-            <a class="btn" href="../index.html#contacto">Consultar rutas Caribe</a>
-          </div>
+          <div class="cta-inline"><a class="btn" href="../index.html#contacto">Consultar rutas Caribe</a></div>
         </div>
 
-        <!-- USA (ACTIVO por defecto) -->
+        <!-- USA (activo por defecto) -->
         <div class="tab-panel active" id="usa" role="tabpanel" aria-labelledby="usa-tab">
           <ul class="checklist">
             <li><strong>Vacuna antirrábica vigente</strong> según normativa CDC/estado.</li>
@@ -84,9 +71,7 @@
             <li>Para carga (guía aérea), coordinar con <strong>broker</strong> en destino.</li>
             <li><strong>Jaula homologada IATA</strong>, medidas correctas y reserva confirmada.</li>
           </ul>
-          <div class="cta-inline">
-            <a class="btn" href="../index.html#contacto">Verificar rutas USA</a>
-          </div>
+          <div class="cta-inline"><a class="btn" href="../index.html#contacto">Verificar rutas USA</a></div>
         </div>
 
         <!-- LATAM -->
@@ -97,9 +82,7 @@
             <li>Posible <strong>permiso de importación</strong> y revisión documental al arribo.</li>
             <li><strong>Jaula IATA</strong> y reserva confirmada.</li>
           </ul>
-          <div class="cta-inline">
-            <a class="btn" href="../index.html#contacto">Quiero cotizar</a>
-          </div>
+          <div class="cta-inline"><a class="btn" href="../index.html#contacto">Quiero cotizar</a></div>
         </div>
       </div>
       <!-- /#reqPanel -->
@@ -114,117 +97,7 @@
     </div>
   </footer>
 
-  <!-- Botón flotante volver arriba -->
   <button id="backtop" class="backtop" aria-label="Volver arriba" title="Volver arriba">↑</button>
-
-  <!-- ===== JS Tabs + BackTop ===== -->
-  <script>
-    // Mobile nav
-    const toggleBtn = document.querySelector('.nav-toggle');
-    const nav = document.getElementById('mainNav');
-    if (toggleBtn && nav) toggleBtn.addEventListener('click', ()=> nav.classList.toggle('open'));
-
-    // Tabs
-    const tabs = document.querySelectorAll('.tabs .tab');
-    const panels = document.querySelectorAll('.tab-panel');
-    function activateTab(id){
-      tabs.forEach(t=>{
-        const active = t.dataset.tab === id;
-        t.classList.toggle('active', active);
-        t.setAttribute('aria-selected', active ? 'true':'false');
-      });
-      panels.forEach(p=>{
-        const show = p.id === id;
-        p.classList.toggle('active', show);
-        p.toggleAttribute('hidden', !show);
-        p.setAttribute('aria-hidden', show ? 'false' : 'true');
-      });
-    }
-    tabs.forEach(btn=>{
-      btn.addEventListener('click', ()=> activateTab(btn.dataset.tab));
-    });
-
-    // Back-to-top (flotante y footer)
-    const back = document.getElementById('backtop');
-    const footerBack = document.getElementById('footerBackTop');
-    const toggleBack = () => back.classList.toggle('show', window.scrollY > 400);
-    window.addEventListener('scroll', toggleBack, {passive:true});
-    toggleBack();
-    const goTop = e => { e && e.preventDefault(); window.scrollTo({top:0,behavior:'smooth'}); };
-    back.addEventListener('click', goTop);
-    footerBack && footerBack.addEventListener('click', goTop);
-  </script>
-
-  <!-- ===== FIX contraste (CSS inline + refuerzo JS) ===== -->
-  <style>
-    /* Pills en dark/light */
-    .tabs .tab{
-      background:#111827 !important;
-      color:#e5e7eb !important;
-      border:1px solid #1f2937 !important;
-    }
-    .tabs .tab.active{
-      background:#f48c20 !important;
-      border-color:#f48c20 !important;
-      color:#fff !important;
-    }
-    @media (prefers-color-scheme: light), (prefers-color-scheme: no-preference){
-      .tabs .tab{ background:#ffffff !important; color:#1f2a37 !important; border-color:#1f2937 !important; }
-    }
-
-    /* Panel por id (gana con especificidad + !important) */
-    #reqPanel{
-      background:#0f1626 !important;
-      color:#e5e7eb !important;
-      border:1px solid #1f2937 !important;
-      box-shadow:0 14px 32px rgba(0,0,0,.45) !important;
-    }
-    @media (prefers-color-scheme: light), (prefers-color-scheme: no-preference){
-      #reqPanel{
-        background:#ffffff !important;
-        color:#111827 !important;
-        border:1px solid #e5e7eb !important;
-        box-shadow:0 14px 32px rgba(0,0,0,.15) !important;
-      }
-    }
-
-    /* Todos los textos dentro del panel: color/opacity seguros */
-    #reqPanel, #reqPanel .tab-panel, #reqPanel .checklist,
-    #reqPanel .checklist li, #reqPanel .checklist li strong, #reqPanel *{
-      color:inherit !important; opacity:1 !important; filter:none !important; mix-blend-mode:normal !important;
-    }
-    @media (prefers-color-scheme: dark){
-      #reqPanel .checklist li::marker{ color:#9aa3b2 !important; }
-    }
-  </style>
-
-  <script>
-    // Refuerzo en tiempo de ejecución por si algún estilo externo pisa el panel
-    (function(){
-      const isDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
-      const panel = document.getElementById('reqPanel');
-      if (!panel) return;
-      const setImp = (el,prop,val)=>el.style.setProperty(prop,val,'important');
-
-      const apply = () => {
-        if (isDark) {
-          setImp(panel,'background','#0f1626'); setImp(panel,'color','#e5e7eb'); setImp(panel,'border-color','#1f2937');
-          panel.querySelectorAll('.tab-panel, .checklist, .checklist li, .checklist li strong, *')
-            .forEach(el=>{ setImp(el,'color','#e5e7eb'); setImp(el,'opacity','1'); setImp(el,'filter','none'); setImp(el,'mix-blend-mode','normal'); });
-          document.querySelectorAll('.tabs .tab:not(.active)').forEach(el=>{ setImp(el,'background','#111827'); setImp(el,'color','#e5e7eb'); setImp(el,'border-color','#1f2937'); });
-          document.querySelectorAll('.tabs .tab.active').forEach(el=>{ setImp(el,'background','#f48c20'); setImp(el,'color','#fff'); setImp(el,'border-color','#f48c20'); });
-        } else {
-          setImp(panel,'background','#ffffff'); setImp(panel,'color','#111827'); setImp(panel,'border-color','#e5e7eb');
-          panel.querySelectorAll('.tab-panel, .checklist, .checklist li, .checklist li strong, *')
-            .forEach(el=>{ setImp(el,'color','#111827'); setImp(el,'opacity','1'); setImp(el,'filter','none'); setImp(el,'mix-blend-mode','normal'); });
-          document.querySelectorAll('.tabs .tab:not(.active)').forEach(el=>{ setImp(el,'background','#ffffff'); setImp(el,'color','#1f2a37'); setImp(el,'border-color','#1f2937'); });
-          document.querySelectorAll('.tabs .tab.active').forEach(el=>{ setImp(el,'background','#f48c20'); setImp(el,'color','#fff'); setImp(el,'border-color','#f48c20'); });
-        }
-      };
-      apply(); requestAnimationFrame(apply); setTimeout(apply, 200);
-    })();
-  </script>
-  <script src="../script.js?v=14" defer></script>
-
+  <script src="../script.js?v=20" defer></script>
 </body>
 </html>
