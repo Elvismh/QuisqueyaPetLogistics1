@@ -1,243 +1,329 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta name="color-scheme" content="light dark">
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Quisqueya Pet Logistics</title>
-  <link rel="stylesheet" href="style.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Portada – Logística</title>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Montserrat:wght@700;800&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --brand:#ff3b30;           /* Rojo acento */
+      --dark:#0b0f1a;            /* Fondo oscuro */
+      --ink:#111319;             /* Texto principal */
+      --muted:#6b7280;           /* Gris */
+      --card:#ffffff;            /* Fondo tarjetas */
+      --elev:rgba(17,19,25,.06); /* Elevación suave */
+      --radius:22px;
+      --shadow:0 20px 40px rgba(0,0,0,.20);
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family:Inter,system-ui,Segoe UI,Roboto,Helvetica,Arial,sans-serif;
+      color:var(--ink);
+      line-height:1.6;
+      background:#fff;
+    }
+    h1,h2,h3{font-family:Montserrat,Inter,system-ui,Arial,sans-serif;line-height:1.1;margin:0 0 .5rem}
+    a{color:inherit}
+
+    /* ===== Hero (Portada con slider) ===== */
+    .hero{position:relative;height:100svh;min-height:600px;color:#fff;overflow:hidden;background:#000}
+    .hero__slide{position:absolute;inset:0;background-size:cover;background-position:center;opacity:0;transform:scale(1.06);transition:opacity .9s ease,transform 7s ease}
+    .hero__slide.is-active{opacity:1;transform:scale(1)}
+    .hero::after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(0,0,0,.65),rgba(0,0,0,.15) 40%,rgba(0,0,0,.25));z-index:1}
+    .hero__content{position:relative;z-index:2;width:min(1100px,92%);margin-inline:auto;padding-top:clamp(120px,22vh,32vh)}
+    .eyebrow{display:inline-block;padding:.35rem .75rem;border-radius:999px;background:rgba(255,255,255,.14);backdrop-filter:blur(4px);font-weight:600;letter-spacing:.04em}
+    .hero h1{font-size:clamp(36px,5.5vw,68px);text-wrap:balance;margin-top:1rem}
+    .hero p{max-width:65ch;font-size:clamp(16px,1.4vw,20px);opacity:.95;margin:.75rem 0 1.25rem}
+    .btn{display:inline-flex;align-items:center;gap:.6rem;padding:.9rem 1.15rem;border-radius:14px;background:var(--brand);color:#fff;font-weight:700;text-decoration:none;box-shadow:0 10px 24px rgba(255,59,48,.35);transition:transform .2s ease,box-shadow .2s ease}
+    .btn:hover{transform:translateY(-2px);box-shadow:0 16px 36px rgba(255,59,48,.45)}
+
+    /* Dots del slider */
+    .hero__dots{position:absolute;right:clamp(10px,4vw,36px);top:50%;translate:0 -50%;z-index:2;display:grid;gap:10px}
+    .dot{width:10px;height:10px;border-radius:50%;background:rgba(255,255,255,.55);border:2px solid rgba(255,255,255,.3);cursor:pointer;transition:scale .2s ease,background .2s ease}
+    .dot.is-active{background:#fff;scale:1.15}
+
+    /* Detalle diagonal estilo ALK */
+    .hero__angle{position:absolute;right:-10%;bottom:-18%;width:120%;height:45%;background:linear-gradient(135deg,var(--brand),#ff6b62);transform:rotate(-8deg);z-index:1;opacity:.9}
+
+    /* ===== Layout secciones ===== */
+    section{padding:clamp(56px,8vw,90px) 0}
+    .wrap{width:min(1100px,92%);margin-inline:auto}
+    .section-head{display:flex;align-items:flex-end;justify-content:space-between;gap:1rem;margin-bottom:28px}
+    .section-head p{color:var(--muted);max-width:65ch;margin:0}
+
+    /* ===== Servicios (primero después de la portada) ===== */
+    .services{background:#fff}
+    .grid{display:grid;gap:22px;grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}
+    .card{position:relative;background:var(--card);border-radius:var(--radius);box-shadow:0 10px 30px rgba(17,19,25,.08);overflow:hidden;isolation:isolate;transform-style:preserve-3d;transition:transform .25s ease, box-shadow .25s ease}
+    .card:hover{box-shadow:0 18px 50px rgba(17,19,25,.14)}
+    .card__media{position:relative;aspect-ratio:4/3;background:#0b0f1a;background-size:cover;background-position:center;overflow:hidden}
+    .card__media::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,0) 40%,rgba(0,0,0,.45));opacity:.8}
+    .card__label{position:absolute;left:16px;bottom:14px;color:#fff;font-weight:800;font-family:Montserrat,Inter,sans-serif;font-size:1.05rem;letter-spacing:.02em}
+    .card__body{padding:18px 18px 20px}
+    .card__body p{color:#4b5563;margin:.25rem 0 .5rem}
+    .card__cta{display:inline-flex;align-items:center;gap:.45rem;font-weight:700}
+
+    /* Movimiento al pasar el cursor (tilt + parallax ligero) */
+    .card[data-tilt]{will-change:transform}
+
+    /* Icono circular en cards */
+    .badge{position:absolute;right:14px;top:14px;width:40px;height:40px;border-radius:999px;background:rgba(255,255,255,.9);display:grid;place-items:center;box-shadow:0 6px 18px rgba(0,0,0,.15)}
+
+    /* ===== Requisitos (segundo bloque) ===== */
+    .req{background:linear-gradient(180deg,#fafbff, #ffffff)}
+    .req .grid{grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}
+    .req-card{border:1px solid rgba(17,19,25,.08);background:#fff;border-radius:var(--radius);padding:18px 18px 14px;box-shadow:0 10px 24px rgba(17,19,25,.06)}
+    .req-card h3{font-size:1.15rem;margin-bottom:.45rem}
+    .req-card ul{margin:0;padding-left:18px}
+    .req-card li{margin:.35rem 0}
+
+    /* ===== Animaciones al hacer scroll ===== */
+    [data-reveal]{opacity:0;transform:translateY(14px);transition:opacity .5s ease, transform .5s ease}
+    .is-visible{opacity:1;transform:translateY(0)}
+
+    /* Accesibilidad: reducir movimientos */
+    @media (prefers-reduced-motion:reduce){
+      .hero__slide{transition:none}
+      .card,.btn,[data-reveal]{transition:none}
+    }
+  </style>
 </head>
 <body>
+  <!-- ===== HERO / PORTADA ===== -->
+  <header class="hero" aria-label="Portada con mensajes de servicios">
+    <!-- Diapositivas (reemplaza las rutas por tus imágenes) -->
+    <div class="hero__slide is-active" style="background-image:url('assets/hero-1.jpg')"></div>
+    <div class="hero__slide" style="background-image:url('assets/hero-2.jpg')"></div>
+    <div class="hero__slide" style="background-image:url('assets/hero-3.jpg')"></div>
 
-  <!-- Header -->
-  <header class="header" id="inicio">
-    <div class="container header-inner">
-      <a href="index.html" class="brand">
-        <img src="assets/logo.png" class="logo" alt="Logo Quisqueya Pet Logistics" />
-        <span>Quisqueya Pet Logistics</span>
-      </a>
-      <nav class="nav">
-        <a href="#servicios">Servicios</a>
-        <a href="requisitos/index.html">Requisitos por destino</a>
-        <a href="#faq">Preguntas</a>
-        <a href="#contacto" class="btn btn-sm">Cotiza</a>
-      </nav>
-      <button class="nav-toggle" aria-label="Abrir menú">☰</button>
+    <div class="hero__angle" aria-hidden="true"></div>
+
+    <div class="hero__content">
+      <span class="eyebrow" id="hero-eyebrow">Logística integral</span>
+      <h1 id="hero-title">Logística y carga<br> para empresas</h1>
+      <p id="hero-desc">Soluciones de transporte terrestre, aéreo y marítimo con seguimiento en tiempo real y atención de clase mundial.</p>
+      <a href="#servicios" class="btn">Ver nuestros servicios</a>
+    </div>
+
+    <div class="hero__dots" role="tablist" aria-label="Cambiar slide">
+      <button class="dot is-active" aria-label="Slide 1" aria-controls="hero" data-idx="0"></button>
+      <button class="dot" aria-label="Slide 2" aria-controls="hero" data-idx="1"></button>
+      <button class="dot" aria-label="Slide 3" aria-controls="hero" data-idx="2"></button>
     </div>
   </header>
 
-  <!-- Hero con slider -->
- <section class="hero hero-slider center">
- <section class="hero center compact">
-    <div class="hero-bg">
-      <div class="slide slide-a"></div>
-      <div class="slide slide-b"></div>
-      <div class="hero-overlay"></div>
-    </div>
-
-    <div class="container hero-content">
-      <p class="eyebrow">LOGÍSTICA AÉREA Y TERRESTRE</p>
-     <h1 class="hero-title">
-  Conectamos <span class="hl">tu mascota</span><br>
-  <span class="line2">con el <span class="grad">mundo</span></span>
-</h1>
-<div class="title-glow" aria-hidden="true"></div>
-      <p class="hero-badge" aria-hidden="true">✈️ + 🐾  Rutas y cuidado premium</p>
-      <p>Transporte nacional e internacional, gestión de documentos y acompañamiento en cada paso.</p>
-
-      <div class="hero-ctas">
-        <a href="#contacto" class="btn">Solicitar cotización</a>
-        <a href="requisitos/index.html" class="btn btn-secondary">Ver requisitos</a>
+  <!-- ===== NUESTROS SERVICIOS (PRIMERO) ===== -->
+  <section id="servicios" class="services">
+    <div class="wrap">
+      <div class="section-head" data-reveal>
+        <div>
+          <h2>Nuestros servicios</h2>
+          <p>Elige la solución que mejor se adapte a tu operación. Las tarjetas tienen efecto de movimiento al pasar el cursor, al estilo de la página de referencia.</p>
+        </div>
       </div>
 
-      <div class="hero-kpis">
-        <div><strong>24/7</strong><span>Soporte</span></div>
-        <div><strong>+30</strong><span>Rutas</span></div>
-        <div><strong>99%</strong><span>Entregas a tiempo</span></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Requisitos según el destino -->
-  <section id="requisitos-destino" class="section alt">
-    <div class="container">
-      <h2 class="section-title">Requisitos según el destino</h2>
-
-      <div class="grid cards">
-        <a class="card" href="requisitos/index.html?dest=europa">
-          <img src="assets/hero-1.webp" alt="Europa" />
-          <div class="card-body">
-            <h3>Europa</h3>
-            <p>Microchip, vacuna antirrábica, certificado UE y más.</p>
+      <div class="grid">
+        <!-- Servicio 1 -->
+        <article class="card" data-tilt data-reveal>
+          <div class="card__media" style="background-image:url('assets/srv-terrestre.jpg')">
+            <span class="badge" aria-hidden="true">🚚</span>
+            <strong class="card__label">Transporte terrestre</strong>
           </div>
-        </a>
-
-        <a class="card" href="requisitos/index.html?dest=caribe">
-          <img src="assets/hero-2.webp" alt="Caribe" />
-          <div class="card-body">
-            <h3>Caribe</h3>
-            <p>Certificado de salud, permisos por isla, inspección al arribo.</p>
-          </div>
-        </a>
-
-        <a class="card" href="requisitos/index.html?dest=usa">
-          <img src="assets/hero-3.webp" alt="USA" />
-          <div class="card-body">
-            <h3>USA</h3>
-            <p>CDC/USDA, puertos habilitados y coordinación con broker.</p>
-          </div>
-        </a>
-
-        <a class="card" href="requisitos/index.html?dest=latam">
-          <img src="assets/hero-4.webp" alt="Latinoamérica" />
-          <div class="card-body">
-            <h3>Latinoamérica</h3>
-            <p>Certificados zoosanitarios y trámites aduanales.</p>
-          </div>
-        </a>
-      </div>
-    </div>
-  </section>
-
-  <!-- Servicios -->
-  <section id="servicios" class="section">
-    <div class="container">
-      <h2 class="section-title">Nuestros Servicios</h2>
-      <div class="grid cards">
-        <article class="card">
-          <img src="assets/hero-2.webp" alt="Transporte" />
-          <div class="card-body">
-            <h3>Transporte Aéreo y Terrestre</h3>
-            <p>Coordinación de envíos desde RD hacia múltiples destinos. Asesoría en jaulas IATA y trámites.</p>
+          <div class="card__body">
+            <p>Red de camiones locales y de larga distancia, con entregas seguras y puntuales.</p>
+            <a class="card__cta" href="#">Más detalles →</a>
           </div>
         </article>
-        <article class="card">
-          <img src="assets/hero-3.webp" alt="Documentación" />
-          <div class="card-body">
-            <h3>Logística y Documentación</h3>
-            <p>Certificados de salud, permisos zoosanitarios y gestión aduanal con aliados.</p>
+
+        <!-- Servicio 2 -->
+        <article class="card" data-tilt data-reveal>
+          <div class="card__media" style="background-image:url('assets/srv-aereo.jpg')">
+            <span class="badge" aria-hidden="true">✈️</span>
+            <strong class="card__label">Transporte aéreo</strong>
+          </div>
+          <div class="card__body">
+            <p>Rutas express y manejo de mercancía prioritaria con aliados internacionales.</p>
+            <a class="card__cta" href="#">Más detalles →</a>
           </div>
         </article>
-        <article class="card">
-          <img src="assets/hero-4.webp" alt="Acompañamiento" />
-          <div class="card-body">
-            <h3>Acompañamiento 1:1</h3>
-            <p>Te guiamos desde el pesaje hasta la entrega en destino. Comunicación clara y seguimiento.</p>
+
+        <!-- Servicio 3 -->
+        <article class="card" data-tilt data-reveal>
+          <div class="card__media" style="background-image:url('assets/srv-maritimo.jpg')">
+            <span class="badge" aria-hidden="true">🚢</span>
+            <strong class="card__label">Transporte marítimo</strong>
+          </div>
+          <div class="card__body">
+            <p>FCL y LCL a los principales puertos del mundo con tarifas competitivas.</p>
+            <a class="card__cta" href="#">Más detalles →</a>
+          </div>
+        </article>
+
+        <!-- Servicio 4 -->
+        <article class="card" data-tilt data-reveal>
+          <div class="card__media" style="background-image:url('assets/srv-almacen.jpg')">
+            <span class="badge" aria-hidden="true">🏷️</span>
+            <strong class="card__label">Almacenaje y picking</strong>
+          </div>
+          <div class="card__body">
+            <p>Cross-docking, e‑commerce fulfillment y control de inventario en tiempo real.</p>
+            <a class="card__cta" href="#">Más detalles →</a>
+          </div>
+        </article>
+
+        <!-- Servicio 5 -->
+        <article class="card" data-tilt data-reveal>
+          <div class="card__media" style="background-image:url('assets/srv-aduanas.jpg')">
+            <span class="badge" aria-hidden="true">🧾</span>
+            <strong class="card__label">Gestión aduanal</strong>
+          </div>
+          <div class="card__body">
+            <p>Clasificación arancelaria, DUA y acompañamiento documental puerta a puerta.</p>
+            <a class="card__cta" href="#">Más detalles →</a>
+          </div>
+        </article>
+
+        <!-- Servicio 6 -->
+        <article class="card" data-tilt data-reveal>
+          <div class="card__media" style="background-image:url('assets/srv-aviones-ejecutivos.jpg')">
+            <span class="badge" aria-hidden="true">🛩️</span>
+            <strong class="card__label">Renta de aviones ejecutivos</strong>
+          </div>
+          <div class="card__body">
+            <p>Charters bajo demanda para carga crítica y traslados ejecutivos.</p>
+            <a class="card__cta" href="#">Más detalles →</a>
           </div>
         </article>
       </div>
     </div>
   </section>
 
-  <!-- ¿Cómo trabajamos? -->
-  <section class="section steps">
-    <div class="container">
-      <h2 class="section-title">¿Cómo trabajamos?</h2>
-      <ol class="stepper">
-        <li><span>1</span> Evaluación y cotización (peso, medidas, destino, aerolínea).</li>
-        <li><span>2</span> Preparación de documentos y reserva.</li>
-        <li><span>3</span> Pesaje y entrega en aeropuerto (D-1).</li>
-        <li><span>4</span> Seguimiento de vuelo y coordinación de retiro en destino.</li>
-      </ol>
-    </div>
-  </section>
+  <!-- ===== REQUISITOS SEGÚN EL DESTINO (SEGUNDO) ===== -->
+  <section id="requisitos" class="req">
+    <div class="wrap">
+      <div class="section-head" data-reveal>
+        <div>
+          <h2>Requisitos según el destino</h2>
+          <p>Consulta la documentación base por región. Estos módulos están en formato de tarjetas verticales (no carrusel horizontal) como pediste.</p>
+        </div>
+      </div>
 
-  <!-- FAQs -->
-  <section id="faq" class="section">
-    <div class="container">
-      <h2 class="section-title">Preguntas frecuentes</h2>
-      <div class="accordion">
-        <details>
-          <summary>¿Con cuánta anticipación debo iniciar?</summary>
-          <p>Recomendamos 4–8 semanas; si hay serología de rabia, 3–4 meses.</p>
-        </details>
-        <details>
-          <summary>¿Aceptan mascotas sedadas?</summary>
-          <p>No, por seguridad las aerolíneas lo desaconsejan.</p>
-        </details>
-        <details>
-          <summary>¿Recogen a mi mascota en casa?</summary>
-          <p>Sí, logística puerta a puerta con aliados en Santo Domingo y otras ciudades.</p>
-        </details>
+      <div class="grid">
+        <article class="req-card" data-reveal>
+          <h3>Estados Unidos</h3>
+          <ul>
+            <li>Factura comercial y packing list.</li>
+            <li>Identificador del importador (EIN) o número de SSN.</li>
+            <li>Clasificación arancelaria (HTS) y valor declarado.</li>
+          </ul>
+        </article>
+        <article class="req-card" data-reveal>
+          <h3>Unión Europea</h3>
+          <ul>
+            <li>EORI del importador y factura con Incoterm.</li>
+            <li>Certificados de conformidad cuando aplique.</li>
+            <li>Declaración de origen preferencial (si corresponde).</li>
+          </ul>
+        </article>
+        <article class="req-card" data-reveal>
+          <h3>Latinoamérica</h3>
+          <ul>
+            <li>Factura comercial, lista de empaque y detalle de partida.</li>
+            <li>Registro sanitario para productos regulados.</li>
+            <li>Permisos previos según país y categoría.</li>
+          </ul>
+        </article>
+        <article class="req-card" data-reveal>
+          <h3>Asia</h3>
+          <ul>
+            <li>Factura, packing list y contrato de compraventa.</li>
+            <li>Certificados de calidad/origen en productos específicos.</li>
+            <li>Traducciones juradas cuando sea necesario.</li>
+          </ul>
+        </article>
       </div>
     </div>
   </section>
 
-  <!-- Cotiza -->
-  <section id="contacto" class="section contact">
-    <div class="container">
-      <h2 class="section-title">Solicita tu cotización</h2>
-      <form id="quoteForm" class="form">
-  <div class="grid form-grid">
-    <label>Nombre
-      <input type="text" name="name" required placeholder="Tu nombre completo" />
-    </label>
+  <footer class="wrap" style="padding:32px 0;color:#6b7280">
+    © 2025 Tu Empresa de Logística
+  </footer>
 
-    <label>Correo
-      <input type="email" name="email" required placeholder="tucorreo@ejemplo.com" />
-    </label>
+  <script>
+    /* ====== Slider de portada (imagen + textos) ====== */
+    const slides = [
+      {
+        eyebrow: 'Logística integral',
+        title: 'Logística y carga\npara empresas',
+        desc: 'Soluciones de transporte terrestre, aéreo y marítimo con seguimiento en tiempo real y atención de clase mundial.'
+      },
+      {
+        eyebrow: 'Cobertura internacional',
+        title: 'Aéreos express y\nconsolidado marítimo',
+        desc: 'Conectamos tus envíos con los principales hubs. Tarifas competitivas y tiempo de tránsito optimizado.'
+      },
+      {
+        eyebrow: 'Atención 24/7',
+        title: 'Tracking y soporte\nen todo el trayecto',
+        desc: 'Equipo dedicado, alertas proactivas y visibilidad completa del estado de tu carga.'
+      }
+    ];
 
-    <label>Teléfono (WhatsApp)
-      <input type="tel" name="phone" required placeholder="+1 809..." />
-    </label>
+    const $slides = Array.from(document.querySelectorAll('.hero__slide'));
+    const $dots = Array.from(document.querySelectorAll('.dot'));
+    const $eyebrow = document.getElementById('hero-eyebrow');
+    const $title = document.getElementById('hero-title');
+    const $desc = document.getElementById('hero-desc');
 
-    <label>Origen
-      <input type="text" name="origin" required placeholder="Santo Domingo (SDQ)" />
-    </label>
+    let i = 0; let timer = null; const DURATION = 6000; // 6s por slide
 
-    <label>Destino
-      <input type="text" name="destination" required placeholder="Madrid (MAD)" />
-    </label>
+    function show(n){
+      i = n % $slides.length; if(i<0) i = $slides.length-1;
+      $slides.forEach((s,idx)=>s.classList.toggle('is-active', idx===i));
+      $dots.forEach((d,idx)=>d.classList.toggle('is-active', idx===i));
+      $eyebrow.textContent = slides[i].eyebrow;
+      $title.innerHTML = slides[i].title.replace(/\n/g,'<br>');
+      $desc.textContent = slides[i].desc;
+    }
+    function play(){
+      clearInterval(timer);
+      timer = setInterval(()=>show(i+1), DURATION);
+    }
+    $dots.forEach(d=>d.addEventListener('click', e=>{show(+e.currentTarget.dataset.idx);play();}));
+    show(0); play();
 
-    <label>Tipo de mascota
-      <select name="petType" required>
-        <option value="" disabled selected>Selecciona</option>
-        <option>Perro</option><option>Gato</option><option>Otro</option>
-      </select>
-    </label>
+    /* ====== Efecto tilt (movimiento) en tarjetas ====== */
+    const tiltCards = document.querySelectorAll('.card[data-tilt]');
+    tiltCards.forEach(card=>{
+      const damp = 12; // menor = más movimiento
+      function move(e){
+        const r = card.getBoundingClientRect();
+        const cx = r.left + r.width/2; const cy = r.top + r.height/2;
+        const dx = (e.clientX - cx) / (r.width/2);
+        const dy = (e.clientY - cy) / (r.height/2);
+        card.style.transform = `rotateX(${(-dy*damp)}deg) rotateY(${(dx*damp)}deg) translateY(-2px)`;
+      }
+      card.addEventListener('mousemove', move);
+      card.addEventListener('mouseleave', ()=>card.style.transform='none');
+    });
 
-    <label>Peso (mascota + jaula)
-      <input type="number" name="weight" step="0.1" placeholder="kg" />
-    </label>
+    /* ====== Aparición al hacer scroll ====== */
+    const io = new IntersectionObserver((entries)=>{
+      entries.forEach(en=>{ if(en.isIntersecting){ en.target.classList.add('is-visible'); io.unobserve(en.target);} });
+    }, {threshold:.18});
+    document.querySelectorAll('[data-reveal]').forEach(el=>io.observe(el));
+  </script>
 
-    <label>Medidas de jaula (L x A x H)
-      <input type="text" name="crate" placeholder="en cm o pulgadas" />
-    </label>
-
-    <label>Fecha estimada
-      <input type="date" name="date" />
-    </label>
-
-    <!-- ✅ Mensaje dentro de la grilla y a todo el ancho -->
-    <label class="full">Cuéntanos cualquier detalle adicional
-      <textarea name="message" rows="4" placeholder="Edad, raza, aerolínea preferida, restricciones, etc."></textarea>
-    </label>
-  </div>
-
-  <div class="form-actions">
-    <button type="submit" class="btn">Enviar</button>
-    <button type="button" class="btn btn-secondary" id="btnWhatsapp">WhatsApp</button>
-  </div>
-
-  <p class="form-note">Al enviar aceptas que te contactemos por correo o WhatsApp. Nunca compartimos tus datos.</p>
-</form>
-      
-    </div>
-  </section>
-
-  <!-- Footer -->
-  <footer class="footer">
-  <div class="container footer-inner">
-    <p>© 2025 Quisqueya Pet Logistics · Santo Domingo, RD</p>
-    <a class="top" id="footerBackTop" href="#top">↑ Volver arriba</a>
-  </div>
-</footer>
-
-<button id="backtop" class="backtop" aria-label="Volver arriba" title="Volver arriba">↑</button>
-<script src="script.js"></script>
-
-  <script src="script.js"></script>
-  <button id="backtop" class="backtop" aria-label="Volver arriba" title="Volver arriba">↑</button>
-
+  <!--
+  🔧 Cómo usar este archivo
+  1) Reemplaza las rutas assets/*.jpg con tus imágenes (puedes usar las 3 que adjuntaste para la portada).
+  2) Duplica/edita tarjetas de servicios según necesites. Mantén data-tilt para el efecto.
+  3) La sección "Nuestros servicios" va primero; luego "Requisitos" tal como solicitaste.
+  4) Si incrustas en WordPress/HTML, pégalo tal cual en una plantilla o bloque HTML.
+  -->
 </body>
 </html>
