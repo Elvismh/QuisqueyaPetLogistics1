@@ -249,6 +249,55 @@
 
   <script src="script.js"></script>
   <button id="backtop" class="backtop" aria-label="Volver arriba" title="Volver arriba">↑</button>
+<script>
+(() => {
+  const hero = document.getElementById('hero');
+  const slides = [...hero.querySelectorAll('.hero-slide')];
+  const dotsNav = hero.querySelector('.hero-dots');
+  let i = 0, timer = null, DURATION = 6500;
+
+  // Crear puntos
+  slides.forEach((_, idx) => {
+    const b = document.createElement('button');
+    b.className = 'dot' + (idx === 0 ? ' is-active' : '');
+    b.setAttribute('aria-label', 'Ir a la imagen ' + (idx + 1));
+    b.addEventListener('click', () => goTo(idx, true));
+    dotsNav.appendChild(b);
+  });
+  const dots = [...dotsNav.children];
+
+  function goTo(next, user = false) {
+    if (next === i) return;
+    const cur = slides[i];
+    const nxt = slides[next];
+
+    cur.classList.remove('is-active');
+    cur.classList.add('is-leaving');
+    // activar el siguiente
+    nxt.classList.add('is-active');
+
+    dots[i].classList.remove('is-active');
+    dots[next].classList.add('is-active');
+
+    // limpiar clase "is-leaving" después de la animación
+    setTimeout(() => cur.classList.remove('is-leaving'), 700);
+    i = next;
+    if (user) restart();
+  }
+
+  function next() { goTo((i + 1) % slides.length); }
+  function start() {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    timer = setInterval(next, DURATION);
+  }
+  function stop() { clearInterval(timer); }
+  function restart() { stop(); start(); }
+
+  hero.addEventListener('mouseenter', stop);
+  hero.addEventListener('mouseleave', start);
+  start();
+})();
+</script>
 
 </body>
 </html>
