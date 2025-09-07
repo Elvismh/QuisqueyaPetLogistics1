@@ -6,12 +6,12 @@
   <meta name="color-scheme" content="light dark" />
   <title>Requisitos por destino · Quisqueya Pet Logistics</title>
 
-  <!-- OJO: sube un nivel para tomar los estilos globales -->
+  <!-- Estilos globales (sube un nivel) -->
   <link rel="stylesheet" href="../style.css" />
 </head>
 <body>
 
-  <!-- Header igual al resto del sitio -->
+  <!-- Header igual al resto -->
   <header class="header" id="inicio">
     <div class="container header-inner">
       <a href="../index.html" class="brand">
@@ -30,7 +30,7 @@
     </div>
   </header>
 
-  <!-- Sección con el MISMO look de Servicios -->
+  <!-- Requisitos (mismo look y comportamiento que Servicios) -->
   <section id="requisitos-destino" class="section">
     <div class="container">
       <h2 class="section-title">Requisitos por destino</h2>
@@ -44,7 +44,7 @@
         <button class="tab-btn" role="tab" aria-selected="false" data-target="req-latam">🌎 Latinoamérica</button>
       </div>
 
-      <!-- Europa -->
+      <!-- Paneles: SOLO el primero lleva "active" -->
       <section id="req-europa" class="panel active" role="tabpanel">
         <div class="card">
           <div class="hero">
@@ -60,14 +60,11 @@
               <li><strong>Entrada por Punto de Control designado</strong> y verificación de identidad y documentos.</li>
               <li><strong>Serología de rabia</strong> (≥0.5 IU/ml) si aplica según país origen/destino.</li>
             </ul>
-            <div style="margin-top:12px">
-              <a href="../index.html#contacto" class="btn btn-solid">Quiero cotizar</a>
-            </div>
+            <a href="../index.html#contacto" class="btn btn-solid" style="margin-top:12px">Quiero cotizar</a>
           </div>
         </div>
       </section>
 
-      <!-- Caribe -->
       <section id="req-caribe" class="panel" role="tabpanel">
         <div class="card">
           <div class="hero">
@@ -78,18 +75,15 @@
             <h3>Checklist principal</h3>
             <ul>
               <li>Certificado de salud veterinario vigente.</li>
-              <li>Vacuna antirrábica al día (y cartilla de vacunación).</li>
-              <li>Permiso/registro sanitario si lo exige el país de destino.</li>
-              <li>Cumplimiento de requisitos de aerolínea (jaula IATA, medidas/peso).</li>
+              <li>Vacuna antirrábica al día (cartilla).</li>
+              <li>Permiso/registro sanitario si lo exige el destino.</li>
+              <li>Requisitos de aerolínea (jaula IATA, medidas/peso).</li>
             </ul>
-            <div style="margin-top:12px">
-              <a href="../index.html#contacto" class="btn btn-solid">Quiero cotizar</a>
-            </div>
+            <a href="../index.html#contacto" class="btn btn-solid" style="margin-top:12px">Quiero cotizar</a>
           </div>
         </div>
       </section>
 
-      <!-- USA -->
       <section id="req-usa" class="panel" role="tabpanel">
         <div class="card">
           <div class="hero">
@@ -103,14 +97,11 @@
               <li>Documentación exigida por el punto de entrada y aerolínea.</li>
               <li>Verificación previa de normativas del estado/aeropuerto de arribo.</li>
             </ul>
-            <div style="margin-top:12px">
-              <a href="../index.html#contacto" class="btn btn-solid">Quiero cotizar</a>
-            </div>
+            <a href="../index.html#contacto" class="btn btn-solid" style="margin-top:12px">Quiero cotizar</a>
           </div>
         </div>
       </section>
 
-      <!-- Latinoamérica -->
       <section id="req-latam" class="panel" role="tabpanel">
         <div class="card">
           <div class="hero">
@@ -124,16 +115,14 @@
               <li>Permisos/formatos del país destino cuando aplique.</li>
               <li>Revisión de medidas/peso y jaula IATA antes del viaje.</li>
             </ul>
-            <div style="margin-top:12px">
-              <a href="../index.html#contacto" class="btn btn-solid">Quiero cotizar</a>
-            </div>
+            <a href="../index.html#contacto" class="btn btn-solid" style="margin-top:12px">Quiero cotizar</a>
           </div>
         </div>
       </section>
     </div>
   </section>
 
-  <!-- Footer como el resto -->
+  <!-- Footer -->
   <footer class="footer">
     <div class="container footer-inner">
       <p>© <span id="y"></span> Quisqueya Pet Logistics · Santo Domingo, RD</p>
@@ -144,19 +133,18 @@
 
   <button id="backtop" class="backtop" aria-label="Volver arriba" title="Volver arriba">↑</button>
 
-  <!-- Usa el script global para tabs/scroll -->
+  <!-- Script global -->
   <script src="../script.js"></script>
 
-  <!-- Si llega ?dest=europa|caribe|usa|latam, abrimos esa pestaña -->
+  <!-- Abre pestaña por ?dest=europa|caribe|usa|latam -->
   <script>
     (function () {
       const params = new URLSearchParams(location.search);
       const dest = (params.get('dest') || '').toLowerCase();
       const map = { europa: 'req-europa', caribe: 'req-caribe', usa: 'req-usa', latam: 'req-latam' };
       const id = map[dest];
-      if (id) {
-        if (location.hash !== '#'+id) history.replaceState(null, '', '#'+id);
-        // el init de tabs del script global abrirá el panel por hash
+      if (id && location.hash !== '#'+id) {
+        history.replaceState(null, '', '#'+id);
       }
     })();
   </script>
