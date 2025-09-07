@@ -893,3 +893,82 @@ input,select,textarea{border:1px solid #e5e7eb;border-radius:12px;padding:10px 1
   color: inherit;
   font-size: 0.9rem;
 }
+/* Estilos generales del footer */
+.footer {
+  background: #0b0f19;
+  color: #e5e7eb;
+  padding: 2rem 0;
+}
+
+.footer-info-grid {
+  display: flex;
+  flex-wrap: wrap;
+  border-bottom: 1px solid #1f2937;
+  padding-bottom: 2rem;
+  margin-bottom: 1rem;
+}
+
+.info-item {
+  flex: 1 1 100%;
+  text-align: center;
+  padding: 1rem;
+  border-right: 1px solid #1f2937;
+}
+
+.info-item:last-child {
+  border-right: none;
+}
+
+.info-item h3 {
+  margin: 0.5rem 0;
+  font-size: 1.125rem;
+  color: #fff;
+}
+
+.info-item p {
+  margin: 0;
+  color: #a3a9b6;
+  font-size: 0.875rem;
+}
+
+.info-item .icon {
+  font-size: 2.25rem;
+  color: #f48c20; /* naranja de tu marca */
+  display: inline-block;
+}
+
+.footer-bottom {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+}
+
+.footer-bottom p {
+  margin: 0;
+  color: #a3a9b6;
+  font-size: 0.875rem;
+}
+
+.social-icons a {
+  margin-left: 1rem;
+  color: #f48c20;
+  font-size: 1.25rem;
+  text-decoration: none;
+}
+
+/* Responsivo: columnas en una sola fila desde 600px */
+@media (min-width: 600px) {
+  .info-item {
+    flex: 1 1 33.3333%;
+    border-right: 1px solid #1f2937;
+    text-align: left;
+  }
+  .info-item:last-child {
+    border-right: none;
+  }
+  .footer-info-grid {
+    flex-wrap: nowrap;
+  }
+}
