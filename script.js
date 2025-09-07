@@ -92,3 +92,58 @@ const $$ = (sel, ctx=document) => [...ctx.querySelectorAll(sel)];
     if (btn) btn.click();
   }
 })();
+document.addEventListener('DOMContentLoaded', () => {
+  // Inicializar Swiper para el hero
+  const heroSwiper = new Swiper('.hero-swiper', {
+    effect: 'fade',
+    loop: true,
+    speed: 2000,
+    autoplay: {
+      delay: 7000,
+      disableOnInteraction: false,
+    },
+    fadeEffect: {
+      crossFade: true,
+    },
+  });
+
+  // Iconos para el menú móvil (proporcionados a través del módulo lucide-html)
+  const menuBtn = document.getElementById('mobile-menu-button');
+  const mobileMenu = document.getElementById('mobile-menu');
+  let menuOpen = false;
+
+  // Inserta el icono de hamburguesa inicialmente
+  if (typeof MenuIcon !== 'undefined' && typeof CloseIcon !== 'undefined') {
+    menuBtn.innerHTML = MenuIcon({ size: 24 });
+  }
+
+  menuBtn.addEventListener('click', () => {
+    menuOpen = !menuOpen;
+    mobileMenu.classList.toggle('hidden', !menuOpen);
+    // Cambiar icono según el estado
+    if (typeof MenuIcon !== 'undefined' && typeof CloseIcon !== 'undefined') {
+      menuBtn.innerHTML = menuOpen
+        ? CloseIcon({ size: 24 })
+        : MenuIcon({ size: 24 });
+    }
+  });
+
+  // Acordeones de requisitos
+  document.querySelectorAll('[data-accordion-target]').forEach((button) => {
+    button.addEventListener('click', () => {
+      const targetId = button.getAttribute('data-accordion-target');
+      const content = document.getElementById(targetId);
+      const isOpen = content.classList.contains('open');
+      // Cerrar todos
+      document.querySelectorAll('.accordion-content').forEach((el) => {
+        el.classList.remove('open');
+        el.previousElementSibling.querySelector('span:last-child').textContent = '+';
+      });
+      // Si estaba cerrado, abrirlo
+      if (!isOpen) {
+        content.classList.add('open');
+        button.querySelector('span:last-child').textContent = '-';
+      }
+    });
+  });
+});
