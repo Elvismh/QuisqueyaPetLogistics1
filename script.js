@@ -15,42 +15,34 @@ const $$ = (sel, ctx = document) => [...ctx.querySelectorAll(sel)];
 })();
 
 // =====================
-// Back to top (flotante y footer)
+// Back to top
 // =====================
 (() => {
   const backBtn   = $('#backtop');
   const footerBtn = $('#footerBackTop');
-  const onScroll  = () => {
-    if (!backBtn) return;
-    backBtn.classList.toggle('show', window.scrollY > 400);
-  };
+  const onScroll  = () => backBtn && backBtn.classList.toggle('show', window.scrollY > 400);
   if (backBtn) {
     backBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
     window.addEventListener('scroll', onScroll, { passive: true });
     onScroll();
   }
   if (footerBtn) {
-    footerBtn.addEventListener('click', (e) => {
-      e.preventDefault();
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    });
+    footerBtn.addEventListener('click', (e) => { e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }); });
   }
 })();
 
 // =====================
-// Smooth scroll (anclas internas)
+// Smooth scroll anclas internas
 // =====================
 (() => {
   document.querySelectorAll('a[href^="#"]').forEach(a => {
     a.addEventListener('click', (e) => {
       const id = a.getAttribute('href');
-      // Evita capturar enlaces tipo "#" a otra página (no lleva slash en medio)
       if (!id || id.length < 2) return;
       const el = document.querySelector(id);
       if (!el) return;
       e.preventDefault();
       el.scrollIntoView({ behavior: 'smooth' });
-      // Cierra el menú móvil si estuviera abierto
       const nav = $('#mainNav') || $('.nav');
       if (nav) nav.classList.remove('open');
     });
@@ -58,7 +50,7 @@ const $$ = (sel, ctx = document) => [...ctx.querySelectorAll(sel)];
 })();
 
 // =====================
-// Botón WhatsApp del form (id="btnWhatsapp")
+// Botón WhatsApp del form
 // =====================
 (() => {
   const btn = $('#btnWhatsapp');
@@ -96,10 +88,7 @@ const $$ = (sel, ctx = document) => [...ctx.querySelectorAll(sel)];
 })();
 
 // =====================
-// Tabs "tipo servicios/requisitos" (basadas en .tab-btn)
-//  - Muestra un único panel .panel activo según data-target
-//  - Soporta hash en URL (#req-usa, etc.)
-//  - NO duplica inicializadores
+// Tabs scopeadas (Requisitos / Servicios)
 // =====================
 function initTabsScoped(rootSelector) {
   const root = document.querySelector(rootSelector);
@@ -135,6 +124,5 @@ function initTabsScoped(rootSelector) {
   openFromHash();
 }
 
-// Inicializa tabs para las secciones que usen este patrón
 initTabsScoped('#requisitos-destino');
-initTabsScoped('#servicios');   // por si en el futuro usas el mismo patrón en servicios
+initTabsScoped('#servicios');   // si lo necesitas en servicios.html
