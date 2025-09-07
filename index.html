@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="color-scheme" content="light dark" />
   <title>Quisqueya Pet Logistics</title>
- <link rel="stylesheet" href="style.css?v=14">
+  <link rel="stylesheet" href="style.css?v=15">
 </head>
 <body>
 
@@ -17,7 +17,6 @@
         <span>Quisqueya Pet Logistics</span>
       </a>
       <nav class="nav" id="mainNav">
-        <!-- El header baja a secciones de esta misma página -->
         <a href="#servicios">Servicios</a>
         <a href="#requisitos-destino">Requisitos por destino</a>
         <a href="#faq">Preguntas</a>
@@ -29,9 +28,10 @@
     </div>
   </header>
 
-  <!-- Hero con slider (usa --hero para la imagen) -->
+  <!-- Hero con slider  -->
+  <!-- NOTA: volvemos a --bg:url(...) (pero el CSS también soporta --hero) -->
   <section id="hero" class="hero" aria-label="Portada">
-    <div class="hero-slide is-active" style="--hero:url('/assets/hero-1.webp')">
+    <div class="hero-slide is-active" style="--bg:url('assets/hero-1.webp')">
       <div class="hero-layer"></div>
       <div class="hero-inner">
         <div class="reveal">
@@ -41,7 +41,7 @@
       </div>
     </div>
 
-    <div class="hero-slide" style="--hero:url('/assets/hero-2.webp')">
+    <div class="hero-slide" style="--bg:url('assets/hero-2.webp')">
       <div class="hero-layer"></div>
       <div class="hero-inner">
         <div class="reveal">
@@ -51,7 +51,7 @@
       </div>
     </div>
 
-    <div class="hero-slide" style="--hero:url('/assets/hero-3.webp')">
+    <div class="hero-slide" style="--bg:url('assets/hero-3.webp')">
       <div class="hero-layer"></div>
       <div class="hero-inner">
         <div class="reveal">
@@ -71,22 +71,18 @@
     <div class="container">
       <h2 class="section-title">Nuestros servicios</h2>
       <div class="grid cards">
-        <!-- Transporte aéreo -->
         <a class="card" href="servicios.html#transporte-aereo">
           <img src="assets/service-1.webp" alt="Transporte aéreo" />
           <div class="card-body"><h3>Transporte aéreo</h3></div>
         </a>
-        <!-- Transporte terrestre -->
         <a class="card" href="servicios.html#transporte-terrestre">
           <img src="assets/service-2.webp" alt="Transporte terrestre" />
           <div class="card-body"><h3>Transporte terrestre</h3></div>
         </a>
-        <!-- Documentación -->
         <a class="card" href="servicios.html#documentacion">
           <img src="assets/service-3.webp" alt="Gestión de documentos" />
           <div class="card-body"><h3>Gestión de documentos</h3></div>
         </a>
-        <!-- Acompañamiento -->
         <a class="card" href="servicios.html#puerta-a-puerta">
           <img src="assets/service-4.webp" alt="Acompañamiento personalizado" />
           <div class="card-body"><h3>Acompañamiento personalizado</h3></div>
@@ -95,7 +91,7 @@
     </div>
   </section>
 
-  <!-- Requisitos por destino (links a la página de requisitos con filtro) -->
+  <!-- Requisitos por destino -->
   <section id="requisitos-destino" class="section alt">
     <div class="container">
       <h2 class="section-title">Requisitos según el destino</h2>
@@ -214,10 +210,9 @@
 
   <button id="backtop" class="backtop" aria-label="Volver arriba" title="Volver arriba">↑</button>
 
-  <!-- JS global -->
   <script src="script.js?v=5"></script>
 
-  <!-- Slider del hero (igual al que ya tenías, aquí inline para dejar todo listo) -->
+  <!-- Slider del hero -->
   <script>
     (() => {
       const hero = document.getElementById('hero');
