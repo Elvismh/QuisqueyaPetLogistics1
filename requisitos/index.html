@@ -149,5 +149,11 @@
     })();
   </script>
   <script src="../script.js?v=5"></script>
+  <script>
+  document.querySelectorAll('#requisitos-destino .hero img').forEach(img=>{
+    img.addEventListener('error', ()=> { img.style.display = 'none'; });
+  });
+</script>
+
 </body>
 </html>
