@@ -988,3 +988,17 @@ input,select,textarea{border:1px solid #e5e7eb;border-radius:12px;padding:10px 1
 .social-icons a:hover svg {
   color: #c46e15;            /* tono más oscuro al pasar el cursor */
 }
+.btn-volver {
+  display: inline-block;
+  margin: 12px 0;
+  padding: 8px 12px;
+  border: 1px solid #2a3d52;
+  border-radius: 10px;
+  text-decoration: none;
+  color: inherit;          /* hereda el color del texto */
+  transition: background 0.2s;
+}
+.btn-volver:hover {
+  background: #2a3d52;
+  color: #fff;
+}
