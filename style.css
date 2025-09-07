@@ -21,7 +21,7 @@ a { color: inherit; text-decoration: none; }
   --border: #d9e4ef;
 
   --brand: #F48C20;         /* NARANJA DE MARCA */
-  --brand-2: #8458ff;       /* Acento secundario si lo necesitas */
+  --brand-2: #8458ff;
   --ring: rgba(244,140,32,.18);
 
   --radius: 16px;
@@ -103,18 +103,16 @@ html, body {
 .btn-whatsapp:hover{ filter:brightness(.94); }
 
 /* =========================================================
-   Hero (portada)
+   Hero (portada) — usa --hero para la imagen
    ========================================================= */
-/* IMPORTANTE: usamos --hero para la imagen de cada slide.
-   --bg queda como color de fondo del sitio (no lo pisamos). */
 .hero{ position: relative; overflow: hidden; }
 .hero-slide{
   min-height: 70vh;
   display:none;
   align-items:center;
   justify-content:center;
-  background-image: var(--hero); /* <- aquí va la imagen del inline style */
-  background-color: var(--bg);   /* fallback de color */
+  background-image: var(--hero); /* imagen inline */
+  background-color: var(--bg);   /* color de fondo como fallback */
   background-size: cover;
   background-position: center;
 }
@@ -164,7 +162,7 @@ html, body {
 .tab-btn:hover{ border-color: var(--brand); color: var(--brand); }
 
 /* =========================================================
-   Servicios (detalle en servicios.html)
+   Servicios (en servicios.html)
    ========================================================= */
 #servicios .panel{ display:none; animation:fade .22s ease; }
 #servicios .panel.active{ display:block; }
@@ -183,23 +181,13 @@ html, body {
 #servicios .content{ padding:18px; }
 #servicios .content h2{ margin:0 0 8px; font-size:22px; }
 #servicios .content p, #servicios .content ul{ color: var(--muted); }
-
 @media (min-width:960px){
   #servicios .panel .card{ display:grid; grid-template-columns: 6fr 6fr; align-items:stretch; }
   #servicios .hero{ min-height:100%; }
 }
 
-/* (opcional) Si prefieres naranja también aquí, descomenta:
-#servicios .tab-btn[aria-selected="true"]{
-  background: var(--surface);
-  color:#F48C20;
-  border-color:#F48C20;
-  box-shadow: 0 0 0 3px var(--ring) inset;
-}
-*/
-
 /* =========================================================
-   Requisitos por destino (MISMO look y layout que Servicios)
+   Requisitos por destino (misma estética)
    ========================================================= */
 #requisitos-destino{
   --card-start: var(--surface-2);
@@ -226,7 +214,7 @@ html, body {
   #requisitos-destino .hero{ min-height:100%; }
 }
 
-/* Píldora ACTIVA en Requisitos -> NARANJA y siempre legible (override fuerte) */
+/* Píldora ACTIVA en Requisitos -> NARANJA (override fuerte) */
 #requisitos-destino .tabs > .tab-btn[aria-selected="true"]{
   background: var(--surface) !important;
   color: var(--brand) !important;
@@ -259,7 +247,7 @@ textarea{ resize: vertical; }
   .form-grid .full{ grid-column: 1/-1; }
 }
 
-/* Forzar visibilidad de botón WA si algún estilo lo ensombrecía */
+/* Forzar visibilidad de botón WA si algo lo ocultaba */
 #btnWhatsapp{ opacity: 1 !important; pointer-events: auto !important; }
 
 /* =========================================================
@@ -269,7 +257,6 @@ textarea{ resize: vertical; }
 .footer-inner{ display:flex; align-items:center; justify-content:space-between; gap:16px; padding:18px 0; }
 .footer .top{ font-weight:800; color: var(--brand); }
 
-/* Variante con info blocks (si la usas en otra página) */
 .footer-info-grid{ display:grid; grid-template-columns: repeat(1,minmax(0,1fr)); gap:16px; padding: 28px 0; }
 .footer-info-grid .info-item{ background: var(--surface); border:1px solid var(--border); border-radius: var(--radius); padding:14px; box-shadow: var(--shadow); }
 .footer-info-grid .icon{ font-size: 22px; }
@@ -295,25 +282,11 @@ textarea{ resize: vertical; }
 .backtop.show{ transform: translateY(0); opacity:1; }
 
 /* =========================================================
-   Variantes menores / utilidades
+   Utilidades
    ========================================================= */
 .alt{ background: var(--surface); }
 .reveal{ animation: fadeIn .5s ease both; }
 @keyframes fadeIn{ from{ opacity:.4; transform: translateY(6px);} }
 
-/* Evita ver 'alt' gigante si falla una imagen del héroe */
+/* Oculta <img> roto en héroe para evitar ver el alt gigante */
 .hero img[alt]:not([src]), .hero img[src=""]{ display:none; }
-
-/* Hero: compatibilidad para slides que aún usan --bg:url(...) */
-.hero-slide{
-  /* regla 'nueva' */
-  background-image: var(--hero);
-  background-color: var(--bg);
-  background-size: cover;
-  background-position: center;
-}
-
-/* si el slide trae --bg:url(...) en el inline style, úsalo como imagen */
-.hero-slide[style*="--bg:url"]{
-  background-image: var(--bg) !important;
-}
