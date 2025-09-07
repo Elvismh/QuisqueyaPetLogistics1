@@ -102,3 +102,13 @@ const $$ = (sel, ctx=document) => [...ctx.querySelectorAll(sel)];
     window.open(`https://wa.me/${phone}?text=${text}`, '_blank');
   });
 })();
+document.querySelectorAll('nav a').forEach(a => {
+  a.addEventListener('click', e => {
+    const href = a.getAttribute('href') || '';
+    if (href.startsWith('#')) {        // solo anclas internas
+      e.preventDefault();
+      const el = document.querySelector(href);
+      if (el) el.scrollIntoView({ behavior: 'smooth' });
+    }
+  });
+});
