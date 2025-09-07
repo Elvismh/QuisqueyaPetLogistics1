@@ -5,13 +5,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="color-scheme" content="light dark" />
   <title>Requisitos por destino · Quisqueya Pet Logistics</title>
-
-  <!-- Estilos globales (sube un nivel) -->
-  <link rel="stylesheet" href="../style.css?v=9">
+  <link rel="stylesheet" href="../style.css?v=15">
 </head>
 <body>
 
-  <!-- Header igual al resto -->
+  <!-- Header -->
   <header class="header" id="inicio">
     <div class="container header-inner">
       <a href="../index.html" class="brand">
@@ -30,7 +28,6 @@
     </div>
   </header>
 
-  <!-- Requisitos (mismo look y comportamiento que Servicios) -->
   <section id="requisitos-destino" class="section">
     <div class="container">
       <h2 class="section-title">Requisitos por destino</h2>
@@ -38,17 +35,17 @@
 
       <!-- Tabs -->
       <div class="tabs" role="tablist" aria-label="Regiones">
-        <button class="tab-btn" role="tab" aria-selected="true" data-target="req-europa">🌍 Europa</button>
+        <button class="tab-btn" role="tab" aria-selected="true"  data-target="req-europa">🌍 Europa</button>
         <button class="tab-btn" role="tab" aria-selected="false" data-target="req-caribe">🏝️ Caribe</button>
         <button class="tab-btn" role="tab" aria-selected="false" data-target="req-usa">🇺🇸 USA</button>
         <button class="tab-btn" role="tab" aria-selected="false" data-target="req-latam">🌎 Latinoamérica</button>
       </div>
 
-      <!-- Paneles: SOLO el primero lleva "active" -->
+      <!-- Paneles -->
       <section id="req-europa" class="panel active" role="tabpanel">
         <div class="card">
           <div class="hero">
-            <img src="/assets/requisitos/europa.webp?v=3" alt="Europa" />
+            <img src="../assets/requisitos/europa.webp" alt="Europa" />
             <span class="badge">Europa</span>
           </div>
           <div class="content">
@@ -68,7 +65,7 @@
       <section id="req-caribe" class="panel" role="tabpanel">
         <div class="card">
           <div class="hero">
-            <img src="/assets/requisitos/caribe.webp?v=3" alt="Caribe" />
+            <img src="../assets/requisitos/caribe.webp" alt="Caribe" />
             <span class="badge">Caribe</span>
           </div>
           <div class="content">
@@ -87,7 +84,7 @@
       <section id="req-usa" class="panel" role="tabpanel">
         <div class="card">
           <div class="hero">
-            <img src="/assets/requisitos/usa.webp?v=3" alt="USA" />
+            <img src="../assets/requisitos/usa.webp" alt="USA" />
             <span class="badge">USA</span>
           </div>
           <div class="content">
@@ -105,7 +102,7 @@
       <section id="req-latam" class="panel" role="tabpanel">
         <div class="card">
           <div class="hero">
-            <img src="/assets/requisitos/latam.webp?v=3" alt="Latinoamérica" />
+            <img src="../assets/requisitos/latam.webp" alt="Latinoamérica" />
             <span class="badge">Latinoamérica</span>
           </div>
           <div class="content">
@@ -122,7 +119,6 @@
     </div>
   </section>
 
-  <!-- Footer -->
   <footer class="footer">
     <div class="container footer-inner">
       <p>© <span id="y"></span> Quisqueya Pet Logistics · Santo Domingo, RD</p>
@@ -133,27 +129,17 @@
 
   <button id="backtop" class="backtop" aria-label="Volver arriba" title="Volver arriba">↑</button>
 
-  <!-- Script global -->
-  <script src="../script.js"></script>
+  <script src="../script.js?v=5"></script>
 
-  <!-- Abre pestaña por ?dest=europa|caribe|usa|latam -->
+  <!-- Abrir panel desde ?dest= -->
   <script>
     (function () {
       const params = new URLSearchParams(location.search);
       const dest = (params.get('dest') || '').toLowerCase();
       const map = { europa: 'req-europa', caribe: 'req-caribe', usa: 'req-usa', latam: 'req-latam' };
       const id = map[dest];
-      if (id && location.hash !== '#'+id) {
-        history.replaceState(null, '', '#'+id);
-      }
+      if (id && location.hash !== '#'+id) history.replaceState(null, '', '#'+id);
     })();
   </script>
-  <script src="../script.js?v=5"></script>
-  <script>
-  document.querySelectorAll('#requisitos-destino .hero img').forEach(img=>{
-    img.addEventListener('error', ()=> { img.style.display = 'none'; });
-  });
-</script>
-
 </body>
 </html>
