@@ -1,105 +1,254 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Requisitos de viaje · Quisqueya Pet Logistics</title>
-  <link rel="stylesheet" href="../style.css" />
-  <script defer src="../script.js"></script>
+  <title>Quisqueya Pet Logistics — Servicios</title>
+  <style>
+    :root{
+      --bg:#0f1720; --surface:#121a24; --muted:#9fb3c8; --text:#e8f1ff;
+      --brand:#ff7a00; --brand-2:#8458ff; --ring:rgba(255,122,0,.35);
+    }
+    *{box-sizing:border-box}
+    body{margin:0;background:var(--bg);color:var(--text);font:16px/1.5 system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,"Helvetica Neue",Arial}
+    .wrap{max-width:1100px;margin:0 auto;padding:28px 20px 64px}
+    h1{font-size:28px;margin:4px 0 16px}
+    .tabs{display:flex;gap:6px;flex-wrap:wrap;position:sticky;top:0;background:linear-gradient(var(--bg),var(--bg));padding:8px 0 10px;z-index:5}
+    .tab-btn{
+      appearance:none;border:1px solid #203040;background:var(--surface);color:var(--text);
+      padding:10px 14px;border-radius:12px;cursor:pointer;font-weight:600;letter-spacing:.2px
+    }
+    .tab-btn[aria-selected="true"]{
+      background:linear-gradient(120deg,var(--brand),var(--brand-2));
+      border-color:transparent;color:white;box-shadow:0 0 0 6px var(--ring) inset
+    }
+    .grid{display:grid;grid-template-columns:repeat(12,1fr);gap:18px;margin-top:18px}
+    .panel{grid-column:1/-1;display:none;animation:fade .22s ease}
+    .panel.active{display:block}
+    @keyframes fade{from{opacity:.6;transform:translateY(2px)}}
+    .card{
+      background:radial-gradient(120% 140% at 80% -10%, #1b2734, #0f1720);
+      border:1px solid #213448;border-radius:18px;overflow:hidden
+    }
+    .hero{position:relative;height:280px;background:#0d141d;display:grid;place-items:center}
+    .hero img{width:100%;height:100%;object-fit:cover;opacity:.9;filter:saturate(1.05)}
+    .badge{
+      position:absolute;left:14px;bottom:12px;background:rgba(0,0,0,.55);color:#fff;
+      padding:8px 10px;border-radius:12px;font-weight:700
+    }
+    .content{padding:18px}
+    .content h2{margin:0 0 8px;font-size:22px}
+    .content p{margin:0 0 10px;color:var(--muted)}
+    ul{margin:10px 0 0 18px;color:var(--muted)}
+    .cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px;margin-top:12px}
+    .pill{display:inline-block;padding:6px 10px;border:1px solid #2a3d52;border-radius:999px;margin:4px 6px 0 0;color:#cfe1fb;background:#0f1620}
+    .foot{margin-top:28px;color:#cfe1fb;opacity:.8}
+    a{color:#9cc0ff}
+    /* responsive */
+    @media (min-width:860px){
+      .panel .card{display:grid;grid-template-columns:6fr 6fr}
+      .panel .content{padding:22px}
+      .hero{height:100%}
+    }
+  </style>
 </head>
 <body>
-<header class="header">
-  <div class="container header-inner">
-    <a href="../index.html#inicio" class="brand"><img src="../assets/logo.png" class="logo" alt="Logo"/><span>Quisqueya Pet Logistics</span></a>
-    <nav class="nav">
-      <a href="../index.html#servicios">Servicios</a>
-      <a href="./index.html" class="btn btn-sm">Requisitos</a>
-      <a href="../index.html#faq">Preguntas</a>
-      <a href="../index.html#contacto" class="btn btn-sm">Cotiza</a>
-    </nav>
-    <button class="nav-toggle" aria-label="Abrir menú">☰</button>
-  </div>
-</header>
+  <div class="wrap">
+    <h1>Nuestros servicios</h1>
 
-<section class="section" style="padding-top:48px">
-  <div class="container">
-    <h1 class="section-title">Requisitos de viaje</h1>
-    <p>Selecciona un destino para ver el checklist y la documentación. Podemos verificar tu caso y la normativa vigente.</p>
-
-    <div class="tabs" role="tablist">
-      <button class="tab active" data-tab="espana" role="tab" aria-selected="true">RD ➜ España</button>
-      <button class="tab" data-tab="generales" role="tab">RD ➜ Otros destinos (base)</button>
-      <button class="tab" data-tab="panama" role="tab">Panamá</button>
-      <button class="tab" data-tab="usa" role="tab">EE. UU.</button>
-      <button class="tab" data-tab="chile" role="tab">Chile</button>
+    <!-- NAV TABS -->
+    <div class="tabs" role="tablist" aria-label="Servicios">
+      <button class="tab-btn" role="tab" id="t-aereo"   aria-controls="p-aereo"   aria-selected="true"  data-target="transporte-aereo">✈️ Transporte aéreo</button>
+      <button class="tab-btn" role="tab" id="t-terre"   aria-controls="p-terre"   aria-selected="false" data-target="transporte-terrestre">🚚 Transporte terrestre</button>
+      <button class="tab-btn" role="tab" id="t-docs"    aria-controls="p-docs"    aria-selected="false" data-target="documentacion">📄 Documentación</button>
+      <button class="tab-btn" role="tab" id="t-p2p"     aria-controls="p-p2p"     aria-selected="false" data-target="puerta-a-puerta">🏠 Puerta a puerta</button>
+      <button class="tab-btn" role="tab" id="t-aduana"  aria-controls="p-aduana"  aria-selected="false" data-target="aduanas">🛃 Aduanas</button>
+      <button class="tab-btn" role="tab" id="t-asesor"  aria-controls="p-asesor"  aria-selected="false" data-target="asesoria">🤝 Asesoría</button>
     </div>
 
-    <div class="tab-panels">
-      <div class="tab-panel active" id="espana" role="tabpanel">
-        <ul class="checklist">
-          <li><strong>Microchip ISO 11784/11785</strong> antes de vacunar contra la rabia.</li>
-          <li><strong>Vacuna antirrábica vigente</strong> (21 días desde la primovacunación).</li>
-          <li><strong>Certificado zoosanitario de la UE</strong> (no comercial) + declaración del propietario. Válido 10 días para entrar a la UE.</li>
-          <li><strong>Entrada por Punto de Control designado</strong> en España; inspección de identidad y documentos.</li>
-          <li><strong>Test serológico de rabia (≥0.5 IU/ml)</strong> si el país de origen no está en el listado UE correspondiente.</li>
-          <li>Tratamiento contra <em>Echinococcus</em> no requerido para España (sí para IE/MT/FI/NO).</li>
-        </ul>
-        <div class="cta-inline">
-          <a href="../index.html#contacto" class="btn">Verificar mi caso</a>
-          <a href="https://wa.me/18292673330?text=Hola%2C%20tengo%20dudas%20sobre%20requisitos%20para%20Espa%C3%B1a" class="btn btn-secondary" target="_blank">WhatsApp</a>
+    <!-- PANELS -->
+    <section id="transporte-aereo" class="panel active" role="tabpanel" aria-labelledby="t-aereo">
+      <div class="card">
+        <div class="hero">
+          <img src="assets/servicios/aereo.webp" alt="Avión despegando" />
+          <span class="badge">Transporte aéreo</span>
+        </div>
+        <div class="content">
+          <h2>Transporte aéreo seguro y planificado</h2>
+          <p>Coordinamos vuelos para tu mascota desde <strong>SDQ</strong> hacia múltiples destinos internacionales. Gestionamos reservas con aerolíneas, jaulas IATA y verificaciones zoosanitarias.</p>
+          <div class="cols">
+            <div>
+              <h3>Incluye</h3>
+              <ul>
+                <li>Reserva con aerolínea y coordinación con el <em>cargo</em>.</li>
+                <li>Verificación de medidas/peso y jaula IATA.</li>
+                <li>Control de tiempos: pesaje el día previo y día de vuelo.</li>
+                <li>Seguimiento en tránsito y confirmación de arribo.</li>
+              </ul>
+            </div>
+            <div>
+              <h3>Requisitos clave</h3>
+              <ul>
+                <li>Certificado de salud vigente.</li>
+                <li>Vacuna antirrábica al día.</li>
+                <li>Documentos exigidos por el país destino.</li>
+              </ul>
+              <div class="pill">Solo Lun–Jue para ciertos destinos</div>
+              <div class="pill">Opciones con o sin broker en destino</div>
+            </div>
+          </div>
+          <p class="foot">¿Listo para cotizar? Envía raza, fotos en jaula, dimensiones (L×W×H en pulgadas), peso combinado y aeropuerto destino.</p>
         </div>
       </div>
+    </section>
 
-      <div class="tab-panel" id="generales" role="tabpanel">
-        <details open>
-          <summary>Checklist base</summary>
-          <ul class="checklist">
-            <li>Identificación con microchip ISO.</li>
-            <li>Vacuna antirrábica vigente (21 días desde la primera dosis).</li>
-            <li>Certificado de salud / certificado oficial según destino y tipo de viaje.</li>
-            <li>Prueba serológica de rabia si el destino lo exige.</li>
-            <li>Jaula homologada IATA con medidas correctas (L x A x H) y bebedero.</li>
-            <li>Entrada por punto de control designado; coordinación con <em>broker</em> si aplica.</li>
+    <section id="transporte-terrestre" class="panel" role="tabpanel" aria-labelledby="t-terre">
+      <div class="card">
+        <div class="hero">
+          <img src="assets/servicios/terrestre.webp" alt="Mascota en vehículo con transportadora" />
+          <span class="badge">Transporte terrestre</span>
+        </div>
+        <div class="content">
+          <h2>Traslados locales con cuidado premium</h2>
+          <p>Recogemos y entregamos tu mascota en Santo Domingo y alrededores. Ideal para <strong>pesaje previo</strong> y <strong>entrega el día del vuelo</strong>.</p>
+          <div class="cols">
+            <div>
+              <h3>Incluye</h3>
+              <ul>
+                <li>Unidad climatizada y transportadora adecuada.</li>
+                <li>Rutas programadas y comunicación en tiempo real.</li>
+                <li>Espera asistida en aeropuerto.</li>
+              </ul>
+            </div>
+            <div>
+              <h3>Opcional</h3>
+              <ul>
+                <li>Servicio <em>round-trip</em> (pesaje + día de vuelo).</li>
+                <li>Chofer acompañante para familias.</li>
+              </ul>
+              <div class="pill">Partner de confianza: Casa de Campo ↔ SDQ</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="documentacion" class="panel" role="tabpanel" aria-labelledby="t-docs">
+      <div class="card">
+        <div class="hero">
+          <img src="assets/servicios/documentos.webp" alt="Documentos y sello" />
+          <span class="badge">Documentación</span>
+        </div>
+        <div class="content">
+          <h2>Gestión documental completa</h2>
+          <p>Revisamos, tramitamos y digitalizamos todos los documentos requeridos por aerolínea y país de destino.</p>
+          <div class="cols">
+            <div>
+              <h3>Trámites</h3>
+              <ul>
+                <li>Certificado de salud y vacunas.</li>
+                <li>Permisos zoosanitarios y apostillas.</li>
+                <li>Cartas de responsabilidad y etiquetas IATA.</li>
+              </ul>
+            </div>
+            <div>
+              <h3>Entregables</h3>
+              <ul>
+                <li>Carpeta digital para revisión.</li>
+                <li>Checklist personalizado por destino.</li>
+              </ul>
+              <div class="pill">Revisión en 24–48 h</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="puerta-a-puerta" class="panel" role="tabpanel" aria-labelledby="t-p2p">
+      <div class="card">
+        <div class="hero">
+          <img src="assets/servicios/puerta.webp" alt="Entrega puerta a puerta" />
+          <span class="badge">Puerta a puerta</span>
+        </div>
+        <div class="content">
+          <h2>Acompañamiento en cada paso</h2>
+          <p>Coordinamos pick-up en origen y entrega en destino con nuestra red de <em>pet handlers</em>.</p>
+          <ul>
+            <li>Itinerario único (domicilio → SDQ → destino → domicilio).</li>
+            <li>Reportes de estado con fotos y ubicación.</li>
           </ul>
-        </details>
+        </div>
       </div>
+    </section>
 
-      <div class="tab-panel" id="panama" role="tabpanel">
-        <ul class="checklist">
-          <li>Certificado de salud emitido por veterinario oficial.</li>
-          <li>Vacuna antirrábica vigente.</li>
-          <li>Permiso zoosanitario de importación si aplica.</li>
-          <li>Coordinación con broker en PTY (recomendada).</li>
-          <li>Jaula homologada IATA y reserva confirmada.</li>
-        </ul>
+    <section id="aduanas" class="panel" role="tabpanel" aria-labelledby="t-aduana">
+      <div class="card">
+        <div class="hero">
+          <img src="assets/servicios/aduana.webp" alt="Gestión aduanal" />
+          <span class="badge">Aduanas</span>
+        </div>
+        <div class="content">
+          <h2>Gestión aduanal y coordinación con brokers</h2>
+          <p>Preparación de DUA, pagos locales y coordinación con brokers en aeropuertos como JFK, MIA, PTY, MAD, etc.</p>
+          <ul>
+            <li>Pre-alerta y liberación más ágil.</li>
+            <li>Estimación de gastos en destino (impuestos, broker, cuarentena si aplica).</li>
+          </ul>
+        </div>
       </div>
+    </section>
 
-      <div class="tab-panel" id="usa" role="tabpanel">
-        <ul class="checklist">
-          <li>Microchip recomendado; vacuna antirrábica vigente según CDC/estado.</li>
-          <li>Ingreso por aeropuerto habilitado; posible inspección USDA/CDC.</li>
-          <li>Broker en destino si se envía por guía aérea (solo carga).</li>
-          <li>Jaula homologada IATA.</li>
-        </ul>
+    <section id="asesoria" class="panel" role="tabpanel" aria-labelledby="t-asesor">
+      <div class="card">
+        <div class="hero">
+          <img src="assets/servicios/asesoria.webp" alt="Asesoría especializada" />
+          <span class="badge">Asesoría</span>
+        </div>
+        <div class="content">
+          <h2>Asesoría experta para tu caso</h2>
+          <p>Te guiamos en rutas, razas braquicefálicas, tipos de jaula y mejores ventanas para viajar.</p>
+          <div class="pill">Llamadas Lun–Vie • 8:00 a 17:00</div>
+          <p class="foot">Contáctanos: <a href="mailto:quisqueyapetlogistics@gmail.com">quisqueyapetlogistics@gmail.com</a> • (829) 267-3330</p>
+        </div>
       </div>
-
-      <div class="tab-panel" id="chile" role="tabpanel">
-        <ul class="checklist">
-          <li>Certificado zoosanitario de exportación.</li>
-          <li>Vacuna antirrábica vigente; otras vacunas según especie.</li>
-          <li>Inscripción/inspección SAG al ingreso; revisión documental.</li>
-          <li>Reserva confirmada; medidas/peso de jaula validados.</li>
-        </ul>
-      </div>
-    </div>
+    </section>
   </div>
-</section>
 
-<footer class="footer">
-  <div class="container footer-inner">
-    <p>© 2025 Quisqueya Pet Logistics · Requisitos</p>
-    <a href="#inicio" class="top">↑ Volver arriba</a>
-  </div>
-</footer>
+  <script>
+    // --- Tabs logic (hash-aware) ---
+    const tabs = [...document.querySelectorAll('.tab-btn')];
+    const panels = [...document.querySelectorAll('.panel')];
+
+    function show(id){
+      // update selected
+      tabs.forEach(b => b.setAttribute('aria-selected', String(b.dataset.target===id)));
+      // show panel
+      panels.forEach(p => p.classList.toggle('active', p.id === id));
+    }
+
+    function openFromHash(){
+      const hash = (location.hash||'').replace('#','');
+      const exists = panels.some(p=>p.id===hash);
+      show(exists? hash : 'transporte-aereo');
+      // sync tab aria-controls
+      tabs.forEach(b=>{
+        const target = b.dataset.target;
+        b.setAttribute('aria-controls', 'p-' + target);
+      });
+    }
+
+    tabs.forEach(btn=>{
+      btn.addEventListener('click', ()=>{
+        const id = btn.dataset.target;
+        if(location.hash.replace('#','')!==id){
+          history.pushState(null,'','#'+id);
+        }
+        show(id);
+      });
+    });
+
+    window.addEventListener('hashchange', openFromHash);
+    openFromHash();
+  </script>
 </body>
 </html>
