@@ -706,14 +706,14 @@ input,select,textarea{border:1px solid #e5e7eb;border-radius:12px;padding:10px 1
   /* Gaussian blur with warm orange tint and soft vignette */
   background:
     radial-gradient(110% 70% at 50% 50%,
-      rgba(244,140,32,.60) 0%,
+      rgba(244,140,32,.50) 0%,
       rgba(244,140,32,.33) 45%,
       rgba(244,140,32,0) 70%),
     linear-gradient(180deg,
       rgba(0,0,0,.35) 0%,
       rgba(0,0,0,.1) 30%,
       rgba(0,0,0,.35) 100%);
-  backdrop-filter: blur(2px);
+  backdrop-filter: blur(4px);
 }
 .hero-inner{position:absolute;left:max(3vw,1rem);right:max(3vw,1rem);
             bottom:clamp(80px,18vh,220px);color:#fff}
