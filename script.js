@@ -92,3 +92,13 @@ const $$ = (sel, ctx=document) => [...ctx.querySelectorAll(sel)];
     if (btn) btn.click();
   }
 })();
+// Al final de script.js o dentro de un bloque IIFE
+(() => {
+  const wapp = document.getElementById('btnWhatsapp');
+  if (!wapp) return;
+  wapp.addEventListener('click', () => {
+    const phone = '18095203331'; // tu número con código de país
+    const text  = encodeURIComponent('Hola, quiero cotizar el traslado de mi mascota');
+    window.open(`https://wa.me/${phone}?text=${text}`, '_blank');
+  });
+})();
