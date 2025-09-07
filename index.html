@@ -16,18 +16,15 @@
         <img src="assets/logo.png" class="logo" alt="Logo Quisqueya Pet Logistics" />
         <span>Quisqueya Pet Logistics</span>
       </a>
-      <nav class="nav">
-        <a href="./servicios.html">Servicios</a>
+      <nav class="nav" id="mainNav">
+        <!-- AHORA baja a la sección de la home -->
+        <a href="#servicios">Servicios</a>
         <a href="requisitos/index.html">Requisitos por destino</a>
         <a href="#faq">Preguntas</a>
         <a href="#contacto" class="btn btn-sm">Cotiza</a>
-        
-        <!-- Botón de WhatsApp -->
-  <a href="https://wa.me/18091234567?text=Hola,%20quiero%20cotizar%20el%20traslado%20de%20mi%20mascota"
-     class="btn btn-sm btn-whatsapp"
-     target="_blank">
-    Contacto 
-  </a>
+        <a href="https://wa.me/18095203331?text=Hola,%20quiero%20cotizar%20el%20traslado%20de%20mi%20mascota" class="btn btn-sm btn-whatsapp" target="_blank">
+          Contacto 
+        </a>
       </nav>
       <button class="nav-toggle" aria-label="Abrir menú">☰</button>
     </div>
@@ -35,7 +32,6 @@
 
   <!-- Hero con slider -->
   <section id="hero" class="hero" aria-label="Portada">
-    <!-- SLIDE 1 -->
     <div class="hero-slide is-active" style="--bg:url('assets/hero-1.webp')">
       <div class="hero-layer"></div>
       <div class="hero-inner">
@@ -45,7 +41,7 @@
         </div>
       </div>
     </div>
-    <!-- SLIDE 2 -->
+
     <div class="hero-slide" style="--bg:url('assets/hero-2.webp')">
       <div class="hero-layer"></div>
       <div class="hero-inner">
@@ -57,85 +53,76 @@
         </div>
       </div>
     </div>
-    <!-- SLIDE 3 -->
+
     <div class="hero-slide" style="--bg:url('assets/hero-3.webp')">
       <div class="hero-layer"></div>
       <div class="hero-inner">
         <div class="reveal">
           <div class="hero-cta">
-            <a href="#cotizar" class="btn btn-solid">Solicitar cotización</a>
-            <a href="#requisitos" class="btn btn-outline">Ver requisitos</a>
+            <a href="#contacto" class="btn btn-solid">Solicitar cotización</a>
+            <a href="requisitos/index.html" class="btn btn-outline">Ver requisitos</a>
           </div>
         </div>
       </div>
     </div>
-    <!-- Puntos de navegación (se crean solos por JS) -->
+
     <nav class="hero-dots" aria-label="Cambiar imagen"></nav>
   </section>
 
-<!-- Servicios -->
-<section id="servicios" class="section">
-  <div class="container">
-    <h2 class="section-title">Nuestros servicios</h2>
-    <div class="grid cards">
+  <!-- Servicios -->
+  <section id="servicios" class="section">
+    <div class="container">
+      <h2 class="section-title">Nuestros servicios</h2>
+      <div class="grid cards">
 
-      <!-- Transporte aéreo -->
-      <a class="card" href="servicios.html#transporte-aereo">
-        <img src="assets/service-1.webp" alt="Transporte aéreo" />
-        <div class="card-body"><h3>Transporte aéreo</h3></div>
-      </a>
+        <!-- Transporte aéreo -->
+        <a class="card" href="servicios.html#transporte-aereo">
+          <img src="assets/service-1.webp" alt="Transporte aéreo" />
+          <div class="card-body"><h3>Transporte aéreo</h3></div>
+        </a>
 
-      <!-- Transporte terrestre -->
-      <a class="card" href="servicios.html#transporte-terrestre">
-        <img src="assets/service-2.webp" alt="Transporte terrestre" />
-        <div class="card-body"><h3>Transporte terrestre</h3></div>
-      </a>
+        <!-- Transporte terrestre -->
+        <a class="card" href="servicios.html#transporte-terrestre">
+          <img src="assets/service-2.webp" alt="Transporte terrestre" />
+          <div class="card-body"><h3>Transporte terrestre</h3></div>
+        </a>
 
-      <!-- Documentación -->
-      <a class="card" href="servicios.html#documentacion">
-        <img src="assets/service-3.webp" alt="Gestión de documentos" />
-        <div class="card-body"><h3>Gestión de documentos</h3></div>
-      </a>
+        <!-- Documentación -->
+        <a class="card" href="servicios.html#documentacion">
+          <img src="assets/service-3.webp" alt="Gestión de documentos" />
+          <div class="card-body"><h3>Gestión de documentos</h3></div>
+        </a>
 
-      <!-- Puerta a puerta -->
-      <a class="card" href="servicios.html#puerta-a-puerta">
-        <img src="assets/service-4.webp" alt="Acompañamiento personalizado" />
-        <div class="card-body"><h3>Acompañamiento personalizado</h3></div>
-      </a>
+        <!-- Puerta a puerta -->
+        <a class="card" href="servicios.html#puerta-a-puerta">
+          <img src="assets/service-4.webp" alt="Acompañamiento personalizado" />
+          <div class="card-body"><h3>Acompañamiento personalizado</h3></div>
+        </a>
 
+      </div>
     </div>
-  </div>
-</section>
+  </section>
 
-  <!-- Requisitos según el destino -->
-  
+  <!-- Requisitos por destino -->
   <section id="requisitos-destino" class="section alt">
     <div class="container">
       <h2 class="section-title">Requisitos según el destino</h2>
       <div class="grid cards">
         <a class="card" href="requisitos/index.html?dest=europa">
           <img src="assets/dest-1.webp" alt="Europa" />
-          <div class="card-body">
-            <h3>Europa</h3>
-          </div>
+          <div class="card-body"><h3>Europa</h3></div>
         </a>
         <a class="card" href="requisitos/index.html?dest=caribe">
           <img src="assets/dest-2.webp" alt="Caribe" />
-          <div class="card-body">
-            <h3>Caribe</h3>
-          </div>
+          <div class="card-body"><h3>Caribe</h3></div>
         </a>
         <a class="card" href="requisitos/index.html?dest=usa">
           <img src="assets/dest-3.webp" alt="USA" />
-          <div class="card-body">
-            <h3>USA</h3>
-          </div>
+          <div class="card-body"><h3>USA</h3></div>
         </a>
         <a class="card" href="requisitos/index.html?dest=latam">
           <img src="assets/dest-4.webp" alt="Latinoamérica" />
-          <div class="card-body">
-            <h3>Latinoamérica</h3>
-          </div>
+          <div class="card-body"><h3>Latinoamérica</h3></div>
         </a>
       </div>
     </div>
@@ -216,9 +203,6 @@
           </label>
         </div>
         <div class="form-actions">
-          <form action="mailto:ventas.quisqueyapetlogistics@gmail.com" method="POST" enctype="text/plain">
-  <!-- campos -->
-</form>
           <button type="submit" class="btn">Enviar</button>
           <button type="button" class="btn btn-secondary" id="btnWhatsapp">WhatsApp</button>
         </div>
@@ -227,116 +211,47 @@
     </div>
   </section>
 
-<!-- Footer -->
-<footer class="footer">
-  <div class="container">
-    <!-- Sección superior con tres columnas -->
-    <div class="footer-info-grid">
-      <!-- Columna 1: Dirección -->
-      <div class="info-item">
-        <!-- Icono de globo/ubicación -->
-        <span class="icon">&#127760;</span>
-        <h3>Dirección</h3>
-        <p>Ruta 66, Aeropuerto Las Americas. Terminal de Carga<br>Santo Domingo, RD 11336</p>
-      </div>
-
-      <!-- Columna 2: Contacto -->
-      <div class="info-item">
-        <span class="icon">&#128241;</span>
-        <h3>Contacto</h3>
-        <p>ventas.quisqueyapetlogistics@gmail.com<br>+1&nbsp;809&nbsp;520&nbsp;3331</p>
-      </div>
-
-      <!-- Columna 3: Horario -->
-      <div class="info-item">
-        <span class="icon">&#9201;</span>
-        <h3>Horario de seguimiento</h3>
-        <p>24/7</p>
-      </div>
-    </div>
-
-    <!-- Línea inferior con copyright y redes -->
-    <div class="footer-bottom">
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container footer-inner">
       <p>© 2025 Quisqueya Pet Logistics · Santo Domingo, RD</p>
-     <div class="social-icons">
-  <!-- Facebook -->
-  <a href="https://www.facebook.com/tu_pagina" target="_blank" aria-label="Facebook">
-    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none"
-         stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-      <path d="M18 2h-3a4 4 0 00-4 4v3H8v4h3v8h4v-8h3l1-4h-4V6a1 1 0 011-1h3z"></path>
-    </svg>
-  </a>
-
-  <!-- LinkedIn -->
-  <a href="https://www.linkedin.com/company/quisqueya-pet-logistics" target="_blank" aria-label="LinkedIn">
-    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none"
-         stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-      <path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-4 0v7h-4v-7a6 6 0 016-6z"></path>
-      <rect x="2" y="9" width="4" height="12"></rect>
-      <circle cx="4" cy="4" r="2"></circle>
-    </svg>
-  </a>
-
-  <!-- Instagram -->
-  <a href="https://www.instagram.com/quisqueyapetlogistics" target="_blank" aria-label="Instagram">
-    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none"
-         stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-      <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
-      <path d="M16 11.37a4 4 0 11-2.24-2.24 4 4 0 012.24 2.24z"></path>
-      <path d="M17.5 6.5h.01"></path>
-    </svg>
-  </a>
-</div>
-
-</footer>
+      <a href="#" class="top" id="footerBackTop">Volver arriba ↑</a>
+    </div>
+  </footer>
 
   <button id="backtop" class="backtop" aria-label="Volver arriba" title="Volver arriba">↑</button>
 
-  <!-- Scripts -->
   <script src="script.js"></script>
-  <!-- Slider script -->
+  <!-- Slider script (ya lo tienes al final del index original) -->
   <script>
-  (() => {
-    const hero = document.getElementById('hero');
-    const slides = [...hero.querySelectorAll('.hero-slide')];
-    const dotsNav = hero.querySelector('.hero-dots');
-    let i = 0, timer = null, DURATION = 6500;
+    (() => {
+      const hero = document.getElementById('hero');
+      const slides = [...hero.querySelectorAll('.hero-slide')];
+      const dotsNav = hero.querySelector('.hero-dots');
+      let i = 0, timer = null, DURATION = 6500;
 
-    // Crear puntos
-    slides.forEach((_, idx) => {
-      const b = document.createElement('button');
-      b.className = 'dot' + (idx === 0 ? ' is-active' : '');
-      b.setAttribute('aria-label', 'Ir a la imagen ' + (idx + 1));
-      b.addEventListener('click', () => goTo(idx, true));
-      dotsNav.appendChild(b);
-    });
-    const dots = [...dotsNav.children];
+      slides.forEach((_, idx) => {
+        const b = document.createElement('button');
+        b.className = 'dot' + (idx === 0 ? ' is-active' : '');
+        b.setAttribute('aria-label', 'Ir a la imagen ' + (idx + 1));
+        b.addEventListener('click', () => goTo(idx, true));
+        dotsNav.appendChild(b);
+      });
+      const dots = [...dotsNav.children];
 
-    function goTo(next, user = false) {
-      if (next === i) return;
-      const cur = slides[i];
-      const nxt = slides[next];
-      cur.classList.remove('is-active');
-      cur.classList.add('is-leaving');
-      nxt.classList.add('is-active');
-      dots[i].classList.remove('is-active');
-      dots[next].classList.add('is-active');
-      setTimeout(() => cur.classList.remove('is-leaving'), 700);
-      i = next;
-      if (user) restart();
-    }
-    function next() { goTo((i + 1) % slides.length); }
-    function start() {
-      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-      timer = setInterval(next, DURATION);
-    }
-    function stop() { clearInterval(timer); }
-    function restart() { stop(); start(); }
-
-    hero.addEventListener('mouseenter', stop);
-    hero.addEventListener('mouseleave', start);
-    start();
-  })();
+      function goTo(next, user = false) {
+        if (next === i) return;
+        slides[i].classList.add('is-leaving');
+        slides[i].classList.remove('is-active');
+        dots[i].classList.remove('is-active');
+        slides[next].classList.add('is-active');
+        dots[next].classList.add('is-active');
+        setTimeout(() => slides[i].classList.remove('is-leaving'), 900);
+        i = next;
+        if (user) { clearInterval(timer); timer = setInterval(() => goTo((i+1)%slides.length), DURATION); }
+      }
+      if (slides.length > 1) timer = setInterval(() => goTo((i+1)%slides.length), DURATION);
+    })();
   </script>
 </body>
 </html>
