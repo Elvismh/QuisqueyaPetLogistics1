@@ -305,3 +305,9 @@ textarea{ resize: vertical; }
 #requisitos-destino .tabs > .tab-btn[aria-selected="true"] > *{
   color: var(--brand) !important;
 }
+/* Héroe (portada) — usa la variable --bg del inline style como imagen de fondo */
+.hero-slide{
+  background-image: var(--bg);   /* <-- ESTA ES LA CLAVE */
+  background-size: cover;
+  background-position: center;
+}
