@@ -1061,6 +1061,19 @@ input,select,textarea{border:1px solid #e5e7eb;border-radius:12px;padding:10px 1
   background:linear-gradient(120deg,var(--brand),var(--brand-2)); color:#fff; border-color:transparent; box-shadow:0 0 0 6px var(--ring) inset;
 }
 
+/* --- Estado activo/hover de las tabs de Requisitos --- */
+#requisitos-destino .tab-btn[aria-selected="true"]{
+  background: var(--surface) !important;    /* fondo igual al del tema (blanco u oscuro) */
+  color: var(--brand) !important;           /* texto naranja de marca */
+  border-color: var(--brand) !important;    /* borde naranja */
+  box-shadow: 0 0 0 3px rgba(244,140,32,.18) inset !important; /* halo suave */
+}
+
+#requisitos-destino .tab-btn:hover{
+  border-color: var(--brand);
+  color: var(--brand);
+}
+
 /* Mostrar/ocultar paneles */
 #requisitos-destino .panel{ display:none; animation:fade .22s ease; }
 #requisitos-destino .panel.active{ display:block; }
