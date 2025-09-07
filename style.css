@@ -1002,3 +1002,38 @@ input,select,textarea{border:1px solid #e5e7eb;border-radius:12px;padding:10px 1
   background: #2a3d52;
   color: #fff;
 }
+// Tabs para #requisitos-destino (mismo comportamiento que Servicios)
+(function initRequisitosTabs(){
+  const root = document.querySelector('#requisitos-destino');
+  if(!root) return;
+
+  const tabs   = [...root.querySelectorAll('.tab-btn')];
+  const panels = [...root.querySelectorAll('.panel')];
+
+  const show = (id) => {
+    tabs.forEach(b => b.setAttribute('aria-selected', String(b.dataset.target === id)));
+    panels.forEach(p => p.classList.toggle('active', p.id === id));
+  };
+
+  const openFromHash = () => {
+    const id = (location.hash || '').replace('#','');
+    // si el hash coincide con un panel de esta sección, ábrelo; sino, el primero
+    const target = id && root.querySelector('#'+id) ? id : (tabs[0] ? tabs[0].dataset.target : null);
+    if (target) show(target);
+  };
+
+  tabs.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const id = btn.dataset.target;
+      if (location.hash !== '#'+id) history.pushState(null, '', '#'+id);
+      show(id);
+    });
+  });
+
+  window.addEventListener('hashchange', () => {
+    const id = (location.hash || '').slice(1);
+    if (root.querySelector('#'+id)) show(id);
+  });
+
+  openFromHash();
+})();
