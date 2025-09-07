@@ -4,79 +4,68 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Quisqueya Pet Logistics — Servicios</title>
+  <link rel="stylesheet" href="style.css" />
   <style>
-    :root{
-      --bg:#0f1720; --surface:#121a24; --muted:#9fb3c8; --text:#e8f1ff;
-      --brand:#ff7a00; --brand-2:#8458ff; --ring:rgba(255,122,0,.35);
-    }
-    *{box-sizing:border-box}
-    body{margin:0;background:var(--bg);color:var(--text);font:16px/1.5 system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,"Helvetica Neue",Arial}
+    /* Estilos mínimos propios de las pestañas de servicios */
+    :root{ --bg:#0f1720; --surface:#121a24; --muted:#9fb3c8; --text:#e8f1ff; --brand:#ff7a00; --brand-2:#8458ff; --ring:rgba(255,122,0,.35); }
+    body.services{ background:var(--bg); color:var(--text); }
     .wrap{max-width:1100px;margin:0 auto;padding:28px 20px 64px}
-    h1{font-size:28px;margin:4px 0 16px}
-    .tabs{display:flex;gap:6px;flex-wrap:wrap;position:sticky;top:0;background:linear-gradient(var(--bg),var(--bg));padding:8px 0 10px;z-index:5}
-    .tab-btn{
-      appearance:none;border:1px solid #203040;background:var(--surface);color:var(--text);
-      padding:10px 14px;border-radius:12px;cursor:pointer;font-weight:600;letter-spacing:.2px
-    }
-    .tab-btn[aria-selected="true"]{
-      background:linear-gradient(120deg,var(--brand),var(--brand-2));
-      border-color:transparent;color:white;box-shadow:0 0 0 6px var(--ring) inset
-    }
-    .grid{display:grid;grid-template-columns:repeat(12,1fr);gap:18px;margin-top:18px}
-    .panel{grid-column:1/-1;display:none;animation:fade .22s ease}
+    .tabs{display:flex;gap:6px;flex-wrap:wrap;position:sticky;top:64px;background:linear-gradient(var(--bg),var(--bg));padding:8px 0 10px;z-index:5}
+    .tab-btn{appearance:none;border:1px solid #203040;background:var(--surface);color:var(--text);padding:10px 14px;border-radius:12px;cursor:pointer;font-weight:600;letter-spacing:.2px}
+    .tab-btn[aria-selected="true"]{background:linear-gradient(120deg,var(--brand),var(--brand-2));border-color:transparent;color:white;box-shadow:0 0 0 6px var(--ring) inset}
+    .panel{display:none;animation:fade .22s ease}
     .panel.active{display:block}
     @keyframes fade{from{opacity:.6;transform:translateY(2px)}}
-    .card{
-      background:radial-gradient(120% 140% at 80% -10%, #1b2734, #0f1720);
-      border:1px solid #213448;border-radius:18px;overflow:hidden
-    }
-    .hero{position:relative;height:280px;background:#0d141d;display:grid;place-items:center}
+    .card{background:radial-gradient(120% 140% at 80% -10%, #1b2734, #0f1720);border:1px solid #213448;border-radius:18px;overflow:hidden}
+    .hero{position:relative;min-height:240px;background:#0d141d;display:grid;place-items:center}
     .hero img{width:100%;height:100%;object-fit:cover;opacity:.9;filter:saturate(1.05)}
-    .badge{
-      position:absolute;left:14px;bottom:12px;background:rgba(0,0,0,.55);color:#fff;
-      padding:8px 10px;border-radius:12px;font-weight:700
-    }
+    .badge{position:absolute;left:14px;bottom:12px;background:rgba(0,0,0,.55);color:#fff;padding:8px 10px;border-radius:12px;font-weight:700}
     .content{padding:18px}
     .content h2{margin:0 0 8px;font-size:22px}
-    .content p{margin:0 0 10px;color:var(--muted)}
-    ul{margin:10px 0 0 18px;color:var(--muted)}
+    .content p, ul{color:var(--muted)}
     .cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px;margin-top:12px}
     .pill{display:inline-block;padding:6px 10px;border:1px solid #2a3d52;border-radius:999px;margin:4px 6px 0 0;color:#cfe1fb;background:#0f1620}
-    .foot{margin-top:28px;color:#cfe1fb;opacity:.8}
-    a{color:#9cc0ff}
-    /* responsive */
-    @media (min-width:860px){
-      .panel .card{display:grid;grid-template-columns:6fr 6fr}
-      .panel .content{padding:22px}
-      .hero{height:100%}
-    }
+    @media (min-width:960px){ .panel .card{display:grid;grid-template-columns:6fr 6fr} .hero{min-height:100%} }
   </style>
 </head>
-<body>
-  <!-- En el header de servicios.html -->
-<nav>
-  <a class="btn-volver" href="index.html">← Volver a la página principal</a>
-  <a href="index.html#hero">Inicio</a>
-  <a href="index.html#requisitos">Requisitos</a>
-  <a href="servicios.html#transporte-aereo" aria-current="page">Servicios</a>
-  <a href="index.html#contacto">Contacto</a>
-</nav>
+<body class="services">
+  <!-- Header (igual a la home) -->
+  <header class="header" id="inicio">
+    <div class="container header-inner">
+      <a href="index.html" class="brand">
+        <img src="assets/logo.png" class="logo" alt="Logo Quisqueya Pet Logistics" />
+        <span>Quisqueya Pet Logistics</span>
+      </a>
+      <nav class="nav" id="mainNav">
+        <!-- En esta página, “Servicios” apunta a la pestaña por defecto -->
+        <a href="servicios.html#transporte-aereo" aria-current="page">Servicios</a>
+        <a href="requisitos/index.html">Requisitos por destino</a>
+        <a href="index.html#faq">Preguntas</a>
+        <a href="index.html#contacto" class="btn btn-sm">Cotiza</a>
+        <a href="https://wa.me/18095203331?text=Hola,%20quiero%20cotizar%20el%20traslado%20de%20mi%20mascota" class="btn btn-sm btn-whatsapp" target="_blank">
+          Contacto 
+        </a>
+      </nav>
+      <button class="nav-toggle" aria-label="Abrir menú">☰</button>
+    </div>
+  </header>
 
   <div class="wrap">
-    <h1>Nuestros servicios</h1>
+    <h1 style="margin:18px 0">Nuestros servicios</h1>
 
-    <!-- NAV TABS -->
+    <!-- Pestañas -->
     <div class="tabs" role="tablist" aria-label="Servicios">
-      <button class="tab-btn" role="tab" id="t-aereo"   aria-controls="p-aereo"   aria-selected="true"  data-target="transporte-aereo">✈️ Transporte aéreo</button>
-      <button class="tab-btn" role="tab" id="t-terre"   aria-controls="p-terre"   aria-selected="false" data-target="transporte-terrestre">🚚 Transporte terrestre</button>
-      <button class="tab-btn" role="tab" id="t-docs"    aria-controls="p-docs"    aria-selected="false" data-target="documentacion">📄 Documentación</button>
-      <button class="tab-btn" role="tab" id="t-p2p"     aria-controls="p-p2p"     aria-selected="false" data-target="puerta-a-puerta">🏠 Puerta a puerta</button>
-      <button class="tab-btn" role="tab" id="t-aduana"  aria-controls="p-aduana"  aria-selected="false" data-target="aduanas">🛃 Aduanas</button>
-      <button class="tab-btn" role="tab" id="t-asesor"  aria-controls="p-asesor"  aria-selected="false" data-target="asesoria">🤝 Asesoría</button>
+      <button class="tab-btn" role="tab" data-target="transporte-aereo" aria-selected="true">✈️ Transporte aéreo</button>
+      <button class="tab-btn" role="tab" data-target="transporte-terrestre" aria-selected="false">🚚 Transporte terrestre</button>
+      <button class="tab-btn" role="tab" data-target="documentacion" aria-selected="false">📄 Documentación</button>
+      <button class="tab-btn" role="tab" data-target="puerta-a-puerta" aria-selected="false">🏠 Puerta a puerta</button>
+      <button class="tab-btn" role="tab" data-target="aduanas" aria-selected="false">🛃 Aduanas</button>
+      <button class="tab-btn" role="tab" data-target="asesoria" aria-selected="false">🤝 Asesoría</button>
+      <a class="btn-volver" href="index.html" style="margin-left:auto">← Volver a la página principal</a>
     </div>
 
-    <!-- PANELS -->
-    <section id="transporte-aereo" class="panel active" role="tabpanel" aria-labelledby="t-aereo">
+    <!-- Panel: Aéreo -->
+    <section id="transporte-aereo" class="panel active" role="tabpanel">
       <div class="card">
         <div class="hero">
           <img src="assets/servicios/aereo.webp" alt="Avión despegando" />
@@ -106,12 +95,13 @@
               <div class="pill">Opciones con o sin broker en destino</div>
             </div>
           </div>
-          <p class="foot">¿Listo para cotizar? Envía raza, fotos en jaula, dimensiones (L×W×H en pulgadas), peso combinado y aeropuerto destino.</p>
+          <p style="opacity:.85;margin-top:20px">¿Listo para cotizar? Envía raza, fotos en jaula, dimensiones (L×W×H en pulgadas), peso combinado y aeropuerto destino.</p>
         </div>
       </div>
     </section>
 
-    <section id="transporte-terrestre" class="panel" role="tabpanel" aria-labelledby="t-terre">
+    <!-- Panel: Terrestre -->
+    <section id="transporte-terrestre" class="panel" role="tabpanel">
       <div class="card">
         <div class="hero">
           <img src="assets/servicios/terrestre.webp" alt="Mascota en vehículo con transportadora" />
@@ -142,7 +132,8 @@
       </div>
     </section>
 
-    <section id="documentacion" class="panel" role="tabpanel" aria-labelledby="t-docs">
+    <!-- Panel: Documentación -->
+    <section id="documentacion" class="panel" role="tabpanel">
       <div class="card">
         <div class="hero">
           <img src="assets/servicios/documentos.webp" alt="Documentos y sello" />
@@ -173,7 +164,8 @@
       </div>
     </section>
 
-    <section id="puerta-a-puerta" class="panel" role="tabpanel" aria-labelledby="t-p2p">
+    <!-- Panel: Puerta a puerta -->
+    <section id="puerta-a-puerta" class="panel" role="tabpanel">
       <div class="card">
         <div class="hero">
           <img src="assets/servicios/puerta.webp" alt="Entrega puerta a puerta" />
@@ -190,7 +182,8 @@
       </div>
     </section>
 
-    <section id="aduanas" class="panel" role="tabpanel" aria-labelledby="t-aduana">
+    <!-- Panel: Aduanas -->
+    <section id="aduanas" class="panel" role="tabpanel">
       <div class="card">
         <div class="hero">
           <img src="assets/servicios/aduana.webp" alt="Gestión aduanal" />
@@ -207,7 +200,8 @@
       </div>
     </section>
 
-    <section id="asesoria" class="panel" role="tabpanel" aria-labelledby="t-asesor">
+    <!-- Panel: Asesoría -->
+    <section id="asesoria" class="panel" role="tabpanel">
       <div class="card">
         <div class="hero">
           <img src="assets/servicios/asesoria.webp" alt="Asesoría especializada" />
@@ -216,36 +210,38 @@
         <div class="content">
           <h2>Asesoría experta para tu caso</h2>
           <p>Te guiamos en rutas, razas braquicefálicas, tipos de jaula y mejores ventanas para viajar.</p>
-          <div class="pill">Llamadas Lun–Vie • 8:00 a 17:00</div>
-          <p class="foot">Contáctanos: <a href="mailto:quisqueyapetlogistics@gmail.com">quisqueyapetlogistics@gmail.com</a> • (829) 267-3330</p>
+          <div class="pill">Lun–Vie • 8:00 a 17:00</div>
+          <p style="opacity:.85;margin-top:20px">Contáctanos: <a href="mailto:quisqueyapetlogistics@gmail.com">quisqueyapetlogistics@gmail.com</a> · (829) 267-3330</p>
         </div>
       </div>
     </section>
   </div>
 
+  <!-- Footer (igual a la home) -->
+  <footer class="footer">
+    <div class="container footer-inner">
+      <p>© 2025 Quisqueya Pet Logistics · Santo Domingo, RD</p>
+      <a href="#" class="top" id="footerBackTop">Volver arriba ↑</a>
+    </div>
+  </footer>
+
+  <button id="backtop" class="backtop" aria-label="Volver arriba" title="Volver arriba">↑</button>
+
+  <script src="script.js"></script>
   <script>
-    // --- Tabs logic (hash-aware) ---
-    const tabs = [...document.querySelectorAll('.tab-btn')];
+    // Tabs con soporte de hash
+    const tabs   = [...document.querySelectorAll('.tab-btn')];
     const panels = [...document.querySelectorAll('.panel')];
 
     function show(id){
-      // update selected
       tabs.forEach(b => b.setAttribute('aria-selected', String(b.dataset.target===id)));
-      // show panel
       panels.forEach(p => p.classList.toggle('active', p.id === id));
     }
-
     function openFromHash(){
       const hash = (location.hash||'').replace('#','');
       const exists = panels.some(p=>p.id===hash);
-      show(exists? hash : 'transporte-aereo');
-      // sync tab aria-controls
-      tabs.forEach(b=>{
-        const target = b.dataset.target;
-        b.setAttribute('aria-controls', 'p-' + target);
-      });
+      show(exists ? hash : 'transporte-aereo');
     }
-
     tabs.forEach(btn=>{
       btn.addEventListener('click', ()=>{
         const id = btn.dataset.target;
@@ -255,57 +251,8 @@
         show(id);
       });
     });
-
     window.addEventListener('hashchange', openFromHash);
     openFromHash();
   </script>
-  
-  <footer class="site-footer">
-  <div class="container">
-    <p><strong>Quisqueya Pet Logistics</strong> · 809-520-3331 ·
-      <a href="mailto:quisqueyapetlogistics@gmail.com">quisqueyapetlogistics@gmail.com</a> ·
-      IG: @Quisqueyapetlogistics
-    </p>
-    <p>© <span id="y"></span> Quisqueya Pet Logistics. Todos los derechos reservados.</p>
-  </div>
-</footer>
-<script>document.getElementById('y').textContent=new Date().getFullYear()</script>
-
 </body>
-  <script>
-  // Seleccionamos los botones de pestañas y los paneles
-  const tabs = document.querySelectorAll('.tab-btn');
-  const panels = document.querySelectorAll('.panel');
-
-  // Mostrar pestaña según ID
-  function showPanel(id) {
-    panels.forEach(p => p.classList.toggle('active', p.id === id));
-    tabs.forEach(t => t.setAttribute('aria-selected', t.dataset.target === id));
-  }
-
-  // Abrir desde el hash actual
-  function openFromHash() {
-    const hash = location.hash.replace('#', '');
-    if (hash && document.getElementById(hash)) {
-      showPanel(hash);
-    } else {
-      showPanel('transporte-aereo'); // pestaña por defecto
-    }
-  }
-
-  // Escuchar cambios de hash (si el usuario hace clic o usa atrás/adelante)
-  window.addEventListener('hashchange', openFromHash);
-
-  // Ejecutar al cargar la página
-  openFromHash();
-
-  // Si tienes botones de pestañas en la página, activamos click
-  tabs.forEach(btn => {
-    btn.addEventListener('click', () => {
-      const id = btn.dataset.target;
-      location.hash = id;
-    });
-  });
-</script>
-
 </html>
