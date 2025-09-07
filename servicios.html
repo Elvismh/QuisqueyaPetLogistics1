@@ -4,8 +4,11 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Quisqueya Pet Logistics — Servicios</title>
+
+  <!-- Estilos globales (mismos de la home) -->
   <link rel="stylesheet" href="style.css" />
 
+  <!-- Estilos mínimos solo para las pestañas -->
   <style>
     :root{ --bg:#0f1720; --surface:#121a24; --muted:#9fb3c8; --text:#e8f1ff; --brand:#ff7a00; --brand-2:#8458ff; --ring:rgba(255,122,0,.35) }
     body{ background:var(--bg); color:var(--text) }
@@ -30,7 +33,7 @@
 </head>
 <body>
 
-  <!-- HEADER (idéntico al de index.html) -->
+  <!-- HEADER (clon del de index.html, pero con botón Home a la principal) -->
   <header class="header" id="inicio">
     <div class="container header-inner">
       <a href="index.html" class="brand">
@@ -38,6 +41,7 @@
         <span>Quisqueya Pet Logistics</span>
       </a>
       <nav class="nav" id="mainNav">
+        <a href="index.html">Home</a>
         <a href="servicios.html#transporte-aereo" aria-current="page">Servicios</a>
         <a href="requisitos/index.html">Requisitos por destino</a>
         <a href="index.html#faq">Preguntas</a>
@@ -62,7 +66,7 @@
       <a class="btn-volver" href="index.html" style="margin-left:auto">← Volver a la página principal</a>
     </div>
 
-    <!-- Panel: Aéreo -->
+    <!-- PANEL: AÉREO -->
     <section id="transporte-aereo" class="panel active" role="tabpanel">
       <div class="card">
         <div class="hero">
@@ -98,7 +102,7 @@
       </div>
     </section>
 
-    <!-- Panel: Terrestre -->
+    <!-- PANEL: TERRESTRE -->
     <section id="transporte-terrestre" class="panel" role="tabpanel">
       <div class="card">
         <div class="hero">
@@ -130,7 +134,7 @@
       </div>
     </section>
 
-    <!-- Panel: Documentación -->
+    <!-- PANEL: DOCUMENTACIÓN -->
     <section id="documentacion" class="panel" role="tabpanel">
       <div class="card">
         <div class="hero">
@@ -162,7 +166,7 @@
       </div>
     </section>
 
-    <!-- Panel: Puerta a puerta -->
+    <!-- PANEL: PUERTA A PUERTA -->
     <section id="puerta-a-puerta" class="panel" role="tabpanel">
       <div class="card">
         <div class="hero">
@@ -180,7 +184,7 @@
       </div>
     </section>
 
-    <!-- Panel: Aduanas -->
+    <!-- PANEL: ADUANAS -->
     <section id="aduanas" class="panel" role="tabpanel">
       <div class="card">
         <div class="hero">
@@ -198,7 +202,7 @@
       </div>
     </section>
 
-    <!-- Panel: Asesoría -->
+    <!-- PANEL: ASESORÍA -->
     <section id="asesoria" class="panel" role="tabpanel">
       <div class="card">
         <div class="hero">
@@ -217,23 +221,67 @@
 
   <!-- FOOTER (idéntico al de index.html) -->
   <footer class="footer">
-    <div class="container footer-inner">
-      <p>© 2025 Quisqueya Pet Logistics · Santo Domingo, RD</p>
-      <a href="#" class="top" id="footerBackTop">Volver arriba ↑</a>
+    <div class="container">
+      <div class="footer-info-grid">
+        <div class="info-item">
+          <span class="icon">&#127760;</span>
+          <h3>Dirección</h3>
+          <p>Ruta 66, Aeropuerto Las Américas. Terminal de Carga<br>Santo Domingo, RD 11336</p>
+        </div>
+        <div class="info-item">
+          <span class="icon">&#128241;</span>
+          <h3>Contacto</h3>
+          <p>ventas.quisqueyapetlogistics@gmail.com<br>+1&nbsp;809&nbsp;520&nbsp;3331</p>
+        </div>
+        <div class="info-item">
+          <span class="icon">&#9201;</span>
+          <h3>Horario de seguimiento</h3>
+          <p>24/7</p>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© <span id="y"></span> Quisqueya Pet Logistics · Santo Domingo, RD</p>
+        <div class="social-icons">
+          <a href="https://www.facebook.com/tu_pagina" target="_blank" aria-label="Facebook">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a4 4 0 00-4 4v3H8v4h3v8h4v-8h3l1-4h-4V6a1 1 0 011-1h3z"/></svg>
+          </a>
+          <a href="https://www.linkedin.com/company/quisqueya-pet-logistics" target="_blank" aria-label="LinkedIn">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-4 0v7h-4v-7a6 6 0 016-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+          </a>
+          <a href="https://www.instagram.com/quisqueyapetlogistics" target="_blank" aria-label="Instagram">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37a4 4 0 11-2.24-2.24 4 4 0 012.24 2.24z"/><path d="M17.5 6.5h.01"/></svg>
+          </a>
+        </div>
+      </div>
     </div>
   </footer>
+  <script>document.getElementById('y').textContent=new Date().getFullYear()</script>
 
   <button id="backtop" class="backtop" aria-label="Volver arriba" title="Volver arriba">↑</button>
 
+  <!-- Scripts globales -->
   <script src="script.js"></script>
+
+  <!-- Lógica de pestañas (una sola vez) -->
   <script>
-    // Tabs con hash
-    const tabs=[...document.querySelectorAll('.tab-btn')];
-    const panels=[...document.querySelectorAll('.panel')];
-    function show(id){tabs.forEach(b=>b.setAttribute('aria-selected',String(b.dataset.target===id)));panels.forEach(p=>p.classList.toggle('active',p.id===id));}
-    function openFromHash(){const id=(location.hash||'#transporte-aereo').replace('#','');show(panels.some(p=>p.id===id)?id:'transporte-aereo');}
-    tabs.forEach(b=>b.addEventListener('click',()=>{const id=b.dataset.target;if(location.hash.replace('#','')!==id)history.pushState(null,'','#'+id);show(id)}));
-    window.addEventListener('hashchange',openFromHash);openFromHash();
+    const tabs   = [...document.querySelectorAll('.tab-btn')];
+    const panels = [...document.querySelectorAll('.panel')];
+
+    function show(id){
+      tabs.forEach(b => b.setAttribute('aria-selected', String(b.dataset.target===id)));
+      panels.forEach(p => p.classList.toggle('active', p.id === id));
+    }
+    function openFromHash(){
+      const id = (location.hash || '#transporte-aereo').replace('#','');
+      show(panels.some(p=>p.id===id) ? id : 'transporte-aereo');
+    }
+    tabs.forEach(btn => btn.addEventListener('click', () => {
+      const id = btn.dataset.target;
+      if (location.hash.replace('#','') !== id) history.pushState(null,'','#'+id);
+      show(id);
+    }));
+    window.addEventListener('hashchange', openFromHash);
+    openFromHash();
   </script>
 </body>
 </html>
