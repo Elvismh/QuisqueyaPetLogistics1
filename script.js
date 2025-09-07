@@ -1,8 +1,12 @@
-// ---------- Utilidades ----------
-const $  = (sel, ctx=document) => ctx.querySelector(sel);
-const $$ = (sel, ctx=document) => [...ctx.querySelectorAll(sel)];
+// =====================
+// Utilidades
+// =====================
+const $  = (sel, ctx = document) => ctx.querySelector(sel);
+const $$ = (sel, ctx = document) => [...ctx.querySelectorAll(sel)];
 
-// ---------- Navegación móvil ----------
+// =====================
+// Navegación móvil
+// =====================
 (() => {
   const toggle = $('.nav-toggle');
   const nav = $('#mainNav') || $('.nav');
@@ -10,161 +14,127 @@ const $$ = (sel, ctx=document) => [...ctx.querySelectorAll(sel)];
   toggle.addEventListener('click', () => nav.classList.toggle('open'));
 })();
 
-// ---------- Botón volver arriba ----------
+// =====================
+// Back to top (flotante y footer)
+// =====================
 (() => {
-  const backBtn    = $('#backtop');
-  const footerBtn  = $('#footerBackTop');
-  const anyTopLink = $$('.top');
-  const goTop = e => { e && e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }); };
-
-  if (backBtn) {
-    const toggleBack = () => backBtn.classList.toggle('show', window.scrollY > 400);
-    window.addEventListener('scroll', toggleBack, { passive: true });
-    toggleBack();
-    backBtn.addEventListener('click', goTop);
-  }
-  if (footerBtn) footerBtn.addEventListener('click', goTop);
-  anyTopLink.forEach(a => a.addEventListener('click', goTop));
-})();
-
-// ---------- Slider portada (home) ----------
-(() => {
-  const bg = $('.hero-bg');
-  if (!bg) return;
-  const images = ['assets/hero-1.webp', 'assets/hero-2.webp', 'assets/hero-3.webp'];
-  bg.innerHTML = '';
-  images.forEach(src => {
-    const d = document.createElement('div');
-    d.className = 'slide';
-    d.style.backgroundImage = `url("${src}")`;
-    bg.appendChild(d);
-  });
-  const overlay = document.createElement('div');
-  overlay.className = 'hero-overlay';
-  bg.appendChild(overlay);
-
-  const slides = $$('.slide', bg);
-  let i = 0;
-  const show = idx => slides.forEach((s, k) => s.classList.toggle('show', k === idx));
-  if (slides.length) show(0);
-  if (slides.length > 1) setInterval(() => { i = (i + 1) % slides.length; show(i); }, 6000);
-})();
-
-// ---------- Tabs (página Requisitos, si aplica) ----------
-(() => {
-  const tabs   = $$('.tabs .tab');
-  const panels = $$('.tab-panel');
-  if (!tabs.length || !panels.length) return;
-
-  const activate = id => {
-    tabs.forEach(t => {
-      const active = t.dataset.tab === id;
-      t.classList.toggle('active', active);
-      t.setAttribute('aria-selected', active ? 'true' : 'false');
-    });
-    panels.forEach(p => {
-      const show = p.id === id;
-      p.classList.toggle('active', show);
-      p.toggleAttribute('hidden', !show);
-      p.setAttribute('aria-hidden', show ? 'false' : 'true');
-    });
+  const backBtn   = $('#backtop');
+  const footerBtn = $('#footerBackTop');
+  const onScroll  = () => {
+    if (!backBtn) return;
+    backBtn.classList.toggle('show', window.scrollY > 400);
   };
-
-  tabs.forEach(b => b.addEventListener('click', () => activate(b.dataset.tab)));
-
-  const params = new URLSearchParams(location.search);
-  const dest = params.get('dest');
-  if (dest) {
-    const btn = document.querySelector(`.tabs .tab[data-tab="${dest}"]`);
-    if (btn) btn.click();
+  if (backBtn) {
+    backBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+  }
+  if (footerBtn) {
+    footerBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
   }
 })();
 
-// ---------- CTA WhatsApp ----------
+// =====================
+// Smooth scroll (anclas internas)
+// =====================
 (() => {
-  const wapp = document.getElementById('btnWhatsapp');
-  if (!wapp) return;
-  wapp.addEventListener('click', () => {
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', (e) => {
+      const id = a.getAttribute('href');
+      // Evita capturar enlaces tipo "#" a otra página (no lleva slash en medio)
+      if (!id || id.length < 2) return;
+      const el = document.querySelector(id);
+      if (!el) return;
+      e.preventDefault();
+      el.scrollIntoView({ behavior: 'smooth' });
+      // Cierra el menú móvil si estuviera abierto
+      const nav = $('#mainNav') || $('.nav');
+      if (nav) nav.classList.remove('open');
+    });
+  });
+})();
+
+// =====================
+// Botón WhatsApp del form (id="btnWhatsapp")
+// =====================
+(() => {
+  const btn = $('#btnWhatsapp');
+  if (!btn) return;
+
+  btn.addEventListener('click', () => {
+    const f = $('#quoteForm');
+    const get = (name) => f?.querySelector(`[name="${name}"]`)?.value?.trim() || '';
+
+    const name = get('name');
+    const origin = get('origin');
+    const destination = get('destination');
+    const petType = get('petType');
+    const weight = get('weight');
+    const crate = get('crate');
+    const date = get('date');
+    const message = get('message');
+
+    const parts = [
+      'Hola, quiero cotizar el traslado de mi mascota.',
+      name ? `\n• Nombre: ${name}` : '',
+      petType ? `\n• Tipo: ${petType}` : '',
+      origin ? `\n• Origen: ${origin}` : '',
+      destination ? `\n• Destino: ${destination}` : '',
+      weight ? `\n• Peso (mascota+jaula): ${weight} kg` : '',
+      crate ? `\n• Jaula (LxAxH): ${crate}` : '',
+      date ? `\n• Fecha estimada: ${date}` : '',
+      message ? `\n• Detalles: ${message}` : ''
+    ];
+
+    const text = encodeURIComponent(parts.join(''));
     const phone = '18095203331';
-    const text  = encodeURIComponent('Hola, quiero cotizar el traslado de mi mascota');
     window.open(`https://wa.me/${phone}?text=${text}`, '_blank');
   });
 })();
 
-// ---------- Scroll suave SOLO para anclas internas ----------
-document.querySelectorAll('nav a').forEach(a => {
-  a.addEventListener('click', e => {
-    const href = a.getAttribute('href') || '';
-    if (href.startsWith('#')) {
-      e.preventDefault();
-      const el = document.querySelector(href);
-      if (el) el.scrollIntoView({ behavior: 'smooth' });
-    }
-  });
-});
-// Tabs para #requisitos-destino (igual que Servicios)
-(function initRequisitosTabs(){
-  const root = document.querySelector('#requisitos-destino');
+// =====================
+// Tabs "tipo servicios/requisitos" (basadas en .tab-btn)
+//  - Muestra un único panel .panel activo según data-target
+//  - Soporta hash en URL (#req-usa, etc.)
+//  - NO duplica inicializadores
+// =====================
+function initTabsScoped(rootSelector) {
+  const root = document.querySelector(rootSelector);
   if (!root) return;
 
   const tabs   = [...root.querySelectorAll('.tab-btn')];
   const panels = [...root.querySelectorAll('.panel')];
-
-  const show = (id) => {
-    tabs.forEach(b => b.setAttribute('aria-selected', String(b.dataset.target === id)));
-    panels.forEach(p => p.classList.toggle('active', p.id === id));
-  };
-
-  const first = tabs[0]?.dataset.target;
-
-  function openFromHash() {
-    const id = (location.hash || ('#' + (first || ''))).slice(1);
-    show(root.querySelector('#' + id) ? id : first);
-  }
-
-  tabs.forEach(btn => {
-    btn.addEventListener('click', () => {
-      const id = btn.dataset.target;
-      if (id) {
-        history.replaceState(null, '', '#' + id);
-        show(id);
-      }
-    });
-  });
-
-  window.addEventListener('hashchange', openFromHash);
-  openFromHash();
-})();
-// Tabs para #requisitos-destino (igual a Servicios)
-(function initRequisitosTabs(){
-  const root = document.querySelector('#requisitos-destino');
-  if (!root) return;
-
-  const tabs   = [...root.querySelectorAll('.tab-btn')];
-  const panels = [...root.querySelectorAll('.panel')];
-
-  const show = (id) => {
-    tabs.forEach(b => b.setAttribute('aria-selected', String(b.dataset.target === id)));
-    panels.forEach(p => p.classList.toggle('active', p.id === id));
-  };
+  if (!tabs.length || !panels.length) return;
 
   const first = tabs[0]?.dataset.target || null;
 
-  function openFromHash() {
+  const show = (id) => {
+    if (!id) return;
+    tabs.forEach(b => b.setAttribute('aria-selected', String(b.dataset.target === id)));
+    panels.forEach(p => p.classList.toggle('active', p.id === id));
+  };
+
+  const openFromHash = () => {
     const id = (location.hash || '').slice(1);
     show(root.querySelector('#' + id) ? id : first);
-  }
+  };
 
   tabs.forEach(btn => {
     btn.addEventListener('click', () => {
       const id = btn.dataset.target;
-      if (id) {
-        history.replaceState(null, '', '#' + id);
-        show(id);
-      }
+      if (!id) return;
+      history.replaceState(null, '', '#' + id);
+      show(id);
     });
   });
 
   window.addEventListener('hashchange', openFromHash);
   openFromHash();
-})();
+}
+
+// Inicializa tabs para las secciones que usen este patrón
+initTabsScoped('#requisitos-destino');
+initTabsScoped('#servicios');   // por si en el futuro usas el mismo patrón en servicios
