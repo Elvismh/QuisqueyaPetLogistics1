@@ -1,107 +1,103 @@
-<!doctype html>
-<html lang="es">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <meta name="color-scheme" content="light dark" />
-  <title>Requisitos por destino · Quisqueya Pet Logistics</title>
-  <link rel="stylesheet" href="../style.css?v=20" />
-</head>
-<body>
+<!-- Requisitos por destino (look igual a Servicios) -->
+<section id="requisitos-destino" class="section">
+  <div class="container">
+    <h2 class="section-title">Requisitos por destino</h2>
+    <p>Selecciona una región para ver el checklist y la documentación. Podemos verificar tu caso y la normativa vigente.</p>
 
-  <!-- Header / Nav (minimal) -->
-  <header class="header">
-    <div class="container header-inner">
-      <a href="../index.html" class="brand" aria-label="Inicio">
-        <img class="logo" src="../assets/logo.png" alt="Quisqueya Pet Logistics" width="40" height="40" />
-        <span>Quisqueya Pet Logistics</span>
-      </a>
-      <button class="nav-toggle" aria-label="Abrir menú">☰</button>
-      <nav class="nav" id="mainNav">
-        <a href="index.html">Home</a>
-        <a href="../index.html#servicios">Servicios</a>
-        <a href="../index.html#faq">Preguntas</a>
-               <a href="index.html#contacto" class="btn btn-sm">Cotiza</a>
-        <a href="https://wa.me/18095203331?text=Hola,%20quiero%20cotizar%20el%20traslado%20de%20mi%20mascota" class="btn btn-sm btn-whatsapp" target="_blank">Contacto</a>
-      </nav>
+    <!-- Tabs -->
+    <div class="tabs" role="tablist" aria-label="Regiones">
+      <button class="tab-btn" role="tab" aria-selected="true" data-target="req-europa">🌍 Europa</button>
+      <button class="tab-btn" role="tab" aria-selected="false" data-target="req-caribe">🏝️ Caribe</button>
+      <button class="tab-btn" role="tab" aria-selected="false" data-target="req-usa">🇺🇸 USA</button>
+      <button class="tab-btn" role="tab" aria-selected="false" data-target="req-latam">🌎 Latinoamérica</button>
     </div>
-  </header>
 
-  <!-- Requisitos por destino -->
-  <section class="section" style="padding-top:48px">
-    <div class="container">
-      <h1 class="section-title">Requisitos por destino</h1>
-      <p>Selecciona una región para ver el checklist y la documentación. Podemos verificar tu caso y la normativa vigente.</p>
-
-      <!-- Tabs -->
-      <div class="tabs" role="tablist" aria-label="Regiones">
-        <button class="tab" data-tab="europa" role="tab" aria-controls="europa" aria-selected="false">Europa</button>
-        <button class="tab" data-tab="caribe" role="tab" aria-controls="caribe" aria-selected="false">Caribe</button>
-        <button class="tab active" data-tab="usa" role="tab" aria-controls="usa" aria-selected="true">USA</button>
-        <button class="tab" data-tab="latam" role="tab" aria-controls="latam" aria-selected="false">Latinoamérica</button>
-      </div>
-
-      <!-- Paneles -->
-      <div class="tab-panels" id="reqPanel">
-        <!-- EUROPA -->
-        <div class="tab-panel" id="europa" role="tabpanel" aria-labelledby="europa-tab" hidden>
-          <ul class="checklist">
+    <!-- Panel: Europa -->
+    <section id="req-europa" class="panel active" role="tabpanel">
+      <div class="card">
+        <div class="hero">
+          <!-- si no tienes la imagen, puedes omitir este <img> y se verá igual -->
+          <img src="assets/requisitos/europa.webp" alt="Europa" />
+          <span class="badge">Europa</span>
+        </div>
+        <div class="content">
+          <h3>Checklist principal</h3>
+          <ul>
             <li><strong>Microchip ISO 11784/11785</strong> antes de la vacuna antirrábica.</li>
             <li><strong>Vacuna antirrábica vigente</strong> (≥21 días desde primovacunación).</li>
-            <li><strong>Certificado zoosanitario de la UE</strong> (no comercial) + declaración del propietario.</li>
+            <li><strong>Certificado zoosanitario</strong> (no comercial) + declaración del propietario.</li>
             <li><strong>Entrada por Punto de Control designado</strong> y verificación de identidad y documentos.</li>
-            <li><strong>Serología de rabia (≥0.5 IU/ml)</strong> si el país origen no está en la lista UE correspondiente.</li>
+            <li><strong>Serología de rabia</strong> (≥0.5 IU/ml) si aplica según el país origen/destino.</li>
           </ul>
-          <div class="cta-inline"><a class="btn" href="../index.html#contacto">Quiero cotizar</a></div>
-        </div>
-
-        <!-- CARIBE -->
-        <div class="tab-panel" id="caribe" role="tabpanel" aria-labelledby="caribe-tab" hidden>
-          <ul class="checklist">
-            <li><strong>Certificado zoosanitario</strong> conforme al país de destino (BAHA, SENASA, etc.).</li>
-            <li><strong>Vacuna antirrábica vigente</strong>; refuerzos según país.</li>
-            <li><strong>Permiso de importación</strong> cuando aplique; inspección a la llegada.</li>
-            <li><strong>Jaula IATA</strong>, medidas correctas y reserva confirmada.</li>
-          </ul>
-          <div class="cta-inline"><a class="btn" href="../index.html#contacto">Consultar rutas Caribe</a></div>
-        </div>
-
-        <!-- USA (activo por defecto) -->
-        <div class="tab-panel active" id="usa" role="tabpanel" aria-labelledby="usa-tab">
-          <ul class="checklist">
-            <li><strong>Vacuna antirrábica vigente</strong> según normativa CDC/estado.</li>
-            <li>Ingreso por <strong>aeropuerto habilitado</strong>; posible revisión CDC/USDA.</li>
-            <li>Para carga (guía aérea), coordinar con <strong>broker</strong> en destino.</li>
-            <li><strong>Jaula homologada IATA</strong>, medidas correctas y reserva confirmada.</li>
-          </ul>
-          <div class="cta-inline"><a class="btn" href="../index.html#contacto">Verificar rutas USA</a></div>
-        </div>
-
-        <!-- LATAM -->
-        <div class="tab-panel" id="latam" role="tabpanel" aria-labelledby="latam-tab" hidden>
-          <ul class="checklist">
-            <li><strong>Certificado zoosanitario de exportación</strong> desde RD.</li>
-            <li><strong>Vacuna antirrábica vigente</strong>; otras vacunas según país (SAG, ICA, SENASA, etc.).</li>
-            <li>Posible <strong>permiso de importación</strong> y revisión documental al arribo.</li>
-            <li><strong>Jaula IATA</strong> y reserva confirmada.</li>
-          </ul>
-          <div class="cta-inline"><a class="btn" href="../index.html#contacto">Quiero cotizar</a></div>
+          <div style="margin-top:12px">
+            <a href="#contacto" class="btn btn-solid">Quiero cotizar</a>
+          </div>
         </div>
       </div>
-      <!-- /#reqPanel -->
-    </div>
-  </section>
+    </section>
 
-  <!-- Footer -->
-  <footer class="footer">
-    <div class="container footer-inner">
-      <small>© 2025 Quisqueya Pet Logistics · Requisitos</small>
-       <!-- <a class="top" href="#top" id="footerBackTop">↑ Volver arriba</a> -->
-    </div>
-  </footer>
+    <!-- Panel: Caribe -->
+    <section id="req-caribe" class="panel" role="tabpanel">
+      <div class="card">
+        <div class="hero">
+          <img src="assets/requisitos/caribe.webp" alt="Caribe" />
+          <span class="badge">Caribe</span>
+        </div>
+        <div class="content">
+          <h3>Checklist principal</h3>
+          <ul>
+            <li>Certificado de salud veterinario vigente.</li>
+            <li>Vacuna antirrábica al día (y cartilla de vacunación).</li>
+            <li>Permiso/registro sanitario si lo exige el país de destino.</li>
+            <li>Cumplimiento de requisitos de aerolínea (jaula IATA, medidas/peso).</li>
+          </ul>
+          <div style="margin-top:12px">
+            <a href="#contacto" class="btn btn-solid">Quiero cotizar</a>
+          </div>
+        </div>
+      </div>
+    </section>
 
-   <!--  <button id="backtop" class="backtop" aria-label="Volver arriba" title="Volver arriba">↑</button> -->
-  <script src="../script.js?v=20" defer></script>
-</body>
-</html>
-  
+    <!-- Panel: USA -->
+    <section id="req-usa" class="panel" role="tabpanel">
+      <div class="card">
+        <div class="hero">
+          <img src="assets/requisitos/usa.webp" alt="USA" />
+          <span class="badge">USA</span>
+        </div>
+        <div class="content">
+          <h3>Checklist principal</h3>
+          <ul>
+            <li>Certificado de salud y vacuna antirrábica vigente.</li>
+            <li>Documentación exigida por el punto de entrada y aerolínea.</li>
+            <li>Verificación previa de normativas del estado/aeropuerto de arribo.</li>
+          </ul>
+          <div style="margin-top:12px">
+            <a href="#contacto" class="btn btn-solid">Quiero cotizar</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Panel: Latinoamérica -->
+    <section id="req-latam" class="panel" role="tabpanel">
+      <div class="card">
+        <div class="hero">
+          <img src="assets/requisitos/latam.webp" alt="Latinoamérica" />
+          <span class="badge">Latinoamérica</span>
+        </div>
+        <div class="content">
+          <h3>Checklist principal</h3>
+          <ul>
+            <li>Certificado de salud veterinario y vacuna antirrábica.</li>
+            <li>Permisos/formatos del país destino cuando aplique.</li>
+            <li>Revisión de medidas/peso y jaula IATA antes del viaje.</li>
+          </ul>
+          <div style="margin-top:12px">
+            <a href="#contacto" class="btn btn-solid">Quiero cotizar</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+</section>
