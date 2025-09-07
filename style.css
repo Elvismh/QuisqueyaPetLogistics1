@@ -808,11 +808,11 @@ input,select,textarea{border:1px solid #e5e7eb;border-radius:12px;padding:10px 1
   color: #fff;
   z-index: 1;
 }
-/* Fondo para el nombre del servicio */
-.service-card .service-info h3 {
+#servicios .card .card-body h3 {
   display: inline-block;
-  background: rgba(0, 0, 0, 0.6); /* color semitransparente */
+  background: rgba(0,0,0,0.6);
   padding: 0.25rem 0.5rem;
   border-radius: 6px;
   margin: 0;
+  color: #fff; /* asegúrate de que el texto sea blanco */
 }
