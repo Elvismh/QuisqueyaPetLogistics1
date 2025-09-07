@@ -5,13 +5,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Quisqueya Pet Logistics — Servicios</title>
 
-  <!-- IMPORTA LOS ESTILOS GLOBALES -->
+  <!-- Usa los mismos estilos globales que la home -->
   <link rel="stylesheet" href="style.css" />
 
-  <!-- Estilos mínimos solo para el layout de pestañas -->
+  <!-- Estilos mínimos solo para las pestañas -->
   <style>
-    :root{ --bg:#0f1720; --surface:#121a24; --muted:#9fb3c8; --text:#e8f1ff; --brand:#ff7a00; --brand-2:#8458ff; --ring:rgba(255,122,0,.35) }
-    body.services{ background:var(--bg); color:var(--text) }
+    :root{ --bg:#0f1720; --surface:#121a24; --muted:#9fb3c8; --text:#e8f1ff; --brand:#ff7a00; --brand-2:#8458ff; --ring:rgba(255,122,0,.35); }
+    body{ background:var(--bg); color:var(--text) }
     .wrap{max-width:1100px;margin:0 auto;padding:28px 20px 64px}
     .tabs{display:flex;gap:6px;flex-wrap:wrap;position:sticky;top:64px;background:linear-gradient(var(--bg),var(--bg));padding:8px 0 10px;z-index:5}
     .tab-btn{appearance:none;border:1px solid #203040;background:var(--surface);color:var(--text);padding:10px 14px;border-radius:12px;cursor:pointer;font-weight:700}
@@ -31,8 +31,9 @@
     @media (min-width:960px){ .panel .card{display:grid;grid-template-columns:6fr 6fr} .hero{min-height:100%} }
   </style>
 </head>
-<body class="services">
-  <!-- HEADER (MISMO QUE EN index.html) -->
+<body>
+
+  <!-- Header idéntico al de index.html (incluye id="mainNav") -->
   <header class="header" id="inicio">
     <div class="container header-inner">
       <a href="index.html" class="brand">
@@ -40,7 +41,6 @@
         <span>Quisqueya Pet Logistics</span>
       </a>
       <nav class="nav" id="mainNav">
-        <!-- En esta página, “Servicios” apunta a la pestaña por defecto -->
         <a href="servicios.html#transporte-aereo" aria-current="page">Servicios</a>
         <a href="requisitos/index.html">Requisitos por destino</a>
         <a href="index.html#faq">Preguntas</a>
@@ -54,24 +54,21 @@
   <div class="wrap">
     <h1 style="margin:18px 0">Nuestros servicios</h1>
 
-    <!-- PESTAÑAS -->
+    <!-- Pestañas -->
     <div class="tabs" role="tablist" aria-label="Servicios">
       <button class="tab-btn" role="tab" data-target="transporte-aereo" aria-selected="true">✈️ Transporte aéreo</button>
-      <button class="tab-btn" role="tab" data-target="transporte-terrestre" aria-selected="false">🚚 Transporte terrestre</button>
-      <button class="tab-btn" role="tab" data-target="documentacion" aria-selected="false">📄 Documentación</button>
-      <button class="tab-btn" role="tab" data-target="puerta-a-puerta" aria-selected="false">🏠 Puerta a puerta</button>
-      <button class="tab-btn" role="tab" data-target="aduanas" aria-selected="false">🛃 Aduanas</button>
-      <button class="tab-btn" role="tab" data-target="asesoria" aria-selected="false">🤝 Asesoría</button>
-
-      <!-- Volver a Home -->
+      <button class="tab-btn" role="tab" data-target="transporte-terrestre">🚚 Transporte terrestre</button>
+      <button class="tab-btn" role="tab" data-target="documentacion">📄 Documentación</button>
+      <button class="tab-btn" role="tab" data-target="puerta-a-puerta">🏠 Puerta a puerta</button>
+      <button class="tab-btn" role="tab" data-target="aduanas">🛃 Aduanas</button>
+      <button class="tab-btn" role="tab" data-target="asesoria">🤝 Asesoría</button>
       <a class="btn-volver" href="index.html" style="margin-left:auto">← Volver a la página principal</a>
     </div>
 
-    <!-- PANEL: AÉREO -->
+    <!-- Panel: Aéreo -->
     <section id="transporte-aereo" class="panel active" role="tabpanel">
       <div class="card">
         <div class="hero">
-          <!-- VERIFICA QUE ESTE PATH EXISTA EN TU REPO -->
           <img src="assets/servicios/aereo.webp" alt="Avión despegando" />
           <span class="badge">Transporte aéreo</span>
         </div>
@@ -104,7 +101,7 @@
       </div>
     </section>
 
-    <!-- PANEL: TERRESTRE -->
+    <!-- Panel: Terrestre -->
     <section id="transporte-terrestre" class="panel" role="tabpanel">
       <div class="card">
         <div class="hero">
@@ -136,7 +133,7 @@
       </div>
     </section>
 
-    <!-- PANEL: DOCUMENTACIÓN -->
+    <!-- Panel: Documentación -->
     <section id="documentacion" class="panel" role="tabpanel">
       <div class="card">
         <div class="hero">
@@ -168,7 +165,7 @@
       </div>
     </section>
 
-    <!-- PANEL: PUERTA A PUERTA -->
+    <!-- Panel: Puerta a puerta -->
     <section id="puerta-a-puerta" class="panel" role="tabpanel">
       <div class="card">
         <div class="hero">
@@ -186,7 +183,7 @@
       </div>
     </section>
 
-    <!-- PANEL: ADUANAS -->
+    <!-- Panel: Aduanas -->
     <section id="aduanas" class="panel" role="tabpanel">
       <div class="card">
         <div class="hero">
@@ -204,7 +201,7 @@
       </div>
     </section>
 
-    <!-- PANEL: ASESORÍA -->
+    <!-- Panel: Asesoría -->
     <section id="asesoria" class="panel" role="tabpanel">
       <div class="card">
         <div class="hero">
@@ -221,7 +218,7 @@
     </section>
   </div>
 
-  <!-- FOOTER (igual a la home) -->
+  <!-- Footer idéntico al de la home -->
   <footer class="footer">
     <div class="container footer-inner">
       <p>© 2025 Quisqueya Pet Logistics · Santo Domingo, RD</p>
@@ -231,10 +228,10 @@
 
   <button id="backtop" class="backtop" aria-label="Volver arriba" title="Volver arriba">↑</button>
 
-  <!-- SCRIPTS GLOBALES -->
+  <!-- Scripts globales -->
   <script src="script.js"></script>
 
-  <!-- Tabs con soporte de hash -->
+  <!-- Tabs con hash -->
   <script>
     const tabs   = [...document.querySelectorAll('.tab-btn')];
     const panels = [...document.querySelectorAll('.panel')];
@@ -244,17 +241,14 @@
       panels.forEach(p => p.classList.toggle('active', p.id === id));
     }
     function openFromHash(){
-      const hash = (location.hash||'').replace('#','');
-      const exists = panels.some(p=>p.id===hash);
-      show(exists ? hash : 'transporte-aereo');
+      const id = (location.hash || '#transporte-aereo').replace('#','');
+      show(panels.some(p=>p.id===id) ? id : 'transporte-aereo');
     }
-    tabs.forEach(btn=>{
-      btn.addEventListener('click', ()=>{
-        const id = btn.dataset.target;
-        if(location.hash.replace('#','')!==id) history.pushState(null,'','#'+id);
-        show(id);
-      });
-    });
+    tabs.forEach(btn => btn.addEventListener('click', () => {
+      const id = btn.dataset.target;
+      if (location.hash.replace('#','') !== id) history.pushState(null,'','#'+id);
+      show(id);
+    }));
     window.addEventListener('hashchange', openFromHash);
     openFromHash();
   </script>
