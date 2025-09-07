@@ -1,1097 +1,258 @@
-/* ===========================
-   Quisqueya Pet Logistics · CSS
-   =========================== */
+/* =========================================================
+   Base / Reset
+   ========================================================= */
+*,
+*::before,
+*::after { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+img { max-width: 100%; display: block; }
+button, input, select, textarea { font: inherit; }
+a { color: inherit; text-decoration: none; }
 
-/* ====== Tokens ====== */
+/* =========================================================
+   Tokens (Light) + Dark Mode
+   ========================================================= */
 :root{
-  /* Marca */
-  --brand:#f48c20;
-  --accent:#6f3fd4;
+  --bg: #f7fafc;
+  --surface: #ffffff;
+  --surface-2: #f4f8fd;
+  --text: #0b1722;
+  --muted: #405361;
+  --border: #d9e4ef;
 
-  /* Base (light) */
-  --bg:#ffffff;
-  --ink:#111827;
-  --muted:#6b7280;
-  --card:#ffffff;
-  --shadow:0 10px 30px rgba(0,0,0,.08);
+  --brand: #F48C20;          /* NARANJA DE MARCA */
+  --brand-2: #8458ff;        /* acento secundario si lo necesitas */
+  --ring: rgba(244,140,32,.18);
 
-  /* Tabs/Requisitos (light) */
-  --panel-bg:#ffffff;   /* fondo del panel de requisitos */
-  --panel-ink:#111827;  /* texto dentro del panel */
-  --pill-bg:#ffffff;    /* pill inactiva */
-  --pill-ink:#1f2a37;   /* texto pill inactiva */
-
-  /* Overlay del HERO (ajusta a gusto) */
-  --hero-orange-alpha:.60;  /* fuerza del naranja */
-  --hero-vignette-top:.35;  /* sombreado superior */
-  --hero-vignette-bot:.55;  /* sombreado inferior */
+  --radius: 16px;
+  --radius-lg: 18px;
+  --shadow: 0 10px 28px rgba(10,20,30,.08);
 }
-
-*{box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{
-  margin:0;
-  font:16px/1.6 system-ui,-apple-system,Segoe UI,Roboto,Inter,Arial,sans-serif;
-  color:var(--ink);
-  background:var(--bg);
-}
-img{max-width:100%;height:auto;display:block}
-
-/* ====== Layout ====== */
-.container{width:min(1100px,92%);margin:0 auto}
-.section{padding:56px 0}
-.section.alt{background:linear-gradient(180deg,#fafafa,#fff)}
-.section-title{font-size:clamp(24px,3.2vw,36px);margin:0 0 18px}
-
-/* ====== Header ====== */
-.header{
-  position:sticky;top:0;z-index:50;
-  background:#fff;border-bottom:1px solid #eee;
-  backdrop-filter:saturate(1.4) blur(6px)
-}
-.header-inner{display:flex;align-items:center;justify-content:space-between;padding:12px 0}
-.brand{display:flex;align-items:center;gap:12px;text-decoration:none;color:var(--ink);font-weight:800}
-.logo{width:40px;height:40px;object-fit:contain}
-.nav{display:flex;gap:22px;align-items:center}
-.nav a{color:#1f2a37;text-decoration:none;font-weight:600}
-.nav a:hover{color:var(--accent)}
-.btn.btn-sm{padding:8px 12px;border-radius:12px;background:var(--brand);color:#fff;text-decoration:none}
-.nav-toggle{display:none;background:transparent;border:0;font-size:24px}
-@media (max-width:860px){
-  .nav{display:none}
-  .nav.open{
-    display:flex;flex-direction:column;position:absolute;right:4%;top:56px;
-    background:#fff;padding:10px;border-radius:12px;box-shadow:var(--shadow)
-  }
-  .nav-toggle{display:block}
-}
-
-/* ====== Buttons ====== */
-.btn{
-  background:var(--brand);color:#fff;border:0;border-radius:14px;
-  padding:12px 16px;font-weight:800;text-decoration:none;display:inline-block
-}
-.btn:hover{filter:brightness(.97)}
-.btn.btn-secondary{background:rgba(255,255,255,.06);border:2px solid rgba(255,255,255,.35);color:#fff}
-
-/* ====== Cards & Grid ====== */
-.grid{display:grid;gap:18px}
-.cards{grid-template-columns:repeat(12,1fr)}
-@media (max-width:900px){ .cards{grid-template-columns:repeat(6,1fr)} }
-@media (max-width:640px){ .cards{grid-template-columns:repeat(2,1fr)} }
-.card{
-  grid-column:span 6;background:var(--card);border-radius:18px;
-  box-shadow:var(--shadow);overflow:hidden;display:flex;flex-direction:column
-}
-.card img{width:100%;height:220px;object-fit:cover}
-.card-body{padding:14px}
-.card-body h3{margin:8px 0 6px}
-.card-body p{margin:0;color:var(--muted)}
-
-/* ====== Stepper ====== */
-.stepper{list-style:none;padding:0;margin:0;display:grid;gap:12px}
-.stepper li{background:#fff;border-radius:14px;box-shadow:var(--shadow);padding:14px}
-.stepper li span{
-  display:inline-grid;place-items:center;width:28px;height:28px;border-radius:999px;
-  background:var(--accent);color:#fff;font-weight:800;margin-right:8px
-}
-
-/* ====== Accordion (FAQ) ====== */
-.accordion details{background:#fff;border-radius:14px;box-shadow:var(--shadow);padding:12px}
-.accordion details+details{margin-top:10px}
-.accordion summary{cursor:pointer;font-weight:700}
-
-/* ====== Forms ====== */
-.form{background:#fff;border-radius:18px;box-shadow:var(--shadow);padding:18px}
-.form-grid{grid-template-columns:repeat(12,1fr)}
-.form-grid>label{grid-column:span 6;display:flex;flex-direction:column;gap:6px}
-@media (max-width:900px){ .form-grid>label{grid-column:span 12} }
-input,select,textarea{border:1px solid #e5e7eb;border-radius:12px;padding:10px 12px;font:inherit}
-.form-actions{display:flex;gap:10px;margin-top:10px}
-.form-note{color:var(--muted);font-size:.9rem;margin:10px 0 0}
-
-/* Campo mensaje a todo el ancho */
-.form-grid>label.full{grid-column:1 / -1}
-.form-grid>label input,
-.form-grid>label select,
-.form-grid>label textarea{width:100%}
-.form textarea{min-height:120px}
-.form label{font-weight:600}
-
-/* ====== Footer ====== */
-.footer{border-top:1px solid #eee;background:#fafafa}
-.footer-inner{display:flex;align-items:center;justify-content:space-between;padding:18px 0}
-.top{text-decoration:none}
-
-/* ====== HERO SLIDER ====== */
-.hero{position:relative;overflow:hidden;min-height:78vh;display:grid;align-items:center}
-@media (max-width:860px){ .hero{min-height:70vh} }
-.hero-bg{position:absolute;inset:0}
-.slide{position:absolute;inset:0;background-size:cover;background-position:center;opacity:0;transition:opacity 900ms ease}
-.slide.show{opacity:1}
-
-/* Difuminado anaranjado + viñeteado para TODAS las portadas */
-.hero-overlay{
-  position:absolute;
-  inset:0;
-  pointer-events:none; /* no bloquea clicks */
-
-  /* 1) Tinte anaranjado (marca) con un radial suave centrado arriba
-     2) Viñeta oscura para legibilidad del texto                  */
-  background:
-    radial-gradient(110% 70% at 50% 50%,
-      rgba(244,140,32,var(--hero-orange-alpha)) 0%,
-      rgba(244,140,32,calc(var(--hero-orange-alpha) * .55)) 45%,
-      rgba(244,140,32,0) 70%),
-    linear-gradient(180deg,
-      rgba(17,24,39,var(--hero-vignette-top)) 0%,
-      rgba(17,24,39,.45) 60%,
-      rgba(17,24,39,var(--hero-vignette-bot)) 100%);
-
-  backdrop-filter: blur(2px);
-}
-
-.hero .container{position:relative;z-index:2}
-.hero .eyebrow,.hero h1,.hero p{color:#fff}
-.hero h1{text-shadow:0 2px 14px rgba(0,0,0,.35)}
-.hero .sub{color:var(--brand)}
-.hero .btn{box-shadow:0 10px 25px rgba(244,140,32,.3)}
-.hero-kpis{
-  display:flex;gap:14px;margin-top:18px;flex-wrap:wrap
-}
-.hero-kpis>div{
-  display:flex;gap:8px;align-items:center;
-  background:rgba(17,24,39,.55);
-  border:1px solid rgba(255,255,255,.15);
-  padding:10px 14px;border-radius:14px;color:#fff
-}
-
-/* Hero centrado */
-.hero.center .hero-content{ text-align:center; max-width:900px; margin-inline:auto }
-.hero.center .hero-ctas{ display:flex; gap:10px; justify-content:center; flex-wrap:wrap }
-.hero.center .hero-kpis{ justify-content:center }
-
-/* ====== Tabs / Requisitos por destino ====== */
-/* (usamos variables por tema, ver bloque dark más abajo) */
-.tabs{display:flex;gap:12px;flex-wrap:wrap;margin:10px 0 12px}
-.tab{
-  background:var(--pill-bg);
-  color:var(--pill-ink);
-  border:1px solid #1f2937;
-  border-radius:999px;
-  padding:8px 12px;
-  cursor:pointer;font-weight:700
-}
-.tab.active{background:var(--brand);border-color:var(--brand);color:#fff}
-.tab-panels{
-  background:var(--panel-bg);
-  color:var(--panel-ink);
-  border-radius:18px;
-  box-shadow:var(--shadow);
-  padding:14px;
-  border:1px solid #e5e7eb;
-}
-.tab-panel{display:none;color:inherit}
-.tab-panel.active{display:block}
-.checklist{margin:0;padding-left:18px;color:inherit}
-.checklist li strong{color:inherit}
-
-/* ====== Botón flotante "Volver arriba" ====== */
-.backtop{
-  position:fixed; right:18px; bottom:18px; z-index:60;
-  width:48px; height:48px; border:0; border-radius:999px;
-  display:grid; place-items:center; cursor:pointer;
-  background: radial-gradient(120% 120% at 30% 20%, #f7b057 0%, #f48c20 60%);
-  color:#fff; font-weight:800; font-size:18px; line-height:1;
-  box-shadow: 0 10px 28px rgba(0,0,0,.25);
-  opacity:0; transform: translateY(18px); transition: opacity .25s ease, transform .25s ease;
-}
-.backtop.show{ opacity:1; transform: translateY(0) }
-.backtop:focus-visible{ outline:3px solid #ffffffaa; outline-offset:2px }
-@media (max-width:640px){ .backtop{ width:44px; height:44px; right:14px; bottom:14px } }
-@media (prefers-reduced-motion: reduce){ .backtop{ transition: none } }
-
-/* ====== Dark mode automático ====== */
 @media (prefers-color-scheme: dark){
   :root{
-    --bg:#0b0f19;
-    --ink:#e5e7eb;
-    --muted:#a3a9b6;
-    --card:#111827;
-    --shadow: 0 18px 40px rgba(0,0,0,.5);
+    --bg:#0f1720;
+    --surface:#121a24;
+    --surface-2:#0f1620;
+    --text:#e8f1ff;
+    --muted:#9fb3c8;
+    --border:#213448;
 
-    /* Tabs/Requisitos (dark) */
-    --panel-bg:#0f1626;   /* panel oscuro */
-    --panel-ink:#e5e7eb;  /* texto claro dentro del panel */
-    --pill-bg:#111827;    /* pill inactiva oscura */
-    --pill-ink:#e5e7eb;   /* texto pill inactiva */
-
-    /* Overlay del HERO – ajustes para dark */
-    --hero-orange-alpha:.26;
-    --hero-vignette-top:.42;
-    --hero-vignette-bot:.62;
-  }
-
-  body{ background:var(--bg); color:var(--ink) }
-  .section.alt{ background:linear-gradient(180deg,#0e1422,#0b0f19) }
-  .header{ background:rgba(17,24,39,.85); border-bottom-color:#1f2937 }
-  .brand{ color:#e5e7eb }
-  .nav a{ color:#e5e7eb }
-  .nav a:hover{ color:#c4b5fd }
-  .card, .form, .accordion details{
-    background:var(--card); box-shadow:var(--shadow); border-color:#1f2937
-  }
-  .footer{ background:#0e1422; border-top-color:#1f2937 }
-  .btn.btn-secondary{ border-color:rgba(255,255,255,.28); color:#fff }
-  .hero .eyebrow, .hero h1, .hero p{ color:#fff }
-
-  /* Stepper contraste */
-  .stepper li{
-    background:#121826;color:#e5e7eb;border:1px solid #1f2937;
-    box-shadow: 0 10px 28px rgba(0,0,0,.35);
-  }
-  .stepper li, .stepper li *{ color:inherit }
-  .stepper li span{ background:#8b5cf6;color:#fff }
-
-  /* Requisitos: bullets más visibles en dark */
-  .checklist li::marker{ color:#9aa3b2 }
-}
-
-/* =========================================
-   FIX FINAL · Requisitos por destino (contraste)
-   ========================================= */
-/* Pills (pestañas) – estado base */
-.section .container .tabs .tab{
-  background:#ffffff !important;
-  color:#1f2a37 !important;
-  border:1px solid #1f2937 !important;
-}
-.section .container .tabs .tab.active{
-  background:var(--brand) !important;
-  border-color:var(--brand) !important;
-  color:#fff !important;
-}
-
-/* Panel + contenido en LIGHT */
-@media (prefers-color-scheme: light), (prefers-color-scheme: no-preference){
-  .section .container .tab-panels{
-    background:#ffffff !important;
-    color:#111827 !important;
-    border:1px solid #e5e7eb !important;
-    box-shadow:0 14px 32px rgba(0,0,0,.15) !important;
-  }
-  .section .container .tab-panels .tab-panel,
-  .section .container .tab-panels .checklist,
-  .section .container .tab-panels .checklist li,
-  .section .container .tab-panels .checklist li strong{
-    color:#111827 !important;
-    opacity:1 !important;
+    --ring: rgba(244,140,32,.28);
+    --shadow: 0 10px 28px rgba(0,0,0,.35);
   }
 }
 
-/* Panel + contenido en DARK */
-@media (prefers-color-scheme: dark){
-  /* pills inactivas oscuras */
-  .section .container .tabs .tab{
-    background:#111827 !important;
-    color:#e5e7eb !important;
-    border:1px solid #1f2937 !important;
-  }
-  /* panel oscuro + texto claro */
-  .section .container .tab-panels{
-    background:#0f1626 !important;
-    color:#e5e7eb !important;
-    border:1px solid #1f2937 !important;
-    box-shadow:0 14px 32px rgba(0,0,0,.45) !important;
-  }
-  .section .container .tab-panels .tab-panel,
-  .section .container .tab-panels .checklist,
-  .section .container .tab-panels .checklist li,
-  .section .container .tab-panels .checklist li strong{
-    color:#e5e7eb !important;
-    opacity:1 !important;        /* por si algo aplicó opacidad */
-  }
-  .section .container .tab-panels .checklist li::marker{
-    color:#9aa3b2 !important;
-  }
-}
-/* ===== TÍTULO HERO “potente” ===== */
-.hero-title{
-  margin: 0 0 .35rem;
-  font-weight: 900;
-  /* tamaño fluido y compacto */
-  font-size: clamp(32px, 5.4vw, 64px);
-  line-height: 1.05;
-  letter-spacing: -0.01em;
-  color: #fff;
-  text-wrap: balance;              /* mejor corte de líneas si el navegador lo soporta */
-  text-shadow: 0 10px 28px rgba(0,0,0,.35);  /* más legibilidad sobre foto */
-  animation: heroRise .6s ease both;         /* entrada sutil */
-}
-
-/* Segunda línea un poco más grande para crear ritmo */
-.hero-title .line2{
-  font-size: clamp(34px, 5.8vw, 68px);
-}
-
-/* “tu mascota” con efecto marcador */
-.hero-title .hl{
-  position: relative;
-  z-index: 0;
-}
-.hero-title .hl::after{
-  content:"";
-  position:absolute; left:-2px; right:-2px; bottom:.12em;
-  height:.38em;
-  background: rgba(244,140,32,.35);   /* naranja marca suavizado */
-  filter: blur(1px);
-  border-radius:.3em;
-  z-index:-1;
-}
-
-/* “mundo” con degradado animado */
-.hero-title .grad{
-  background: linear-gradient(90deg,#f7b057 0%,#f48c20 45%,#ffb76b 100%);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-  animation: gradPan 8s ease-in-out infinite alternate;
-}
-
-/* Barra luminosa debajo del título */
-.title-glow{
-  width:min(520px, 60vw);
-  height:10px;
-  border-radius:999px;
-  margin:.35rem auto 1.1rem;
-  background: radial-gradient(80% 140% at 50% 50%, rgba(244,140,32,.55), rgba(244,140,32,0) 70%);
-  filter: blur(6px);
-  animation: glowPulse 3.8s ease-in-out infinite;
-}
-
-/* Micro-animaciones */
-@keyframes gradPan{
-  0%  { filter: drop-shadow(0 8px 22px rgba(244,140,32,.18)); }
-  100%{ filter: drop-shadow(0 10px 28px rgba(244,140,32,.28)); }
-}
-@keyframes glowPulse{
-  0%,100%{ opacity:.55; transform:scaleX(.98); }
-  50%     { opacity:.85; transform:scaleX(1); }
-}
-@keyframes heroRise{
-  from{ opacity:0; transform:translateY(10px) scale(.985); }
-  to  { opacity:1; transform:none; }
-}
-
-/* Respeta accesibilidad: si el usuario reduce movimiento */
-@media (prefers-reduced-motion: reduce){
-  .hero-title, .title-glow, .hero-title .grad{ animation:none }
-}
-
-/* En dark ya estás cubriendo contraste con la overlay;
-   si quieres elevar aún más: */
-@media (prefers-color-scheme: dark){
-  .title-glow{ filter: blur(7px) brightness(1.1) }
-}
-.hero-badge{
-  display:inline-block;
-  margin-top:-.2rem;
-  padding:.45rem .75rem;
-  font-weight:700;
-  font-size:.95rem;
-  border:1.5px solid rgba(255,255,255,.25);
-  border-radius:999px;
-  color:#fff;
-  background:rgba(17,24,39,.35);
-  backdrop-filter: blur(6px);
-}
-/* ===========================
-   H E R O  ·  A r m o n í a
-   =========================== */
-
-/* Contenedor centrado y con ancho controlado */
-.hero .container{
-  max-width: 1040px;            /* un poco más ancho, pero controlado */
-  text-align: center;
-  padding-inline: 16px;
-}
-
-/* Eyebrow (LOGÍSTICA AÉREA Y TERRESTRE) más sutil */
-.hero .eyebrow{
-  display:inline-block;
-  margin: 0 0 .35rem;
-  font-weight: 800;
-  font-size: clamp(12px, 1.4vw, 14px);
-  letter-spacing: .12em;
-  text-transform: uppercase;
-  color: rgba(255,255,255,.9);
-  background: rgba(17,24,39,.35);
-  border: 1px solid rgba(255,255,255,.22);
-  padding: .35rem .6rem;
-  border-radius: 999px;
-  backdrop-filter: blur(6px);
-}
-
-/* Título más compacto y con jerarquía clara */
-.hero-title{
-  margin: .25rem 0 .5rem;
-  font-weight: 900;
-  font-size: clamp(40px, 6.5vw, 80px);  /* antes estaba muy grande */
-  line-height: 1.04;
-  letter-spacing: -.02em;
-  text-shadow: 0 12px 30px rgba(0,0,0,.35);
-}
-.hero-title .line2{
-  font-size: clamp(42px, 6.8vw, 84px);
-}
-
-/* “tu mascota” – marcador más fino */
-.hero-title .hl::after{
-  height: .32em;                 /* más delgado */
-  background: rgba(244,140,32,.28);
-}
-
-/* “mundo” – degradado más cálido y sin brillo excesivo */
-.hero-title .grad{
-  background: linear-gradient(90deg,#f6a341 0%,#f48c20 52%, #ffbf7a 100%);
-  -webkit-background-clip: text; background-clip: text; color: transparent;
-  filter: none;                  /* quitamos drop-shadow para limpiar */
-}
-
-/* Barra luminosa más contenida */
-.title-glow{
-  width: min(520px,60vw);
-  height: 9px;
-  margin: .35rem auto 1.1rem;
-  border-radius: 999px;
-  background: radial-gradient(75% 140% at 50% 50%, rgba(244,140,32,.45), rgba(244,140,32,0) 70%);
-  filter: blur(5px);
-}
-
-/* Subtítulo: contraste y tamaño moderado */
-.hero p.hero-lead, .hero > .container > p{
-  max-width: 980px;
-  margin: .75rem auto 1rem;
-  font-size: clamp(16px, 1.6vw, 20px);
-  line-height: 1.55;
-  color: rgba(255,255,255,.96);
-  text-shadow: 0 6px 18px rgba(0,0,0,.25);
-}
-
-/* Badge más compacto y consistente */
-.hero-badge{
-  display:inline-flex; align-items:center; gap:.55rem;
-  margin-top: .35rem;
-  padding: .55rem .9rem;
-  font-weight: 700;
-  font-size: .98rem;
-  border:1.4px solid rgba(255,255,255,.22);
-  border-radius: 14px;
-  color:#fff;
-  background: linear-gradient(180deg, rgba(17,24,39,.45), rgba(17,24,39,.32));
-  backdrop-filter: blur(8px);
-  box-shadow: 0 10px 28px rgba(0,0,0,.25);
-}
-
-/* CTAs coherentes: alturas, radios y hovers */
-.hero .btn{
-  height: 56px;                  /* misma altura para ambas */
-  padding: 0 20px;
-  border-radius: 14px;
-  font-weight: 800;
-}
-.hero .btn--primary,
-.hero .btn:not(.btn-secondary){  /* tu primaria actual */
-  background: var(--brand);
-  box-shadow: 0 14px 28px rgba(244,140,32,.28);
-}
-.hero .btn--primary:hover,
-.hero .btn:not(.btn-secondary):hover{
-  filter: brightness(.96);
-  transform: translateY(-1px);
-}
-.hero .btn--ghost,
-.hero .btn.btn-secondary{
-  background: rgba(255,255,255,.06);
-  border: 2px solid rgba(255,255,255,.35);
-  color:#fff;
-  box-shadow: 0 10px 24px rgba(0,0,0,.18) inset, 0 10px 20px rgba(0,0,0,.2);
-}
-.hero .btn--ghost:hover,
-.hero .btn.btn-secondary:hover{
-  background: rgba(255,255,255,.09);
-  border-color: rgba(255,255,255,.45);
-}
-
-/* KPI chips más discretos */
-.hero-kpis{ gap: 10px; margin-top: 14px }
-.hero-kpis>div{
-  padding: 8px 12px;
-  border-radius: 12px;
-  background: rgba(17,24,39,.50);
-  border:1px solid rgba(255,255,255,.15);
-  color:#fff;
-}
-
-/* Overlay de portada: naranja + viñeteado sutil más uniforme */
-.hero-overlay{
-  background:
-    radial-gradient(60% 60% at 50% 45%, rgba(244,140,32,.18), transparent 70%),
-    linear-gradient(180deg, rgba(0,0,0,.20) 0%, rgba(0,0,0,.26) 40%, rgba(0,0,0,.30) 100%),
-    radial-gradient(140% 85% at 50% 110%, rgba(0,0,0,.22), transparent 60%);
-  backdrop-filter: blur(2px);
-}
-
-/* Responsive finito */
-@media (max-width: 820px){
-  .hero .btn{ height: 52px; }
-  .hero-badge{ font-size: .92rem; padding: .5rem .8rem }
-  .hero-kpis{ justify-content:center }
-}
-
-/* Tema oscuro: leve realce del glow y del glass */
-@media (prefers-color-scheme: dark){
-  .hero-badge{ border-color: rgba(255,255,255,.25) }
-  .title-glow{ filter: blur(6px) brightness(1.06) }
-}
-/* ===========================
-   H E R O  ·  C O M P A C T
-   =========================== */
-
-/* Contenedor más angosto para que todo respire mejor */
-.hero.compact .container{
-  max-width: 920px;
-}
-
-/* Título más pequeño y con menos salto entre líneas */
-.hero.compact .hero-title{
-  font-size: clamp(36px, 5.0vw, 62px);
-  line-height: 1.05;
-  margin: .2rem 0 .4rem;
-}
-.hero.compact .hero-title .line2{
-  font-size: clamp(38px, 5.4vw, 66px);
-}
-
-/* Subrayado sutil del “highlight” */
-.hero.compact .hero-title .hl::after{
-  height: .28em;
-}
-
-/* “mundo” degradado igual pero sin brillos agresivos */
-.hero.compact .hero-title .grad{
-  filter: none;
-}
-
-/* Barra glow más corta y baja */
-.hero.compact .title-glow{
-  width: min(420px, 52vw);
-  height: 7px;
-  margin: .25rem auto .8rem;
-}
-
-/* Eyebrow (LOGÍSTICA…) más pequeño */
-.hero.compact .eyebrow{
-  font-size: clamp(11px, 1vw, 12px);
-  padding: .28rem .5rem;
-  border-radius: 999px;
-}
-
-/* Badge más compacto */
-.hero.compact .hero-badge{
-  font-size: .9rem;
-  padding: .45rem .75rem;
-  border-radius: 12px;
-  gap: .5rem;
-}
-
-/* Subtítulo más discreto */
-.hero.compact p.hero-lead,
-.hero.compact > .container > p{
-  font-size: clamp(15px, 1.4vw, 18px);
-  margin: .6rem auto .8rem;
-}
-
-/* Botones más bajitos y con radios suaves */
-.hero.compact .btn{
-  height: 48px;
-  padding: 0 16px;
-  border-radius: 12px;
-}
-.hero.compact .btn--primary,
-.hero.compact .btn:not(.btn-secondary){
-  box-shadow: 0 10px 22px rgba(244,140,32,.22);
-}
-.hero.compact .btn--ghost,
-.hero.compact .btn.btn-secondary{
-  box-shadow: 0 8px 18px rgba(0,0,0,.16) inset, 0 8px 16px rgba(0,0,0,.18);
-}
-
-/* KPI chips: menos “protagónicos” */
-.hero.compact .hero-kpis{
-  gap: 8px;
-  margin-top: 10px;
-}
-.hero.compact .hero-kpis>div{
-  padding: 6px 10px;
-  font-size: .92rem;
-  border-radius: 12px;
-  background: rgba(17,24,39,.45);
-}
-
-/* En pantallas muy grandes, limita aún más el ancho */
-@media (min-width: 1440px){
-  .hero.compact .container{ max-width: 880px; }
-}
-
-/* En móviles reduce un poco más el título y btns */
-@media (max-width: 680px){
-  .hero.compact .hero-title{
-    font-size: clamp(30px, 9vw, 38px);
-  }
-  .hero.compact .hero-title .line2{
-    font-size: clamp(30px, 9.2vw, 40px);
-  }
-  .hero.compact .btn{
-    height: 46px;
-  }
-}
-/* Contenedor de los botones del hero */
-.hero-cta,
-.cta,
-.cta-actions {
-  display: flex;
-  gap: 12px;
-  align-items: center;
-}
-
-/* Estilo base para ambos botones */
-.btn,
-.hero-cta a {
-  display: inline-flex;               /* centra con flex */
-  align-items: center;                /* centro vertical */
-  justify-content: center;            /* centro horizontal */
-  padding: 0 22px;
-  min-height: 52px;                   /* alto uniforme */
-  border-radius: 12px;
-  font-weight: 700;
-  line-height: 1;                     /* evita desajuste vertical */
-  text-decoration: none;
-  white-space: nowrap;                /* no partir el texto */
-}
-
-/* Variantes (ajusta colores a tu marca) */
-.btn-solid { background: #F08A23; color: #fff; border: 0; }
-.btn-outline { background: rgba(0,0,0,.35); color: #fff; border: 2px solid #fff; }
-
-/* Accesibilidad y estados */
-.btn:focus-visible { outline: 2px solid #fff; outline-offset: 2px; }
-.btn:hover { transform: translateY(-1px); }
-.btn:active { transform: translateY(0); }
-
-/* Opcional: en móvil, apilarlos */
-@media (max-width: 640px) {
-  .hero-cta, .cta, .cta-actions { flex-direction: column; }
-  .btn, .hero-cta a { width: 100%; }
-}
-/* ==== HERO básico ==== */
-.hero{position:relative;height:min(88vh,780px);min-height:520px;overflow:hidden;
-      perspective:1200px;background:#000;}
-.hero-slide{position:absolute;inset:0;background-image:var(--bg);background-size:cover;
-            background-position:center;opacity:0;transform:scale(1.07);
-            transition:opacity .9s ease,transform 6s cubic-bezier(.2,.6,.2,1);}
-.hero-slide.is-active{opacity:1;transform:scale(1);z-index:2;}
-.hero-slide.is-leaving{opacity:0;transform:scale(1.06);z-index:1;}
-.hero-layer{position:absolute;inset:0;
-  /* Gaussian blur with warm orange tint and soft vignette */
-  background:
-    radial-gradient(110% 70% at 50% 50%,
-      rgba(244,140,32,.50) 0%,
-      rgba(244,140,32,.33) 45%,
-      rgba(244,140,32,0) 70%),
-    linear-gradient(180deg,
-      rgba(0,0,0,.35) 0%,
-      rgba(0,0,0,.1) 30%,
-      rgba(0,0,0,.35) 100%);
-  backdrop-filter: blur(4px);
-}
-.hero-inner{position:absolute;left:max(3vw,1rem);right:max(3vw,1rem);
-            bottom:clamp(80px,18vh,220px);color:#fff}
-
-/* Tipografía */
-.hero-title{font-size:clamp(28px,4.5vw,56px);line-height:1.05;font-weight:800;margin:0 0 10px;}
-.hero-sub{font-size:clamp(16px,2vw,22px);max-width:720px;margin:0 0 22px;}
-
-/* Efecto Fly Through (entrada/salida sincronizada con el slide) */
-.reveal > *{opacity:0;transform:translateZ(-420px) translateY(12px) scale(1.08) rotateX(6deg);
-            filter:blur(6px);}
-.hero-slide.is-active .reveal > *{animation:flyIn 800ms cubic-bezier(.2,.7,.2,1) .05s both;}
-.hero-slide.is-active .reveal > :nth-child(2){animation-delay:.18s;}
-.hero-slide.is-active .reveal > :nth-child(3){animation-delay:.30s;}
-.hero-slide.is-leaving .reveal > *{animation:flyOut 520ms ease both;}
-
-@keyframes flyIn{
-  0%{opacity:0;transform:translateZ(-420px) translateY(16px) scale(1.08) rotateX(6deg);filter:blur(8px)}
-  100%{opacity:1;transform:translateZ(0) translateY(0) scale(1) rotateX(0);filter:blur(0)}
-}
-@keyframes flyOut{
-  0%{opacity:1;transform:translateZ(0) translateY(0) scale(1) rotateX(0);filter:blur(0)}
-  100%{opacity:0;transform:translateZ(320px) translateY(-8px) scale(.95) rotateX(-3deg);filter:blur(8px)}
-}
-
-/* Puntos */
-.hero-dots{position:absolute;right:clamp(14px,3vw,28px);bottom:clamp(14px,3vw,28px);
-           display:flex;gap:10px;z-index:5}
-.hero-dots .dot{width:10px;height:10px;border-radius:50%;border:2px solid #fff;background:transparent;opacity:.7}
-.hero-dots .dot.is-active{background:#fff;opacity:1}
-
-/* CTA (reusa las clases de botones que ya tienes) */
-.hero-cta{display:flex;gap:12px;margin-top:8px}
-
-/* Responsive */
-@media (max-width:640px){
-  .hero-inner{bottom:clamp(60px,14vh,160px)}
-  .hero-cta{flex-wrap:wrap}
-}
-
-/* Respeta usuarios con menor animación */
-@media (prefers-reduced-motion:reduce){
-  .hero-slide,.hero-slide.is-active,.hero-slide.is-leaving{transition:none}
-  .reveal > *,.hero-slide.is-active .reveal > *,.hero-slide.is-leaving .reveal > *{animation:none;opacity:1;filter:none;transform:none}
-}
-/* =========== Tarjetas cuadradas =========== */
-/* Haz que las tarjetas de servicios y de requisitos tengan forma cuadrada.
-   Utilizamos la propiedad aspect-ratio para forzar una relación 1/1.
-   Las imágenes se ajustan a esa relación de aspecto sin deformarse. */
-#servicios .card,
-#requisitos-destino .card {
-  aspect-ratio: 1 / 1;      /* fuerza una proporción 1:1 */
-  display: flex;
-  flex-direction: column;
-}
-
-#servicios .card img,
-#requisitos-destino .card img {
-  height: 100%;
-  width: 100%;
-  object-fit: cover;        /* ajusta la imagen sin distorsionarla */
-}
-/* Imitar el efecto de las tarjetas de Tailwind */
-#servicios .card {
-  position: relative;
-  overflow: hidden;
-  border-radius: 16px;
-  box-shadow: var(--shadow);
-}
-#servicios .card img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: transform 0.7s ease;
-}
-#servicios .card:hover img {
-  transform: scale(1.1);
-}
-#servicios .card::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(to top, rgba(0,0,0,0.6), rgba(0,0,0,0.2), transparent);
-  pointer-events: none;
-}
-#servicios .card-body {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  padding: 1rem;
-  color: #fff;
-  z-index: 1;
-}
-#servicios .card .card-body h3 {
-  display: inline-block;
-  background: rgba(0,0,0,0.6);
-  padding: 0.25rem 0.5rem;
-  border-radius: 6px;
-  margin: 0;
-  color: #fff; /* asegúrate de que el texto sea blanco */
-}
-/* Estilos para las tarjetas de Requisitos según el destino */
-#requisitos-destino .card {
-  position: relative;
-  aspect-ratio: 1 / 1;          /* cuadradas como en servicios */
-  overflow: hidden;
-  border-radius: 16px;
-  box-shadow: var(--shadow);
-  display: block;               /* mantener comportamiento de enlace */
-}
-
-#requisitos-destino .card img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: transform 0.7s ease;
-}
-
-/* Zoom suave al hacer hover */
-#requisitos-destino .card:hover img {
-  transform: scale(1.1);
-}
-
-/* Degradado oscurecido sobre la imagen */
-#requisitos-destino .card::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(to top,
-    rgba(0, 0, 0, 0.6),
-    rgba(0, 0, 0, 0.2),
-    transparent);
-  pointer-events: none;
-}
-
-/* Panel inferior con el título */
-#requisitos-destino .card .card-body {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  padding: 1rem;
-  color: #fff;
-  z-index: 1;
-}
-
-/* Título con fondo semitransparente, igual que en servicios */
-#requisitos-destino .card .card-body h3 {
-  display: inline-block;
-  background: rgba(0, 0, 0, 0.6);
-  padding: 0.25rem 0.5rem;
-  border-radius: 6px;
-  margin: 0;
-}
-
-/* Ocultamos cualquier texto adicional para que sólo se muestre el nombre */
-#requisitos-destino .card .card-body p {
-  display: none;
-}
-.footer-inner {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 0.5rem;
-}
-
-@media (min-width: 600px) {
-  .footer-inner {
-    flex-direction: row;
-    justify-content: space-between;
-  }
-}
-
-.footer-inner p {
-  margin: 0;
-  color: inherit;
-  font-size: 0.9rem;
-}
-/* Estilos generales del footer */
-.footer {
-  background: #0b0f19;
-  color: #e5e7eb;
-  padding: 2rem 0;
-}
-
-.footer-info-grid {
-  display: flex;
-  flex-wrap: wrap;
-  border-bottom: 1px solid #1f2937;
-  padding-bottom: 2rem;
-  margin-bottom: 1rem;
-}
-
-.info-item {
-  flex: 1 1 100%;
-  text-align: center;
-  padding: 1rem;
-  border-right: 1px solid #1f2937;
-}
-
-.info-item:last-child {
-  border-right: none;
-}
-
-.info-item h3 {
-  margin: 0.5rem 0;
-  font-size: 1.125rem;
-  color: #fff;
-}
-
-.info-item p {
-  margin: 0;
-  color: #a3a9b6;
-  font-size: 0.875rem;
-}
-
-.info-item .icon {
-  font-size: 2.25rem;
-  color: #f48c20; /* naranja de tu marca */
-  display: inline-block;
-}
-
-.footer-bottom {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  align-items: center;
-  gap: 1rem;
-}
-
-.footer-bottom p {
-  margin: 0;
-  color: #a3a9b6;
-  font-size: 0.875rem;
-}
-
-.social-icons a {
-  margin-left: 1rem;
-  color: #f48c20;
-  font-size: 1.25rem;
-  text-decoration: none;
-}
-
-/* Responsivo: columnas en una sola fila desde 600px */
-@media (min-width: 600px) {
-  .info-item {
-    flex: 1 1 33.3333%;
-    border-right: 1px solid #1f2937;
-    text-align: left;
-  }
-  .info-item:last-child {
-    border-right: none;
-  }
-  .footer-info-grid {
-    flex-wrap: nowrap;
-  }
-}
-/* Iconos de redes sociales en el footer */
-.social-icons a {
-  margin-left: 1rem;         /* separa los iconos entre sí */
-  color: inherit;            /* hereda el color del contenedor si no hay SVG */
-}
-
-.social-icons svg {
-  width: 1.5rem;
-  height: 1.5rem;
-  color: #f48c20;            /* naranja de tu marca */
-  transition: color 0.3s;
-}
-
-.social-icons a:hover svg {
-  color: #c46e15;            /* tono más oscuro al pasar el cursor */
-}
-.btn-volver {
-  display: inline-block;
-  margin: 12px 0;
-  padding: 8px 12px;
-  border: 1px solid #2a3d52;
-  border-radius: 10px;
-  text-decoration: none;
-  color: inherit;          /* hereda el color del texto */
-  transition: background 0.2s;
-}
-.btn-volver:hover {
-  background: #2a3d52;
-  color: #fff;
-}
-// Tabs para #requisitos-destino (mismo comportamiento que Servicios)
-(function initRequisitosTabs(){
-  const root = document.querySelector('#requisitos-destino');
-  if(!root) return;
-
-  const tabs   = [...root.querySelectorAll('.tab-btn')];
-  const panels = [...root.querySelectorAll('.panel')];
-
-  const show = (id) => {
-    tabs.forEach(b => b.setAttribute('aria-selected', String(b.dataset.target === id)));
-    panels.forEach(p => p.classList.toggle('active', p.id === id));
-  };
-
-  const openFromHash = () => {
-    const id = (location.hash || '').replace('#','');
-    // si el hash coincide con un panel de esta sección, ábrelo; sino, el primero
-    const target = id && root.querySelector('#'+id) ? id : (tabs[0] ? tabs[0].dataset.target : null);
-    if (target) show(target);
-  };
-
-  tabs.forEach(btn => {
-    btn.addEventListener('click', () => {
-      const id = btn.dataset.target;
-      if (location.hash !== '#'+id) history.pushState(null, '', '#'+id);
-      show(id);
-    });
-  });
-
-  window.addEventListener('hashchange', () => {
-    const id = (location.hash || '').slice(1);
-    if (root.querySelector('#'+id)) show(id);
-  });
-
-  openFromHash();
-})();
-/* ===== Requisitos con el look de "Servicios" ===== */
-#requisitos-destino{
-  --bg: #f7fafc; --surface: #ffffff; --text: #0b1722; --muted: #405361; --border: #d9e4ef;
-  --brand: #ff7a00; --brand-2: #8458ff; --ring: rgba(132,88,255,.20);
-  --card-start: #ffffff; --card-end: #f4f8fd; --pill-bg: #eef4fb; --pill-border: #cfdbe8;
-}
-@media (prefers-color-scheme: dark){
-  #requisitos-destino{
-    --bg:#0f1720; --surface:#121a24; --text:#e8f1ff; --muted:#9fb3c8; --border:#213448;
-    --ring:rgba(255,122,0,.35); --card-start:#1b2734; --card-end:#0f1720; --pill-bg:#0f1620; --pill-border:#2a3d52;
-  }
-}
-#requisitos-destino{ background:var(--bg); color:var(--text); }
-
-/* Tabs (mismo look que Servicios) */
-#requisitos-destino .tabs{ display:flex; gap:8px; flex-wrap:wrap; position:sticky; top:64px; background:linear-gradient(var(--bg),var(--bg)); padding:8px 0 12px; z-index:5; }
-#requisitos-destino .tab-btn{
-  appearance:none; cursor:pointer; font-weight:700; padding:10px 14px; border-radius:12px;
+html, body { background: var(--bg); color: var(--text); font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Inter, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif; line-height: 1.5; }
+
+/* =========================================================
+   Layout utilidades
+   ========================================================= */
+.container { width: min(1100px, 92vw); margin: 0 auto; }
+.section { padding: 48px 0 72px; }
+.section-title { margin: 0 0 16px; font-size: clamp(26px, 4.5vw, 42px); line-height: 1.1; font-weight: 800; }
+.grid { display: grid; gap: 16px; }
+
+/* =========================================================
+   Header
+   ========================================================= */
+.header { position: sticky; top: 0; z-index: 50; background: var(--surface); border-bottom: 1px solid var(--border); }
+.header-inner { display: flex; align-items: center; justify-content: space-between; height: 64px; }
+.brand { display: inline-flex; align-items: center; gap: 10px; font-weight: 800; }
+.logo { width: 32px; height: 32px; }
+
+.nav { display: flex; align-items: center; gap: 22px; }
+.nav a { font-weight: 700; opacity: .9; }
+.nav a[aria-current="page"]{ color: var(--brand); }
+.nav .btn { margin-left: 8px; }
+
+.nav-toggle { display: none; background: none; border: 0; font-size: 24px; }
+@media (max-width: 840px){
+  .nav-toggle { display: inline-block; }
+  .nav { position: fixed; inset: 64px 0 auto 0; background: var(--surface); border-bottom: 1px solid var(--border); padding: 16px; transform: translateY(-100%); transition: .25s ease; flex-direction: column; gap: 12px; }
+  .nav.open { transform: translateY(0); }
+}
+
+/* =========================================================
+   Botones
+   ========================================================= */
+.btn{ display:inline-flex; align-items:center; justify-content:center; gap:.5rem; padding:.7rem 1rem; border-radius:12px; border:1px solid transparent; cursor:pointer; font-weight:800; }
+.btn-sm{ padding:.56rem .9rem; border-radius:12px; font-size:.95rem; }
+.btn-solid{ background: var(--brand); color:#fff; }
+.btn-solid:hover{ filter: brightness(.95); }
+.btn-outline{ background: transparent; color: var(--brand); border-color: var(--brand); }
+.btn-outline:hover{ background: rgba(244,140,32,.08); }
+.btn-secondary{ background: transparent; border:1px solid rgba(0,0,0,.18); color: inherit; }
+@media (prefers-color-scheme: dark){ .btn-secondary{ border-color: rgba(255,255,255,.25); } }
+
+/* WhatsApp */
+.btn-whatsapp{ background:#25D366; color:#fff; border:0; }
+.btn-whatsapp:hover{ filter:brightness(.94); }
+
+/* =========================================================
+   Hero (home)
+   ========================================================= */
+.hero{ position: relative; overflow: hidden; }
+.hero-slide{ min-height: 70vh; display:none; align-items:center; justify-content:center; background-size:cover; background-position:center; }
+.hero-slide.is-active{ display:flex; }
+.hero-layer{ position:absolute; inset:0; background:linear-gradient(180deg, rgba(0,0,0,.25), rgba(0,0,0,.25)); }
+.hero-inner{ position:relative; z-index:1; width:min(1100px,92vw); margin:0 auto; color:#fff; }
+.hero-title{ font-size: clamp(28px, 5vw, 52px); font-weight: 900; margin: 0 0 10px; }
+.hero-sub{ font-size: clamp(15px, 2vw, 20px); opacity: .95; margin: 0 0 18px; }
+.hero-cta{ display:flex; flex-wrap:wrap; gap:12px; }
+.hero-dots{ position:absolute; inset:auto 0 12px 0; display:flex; justify-content:center; gap:8px; z-index:2; }
+.hero-dots .dot{ width:10px; height:10px; border-radius:999px; background:#fff8; border:0; }
+.hero-dots .dot.is-active{ background:#fff; }
+
+/* =========================================================
+   Cards (home grid)
+   ========================================================= */
+.cards{ grid-template-columns: repeat(1, minmax(0,1fr)); }
+@media (min-width:600px){ .cards{ grid-template-columns: repeat(2, minmax(0,1fr)); } }
+@media (min-width:960px){ .cards{ grid-template-columns: repeat(4, minmax(0,1fr)); } }
+
+.card{ background: var(--surface); border:1px solid var(--border); border-radius: var(--radius); overflow:hidden; box-shadow: var(--shadow); transition: transform .15s ease; }
+.card:hover{ transform: translateY(-2px); }
+.card > img{ width:100%; height:180px; object-fit:cover; }
+.card-body{ padding: 12px 14px; }
+.card-body h3{ margin:0; font-size:1.05rem; }
+
+/* =========================================================
+   Tabs (estilo base reutilizable)
+   ========================================================= */
+.tabs{ display:flex; gap:8px; flex-wrap:wrap; position:sticky; top:64px; background:linear-gradient(var(--bg),var(--bg)); padding:8px 0 12px; z-index:5; }
+.tab-btn{
+  appearance:none; cursor:pointer; font-weight:800; padding:10px 14px; border-radius:12px;
   border:1px solid var(--border); background:var(--surface); color:var(--text);
 }
-#requisitos-destino .tab-btn[aria-selected="true"]{
-  background:linear-gradient(120deg,var(--brand),var(--brand-2)); color:#fff; border-color:transparent; box-shadow:0 0 0 6px var(--ring) inset;
-}
+.tab-btn:hover{ border-color: var(--brand); color: var(--brand); }
 
-/* --- Estado activo/hover de las tabs de Requisitos --- */
-#requisitos-destino .tab-btn[aria-selected="true"]{
-  background: var(--surface) !important;    /* fondo igual al del tema (blanco u oscuro) */
-  color: var(--brand) !important;           /* texto naranja de marca */
-  border-color: var(--brand) !important;    /* borde naranja */
-  box-shadow: 0 0 0 3px rgba(244,140,32,.18) inset !important; /* halo suave */
-}
-
-#requisitos-destino .tab-btn:hover{
-  border-color: var(--brand);
-  color: var(--brand);
-}
-
-/* Mostrar/ocultar paneles */
-#requisitos-destino .panel{ display:none; animation:fade .22s ease; }
-#requisitos-destino .panel.active{ display:block; }
+/* =========================================================
+   Servicios (detalle en servicios.html)
+   ========================================================= */
+#servicios .panel{ display:none; animation:fade .22s ease; }
+#servicios .panel.active{ display:block; }
 @keyframes fade{ from{ opacity:.6; transform:translateY(2px);} }
 
-/* Tarjeta + grid como Servicios */
+#servicios .card{
+  background: radial-gradient(120% 140% at 80% -10%, var(--surface-2), var(--bg));
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  overflow:hidden;
+  box-shadow: var(--shadow);
+}
+#servicios .hero{ position:relative; min-height:240px; background:var(--surface); display:grid; place-items:center; }
+#servicios .hero img{ width:100%; height:100%; object-fit:cover; opacity:.95; filter:saturate(1.05); }
+#servicios .badge{ position:absolute; left:14px; bottom:12px; background:rgba(0,0,0,.45); color:#fff; padding:8px 10px; border-radius:12px; font-weight:800; }
+#servicios .content{ padding:18px; }
+#servicios .content h2{ margin:0 0 8px; font-size:22px; }
+#servicios .content p, #servicios .content ul{ color: var(--muted); }
+
+@media (min-width:960px){
+  #servicios .panel .card{ display:grid; grid-template-columns: 6fr 6fr; align-items:stretch; }
+  #servicios .hero{ min-height:100%; }
+}
+
+/* Estado ACTIVO de tabs en servicios (si quieres mantener degradado morado/naranja) */
+#servicios .tab-btn[aria-selected="true"]{
+  background: linear-gradient(120deg, var(--brand), var(--brand-2));
+  color:#fff;
+  border-color: transparent;
+  box-shadow: 0 0 0 6px var(--ring) inset;
+}
+
+/* =========================================================
+   Requisitos por destino (MISMO look y layout que Servicios)
+   ========================================================= */
+#requisitos-destino{
+  --card-start: var(--surface-2);
+  --card-end: var(--bg);
+}
+
+#requisitos-destino .panel{ display:none; animation:fade .22s ease; }
+#requisitos-destino .panel.active{ display:block; }
+
 #requisitos-destino .card{
-  background:radial-gradient(120% 140% at 80% -10%, var(--card-start), var(--card-end));
-  border:1px solid var(--border); border-radius:18px; overflow:hidden;
+  background: radial-gradient(120% 140% at 80% -10%, var(--card-start), var(--card-end));
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  overflow:hidden;
+  box-shadow: var(--shadow);
 }
 #requisitos-destino .hero{ position:relative; min-height:240px; background:var(--surface); display:grid; place-items:center; }
 #requisitos-destino .hero img{ width:100%; height:100%; object-fit:cover; opacity:.95; filter:saturate(1.05); }
-#requisitos-destino .badge{ position:absolute; left:14px; bottom:12px; background:rgba(0,0,0,.45); color:#fff; padding:8px 10px; border-radius:12px; font-weight:700; }
+#requisitos-destino .badge{ position:absolute; left:14px; bottom:12px; background:rgba(0,0,0,.45); color:#fff; padding:8px 10px; border-radius:12px; font-weight:800; }
 #requisitos-destino .content{ padding:18px; }
 #requisitos-destino .content h3{ margin:0 0 8px; font-size:20px; }
-#requisitos-destino .content p, #requisitos-destino .content ul{ color:var(--muted); }
-
+#requisitos-destino .content p, #requisitos-destino .content ul{ color: var(--muted); }
 @media (min-width:960px){
-  #requisitos-destino .panel .card{ display:grid; grid-template-columns:6fr 6fr; align-items:stretch; }
+  #requisitos-destino .panel .card{ display:grid; grid-template-columns: 6fr 6fr; align-items:stretch; }
   #requisitos-destino .hero{ min-height:100%; }
 }
+
+/* Píldora ACTIVA en Requisitos -> NARANJA (texto nunca desaparece) */
+#requisitos-destino .tab-btn[aria-selected="true"]{
+  background: var(--surface) !important;
+  color: var(--brand) !important;
+  border-color: var(--brand) !important;
+  box-shadow: 0 0 0 3px var(--ring) inset !important;
+}
+
+/* =========================================================
+   Formulario de cotización
+   ========================================================= */
+.form{ background: var(--surface); border:1px solid var(--border); border-radius: var(--radius); padding: 16px; box-shadow: var(--shadow); }
+.form-grid{ display:grid; grid-template-columns:1fr; gap:12px; }
+.form-grid label{ display:grid; gap:6px; font-weight:700; }
+input[type="text"], input[type="email"], input[type="tel"], input[type="date"], input[type="number"], select, textarea{
+  padding:.7rem .8rem; border-radius:12px; border:1px solid var(--border); background: var(--surface); color:var(--text);
+}
+textarea{ resize: vertical; }
+.form-actions{ display:flex; gap:10px; flex-wrap:wrap; margin-top:8px; }
+.form-note{ color: var(--muted); margin: 8px 0 0; }
+@media (min-width:860px){ .form-grid{ grid-template-columns: repeat(2, minmax(0,1fr)); } .form-grid .full{ grid-column: 1/-1; } }
+
+/* Forzar visibilidad de botón WA si algún estilo lo ensombrecía */
+#btnWhatsapp{ opacity: 1 !important; pointer-events: auto !important; }
+
+/* =========================================================
+   Footer
+   ========================================================= */
+.footer{ background: var(--surface); border-top:1px solid var(--border); margin-top: 48px; }
+.footer-inner{ display:flex; align-items:center; justify-content:space-between; gap:16px; padding:18px 0; }
+.footer .top{ font-weight:800; color: var(--brand); }
+
+/* Variante con info blocks (si la usas en otra página) */
+.footer-info-grid{ display:grid; grid-template-columns: repeat(1,minmax(0,1fr)); gap:16px; padding: 28px 0; }
+.footer-info-grid .info-item{ background: var(--surface); border:1px solid var(--border); border-radius: var(--radius); padding:14px; box-shadow: var(--shadow); }
+.footer-info-grid .icon{ font-size: 22px; }
+.footer-bottom{ display:flex; align-items:center; justify-content:space-between; gap:12px; border-top:1px solid var(--border); padding:14px 0; }
+.footer-bottom .social-icons{ display:flex; gap:12px; }
+.footer-bottom .social-icons a{ width:28px; height:28px; display:grid; place-items:center; opacity:.9; }
+.footer-bottom .social-icons svg{ width:20px; height:20px; }
+
+@media (min-width:860px){
+  .footer-info-grid{ grid-template-columns: repeat(3,minmax(0,1fr)); }
+}
+
+/* =========================================================
+   Back to top
+   ========================================================= */
+.backtop{
+  position: fixed; right: 16px; bottom: 18px; z-index: 40;
+  width:44px; height:44px; border-radius:999px; border:0;
+  background: var(--brand); color:#fff; font-weight:900; cursor:pointer;
+  transform: translateY(120%); transition: transform .2s ease, opacity .2s ease; opacity:0;
+  box-shadow: var(--shadow);
+}
+.backtop.show{ transform: translateY(0); opacity:1; }
+
+/* =========================================================
+   Variantes menores / utilidades
+   ========================================================= */
+.alt{ background: var(--surface); }
+.reveal{ animation: fadeIn .5s ease both; }
+@keyframes fadeIn{ from{ opacity:.4; transform: translateY(6px);} }
+
+/* Ayuda para imágenes rotas (evita “pantalla negra” sin contenido) */
+.hero img[alt]:not([src]), 
+.hero img[src=""]{ display:none; }
