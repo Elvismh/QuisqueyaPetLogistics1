@@ -290,3 +290,16 @@ textarea{ resize: vertical; }
 
 /* Oculta <img> roto en héroe para evitar ver el alt gigante */
 .hero img[alt]:not([src]), .hero img[src=""]{ display:none; }
+/* ===== FIX URGENTE: Héroe compatible con --bg:url(...) y --hero:url(...) ===== */
+.hero-slide{
+  /* Si el HTML tiene --hero:url(...) lo usa aquí */
+  background-image: var(--hero) !important;
+  background-color: var(--bg);        /* color de fondo del sitio como respaldo */
+  background-size: cover;
+  background-position: center;
+}
+
+/* Si el HTML tiene --bg:url(...) (estilo anterior), úsalo por encima */
+.hero-slide[style*="--bg:"]{
+  background-image: var(--bg) !important;
+}
