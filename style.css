@@ -972,3 +972,19 @@ input,select,textarea{border:1px solid #e5e7eb;border-radius:12px;padding:10px 1
     flex-wrap: nowrap;
   }
 }
+/* Iconos de redes sociales en el footer */
+.social-icons a {
+  margin-left: 1rem;         /* separa los iconos entre sí */
+  color: inherit;            /* hereda el color del contenedor si no hay SVG */
+}
+
+.social-icons svg {
+  width: 1.5rem;
+  height: 1.5rem;
+  color: #f48c20;            /* naranja de tu marca */
+  transition: color 0.3s;
+}
+
+.social-icons a:hover svg {
+  color: #c46e15;            /* tono más oscuro al pasar el cursor */
+}
