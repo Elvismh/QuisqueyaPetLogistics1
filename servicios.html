@@ -4,15 +4,18 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Quisqueya Pet Logistics — Servicios</title>
+
+  <!-- IMPORTA LOS ESTILOS GLOBALES -->
   <link rel="stylesheet" href="style.css" />
+
+  <!-- Estilos mínimos solo para el layout de pestañas -->
   <style>
-    /* Estilos mínimos propios de las pestañas de servicios */
-    :root{ --bg:#0f1720; --surface:#121a24; --muted:#9fb3c8; --text:#e8f1ff; --brand:#ff7a00; --brand-2:#8458ff; --ring:rgba(255,122,0,.35); }
-    body.services{ background:var(--bg); color:var(--text); }
+    :root{ --bg:#0f1720; --surface:#121a24; --muted:#9fb3c8; --text:#e8f1ff; --brand:#ff7a00; --brand-2:#8458ff; --ring:rgba(255,122,0,.35) }
+    body.services{ background:var(--bg); color:var(--text) }
     .wrap{max-width:1100px;margin:0 auto;padding:28px 20px 64px}
     .tabs{display:flex;gap:6px;flex-wrap:wrap;position:sticky;top:64px;background:linear-gradient(var(--bg),var(--bg));padding:8px 0 10px;z-index:5}
-    .tab-btn{appearance:none;border:1px solid #203040;background:var(--surface);color:var(--text);padding:10px 14px;border-radius:12px;cursor:pointer;font-weight:600;letter-spacing:.2px}
-    .tab-btn[aria-selected="true"]{background:linear-gradient(120deg,var(--brand),var(--brand-2));border-color:transparent;color:white;box-shadow:0 0 0 6px var(--ring) inset}
+    .tab-btn{appearance:none;border:1px solid #203040;background:var(--surface);color:var(--text);padding:10px 14px;border-radius:12px;cursor:pointer;font-weight:700}
+    .tab-btn[aria-selected="true"]{background:linear-gradient(120deg,var(--brand),var(--brand-2));border-color:transparent;color:#fff;box-shadow:0 0 0 6px var(--ring) inset}
     .panel{display:none;animation:fade .22s ease}
     .panel.active{display:block}
     @keyframes fade{from{opacity:.6;transform:translateY(2px)}}
@@ -29,7 +32,7 @@
   </style>
 </head>
 <body class="services">
-  <!-- Header (igual a la home) -->
+  <!-- HEADER (MISMO QUE EN index.html) -->
   <header class="header" id="inicio">
     <div class="container header-inner">
       <a href="index.html" class="brand">
@@ -42,9 +45,7 @@
         <a href="requisitos/index.html">Requisitos por destino</a>
         <a href="index.html#faq">Preguntas</a>
         <a href="index.html#contacto" class="btn btn-sm">Cotiza</a>
-        <a href="https://wa.me/18095203331?text=Hola,%20quiero%20cotizar%20el%20traslado%20de%20mi%20mascota" class="btn btn-sm btn-whatsapp" target="_blank">
-          Contacto 
-        </a>
+        <a href="https://wa.me/18095203331?text=Hola,%20quiero%20cotizar%20el%20traslado%20de%20mi%20mascota" class="btn btn-sm btn-whatsapp" target="_blank">Contacto</a>
       </nav>
       <button class="nav-toggle" aria-label="Abrir menú">☰</button>
     </div>
@@ -53,7 +54,7 @@
   <div class="wrap">
     <h1 style="margin:18px 0">Nuestros servicios</h1>
 
-    <!-- Pestañas -->
+    <!-- PESTAÑAS -->
     <div class="tabs" role="tablist" aria-label="Servicios">
       <button class="tab-btn" role="tab" data-target="transporte-aereo" aria-selected="true">✈️ Transporte aéreo</button>
       <button class="tab-btn" role="tab" data-target="transporte-terrestre" aria-selected="false">🚚 Transporte terrestre</button>
@@ -61,13 +62,16 @@
       <button class="tab-btn" role="tab" data-target="puerta-a-puerta" aria-selected="false">🏠 Puerta a puerta</button>
       <button class="tab-btn" role="tab" data-target="aduanas" aria-selected="false">🛃 Aduanas</button>
       <button class="tab-btn" role="tab" data-target="asesoria" aria-selected="false">🤝 Asesoría</button>
+
+      <!-- Volver a Home -->
       <a class="btn-volver" href="index.html" style="margin-left:auto">← Volver a la página principal</a>
     </div>
 
-    <!-- Panel: Aéreo -->
+    <!-- PANEL: AÉREO -->
     <section id="transporte-aereo" class="panel active" role="tabpanel">
       <div class="card">
         <div class="hero">
+          <!-- VERIFICA QUE ESTE PATH EXISTA EN TU REPO -->
           <img src="assets/servicios/aereo.webp" alt="Avión despegando" />
           <span class="badge">Transporte aéreo</span>
         </div>
@@ -100,7 +104,7 @@
       </div>
     </section>
 
-    <!-- Panel: Terrestre -->
+    <!-- PANEL: TERRESTRE -->
     <section id="transporte-terrestre" class="panel" role="tabpanel">
       <div class="card">
         <div class="hero">
@@ -132,7 +136,7 @@
       </div>
     </section>
 
-    <!-- Panel: Documentación -->
+    <!-- PANEL: DOCUMENTACIÓN -->
     <section id="documentacion" class="panel" role="tabpanel">
       <div class="card">
         <div class="hero">
@@ -164,7 +168,7 @@
       </div>
     </section>
 
-    <!-- Panel: Puerta a puerta -->
+    <!-- PANEL: PUERTA A PUERTA -->
     <section id="puerta-a-puerta" class="panel" role="tabpanel">
       <div class="card">
         <div class="hero">
@@ -182,7 +186,7 @@
       </div>
     </section>
 
-    <!-- Panel: Aduanas -->
+    <!-- PANEL: ADUANAS -->
     <section id="aduanas" class="panel" role="tabpanel">
       <div class="card">
         <div class="hero">
@@ -200,7 +204,7 @@
       </div>
     </section>
 
-    <!-- Panel: Asesoría -->
+    <!-- PANEL: ASESORÍA -->
     <section id="asesoria" class="panel" role="tabpanel">
       <div class="card">
         <div class="hero">
@@ -217,7 +221,7 @@
     </section>
   </div>
 
-  <!-- Footer (igual a la home) -->
+  <!-- FOOTER (igual a la home) -->
   <footer class="footer">
     <div class="container footer-inner">
       <p>© 2025 Quisqueya Pet Logistics · Santo Domingo, RD</p>
@@ -227,9 +231,11 @@
 
   <button id="backtop" class="backtop" aria-label="Volver arriba" title="Volver arriba">↑</button>
 
+  <!-- SCRIPTS GLOBALES -->
   <script src="script.js"></script>
+
+  <!-- Tabs con soporte de hash -->
   <script>
-    // Tabs con soporte de hash
     const tabs   = [...document.querySelectorAll('.tab-btn')];
     const panels = [...document.querySelectorAll('.panel')];
 
@@ -245,9 +251,7 @@
     tabs.forEach(btn=>{
       btn.addEventListener('click', ()=>{
         const id = btn.dataset.target;
-        if(location.hash.replace('#','')!==id){
-          history.pushState(null,'','#'+id);
-        }
+        if(location.hash.replace('#','')!==id) history.pushState(null,'','#'+id);
         show(id);
       });
     });
