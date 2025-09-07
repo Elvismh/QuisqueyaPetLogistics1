@@ -256,3 +256,24 @@ textarea{ resize: vertical; }
 /* Ayuda para imágenes rotas (evita “pantalla negra” sin contenido) */
 .hero img[alt]:not([src]), 
 .hero img[src=""]{ display:none; }
+/* --- Requisitos: píldora activa en NARANJA, siempre legible --- */
+#requisitos-destino .tabs .tab-btn[aria-selected="true"],
+#requisitos-destino .tab-btn[aria-selected="true"]{
+  background: var(--surface) !important;      /* fondo claro/oscuro según tema */
+  color: var(--brand) !important;             /* texto naranja */
+  border-color: var(--brand) !important;      /* borde naranja */
+  box-shadow: 0 0 0 3px var(--ring) inset !important;
+  background-image: none !important;          /* anula cualquier degradado heredado */
+}
+
+/* si dentro del botón hay spans/strong/etc., herédales el color naranja */
+#requisitos-destino .tabs .tab-btn[aria-selected="true"] > *,
+#requisitos-destino .tab-btn[aria-selected="true"] > *{
+  color: var(--brand) !important;
+}
+
+/* hover coherente */
+#requisitos-destino .tab-btn:hover{
+  border-color: var(--brand);
+  color: var(--brand);
+}
