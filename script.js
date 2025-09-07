@@ -102,3 +102,36 @@ document.querySelectorAll('nav a').forEach(a => {
     }
   });
 });
+// Tabs para #requisitos-destino (igual que Servicios)
+(function initRequisitosTabs(){
+  const root = document.querySelector('#requisitos-destino');
+  if (!root) return;
+
+  const tabs   = [...root.querySelectorAll('.tab-btn')];
+  const panels = [...root.querySelectorAll('.panel')];
+
+  const show = (id) => {
+    tabs.forEach(b => b.setAttribute('aria-selected', String(b.dataset.target === id)));
+    panels.forEach(p => p.classList.toggle('active', p.id === id));
+  };
+
+  const first = tabs[0]?.dataset.target;
+
+  function openFromHash() {
+    const id = (location.hash || ('#' + (first || ''))).slice(1);
+    show(root.querySelector('#' + id) ? id : first);
+  }
+
+  tabs.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const id = btn.dataset.target;
+      if (id) {
+        history.replaceState(null, '', '#' + id);
+        show(id);
+      }
+    });
+  });
+
+  window.addEventListener('hashchange', openFromHash);
+  openFromHash();
+})();
