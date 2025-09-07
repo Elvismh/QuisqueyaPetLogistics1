@@ -816,3 +816,61 @@ input,select,textarea{border:1px solid #e5e7eb;border-radius:12px;padding:10px 1
   margin: 0;
   color: #fff; /* asegúrate de que el texto sea blanco */
 }
+/* Estilos para las tarjetas de Requisitos según el destino */
+#requisitos-destino .card {
+  position: relative;
+  aspect-ratio: 1 / 1;          /* cuadradas como en servicios */
+  overflow: hidden;
+  border-radius: 16px;
+  box-shadow: var(--shadow);
+  display: block;               /* mantener comportamiento de enlace */
+}
+
+#requisitos-destino .card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.7s ease;
+}
+
+/* Zoom suave al hacer hover */
+#requisitos-destino .card:hover img {
+  transform: scale(1.1);
+}
+
+/* Degradado oscurecido sobre la imagen */
+#requisitos-destino .card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top,
+    rgba(0, 0, 0, 0.6),
+    rgba(0, 0, 0, 0.2),
+    transparent);
+  pointer-events: none;
+}
+
+/* Panel inferior con el título */
+#requisitos-destino .card .card-body {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 1rem;
+  color: #fff;
+  z-index: 1;
+}
+
+/* Título con fondo semitransparente, igual que en servicios */
+#requisitos-destino .card .card-body h3 {
+  display: inline-block;
+  background: rgba(0, 0, 0, 0.6);
+  padding: 0.25rem 0.5rem;
+  border-radius: 6px;
+  margin: 0;
+}
+
+/* Ocultamos cualquier texto adicional para que sólo se muestre el nombre */
+#requisitos-destino .card .card-body p {
+  display: none;
+}
