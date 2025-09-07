@@ -759,3 +759,20 @@ input,select,textarea{border:1px solid #e5e7eb;border-radius:12px;padding:10px 1
   .hero-slide,.hero-slide.is-active,.hero-slide.is-leaving{transition:none}
   .reveal > *,.hero-slide.is-active .reveal > *,.hero-slide.is-leaving .reveal > *{animation:none;opacity:1;filter:none;transform:none}
 }
+/* =========== Tarjetas cuadradas =========== */
+/* Haz que las tarjetas de servicios y de requisitos tengan forma cuadrada.
+   Utilizamos la propiedad aspect-ratio para forzar una relación 1/1.
+   Las imágenes se ajustan a esa relación de aspecto sin deformarse. */
+#servicios .card,
+#requisitos-destino .card {
+  aspect-ratio: 1 / 1;      /* fuerza una proporción 1:1 */
+  display: flex;
+  flex-direction: column;
+}
+
+#servicios .card img,
+#requisitos-destino .card img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;        /* ajusta la imagen sin distorsionarla */
+}
