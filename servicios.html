@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Requisitos de viaje · Quisqueya Pet Logistics</title>
+  <link rel="stylesheet" href="../style.css" />
+  <script defer src="../script.js"></script>
+</head>
+<body>
+<header class="header">
+  <div class="container header-inner">
+    <a href="../index.html#inicio" class="brand"><img src="../assets/logo.png" class="logo" alt="Logo"/><span>Quisqueya Pet Logistics</span></a>
+    <nav class="nav">
+      <a href="../index.html#servicios">Servicios</a>
+      <a href="./index.html" class="btn btn-sm">Requisitos</a>
+      <a href="../index.html#faq">Preguntas</a>
+      <a href="../index.html#contacto" class="btn btn-sm">Cotiza</a>
+    </nav>
+    <button class="nav-toggle" aria-label="Abrir menú">☰</button>
+  </div>
+</header>
+
+<section class="section" style="padding-top:48px">
+  <div class="container">
+    <h1 class="section-title">Requisitos de viaje</h1>
+    <p>Selecciona un destino para ver el checklist y la documentación. Podemos verificar tu caso y la normativa vigente.</p>
+
+    <div class="tabs" role="tablist">
+      <button class="tab active" data-tab="espana" role="tab" aria-selected="true">RD ➜ España</button>
+      <button class="tab" data-tab="generales" role="tab">RD ➜ Otros destinos (base)</button>
+      <button class="tab" data-tab="panama" role="tab">Panamá</button>
+      <button class="tab" data-tab="usa" role="tab">EE. UU.</button>
+      <button class="tab" data-tab="chile" role="tab">Chile</button>
+    </div>
+
+    <div class="tab-panels">
+      <div class="tab-panel active" id="espana" role="tabpanel">
+        <ul class="checklist">
+          <li><strong>Microchip ISO 11784/11785</strong> antes de vacunar contra la rabia.</li>
+          <li><strong>Vacuna antirrábica vigente</strong> (21 días desde la primovacunación).</li>
+          <li><strong>Certificado zoosanitario de la UE</strong> (no comercial) + declaración del propietario. Válido 10 días para entrar a la UE.</li>
+          <li><strong>Entrada por Punto de Control designado</strong> en España; inspección de identidad y documentos.</li>
+          <li><strong>Test serológico de rabia (≥0.5 IU/ml)</strong> si el país de origen no está en el listado UE correspondiente.</li>
+          <li>Tratamiento contra <em>Echinococcus</em> no requerido para España (sí para IE/MT/FI/NO).</li>
+        </ul>
+        <div class="cta-inline">
+          <a href="../index.html#contacto" class="btn">Verificar mi caso</a>
+          <a href="https://wa.me/18292673330?text=Hola%2C%20tengo%20dudas%20sobre%20requisitos%20para%20Espa%C3%B1a" class="btn btn-secondary" target="_blank">WhatsApp</a>
+        </div>
+      </div>
+
+      <div class="tab-panel" id="generales" role="tabpanel">
+        <details open>
+          <summary>Checklist base</summary>
+          <ul class="checklist">
+            <li>Identificación con microchip ISO.</li>
+            <li>Vacuna antirrábica vigente (21 días desde la primera dosis).</li>
+            <li>Certificado de salud / certificado oficial según destino y tipo de viaje.</li>
+            <li>Prueba serológica de rabia si el destino lo exige.</li>
+            <li>Jaula homologada IATA con medidas correctas (L x A x H) y bebedero.</li>
+            <li>Entrada por punto de control designado; coordinación con <em>broker</em> si aplica.</li>
+          </ul>
+        </details>
+      </div>
+
+      <div class="tab-panel" id="panama" role="tabpanel">
+        <ul class="checklist">
+          <li>Certificado de salud emitido por veterinario oficial.</li>
+          <li>Vacuna antirrábica vigente.</li>
+          <li>Permiso zoosanitario de importación si aplica.</li>
+          <li>Coordinación con broker en PTY (recomendada).</li>
+          <li>Jaula homologada IATA y reserva confirmada.</li>
+        </ul>
+      </div>
+
+      <div class="tab-panel" id="usa" role="tabpanel">
+        <ul class="checklist">
+          <li>Microchip recomendado; vacuna antirrábica vigente según CDC/estado.</li>
+          <li>Ingreso por aeropuerto habilitado; posible inspección USDA/CDC.</li>
+          <li>Broker en destino si se envía por guía aérea (solo carga).</li>
+          <li>Jaula homologada IATA.</li>
+        </ul>
+      </div>
+
+      <div class="tab-panel" id="chile" role="tabpanel">
+        <ul class="checklist">
+          <li>Certificado zoosanitario de exportación.</li>
+          <li>Vacuna antirrábica vigente; otras vacunas según especie.</li>
+          <li>Inscripción/inspección SAG al ingreso; revisión documental.</li>
+          <li>Reserva confirmada; medidas/peso de jaula validados.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container footer-inner">
+    <p>© 2025 Quisqueya Pet Logistics · Requisitos</p>
+    <a href="#inicio" class="top">↑ Volver arriba</a>
+  </div>
+</footer>
+</body>
+</html>
