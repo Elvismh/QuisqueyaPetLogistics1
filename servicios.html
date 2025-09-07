@@ -5,12 +5,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Quisqueya Pet Logistics — Servicios</title>
 
-  <!-- Usa los mismos estilos globales que la home -->
+  <!-- Estilos globales (mismos que index) -->
   <link rel="stylesheet" href="style.css" />
-
-  <!-- Estilos mínimos solo para las pestañas -->
+  <!-- Estilos mínimos para las pestañas de esta página -->
   <style>
-    :root{ --bg:#0f1720; --surface:#121a24; --muted:#9fb3c8; --text:#e8f1ff; --brand:#ff7a00; --brand-2:#8458ff; --ring:rgba(255,122,0,.35); }
+    :root{ --bg:#0f1720; --surface:#121a24; --muted:#9fb3c8; --text:#e8f1ff; --brand:#ff7a00; --brand-2:#8458ff; --ring:rgba(255,122,0,.35) }
     body{ background:var(--bg); color:var(--text) }
     .wrap{max-width:1100px;margin:0 auto;padding:28px 20px 64px}
     .tabs{display:flex;gap:6px;flex-wrap:wrap;position:sticky;top:64px;background:linear-gradient(var(--bg),var(--bg));padding:8px 0 10px;z-index:5}
@@ -33,7 +32,7 @@
 </head>
 <body>
 
-  <!-- Header idéntico al de index.html (incluye id="mainNav") -->
+  <!-- HEADER (idéntico al de index.html) -->
   <header class="header" id="inicio">
     <div class="container header-inner">
       <a href="index.html" class="brand">
@@ -52,7 +51,7 @@
   </header>
 
   <div class="wrap">
-    <h1 style="margin:18px 0">Nuestros servicios</h1>
+    <h1>Nuestros servicios</h1>
 
     <!-- Pestañas -->
     <div class="tabs" role="tablist" aria-label="Servicios">
@@ -218,7 +217,7 @@
     </section>
   </div>
 
-  <!-- Footer idéntico al de la home -->
+  <!-- FOOTER (idéntico al de index.html) -->
   <footer class="footer">
     <div class="container footer-inner">
       <p>© 2025 Quisqueya Pet Logistics · Santo Domingo, RD</p>
@@ -231,26 +230,14 @@
   <!-- Scripts globales -->
   <script src="script.js"></script>
 
-  <!-- Tabs con hash -->
+  <!-- Lógica de pestañas con hash -->
   <script>
     const tabs   = [...document.querySelectorAll('.tab-btn')];
     const panels = [...document.querySelectorAll('.panel')];
-
-    function show(id){
-      tabs.forEach(b => b.setAttribute('aria-selected', String(b.dataset.target===id)));
-      panels.forEach(p => p.classList.toggle('active', p.id === id));
-    }
-    function openFromHash(){
-      const id = (location.hash || '#transporte-aereo').replace('#','');
-      show(panels.some(p=>p.id===id) ? id : 'transporte-aereo');
-    }
-    tabs.forEach(btn => btn.addEventListener('click', () => {
-      const id = btn.dataset.target;
-      if (location.hash.replace('#','') !== id) history.pushState(null,'','#'+id);
-      show(id);
-    }));
-    window.addEventListener('hashchange', openFromHash);
-    openFromHash();
+    function show(id){ tabs.forEach(b=>b.setAttribute('aria-selected', String(b.dataset.target===id))); panels.forEach(p=>p.classList.toggle('active', p.id===id)); }
+    function openFromHash(){ const id=(location.hash||'#transporte-aereo').replace('#',''); show(panels.some(p=>p.id===id)?id:'transporte-aereo'); }
+    tabs.forEach(b=>b.addEventListener('click', ()=>{ const id=b.dataset.target; if(location.hash.replace('#','')!==id) history.pushState(null,'','#'+id); show(id); }));
+    window.addEventListener('hashchange', openFromHash); openFromHash();
   </script>
 </body>
 </html>
