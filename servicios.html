@@ -4,10 +4,8 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Quisqueya Pet Logistics — Servicios</title>
-
-  <!-- Estilos globales (mismos que index) -->
   <link rel="stylesheet" href="style.css" />
-  <!-- Estilos mínimos para las pestañas de esta página -->
+
   <style>
     :root{ --bg:#0f1720; --surface:#121a24; --muted:#9fb3c8; --text:#e8f1ff; --brand:#ff7a00; --brand-2:#8458ff; --ring:rgba(255,122,0,.35) }
     body{ background:var(--bg); color:var(--text) }
@@ -51,7 +49,7 @@
   </header>
 
   <div class="wrap">
-    <h1>Nuestros servicios</h1>
+    <h1 style="margin:18px 0">Nuestros servicios</h1>
 
     <!-- Pestañas -->
     <div class="tabs" role="tablist" aria-label="Servicios">
@@ -227,17 +225,15 @@
 
   <button id="backtop" class="backtop" aria-label="Volver arriba" title="Volver arriba">↑</button>
 
-  <!-- Scripts globales -->
   <script src="script.js"></script>
-
-  <!-- Lógica de pestañas con hash -->
   <script>
-    const tabs   = [...document.querySelectorAll('.tab-btn')];
-    const panels = [...document.querySelectorAll('.panel')];
-    function show(id){ tabs.forEach(b=>b.setAttribute('aria-selected', String(b.dataset.target===id))); panels.forEach(p=>p.classList.toggle('active', p.id===id)); }
-    function openFromHash(){ const id=(location.hash||'#transporte-aereo').replace('#',''); show(panels.some(p=>p.id===id)?id:'transporte-aereo'); }
-    tabs.forEach(b=>b.addEventListener('click', ()=>{ const id=b.dataset.target; if(location.hash.replace('#','')!==id) history.pushState(null,'','#'+id); show(id); }));
-    window.addEventListener('hashchange', openFromHash); openFromHash();
+    // Tabs con hash
+    const tabs=[...document.querySelectorAll('.tab-btn')];
+    const panels=[...document.querySelectorAll('.panel')];
+    function show(id){tabs.forEach(b=>b.setAttribute('aria-selected',String(b.dataset.target===id)));panels.forEach(p=>p.classList.toggle('active',p.id===id));}
+    function openFromHash(){const id=(location.hash||'#transporte-aereo').replace('#','');show(panels.some(p=>p.id===id)?id:'transporte-aereo');}
+    tabs.forEach(b=>b.addEventListener('click',()=>{const id=b.dataset.target;if(location.hash.replace('#','')!==id)history.pushState(null,'','#'+id);show(id)}));
+    window.addEventListener('hashchange',openFromHash);openFromHash();
   </script>
 </body>
 </html>
