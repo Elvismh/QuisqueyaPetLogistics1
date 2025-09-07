@@ -277,3 +277,20 @@ textarea{ resize: vertical; }
   border-color: var(--brand);
   color: var(--brand);
 }
+/* Requisitos: pestaña ACTIVA en naranja (override fuerte) */
+#requisitos-destino .tabs .tab-btn[aria-selected="true"],
+#requisitos-destino .tab-btn[aria-selected="true"]{
+  background: var(--surface) !important;
+  color: var(--brand) !important;
+  border-color: var(--brand) !important;
+  box-shadow: 0 0 0 3px var(--ring) inset !important;
+  background-image: none !important;
+}
+#requisitos-destino .tabs .tab-btn[aria-selected="true"] > *,
+#requisitos-destino .tab-btn[aria-selected="true"] > *{
+  color: var(--brand) !important;
+}
+#requisitos-destino .tab-btn:hover{
+  border-color: var(--brand);
+  color: var(--brand);
+}
