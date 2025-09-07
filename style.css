@@ -13,15 +13,15 @@ a { color: inherit; text-decoration: none; }
    Tokens (Light) + Dark Mode
    ========================================================= */
 :root{
-  --bg: #f7fafc;
+  --bg: #f7fafc;            /* color de fondo global del sitio */
   --surface: #ffffff;
   --surface-2: #f4f8fd;
   --text: #0b1722;
   --muted: #405361;
   --border: #d9e4ef;
 
-  --brand: #F48C20;          /* NARANJA DE MARCA */
-  --brand-2: #8458ff;        /* acento secundario si lo necesitas */
+  --brand: #F48C20;         /* NARANJA DE MARCA */
+  --brand-2: #8458ff;       /* Acento secundario si lo necesitas */
   --ring: rgba(244,140,32,.18);
 
   --radius: 16px;
@@ -42,7 +42,12 @@ a { color: inherit; text-decoration: none; }
   }
 }
 
-html, body { background: var(--bg); color: var(--text); font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Inter, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif; line-height: 1.5; }
+html, body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Inter, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif;
+  line-height: 1.5;
+}
 
 /* =========================================================
    Layout utilidades
@@ -68,14 +73,23 @@ html, body { background: var(--bg); color: var(--text); font-family: ui-sans-ser
 .nav-toggle { display: none; background: none; border: 0; font-size: 24px; }
 @media (max-width: 840px){
   .nav-toggle { display: inline-block; }
-  .nav { position: fixed; inset: 64px 0 auto 0; background: var(--surface); border-bottom: 1px solid var(--border); padding: 16px; transform: translateY(-100%); transition: .25s ease; flex-direction: column; gap: 12px; }
+  .nav {
+    position: fixed; inset: 64px 0 auto 0; background: var(--surface);
+    border-bottom: 1px solid var(--border); padding: 16px;
+    transform: translateY(-100%); transition: .25s ease;
+    flex-direction: column; gap: 12px;
+  }
   .nav.open { transform: translateY(0); }
 }
 
 /* =========================================================
    Botones
    ========================================================= */
-.btn{ display:inline-flex; align-items:center; justify-content:center; gap:.5rem; padding:.7rem 1rem; border-radius:12px; border:1px solid transparent; cursor:pointer; font-weight:800; }
+.btn{
+  display:inline-flex; align-items:center; justify-content:center; gap:.5rem;
+  padding:.7rem 1rem; border-radius:12px; border:1px solid transparent;
+  cursor:pointer; font-weight:800;
+}
 .btn-sm{ padding:.56rem .9rem; border-radius:12px; font-size:.95rem; }
 .btn-solid{ background: var(--brand); color:#fff; }
 .btn-solid:hover{ filter: brightness(.95); }
@@ -89,10 +103,21 @@ html, body { background: var(--bg); color: var(--text); font-family: ui-sans-ser
 .btn-whatsapp:hover{ filter:brightness(.94); }
 
 /* =========================================================
-   Hero (home)
+   Hero (portada)
    ========================================================= */
+/* IMPORTANTE: usamos --hero para la imagen de cada slide.
+   --bg queda como color de fondo del sitio (no lo pisamos). */
 .hero{ position: relative; overflow: hidden; }
-.hero-slide{ min-height: 70vh; display:none; align-items:center; justify-content:center; background-size:cover; background-position:center; }
+.hero-slide{
+  min-height: 70vh;
+  display:none;
+  align-items:center;
+  justify-content:center;
+  background-image: var(--hero); /* <- aquí va la imagen del inline style */
+  background-color: var(--bg);   /* fallback de color */
+  background-size: cover;
+  background-position: center;
+}
 .hero-slide.is-active{ display:flex; }
 .hero-layer{ position:absolute; inset:0; background:linear-gradient(180deg, rgba(0,0,0,.25), rgba(0,0,0,.25)); }
 .hero-inner{ position:relative; z-index:1; width:min(1100px,92vw); margin:0 auto; color:#fff; }
@@ -110,7 +135,14 @@ html, body { background: var(--bg); color: var(--text); font-family: ui-sans-ser
 @media (min-width:600px){ .cards{ grid-template-columns: repeat(2, minmax(0,1fr)); } }
 @media (min-width:960px){ .cards{ grid-template-columns: repeat(4, minmax(0,1fr)); } }
 
-.card{ background: var(--surface); border:1px solid var(--border); border-radius: var(--radius); overflow:hidden; box-shadow: var(--shadow); transition: transform .15s ease; }
+.card{
+  background: var(--surface);
+  border:1px solid var(--border);
+  border-radius: var(--radius);
+  overflow:hidden;
+  box-shadow: var(--shadow);
+  transition: transform .15s ease;
+}
 .card:hover{ transform: translateY(-2px); }
 .card > img{ width:100%; height:180px; object-fit:cover; }
 .card-body{ padding: 12px 14px; }
@@ -119,9 +151,14 @@ html, body { background: var(--bg); color: var(--text); font-family: ui-sans-ser
 /* =========================================================
    Tabs (estilo base reutilizable)
    ========================================================= */
-.tabs{ display:flex; gap:8px; flex-wrap:wrap; position:sticky; top:64px; background:linear-gradient(var(--bg),var(--bg)); padding:8px 0 12px; z-index:5; }
+.tabs{
+  display:flex; gap:8px; flex-wrap:wrap;
+  position:sticky; top:64px; background:linear-gradient(var(--bg),var(--bg));
+  padding:8px 0 12px; z-index:5;
+}
 .tab-btn{
-  appearance:none; cursor:pointer; font-weight:800; padding:10px 14px; border-radius:12px;
+  appearance:none; cursor:pointer; font-weight:800;
+  padding:10px 14px; border-radius:12px;
   border:1px solid var(--border); background:var(--surface); color:var(--text);
 }
 .tab-btn:hover{ border-color: var(--brand); color: var(--brand); }
@@ -152,13 +189,14 @@ html, body { background: var(--bg); color: var(--text); font-family: ui-sans-ser
   #servicios .hero{ min-height:100%; }
 }
 
-/* Estado ACTIVO de tabs en servicios (si quieres mantener degradado morado/naranja) */
+/* (opcional) Si prefieres naranja también aquí, descomenta:
 #servicios .tab-btn[aria-selected="true"]{
-  background: linear-gradient(120deg, var(--brand), var(--brand-2));
-  color:#fff;
-  border-color: transparent;
-  box-shadow: 0 0 0 6px var(--ring) inset;
+  background: var(--surface);
+  color:#F48C20;
+  border-color:#F48C20;
+  box-shadow: 0 0 0 3px var(--ring) inset;
 }
+*/
 
 /* =========================================================
    Requisitos por destino (MISMO look y layout que Servicios)
@@ -167,7 +205,6 @@ html, body { background: var(--bg); color: var(--text); font-family: ui-sans-ser
   --card-start: var(--surface-2);
   --card-end: var(--bg);
 }
-
 #requisitos-destino .panel{ display:none; animation:fade .22s ease; }
 #requisitos-destino .panel.active{ display:block; }
 
@@ -189,27 +226,38 @@ html, body { background: var(--bg); color: var(--text); font-family: ui-sans-ser
   #requisitos-destino .hero{ min-height:100%; }
 }
 
-/* Píldora ACTIVA en Requisitos -> NARANJA (texto nunca desaparece) */
-#requisitos-destino .tab-btn[aria-selected="true"]{
+/* Píldora ACTIVA en Requisitos -> NARANJA y siempre legible (override fuerte) */
+#requisitos-destino .tabs > .tab-btn[aria-selected="true"]{
   background: var(--surface) !important;
   color: var(--brand) !important;
   border-color: var(--brand) !important;
   box-shadow: 0 0 0 3px var(--ring) inset !important;
+  background-image: none !important;
+}
+#requisitos-destino .tabs > .tab-btn[aria-selected="true"] > *{
+  color: var(--brand) !important;
 }
 
 /* =========================================================
    Formulario de cotización
    ========================================================= */
-.form{ background: var(--surface); border:1px solid var(--border); border-radius: var(--radius); padding: 16px; box-shadow: var(--shadow); }
+.form{
+  background: var(--surface); border:1px solid var(--border);
+  border-radius: var(--radius); padding: 16px; box-shadow: var(--shadow);
+}
 .form-grid{ display:grid; grid-template-columns:1fr; gap:12px; }
 .form-grid label{ display:grid; gap:6px; font-weight:700; }
 input[type="text"], input[type="email"], input[type="tel"], input[type="date"], input[type="number"], select, textarea{
-  padding:.7rem .8rem; border-radius:12px; border:1px solid var(--border); background: var(--surface); color:var(--text);
+  padding:.7rem .8rem; border-radius:12px; border:1px solid var(--border);
+  background: var(--surface); color:var(--text);
 }
 textarea{ resize: vertical; }
 .form-actions{ display:flex; gap:10px; flex-wrap:wrap; margin-top:8px; }
 .form-note{ color: var(--muted); margin: 8px 0 0; }
-@media (min-width:860px){ .form-grid{ grid-template-columns: repeat(2, minmax(0,1fr)); } .form-grid .full{ grid-column: 1/-1; } }
+@media (min-width:860px){
+  .form-grid{ grid-template-columns: repeat(2, minmax(0,1fr)); }
+  .form-grid .full{ grid-column: 1/-1; }
+}
 
 /* Forzar visibilidad de botón WA si algún estilo lo ensombrecía */
 #btnWhatsapp{ opacity: 1 !important; pointer-events: auto !important; }
@@ -253,61 +301,5 @@ textarea{ resize: vertical; }
 .reveal{ animation: fadeIn .5s ease both; }
 @keyframes fadeIn{ from{ opacity:.4; transform: translateY(6px);} }
 
-/* Ayuda para imágenes rotas (evita “pantalla negra” sin contenido) */
-.hero img[alt]:not([src]), 
-.hero img[src=""]{ display:none; }
-/* --- Requisitos: píldora activa en NARANJA, siempre legible --- */
-#requisitos-destino .tabs .tab-btn[aria-selected="true"],
-#requisitos-destino .tab-btn[aria-selected="true"]{
-  background: var(--surface) !important;      /* fondo claro/oscuro según tema */
-  color: var(--brand) !important;             /* texto naranja */
-  border-color: var(--brand) !important;      /* borde naranja */
-  box-shadow: 0 0 0 3px var(--ring) inset !important;
-  background-image: none !important;          /* anula cualquier degradado heredado */
-}
-
-/* si dentro del botón hay spans/strong/etc., herédales el color naranja */
-#requisitos-destino .tabs .tab-btn[aria-selected="true"] > *,
-#requisitos-destino .tab-btn[aria-selected="true"] > *{
-  color: var(--brand) !important;
-}
-
-/* hover coherente */
-#requisitos-destino .tab-btn:hover{
-  border-color: var(--brand);
-  color: var(--brand);
-}
-/* Requisitos: pestaña ACTIVA en naranja (override fuerte) */
-#requisitos-destino .tabs .tab-btn[aria-selected="true"],
-#requisitos-destino .tab-btn[aria-selected="true"]{
-  background: var(--surface) !important;
-  color: var(--brand) !important;
-  border-color: var(--brand) !important;
-  box-shadow: 0 0 0 3px var(--ring) inset !important;
-  background-image: none !important;
-}
-#requisitos-destino .tabs .tab-btn[aria-selected="true"] > *,
-#requisitos-destino .tab-btn[aria-selected="true"] > *{
-  color: var(--brand) !important;
-}
-#requisitos-destino .tab-btn:hover{
-  border-color: var(--brand);
-  color: var(--brand);
-}
-/* === Requisitos: pestaña ACTIVA en naranja (override final) === */
-#requisitos-destino .tabs > .tab-btn[aria-selected="true"]{
-  background: var(--surface) !important;
-  color: var(--brand) !important;
-  border-color: var(--brand) !important;
-  box-shadow: 0 0 0 3px var(--ring) inset !important;
-  background-image: none !important;
-}
-#requisitos-destino .tabs > .tab-btn[aria-selected="true"] > *{
-  color: var(--brand) !important;
-}
-/* Héroe (portada) — usa la variable --bg del inline style como imagen de fondo */
-.hero-slide{
-  background-image: var(--bg);   /* <-- ESTA ES LA CLAVE */
-  background-size: cover;
-  background-position: center;
-}
+/* Evita ver 'alt' gigante si falla una imagen del héroe */
+.hero img[alt]:not([src]), .hero img[src=""]{ display:none; }
