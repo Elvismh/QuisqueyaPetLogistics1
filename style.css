@@ -303,3 +303,17 @@ textarea{ resize: vertical; }
 
 /* Evita ver 'alt' gigante si falla una imagen del héroe */
 .hero img[alt]:not([src]), .hero img[src=""]{ display:none; }
+
+/* Hero: compatibilidad para slides que aún usan --bg:url(...) */
+.hero-slide{
+  /* regla 'nueva' */
+  background-image: var(--hero);
+  background-color: var(--bg);
+  background-size: cover;
+  background-position: center;
+}
+
+/* si el slide trae --bg:url(...) en el inline style, úsalo como imagen */
+.hero-slide[style*="--bg:url"]{
+  background-image: var(--bg) !important;
+}
