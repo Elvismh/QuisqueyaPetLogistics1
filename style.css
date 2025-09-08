@@ -1781,3 +1781,44 @@ body.home .footer > .container.footer-inner{ display:block !important; }
   .footer .footer-top .footer-info > .footer-col:last-child{ border-bottom:none !important; }
   .footer-social-col .social-icons{ justify-content:center; }
 }
+
+/* === FIX: copyright ocupa toda la fila y queda centrado bajo las columnas === */
+
+/* Si por cualquier motivo el copy está DENTRO del grid (.footer-info), 
+   lo forzamos a ocupar de la 1 a la última columna y lo centramos. */
+.footer .footer-top .footer-info .footer-copy{
+  grid-column: 1 / -1 !important;   /* Toda la fila del grid */
+  text-align: center !important;
+  padding: 14px 0 18px !important;
+  margin: 0 !important;
+  border: 0 !important;
+}
+
+/* Estilo del texto del copy (esté dentro o fuera del grid) */
+.footer .footer-copy,
+.footer .footer-top .footer-info .footer-copy{
+  text-align: center !important;
+}
+.footer .footer-copy p,
+.footer .footer-top .footer-info .footer-copy p{
+  margin: 0 !important;
+  color: var(--c-muted);
+  font-size: .9rem;
+}
+
+/* Línea superior bajo las columnas (única) y espacio para que el copy
+   quede “entre las dos líneas” del pie */
+.footer .footer-top{
+  border-bottom: 1px solid rgba(255,255,255,.12) !important;
+  padding-bottom: 16px !important;
+}
+
+/* Si el copy está FUERA del grid (caso alterno) mantiene el centrado y el espacio */
+.footer .footer-copy{
+  padding: 14px 0 20px !important;
+  border: 0 !important;
+}
+
+/* Por si alguna regla previa añade rayas extra al copy: las anulamos */
+.footer .footer-copy::before,
+.footer .footer-copy::after{ content: none !important; display: none !important; }
