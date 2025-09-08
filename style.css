@@ -21,16 +21,56 @@ a{color:inherit;text-decoration:none}
 .container{width:min(1200px,90%);margin:0 auto}
 
 /* Header */
-.header{position:sticky;top:0;z-index:1000;background:var(--c-bg);border-bottom:1px solid rgba(255,255,255,.06)}
-.header-inner{display:flex;align-items:center;justify-content:space-between;padding:14px 0}
-.brand{display:flex;align-items:center;gap:10px;font-weight:600}
-.logo{height:36px;width:auto}
-.nav a{margin:0 10px;opacity:.9}
-.btn{display:inline-block;padding:10px 16px;border-radius:10px;background:#2b3a49}
-.btn-sm{padding:8px 12px;font-size:.95rem}
-.btn.btn-whatsapp{background:var(--c-accent);color:#04120a;font-weight:700}
-.btn.btn-solid{background:var(--c-accent);color:#04120a}
-.btn.btn-outline{border:1px solid #4a5b6c;background:transparent}
+/* BOTONES BASE (marca) */
+.btn{
+  display:inline-block;
+  padding:10px 16px;
+  border-radius:10px;
+  background: var(--brand);
+  color:#1a0c00;               /* buen contraste con naranja */
+  border: none;
+  font-weight: 700;
+  transition: transform .18s ease, box-shadow .18s ease, filter .18s ease, background-color .18s ease, border-color .18s ease, color .18s ease;
+}
+.btn-sm{ padding:8px 12px; font-size:.95rem; }
+
+/* Hover: leve zoom + brillo + glow */
+.btn:hover{
+  transform: translateY(-1px) scale(1.03);
+  filter: brightness(1.04);
+  box-shadow: 0 10px 28px var(--brand-glow);
+  background: var(--brand-600);
+}
+
+/* Estado activo/focus */
+.btn:active{ transform: translateY(0) scale(0.99); background: var(--brand-700); }
+.btn:focus{ outline: 2px solid var(--brand-600); outline-offset: 2px; }
+
+/* Variante “solid” (igual a base) */
+.btn.btn-solid{ background: var(--brand); color:#1a0c00; }
+
+/* Variante “outline” */
+.btn.btn-outline{
+  background: transparent;
+  color:#fff;
+  border: 1.5px solid var(--brand);
+}
+.btn.btn-outline:hover{
+  background: var(--brand);
+  color:#1a0c00;
+  box-shadow: 0 10px 28px var(--brand-glow);
+}
+
+/* WhatsApp también en color marca (como pediste) */
+.btn.btn-whatsapp{
+  background: var(--brand) !important;
+  color:#1a0c00 !important;
+  border: none;
+}
+.btn.btn-whatsapp:hover{
+  background: var(--brand-600) !important;
+  box-shadow: 0 10px 28px var(--brand-glow) !important;
+}
 
 /* ========== HERO (HOME) ========== */
 .home .hero{position:relative;min-height:72vh;overflow:hidden}
