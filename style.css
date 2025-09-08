@@ -1698,3 +1698,87 @@ footer.footer hr{ display:none !important; }
   .footer-info.footer--final-grid > .footer-col:last-child{ border-bottom:none; }
   .footer-social-col .social-icons{ justify-content:center; }
 }
+/* ======== FIX FOOTER (forzar layout final) ======== */
+
+/* 1) El contenedor del footer NO es flex. Así el copy baja y se centra */
+.footer > .container.footer-inner{
+  display:block !important;
+}
+
+/* 2) Una sola línea bajo las 4 columnas */
+.footer .footer-top{
+  padding-bottom:16px !important;
+  border-bottom:1px solid rgba(255,255,255,.12) !important;
+}
+
+/* 3) 4 columnas reales, sin wraps raros */
+.footer .footer-top .footer-info{
+  display:grid !important;
+  grid-template-columns:
+    minmax(420px,1.2fr)   /* Dirección más ancha */
+    minmax(420px,1.2fr)   /* Contacto más ancho  */
+    minmax(300px,1fr)     /* Horario               */
+    auto                  /* Redes a la derecha    */
+  !important;
+  gap:28px !important;
+  align-items:start !important;
+}
+
+/* 4) Divisores verticales coherentes (solo en las 3 primeras) */
+.footer .footer-top .footer-info > .footer-col{
+  padding:0 16px !important;
+  border-right:1px solid rgba(255,255,255,.12) !important;
+}
+.footer .footer-top .footer-info > .footer-col:last-child{
+  border-right:none !important;
+}
+
+/* 5) Título de horario en una línea; “24/7” debajo */
+.col-horario h4{ white-space:nowrap !important; }
+
+/* 6) Iconos de redes (círculo naranja) */
+.footer-social-col .social-icons{ display:flex; gap:16px; margin-top:8px; }
+.footer-social-col .social-icons a{
+  width:36px; height:36px; border-radius:50%;
+  display:flex; align-items:center; justify-content:center;
+  background:var(--brand); color:#1a0c00; font-size:18px;
+  transition:transform .2s ease, box-shadow .2s ease;
+}
+.footer-social-col .social-icons a:hover{
+  transform:translateY(-2px) scale(1.05);
+  box-shadow:0 6px 14px var(--brand-glow);
+}
+
+/* 7) Copyright centrado y sin líneas extra */
+.footer-copy{
+  text-align:center !important;
+  padding:16px 0 28px !important;
+  border:0 !important;
+}
+.footer-copy p{ margin:0 !important; color:var(--c-muted); font-size:.9rem; }
+
+/* 8) Quitar cualquier raya duplicada que venga de estilos viejos */
+.footer hr, .footer .footer-copy::before, .footer .footer-copy::after{ display:none !important; border:0 !important; }
+
+/* ===== Responsive ===== */
+@media (max-width: 1000px){
+  /* En pantallas medianas pasamos a 2 columnas */
+  .footer .footer-top .footer-info{
+    grid-template-columns: 1fr 1fr !important;
+  }
+  .footer .footer-top .footer-info > .footer-col{ border-right:none !important; }
+}
+@media (max-width: 560px){
+  /* En móvil, una columna y divisores horizontales suaves */
+  .footer .footer-top .footer-info{
+    grid-template-columns: 1fr !important;
+    gap:16px !important;
+  }
+  .footer .footer-top .footer-info > .footer-col{
+    border-right:none !important;
+    border-bottom:1px solid rgba(255,255,255,.08) !important;
+    padding:12px 0 !important;
+  }
+  .footer .footer-top .footer-info > .footer-col:last-child{ border-bottom:none !important; }
+  .footer-social-col .social-icons{ justify-content:center; }
+}
