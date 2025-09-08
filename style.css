@@ -1434,3 +1434,92 @@ footer.footer hr{ display:none; }
     border-bottom: none;
   }
 }
+
+/* ===== FOOTER – FIX DEFINITIVO ===== */
+
+/* Fuerza que el contenedor del footer apile (evita que el copy se vaya a la derecha) */
+footer.footer .footer-inner{
+  display: block !important;
+  border: 0 !important;
+}
+
+/* Bloque superior: ocupa el ancho del container y SOLO una línea debajo */
+footer.footer .footer-top{
+  width: 100%;
+  max-width: none;
+  margin: 0 auto;
+  padding-bottom: 14px;
+  border-bottom: 1px solid rgba(255,255,255,.10); /* única línea */
+}
+
+/* 4 columnas y anchos mínimos para que Dirección y Horario no se achiquen */
+footer.footer .footer-top .footer-info{
+  display: grid !important;
+  grid-template-columns:
+    minmax(260px, 1.1fr)   /* Dirección */
+    minmax(340px, 1.3fr)   /* Contacto */
+    minmax(240px, 1fr)     /* Horario */
+    auto                   /* Redes */
+  !important;
+  gap: 28px !important;
+  align-items: start !important;
+}
+
+/* Divisores verticales SOLO en las tres primeras */
+footer.footer .footer-top .footer-info > div{
+  padding: 0 16px;
+  border-right: 1px solid rgba(255,255,255,.12);
+}
+footer.footer .footer-top .footer-info > div:last-child{
+  border-right: none;
+}
+
+/* Redes pegado a la derecha */
+footer.footer .footer-top .footer-info .footer-social-col{
+  justify-self: end !important;
+}
+
+/* Quita líneas extras posibles en cualquier parte inferior del footer */
+footer.footer .footer-copy,
+footer.footer .footer-inner,
+footer.footer .footer-top + *,
+footer.footer .footer-copy::before,
+footer.footer .footer-copy::after{
+  border: none !important;
+}
+
+/* Copyright centrado y separado del borde inferior */
+footer.footer .footer-copy{
+  text-align: center !important;
+  padding: 16px 0 28px !important;
+}
+footer.footer .footer-copy p{
+  margin: 0 !important;
+  color: var(--c-muted);
+  font-size: .9rem;
+}
+
+/* Seguridad: no mostrar hr si existe */
+footer.footer hr{ display:none !important; }
+
+/* ===== Responsive ===== */
+@media (max-width: 900px){
+  footer.footer .footer-top .footer-info{
+    grid-template-columns: 1fr 1fr !important;
+    gap: 22px !important;
+  }
+}
+@media (max-width: 560px){
+  footer.footer .footer-top .footer-info{
+    grid-template-columns: 1fr !important;
+    gap: 16px !important;
+  }
+  footer.footer .footer-top .footer-info > div{
+    border-right: none !important;
+    border-bottom: 1px solid rgba(255,255,255,.08) !important;
+    padding: 12px 0 !important;
+  }
+  footer.footer .footer-top .footer-info > div:last-child{
+    border-bottom: none !important;
+  }
+}
