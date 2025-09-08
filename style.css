@@ -267,3 +267,17 @@ img{height:auto;max-width:100%} /* comportamiento seguro */
 
 /* Por si algún CSS externo estaba poniendo filtros o colores raros */
 img, .card img { filter: none !important; }
+/* ==== CONTROL DE LOGO EN HEADER ==== */
+.header .brand img.logo {
+  height: 40px;       /* altura fija del logo */
+  width: auto;        /* mantiene proporción */
+  max-width: 160px;   /* por seguridad, no pasa de 160px */
+  display: block;
+}
+
+@media (max-width: 768px) {
+  .header .brand img.logo {
+    height: 32px;     /* más pequeño en móviles */
+    max-width: 120px;
+  }
+}
