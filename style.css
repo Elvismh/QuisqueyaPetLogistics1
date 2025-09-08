@@ -741,3 +741,37 @@ img, .card img { filter: none !important; }
   transform: translateY(-2px) scale(1.05);
   box-shadow: 0 6px 14px var(--brand-glow);
 }
+
+/* Social a la derecha, mismo ancho visual que las columnas */
+.footer-social{
+  display:flex;
+  justify-content:flex-end;    /* ⟶ derecha */
+  gap:16px;
+  padding-top:10px;
+  max-width:1000px;            /* igual que el bloque centrado de columnas */
+  margin:0 auto;               /* centra el contenedor y alinea su contenido a la derecha */
+  border-bottom:1px solid rgba(255,255,255,.08); /* línea sutil encima del copy (opcional) */
+}
+
+.footer-social a{
+  width:36px;height:36px;
+  border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  background:var(--brand);
+  color:#1a0c00;
+  font-size:18px;
+  transition:transform .2s ease, box-shadow .2s ease;
+}
+.footer-social a:hover{
+  transform:translateY(-2px) scale(1.05);
+  box-shadow:0 6px 14px var(--brand-glow);
+}
+
+/* Copy centrado (por si no lo tenías) */
+.footer-copy{
+  width:100%;
+  display:flex;justify-content:center;align-items:center;
+  text-align:center;
+  padding:12px 0 24px;
+}
+.footer-copy p{ margin:0; color:var(--c-muted); font-size:.9rem; }
