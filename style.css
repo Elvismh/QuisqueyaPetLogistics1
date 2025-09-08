@@ -282,3 +282,35 @@ img, .card img { filter: none !important; }
     max-width: 120px;
   }
 }
+
+/* ==== HEADER EN UNA SOLA LÍNEA ==== */
+.header {
+  display: flex;
+  justify-content: space-between; /* Logo a la izquierda, menú a la derecha */
+  align-items: center;            /* Centrar verticalmente */
+  padding: 10px 20px;
+  background: var(--c-bg);
+}
+
+.header .brand {
+  display: flex;
+  align-items: center;  /* Logo y texto en línea */
+  gap: 8px;             /* Espacio entre logo y texto */
+}
+
+.header .brand img.logo {
+  height: 40px;
+  width: auto;
+  display: block;
+}
+
+.header nav {
+  display: flex;
+  align-items: center;
+  gap: 16px; /* Espacio entre enlaces */
+}
+
+.header nav a {
+  color: var(--c-text);
+  font-weight: 500;
+}
