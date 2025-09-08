@@ -611,3 +611,43 @@ img, .card img { filter: none !important; }
     border-bottom: none;
   }
 }
+
+/* Footer info (3 columnas) */
+.footer-info {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  margin-bottom: 20px;
+  color: var(--c-text);
+  border-top: 1px solid rgba(255,255,255,0.08);
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+  padding: 20px 0;
+}
+.footer-info > div {
+  padding: 0 16px;
+  border-right: 1px solid rgba(255,255,255,0.08);
+}
+.footer-info > div:last-child { border-right: none; }
+
+/* Copyright centrado */
+.footer-copy {
+  text-align: center;
+  padding: 10px 0 20px;
+  font-size: .9rem;
+  color: var(--c-muted);
+  border-top: 1px solid rgba(255,255,255,0.08); /* opcional: línea arriba */
+}
+
+/* Responsive: columnas se apilan */
+@media (max-width: 768px) {
+  .footer-info {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+  .footer-info > div {
+    border-right: none;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+    padding: 12px 0;
+  }
+  .footer-info > div:last-child { border-bottom: none; }
+}
