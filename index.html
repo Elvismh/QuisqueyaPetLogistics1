@@ -279,14 +279,17 @@
       </form>
     </div>
   </section>
-
- <!-- Footer -->
+  
+<!-- Footer -->
 <footer class="footer">
   <div class="container footer-inner">
 
     <!-- ✅ Bloque con UNA sola línea inferior -->
-    <div class="footer-top">
-      <div class="footer-info cols-grid">
+    <div class="footer-top"
+         style="max-width:1000px;margin:0 auto;padding-bottom:12px;border-bottom:1px solid rgba(255,255,255,.08)">
+      <!-- 👇 Forzamos 4 columnas aquí -->
+      <div class="footer-info cols-grid"
+           style="display:grid;grid-template-columns:1fr 1fr 1fr auto;gap:28px;align-items:start">
         <div class="col-dir">
           <h4>📍 Dirección</h4>
           <p>Ruta 66, Aeropuerto Las Américas. <br>Terminal de Carga<br>
@@ -304,24 +307,36 @@
           <p>24/7</p>
         </div>
 
-        <div class="col-redes footer-social-col">
+        <!-- 👇 Pegamos esta columna a la derecha -->
+        <div class="col-redes footer-social-col" style="justify-self:end">
           <h4>🔗 Redes sociales</h4>
-          <div class="social-icons">
-            <a href="https://instagram.com/quisqueyapetlogistics" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-            <a href="https://www.linkedin.com/company/quisqueya-pet-logistics" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-            <a href="https://www.facebook.com/profile.php?id=61574772152792" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+          <div class="social-icons" style="display:flex;gap:16px;margin-top:8px">
+            <!-- Círculos naranjas (inline para que ganen a todo) -->
+            <a href="https://instagram.com/quisqueyapetlogistics" target="_blank" aria-label="Instagram"
+               style="width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:var(--brand);color:#1a0c00;font-size:18px;text-decoration:none"> 
+              <i class="fab fa-instagram"></i>
+            </a>
+            <a href="https://www.linkedin.com/company/quisqueya-pet-logistics" target="_blank" aria-label="LinkedIn"
+               style="width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:var(--brand);color:#1a0c00;font-size:18px;text-decoration:none">
+              <i class="fab fa-linkedin-in"></i>
+            </a>
+            <a href="https://www.facebook.com/profile.php?id=61574772152792" target="_blank" aria-label="Facebook"
+               style="width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:var(--brand);color:#1a0c00;font-size:18px;text-decoration:none">
+              <i class="fab fa-facebook-f"></i>
+            </a>
           </div>
         </div>
       </div>
-    </div> <!-- 👈 Cierra footer-top AQUÍ -->
+    </div> <!-- /footer-top -->
 
     <!-- Copyright centrado y separado abajo -->
-    <div class="footer-copy">
-      <p>© 2025 Quisqueya Pet Logistics · Santo Domingo, RD</p>
+    <div class="footer-copy" style="text-align:center;padding:15px 0 24px">
+      <p style="margin:0;color:var(--c-muted);font-size:.9rem">© 2025 Quisqueya Pet Logistics · Santo Domingo, RD</p>
     </div>
 
   </div>
 </footer>
+
 
   <button id="backtop" class="backtop" aria-label="Volver arriba" title="Volver arriba">↑</button>
 
