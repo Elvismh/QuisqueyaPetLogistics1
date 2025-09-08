@@ -1,12 +1,10 @@
 /* ========== BASE ========== */
 :root{
-  --bg: transparent; /* respaldo por si falla inline var(--bg) */
-  --c-bg: #0f1320;
-  --c-bg-2:#111a24;
-  --c-card:#1c2733;
-  --c-text:#ffffff;
-  --c-muted:#cfd6df;
-  --c-accent:#2ecc71;
+  /* ...lo que ya tengas... */
+  --brand: #ff7a00;        /* NARANJA MARCA */
+  --brand-600: #e56e00;    /* hover */
+  --brand-700: #c66200;    /* activo */
+  --brand-glow: rgba(255,122,0,.35);
 }
 
 *{box-sizing:border-box;margin:0;padding:0}
@@ -135,10 +133,3 @@ img, .card img{filter:none !important}
 img{height:auto;max-width:100%} /* comportamiento seguro */
 
 /* 3) Si en otro CSS tenías reglas globales como `* { ... }`, aísla eso allá. */
-:root{
-  /* ...lo que ya tengas... */
-  --brand: #ff7a00;        /* NARANJA MARCA */
-  --brand-600: #e56e00;    /* hover */
-  --brand-700: #c66200;    /* activo */
-  --brand-glow: rgba(255,122,0,.35);
-}
