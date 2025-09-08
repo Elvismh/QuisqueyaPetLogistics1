@@ -1987,3 +1987,18 @@ body.home .footer > .container.footer-inner{ display:block !important; }
     padding-bottom: 0 !important;
   }
 }
+/* ==== Footer: que el correo no toque el divisor ni se salga ==== */
+
+/* Más respiración a la derecha solo para la columna de Contacto */
+.footer .col-contacto{
+  padding-right: 28px;                  /* separa del divisor */
+  box-sizing: border-box;
+}
+
+/* Si el correo es muy largo, permite partirlo dentro de la columna */
+.footer .col-contacto p,
+.footer .col-contacto a{
+  overflow-wrap: anywhere;              /* moderno */
+  word-break: break-word;               /* fallback */
+  hyphens: auto;
+}
