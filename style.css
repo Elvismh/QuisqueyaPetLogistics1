@@ -2002,3 +2002,44 @@ body.home .footer > .container.footer-inner{ display:block !important; }
   word-break: break-word;               /* fallback */
   hyphens: auto;
 }
+/* ====== Tema automático claro/oscuro ====== */
+/* Valores por defecto: CLARO */
+:root {
+  /* Colores base (ajústalos a tu diseño) */
+  --bg: #ffffff;               /* fondo general */
+  --surface: #f6f8fb;          /* secciones alternas / tarjetas claras */
+  --text: #0f172a;             /* texto principal */
+  --muted: #475569;            /* texto suave */
+  --divider: rgba(15, 23, 42, .10);  /* líneas divisorias */
+  /* Si ya tienes --brand, etc., no toques eso */
+}
+
+/* Overrides para OSCURO cuando el usuario lo prefiere */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #0b1220;
+    --surface: #0f1628;
+    --text: #e5e7eb;
+    --muted: #a3adc2;
+    --divider: rgba(148, 163, 184, .14);
+  }
+}
+
+/* Aplicación de las variables a la UI (cubre lo esencial) */
+html, body {
+  background: var(--bg) !important;
+  color: var(--text) !important;
+}
+
+/* Secciones / alterna */
+.section { background: var(--bg) !important; }
+.section.alt { background: var(--surface) !important; }
+
+/* Header y Footer al mismo fondo */
+.header, .footer { background: var(--bg) !important; color: var(--text) !important; }
+
+/* División entre columnas del footer (si usas divisores) */
+.footer .cols-grid > * + * { border-left: 1px solid var(--divider); }
+
+/* Asegura que textos “suaves” usen el color correcto */
+.muted, .footer .footer-copy { color: var(--muted); }
