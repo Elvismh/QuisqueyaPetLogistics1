@@ -54,8 +54,8 @@ a{color:inherit;text-decoration:none}
   position:absolute;
   inset:0;
   background: rgba(255, 140, 0, 0.35); /* naranja semitransparente */
-  backdrop-filter: blur(5px);           /* 👈 Gaussian Blur */
-  -webkit-backdrop-filter: blur(5px);   /* soporte Safari */
+  backdrop-filter: blur(4px);           /* 👈 Gaussian Blur */
+  -webkit-backdrop-filter: blur(4px);   /* soporte Safari */
 }
 
 .home .hero-inner{
