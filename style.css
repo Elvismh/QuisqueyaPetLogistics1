@@ -1905,3 +1905,59 @@ body.home .footer > .container.footer-inner{ display:block !important; }
     gap: 20px;
   }
 }
+
+/* ======= FOOTER – FIX FINAL ======= */
+
+/* 4 columnas en una fila (flex, más resistente que grid frente a estilos viejos) */
+.footer .footer-columns{
+  display: flex !important;
+  flex-wrap: nowrap !important;
+  gap: 32px !important;
+  align-items: flex-start !important;
+  border-top: 1px solid rgba(255,255,255,.12) !important;
+  padding: 24px 0 16px !important;
+}
+
+/* Anchos relativos: Dirección y Horario un poco más amplios */
+.footer .footer-col{ min-width: 240px !important; }
+.footer .col-dir{      flex: 1.25 1 0 !important; }  /* Dirección */
+.footer .col-contacto{ flex: 1.10 1 0 !important; }  /* Contacto */
+.footer .col-horario{  flex: 1.05 1 0 !important; }  /* Horario */
+.footer .col-redes{    flex: 0.90 1 0 !important; }  /* Redes */
+
+/* Títulos y párrafos dentro de las columnas */
+.footer .footer-col h4{ margin: 0 0 10px !important; font-weight: 700 !important; }
+.footer .footer-col p{  margin: 0 !important; line-height: 1.6 !important; }
+
+/* Iconos sociales */
+.footer .social-icons{ display:flex !important; gap:16px !important; align-items:center !important; }
+.footer .social-icons a{
+  display:inline-flex !important; width:40px !important; height:40px !important;
+  border-radius:50% !important; align-items:center !important; justify-content:center !important;
+  background: var(--brand, #f4810b) !important; color:#111 !important;
+  text-decoration:none !important; transition: transform .15s ease, filter .15s ease !important;
+}
+.footer .social-icons a:hover{ transform: translateY(-1px) !important; filter: brightness(1.07) !important; }
+
+/* Franja inferior: copyright centrado */
+.footer .footer-bottom{
+  border-top: 1px solid rgba(255,255,255,.12) !important;
+  padding: 14px 0 22px !important;
+  text-align: center !important;
+}
+.footer .footer-bottom p{
+  margin: 0 auto !important;
+  width: fit-content !important;
+  color: var(--c-muted, #9aa3af) !important;
+  font-size: .9rem !important;
+}
+
+/* Responsivo */
+@media (max-width: 1024px){
+  .footer .footer-columns{ flex-wrap: wrap !important; }
+  .footer .col-dir{ flex-basis: 100% !important; } /* Dirección ocupa fila completa */
+  .footer .col-contacto, .footer .col-horario, .footer .col-redes{ flex: 1 1 280px !important; }
+}
+@media (max-width: 760px){
+  .footer .footer-columns{ flex-direction: column !important; gap: 20px !important; }
+}
