@@ -953,3 +953,53 @@ img, .card img { filter: none !important; }
   }
   .footer-bottom .footer-social{ justify-self: center; }
 }
+
+/* ===== 1) UNA SOLA LÍNEA: debajo de las columnas ===== */
+.footer-info {
+  /* si ya la tienes en tu CSS, déjala. Importante que tenga la línea: */
+  border-bottom: 1px solid rgba(255,255,255,.08);
+  padding-bottom: 12px;
+  margin-bottom: 14px;  /* espacio antes de la fila de copy + redes */
+}
+
+/* ===== 2) Fila de copy + redes (MISMA FILA) ===== */
+.footer-bottom {
+  display: grid;
+  grid-template-columns: 1fr auto auto;  /* [espacio] [©] [redes] */
+  align-items: center;
+  column-gap: 16px;
+}
+
+/* ANULAR cualquier línea/estilo antiguo que esté generando la segunda raya */
+.footer-bottom,
+.footer-social,
+.footer-copy,
+.footer-copy p {
+  border: none !important;
+}
+
+/* © centrado en su celda */
+.footer-copy { text-align: center; }
+.footer-copy p { margin: 0; color: var(--c-muted); font-size: .9rem; }
+
+/* Redes a la derecha */
+.footer-social {
+  justify-self: end;
+  display: flex; gap: 16px;
+}
+.footer-social a {
+  width: 36px; height: 36px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  background: var(--brand); color: #1a0c00; font-size: 18px;
+  transition: transform .2s ease, box-shadow .2s ease;
+}
+.footer-social a:hover {
+  transform: translateY(-2px) scale(1.05);
+  box-shadow: 0 6px 14px var(--brand-glow);
+}
+
+/* ===== 3) Responsive ===== */
+@media (max-width: 768px) {
+  .footer-bottom { grid-template-columns: 1fr; row-gap: 10px; }
+  .footer-social { justify-self: center; }
+}
