@@ -1523,3 +1523,98 @@ footer.footer hr{ display:none !important; }
     border-bottom: none !important;
   }
 }
+
+/* ===== FOOTER – FIX FINAL Y SIMPLE ===== */
+
+/* Apila el contenido del footer: el copy queda abajo, centrado */
+footer.footer .footer-inner{
+  display: block !important;
+  border: 0 !important;
+}
+
+/* Bloque superior: sólo UNA línea inferior */
+footer.footer .footer-top{
+  width: 100%;
+  max-width: none;
+  margin: 0 auto;
+  padding-bottom: 14px;
+  border-bottom: 1px solid rgba(255,255,255,.10); /* única línea */
+}
+
+/* 4 columnas con mínimos más cómodos (no se achican) */
+footer.footer .footer-top .footer-info{
+  display: grid !important;
+  grid-template-columns:
+    minmax(420px, 1.2fr)   /* Dirección */
+    minmax(480px, 1.5fr)   /* Contacto */
+    minmax(360px, 1.1fr)   /* Horario */
+    auto                   /* Redes */
+  !important;
+  gap: 28px !important;
+  align-items: start !important;
+}
+
+/* Divisores verticales sólo en las 3 primeras */
+footer.footer .footer-top .footer-info > div{
+  padding: 0 16px;
+  border-right: 1px solid rgba(255,255,255,.12);
+}
+footer.footer .footer-top .footer-info > div:last-child{
+  border-right: none;
+}
+
+/* Redes pegado a la derecha */
+footer.footer .footer-top .footer-info .footer-social-col{
+  justify-self: end !important;
+}
+
+/* Evita que el título "Horario de seguimiento" se parta en dos líneas */
+footer.footer .col-horario h4{
+  white-space: nowrap;
+}
+
+/* Copyright centrado y sin líneas extra */
+footer.footer .footer-copy{
+  text-align: center !important;
+  padding: 16px 0 28px !important;
+  border: none !important;
+}
+footer.footer .footer-copy p{
+  margin: 0 !important;
+  color: var(--c-muted);
+  font-size: .9rem;
+}
+
+/* Limpia cualquier otra línea sobrante */
+footer.footer hr{ display:none !important; }
+
+/* ===== Responsive ===== */
+@media (max-width: 1200px){
+  footer.footer .footer-top .footer-info{
+    grid-template-columns:
+      minmax(360px, 1.2fr)
+      minmax(420px, 1.4fr)
+      minmax(320px, 1.1fr)
+      auto !important;
+  }
+}
+@media (max-width: 900px){
+  footer.footer .footer-top .footer-info{
+    grid-template-columns: 1fr 1fr !important;
+    gap: 22px !important;
+  }
+}
+@media (max-width: 560px){
+  footer.footer .footer-top .footer-info{
+    grid-template-columns: 1fr !important;
+    gap: 16px !important;
+  }
+  footer.footer .footer-top .footer-info > div{
+    border-right: none !important;
+    border-bottom: 1px solid rgba(255,255,255,.08) !important;
+    padding: 12px 0 !important;
+  }
+  footer.footer .footer-top .footer-info > div:last-child{
+    border-bottom: none !important;
+  }
+}
