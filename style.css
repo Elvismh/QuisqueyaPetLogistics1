@@ -1701,8 +1701,7 @@ footer.footer hr{ display:none !important; }
 /* ======== FIX FOOTER (forzar layout final) ======== */
 
 /* 1) El contenedor del footer NO es flex. Así el copy baja y se centra */
-.footer > .container.footer-inner{
-  display:block !important;
+body.home .footer > .container.footer-inner{ display:block !important; }
 }
 
 /* 2) Una sola línea bajo las 4 columnas */
