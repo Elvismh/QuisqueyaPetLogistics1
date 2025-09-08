@@ -816,3 +816,35 @@ img, .card img { filter: none !important; }
   }
   .footer-social{ justify-self:center; }
 }
+
+/* Redes sociales a la derecha dentro del bloque */
+.footer-social{
+  display:flex;
+  justify-content:flex-end;
+  gap:16px;
+  max-width:1000px;
+  margin:10px auto 0;
+}
+
+.footer-social a{
+  width:36px;height:36px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  background:var(--brand); color:#1a0c00; font-size:18px;
+  transition:transform .2s ease, box-shadow .2s ease;
+}
+.footer-social a:hover{
+  transform:translateY(-2px) scale(1.05);
+  box-shadow:0 6px 14px var(--brand-glow);
+}
+
+/* Copyright centrado y al fondo */
+.footer-copy{
+  text-align:center;
+  padding:15px 0 20px;
+  border-top:1px solid rgba(255,255,255,.08);
+}
+.footer-copy p{
+  margin:0;
+  color:var(--c-muted);
+  font-size:.9rem;
+}
