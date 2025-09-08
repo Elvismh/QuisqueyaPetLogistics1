@@ -1,145 +1,42 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="color-scheme" content="light dark" />
-  <title>Requisitos por destino · Quisqueya Pet Logistics</title>
-  <link rel="stylesheet" href="../style.css?v=15">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Requisitos por destino</title>
+  <link rel="stylesheet" href="../assets/css/styles.css?v=5">
 </head>
 <body class="requisitos">
 
-  <!-- Header -->
-  <header class="header" id="inicio">
-    <div class="container header-inner">
-      <a href="../index.html" class="brand">
-        <img src="../assets/logo.png" class="logo" alt="Logo Quisqueya Pet Logistics" />
-        <span>Quisqueya Pet Logistics</span>
-      </a>
-      <nav class="nav" id="mainNav">
-        <a href="../index.html">Home</a>
-        <a href="../servicios.html#transporte-aereo">Servicios</a>
-        <a href="../index.html#requisitos-destino" aria-current="page">Requisitos por destino</a>
-        <a href="../index.html#faq">Preguntas</a>
-        <a href="../index.html#contacto" class="btn btn-sm">Cotiza</a>
-        <a href="https://wa.me/18095203331?text=Hola,%20quiero%20cotizar%20el%20traslado%20de%20mi%20mascota" class="btn btn-sm btn-whatsapp" target="_blank">Contacto</a>
-      </nav>
-      <button class="nav-toggle" aria-label="Abrir menú">☰</button>
+  <header class="navbar">
+    <div class="logo">
+      <img src="../assets/img/logo.png" alt="Logo Quisqueya Pet Logistics">
+      <span>Quisqueya Pet Logistics</span>
     </div>
+    <nav>
+      <a href="../index.html">Servicios</a>
+      <a href="index.html">Requisitos por destino</a>
+      <a href="../preguntas.html">Preguntas</a>
+      <a href="../cotiza.html">Cotiza</a>
+      <a href="../contacto.html" class="btn-contacto">Contacto</a>
+    </nav>
   </header>
 
-  <section id="requisitos-destino" class="section">
-    <div class="container">
-      <h2 class="section-title">Requisitos por destino</h2>
-      <p>Selecciona una región para ver el checklist y la documentación. Podemos verificar tu caso y la normativa vigente.</p>
-
-      <!-- Tabs -->
-      <div class="tabs" role="tablist" aria-label="Regiones">
-        <button class="tab-btn" role="tab" aria-selected="true"  data-target="req-europa">🌍 Europa</button>
-        <button class="tab-btn" role="tab" aria-selected="false" data-target="req-caribe">🏝️ Caribe</button>
-        <button class="tab-btn" role="tab" aria-selected="false" data-target="req-usa">🇺🇸 USA</button>
-        <button class="tab-btn" role="tab" aria-selected="false" data-target="req-latam">🌎 Latinoamérica</button>
+  <section class="requisitos-main">
+    <h1>Requisitos por destino</h1>
+    <div class="grid">
+      <div class="card">
+        <img src="../assets/img/usa.webp" alt="USA">
+        <h3>Estados Unidos</h3>
+        <p>Documentos sanitarios y aduanales.</p>
       </div>
-
-      <!-- Paneles -->
-      <section id="req-europa" class="panel active" role="tabpanel">
-        <div class="card">
-          <div class="hero">
-            <img src="../assets/requisitos/europa.webp" alt="Europa" />
-            <span class="badge">Europa</span>
-          </div>
-          <div class="content">
-            <h3>Checklist principal</h3>
-            <ul>
-              <li><strong>Microchip ISO 11784/11785</strong> antes de la vacuna antirrábica.</li>
-              <li><strong>Vacuna antirrábica vigente</strong> (≥21 días desde primovacunación).</li>
-              <li><strong>Certificado zoosanitario</strong> (no comercial) + declaración del propietario.</li>
-              <li><strong>Entrada por Punto de Control designado</strong> y verificación de identidad y documentos.</li>
-              <li><strong>Serología de rabia</strong> (≥0.5 IU/ml) si aplica según país origen/destino.</li>
-            </ul>
-            <a href="../index.html#contacto" class="btn btn-solid" style="margin-top:12px">Quiero cotizar</a>
-          </div>
-        </div>
-      </section>
-
-      <section id="req-caribe" class="panel" role="tabpanel">
-        <div class="card">
-          <div class="hero">
-            <img src="../assets/requisitos/caribe.webp" alt="Caribe" />
-            <span class="badge">Caribe</span>
-          </div>
-          <div class="content">
-            <h3>Checklist principal</h3>
-            <ul>
-              <li>Certificado de salud veterinario vigente.</li>
-              <li>Vacuna antirrábica al día (cartilla).</li>
-              <li>Permiso/registro sanitario si lo exige el destino.</li>
-              <li>Requisitos de aerolínea (jaula IATA, medidas/peso).</li>
-            </ul>
-            <a href="../index.html#contacto" class="btn btn-solid" style="margin-top:12px">Quiero cotizar</a>
-          </div>
-        </div>
-      </section>
-
-      <section id="req-usa" class="panel" role="tabpanel">
-        <div class="card">
-          <div class="hero">
-            <img src="../assets/requisitos/usa.webp" alt="USA" />
-            <span class="badge">USA</span>
-          </div>
-          <div class="content">
-            <h3>Checklist principal</h3>
-            <ul>
-              <li>Certificado de salud y vacuna antirrábica vigente.</li>
-              <li>Documentación exigida por el punto de entrada y aerolínea.</li>
-              <li>Verificación previa de normativas del estado/aeropuerto de arribo.</li>
-            </ul>
-            <a href="../index.html#contacto" class="btn btn-solid" style="margin-top:12px">Quiero cotizar</a>
-          </div>
-        </div>
-      </section>
-
-      <section id="req-latam" class="panel" role="tabpanel">
-        <div class="card">
-          <div class="hero">
-            <img src="../assets/requisitos/latam.webp" alt="Latinoamérica" />
-            <span class="badge">Latinoamérica</span>
-          </div>
-          <div class="content">
-            <h3>Checklist principal</h3>
-            <ul>
-              <li>Certificado de salud veterinario y vacuna antirrábica.</li>
-              <li>Permisos/formatos del país destino cuando aplique.</li>
-              <li>Revisión de medidas/peso y jaula IATA antes del viaje.</li>
-            </ul>
-            <a href="../index.html#contacto" class="btn btn-solid" style="margin-top:12px">Quiero cotizar</a>
-          </div>
-        </div>
-      </section>
+      <div class="card">
+        <img src="../assets/img/europa.webp" alt="Europa">
+        <h3>Europa</h3>
+        <p>Certificados, vacunación y microchip.</p>
+      </div>
     </div>
   </section>
 
-  <footer class="footer">
-    <div class="container footer-inner">
-      <p>© <span id="y"></span> Quisqueya Pet Logistics · Santo Domingo, RD</p>
-      <a href="#" class="top" id="footerBackTop">Volver arriba ↑</a>
-    </div>
-  </footer>
-  <script>document.getElementById('y').textContent = new Date().getFullYear()</script>
-
-  <button id="backtop" class="backtop" aria-label="Volver arriba" title="Volver arriba">↑</button>
-
-  <script src="../script.js?v=5"></script>
-
-  <!-- Abrir panel desde ?dest= -->
-  <script>
-    (function () {
-      const params = new URLSearchParams(location.search);
-      const dest = (params.get('dest') || '').toLowerCase();
-      const map = { europa: 'req-europa', caribe: 'req-caribe', usa: 'req-usa', latam: 'req-latam' };
-      const id = map[dest];
-      if (id && location.hash !== '#'+id) history.replaceState(null, '', '#'+id);
-    })();
-  </script>
 </body>
 </html>
