@@ -135,3 +135,10 @@ img, .card img{filter:none !important}
 img{height:auto;max-width:100%} /* comportamiento seguro */
 
 /* 3) Si en otro CSS tenías reglas globales como `* { ... }`, aísla eso allá. */
+:root{
+  /* ...lo que ya tengas... */
+  --brand: #ff7a00;        /* NARANJA MARCA */
+  --brand-600: #e56e00;    /* hover */
+  --brand-700: #c66200;    /* activo */
+  --brand-glow: rgba(255,122,0,.35);
+}
