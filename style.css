@@ -24,6 +24,47 @@ body{
 }
 a{color:inherit;text-decoration:none}
 
+/* ====== HEADER EN UNA SOLA LÍNEA ====== */
+.header{
+  background: var(--c-bg);
+}
+
+/* Flex en el contenedor interno */
+.header .header-inner{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;  /* izquierda ↔ derecha */
+  gap: 24px;
+  flex-wrap: nowrap;               /* 👈 evita que salte de línea */
+}
+
+/* Marca (logo + texto) alineados en fila */
+.header .brand{
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-width: 0;                    /* para que no empuje al nav */
+}
+.header .brand img.logo{
+  height: 40px; width: auto; display: block;
+}
+.header .brand span{
+  white-space: nowrap;             /* “Quisqueya Pet Logistics” en una línea */
+  font-weight: 600;
+}
+
+/* Navegación a la derecha en fila */
+.header .nav{
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: nowrap;               /* 👈 no permitir salto */
+}
+.header .nav a{ white-space: nowrap; }
+
+/* Botones del header un poco más compactos */
+.header .nav .btn.btn-sm{ padding: 8px 12px; }
+
 /* ========== LAYOUT ========== */
 .container{width:min(1200px,90%);margin:0 auto}
 
