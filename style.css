@@ -355,3 +355,61 @@ img, .card img { filter: none !important; }
   color: var(--c-text);
   font-weight: 500;
 }
+
+/* === CARDS HOME: banda naranja perfecta y alineada === */
+
+/* El contenedor de la card controla el recorte y el radio */
+.home .cards .card{
+  position: relative;
+  border-radius: 16px;
+  overflow: hidden;          /* recorta imagen + banda */
+  background: transparent;   /* evita la “franja” gris de fondo */
+  display: block;
+}
+
+/* Todas las imágenes con el mismo alto y sin espacios fantasma */
+.home .cards .card > img{
+  display: block;            /* quita el gap de inline images */
+  width: 100%;
+  height: 200px;             /* ajusta si quieres más/menos alto */
+  object-fit: cover;
+}
+
+/* La banda naranja va ABSOLUTA al fondo de la card */
+.home .cards .card > .card-body{
+  position: absolute;
+  left: 0; right: 0; bottom: 0;
+  margin: 0;                 /* por si alguna regla anterior le puso margin */
+  padding: 14px 16px;
+  background: var(--brand);
+  color: #1a0c00;
+  font-weight: 800;
+  border: none;
+  border-top: 0;
+  box-shadow: none;          /* evita línea “gris” debajo */
+}
+
+/* Hover sutil y consistente en todas */
+.home .cards .card{
+  transition: transform .22s ease, box-shadow .22s ease, filter .22s ease;
+}
+.home .cards .card:hover{
+  transform: translateY(-4px);
+  box-shadow: 0 16px 26px rgba(0,0,0,.35);
+}
+.home .cards .card:hover > .card-body{
+  filter: brightness(1.04);
+}
+
+/* “Sheen” (brillo) diagonal en la banda al pasar el mouse */
+.home .cards .card > .card-body::after{
+  content:"";
+  position:absolute; inset:0;
+  background: linear-gradient(120deg, transparent 0%, rgba(255,255,255,.22) 35%, transparent 70%);
+  transform: translateX(-120%);
+  transition: transform .6s ease;
+  pointer-events:none;
+}
+.home .cards .card:hover > .card-body::after{
+  transform: translateX(120%);
+}
