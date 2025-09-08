@@ -905,3 +905,51 @@ img, .card img { filter: none !important; }
   .footer-info > div:last-child{ border-bottom: none; }
   .footer-social{ justify-content: center; }
 }
+
+/* ===== Fila inferior del footer (como la maqueta) ===== */
+.footer-bottom{
+  max-width: 1000px;                 /* mismo ancho visual que las columnas */
+  margin: 0 auto;
+  padding-top: 12px;
+  border-top: 1px solid rgba(255,255,255,.08);  /* línea arriba de la fila */
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;          /* [espacio] [©] [redes] */
+  align-items: center;
+  column-gap: 16px;
+}
+
+/* © totalmente centrado en la fila */
+.footer-bottom .footer-copy{
+  text-align: center;
+}
+.footer-bottom .footer-copy p{
+  margin: 0;
+  color: var(--c-muted);
+  font-size: .9rem;
+}
+
+/* Redes pegadas a la derecha */
+.footer-bottom .footer-social{
+  justify-self: end;                 /* ⟵ a la derecha */
+  display: flex;
+  gap: 16px;
+}
+.footer-bottom .footer-social a{
+  width: 36px; height: 36px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  background: var(--brand); color: #1a0c00; font-size: 18px;
+  transition: transform .2s ease, box-shadow .2s ease;
+}
+.footer-bottom .footer-social a:hover{
+  transform: translateY(-2px) scale(1.05);
+  box-shadow: 0 6px 14px var(--brand-glow);
+}
+
+/* Responsive: en móvil todo centrado y apilado */
+@media (max-width: 768px){
+  .footer-bottom{
+    grid-template-columns: 1fr;
+    row-gap: 10px;
+  }
+  .footer-bottom .footer-social{ justify-self: center; }
+}
