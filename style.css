@@ -814,16 +814,15 @@ img, .card img { filter: none !important; }
     grid-template-columns: 1fr;  /* una sola columna */
     row-gap:10px;
   }
-  .footer-social{ justify-self:center; }
-}
-
-/* Redes sociales a la derecha dentro del bloque */
+ /* Footer redes sociales */
 .footer-social{
   display:flex;
   justify-content:flex-end;
   gap:16px;
   max-width:1000px;
-  margin:10px auto 0;
+  margin:0 auto;
+  padding-top:15px;
+  border-top:1px solid rgba(255,255,255,.08); /* 👈 misma línea que las columnas */
 }
 
 .footer-social a{
@@ -837,11 +836,10 @@ img, .card img { filter: none !important; }
   box-shadow:0 6px 14px var(--brand-glow);
 }
 
-/* Copyright centrado y al fondo */
+/* Copyright centrado, sin línea extra */
 .footer-copy{
   text-align:center;
   padding:15px 0 20px;
-  border-top:1px solid rgba(255,255,255,.08);
 }
 .footer-copy p{
   margin:0;
