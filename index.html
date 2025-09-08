@@ -9,6 +9,79 @@
   <!-- 👇 Rompemos caché -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link rel="stylesheet" href="style.css?v=14" />
+  <style>
+  /* Línea única bajo las 4 columnas */
+  .footer-top{
+    max-width: 1000px;
+    margin: 0 auto;
+    padding-bottom: 12px;
+    border-bottom: 1px solid rgba(255,255,255,.08);
+  }
+
+  /* 4 columnas fijas: Dirección | Contacto | Horario | Redes  */
+  .footer-info.cols-grid{
+    display: grid !important;
+    grid-template-columns: 1fr 1fr 1fr auto !important;
+    grid-template-areas: "dir contacto horario redes" !important;
+    align-items: start;
+    gap: 28px;
+  }
+  /* mapeo explícito de cada bloque */
+  .footer-info.cols-grid .col-dir{ grid-area: dir; }
+  .footer-info.cols-grid .col-contacto{ grid-area: contacto; }
+  .footer-info.cols-grid .col-horario{ grid-area: horario; }
+  .footer-info.cols-grid .col-redes{ grid-area: redes; justify-self: end; }
+
+  /* divisores verticales opcionales */
+  .footer-info.cols-grid > div{
+    padding: 0 16px;
+    border-right: 1px solid rgba(255,255,255,.12);
+  }
+  .footer-info.cols-grid > div:last-child{ border-right: none; }
+
+  /* íconos naranjas */
+  .footer-social-col .social-icons{ display:flex; gap:16px; margin-top:8px; }
+  .footer-social-col .social-icons a{
+    width:36px; height:36px; border-radius:50%;
+    display:flex; align-items:center; justify-content:center;
+    background: var(--brand); color:#1a0c00; font-size:18px;
+    transition: transform .2s ease, box-shadow .2s ease;
+  }
+  .footer-social-col .social-icons a:hover{
+    transform: translateY(-2px) scale(1.05);
+    box-shadow: 0 6px 14px var(--brand-glow);
+  }
+
+  /* copy centrado abajo (fuera de footer-top) */
+  .footer-copy{ text-align:center; padding:15px 0 24px; }
+  .footer-copy p{ margin:0; color:var(--c-muted); font-size:.9rem; }
+
+  /* Responsive: 2 col -> 1 col */
+  @media (max-width: 900px){
+    .footer-info.cols-grid{
+      grid-template-columns: 1fr 1fr !important;
+      grid-template-areas:
+        "dir contacto"
+        "horario redes" !important; /* redes se queda al lado de horario */
+    }
+    .footer-info.cols-grid > div{ border-right: none; }
+  }
+  @media (max-width: 560px){
+    .footer-info.cols-grid{
+      grid-template-columns: 1fr !important;
+      grid-template-areas:
+        "dir" "contacto" "horario" "redes" !important;
+    }
+    .footer-info.cols-grid > div{
+      border-right: none;
+      border-bottom: 1px solid rgba(255,255,255,.08);
+      padding: 12px 0;
+    }
+    .footer-info.cols-grid > div:last-child{ border-bottom: none; }
+    .footer-social-col .social-icons{ justify-content: center; }
+  }
+</style>
+
 </head>
 <body class="home">
 
