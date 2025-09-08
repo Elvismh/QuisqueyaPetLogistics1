@@ -357,3 +357,60 @@ body {
   from { opacity: 0; transform: translateY(6px); }
   to   { opacity: 1; transform: translateY(0); }
 }
+
+/* === PATCH HOME (pegar al final de style.css) ======================= */
+
+/* 1) HERO: no duplicar el fondo (causa de portada “triplicada”) */
+.hero-slide::before { content: none !important; }
+
+/* 2) HERO: capa naranja + blur (sin duplicar imágenes) */
+.hero-layer {
+  background: rgba(255, 122, 0, .22) !important; /* naranja suave */
+  backdrop-filter: blur(5px);
+}
+
+/* 3) “Ver requisitos” (y demás .btn-solid) siempre naranja */
+.btn.btn-solid { background: #ff7a00 !important; color: #fff !important; }
+
+/* 4) FOOTER: 4 columnas con divisores */
+.footer-top { 
+  border-top: 1px solid var(--c-border, rgba(0,0,0,.12)); 
+  border-bottom: 1px solid var(--c-border, rgba(0,0,0,.12));
+}
+.footer-top .footer-info{
+  display: grid;
+  grid-template-columns: 1.25fr 1fr 1.25fr 1fr; /* Dirección y Horario un poco más anchas */
+  gap: 0;
+}
+.footer-top .footer-info > div{
+  padding: 20px;
+  border-right: 1px solid var(--c-border, rgba(0,0,0,.12));
+}
+.footer-top .footer-info > div:last-child{ border-right: none; }
+
+/* 5) FOOTER: copyright centrado con UNA sola línea arriba */
+.footer-copy{
+  text-align: center;
+  padding: 14px 16px;
+  border-top: 1px solid var(--c-border, rgba(0,0,0,.12));
+  border-bottom: none;
+}
+
+/* 6) Redes sociales: círculo naranja + ícono blanco (no verdes) */
+.footer .social-icons a{
+  background: #ff7a00 !important;
+  color: #fff !important;
+  width: 38px; height: 38px; border-radius: 50%;
+  display: inline-grid; place-items: center;
+}
+
+/* 7) El correo no “choca” con el divisor; corta bien si es largo */
+.footer-top .col-contacto{ overflow-wrap: anywhere; word-break: break-word; }
+.footer-top .col-contacto p{ margin: 0; }
+
+/* 8) Dirección y Horario con ancho mínimo para evitar cortes feos */
+.footer-top .col-dir, 
+.footer-top .col-horario{ min-width: 280px; }
+
+/* 9) Enlaces del footer NO se vuelven verdes (solo redes naranjas) */
+.footer a:not(.social-icons a){ color: inherit; }
