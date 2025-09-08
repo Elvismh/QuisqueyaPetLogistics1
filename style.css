@@ -173,3 +173,38 @@ img, .card img{filter:none !important}
 img{height:auto;max-width:100%} /* comportamiento seguro */
 
 /* 3) Si en otro CSS tenías reglas globales como `* { ... }`, aísla eso allá. */
+/* Recuadro naranja en las cards del home */
+.home .cards .card{
+  transition: transform .22s ease, box-shadow .22s ease;
+}
+.home .cards .card:hover{
+  transform: translateY(-4px);
+  box-shadow: 0 16px 26px rgba(0,0,0,.35);
+}
+
+/* Etiqueta inferior (recuadro) */
+.home .cards .card-body{
+  position: relative;
+  background: var(--brand);
+  color:#1a0c00;
+  font-weight: 800;
+  overflow: hidden;            /* para el brillo “sheen” */
+}
+
+/* Efecto “sheen” al pasar el mouse */
+.home .cards .card-body::after{
+  content:"";
+  position:absolute; inset:0;
+  background: linear-gradient(120deg, transparent 0%, rgba(255,255,255,.22) 35%, transparent 70%);
+  transform: translateX(-120%);
+  transition: transform .6s ease;
+  pointer-events:none;
+}
+.home .cards .card:hover .card-body::after{
+  transform: translateX(120%);
+}
+
+/* Opcional: un toque de relieve al hover del recuadro */
+.home .cards .card:hover .card-body{
+  filter: brightness(1.04);
+}
