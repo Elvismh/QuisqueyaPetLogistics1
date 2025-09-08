@@ -775,3 +775,44 @@ img, .card img { filter: none !important; }
   padding:12px 0 24px;
 }
 .footer-copy p{ margin:0; color:var(--c-muted); font-size:.9rem; }
+
+/* ===== Footer: fila inferior en grid (copy centrado + redes derecha) ===== */
+.footer-bottom{
+  display:grid;
+  grid-template-columns: 1fr auto auto; /* [espacio] [copy] [redes] */
+  align-items:center;
+  gap:16px;
+  max-width:1000px;      /* mismo ancho visual que las columnas */
+  margin:10px auto 0;    /* centrado del bloque */
+  padding-top:12px;
+  border-top:1px solid rgba(255,255,255,.08);
+}
+
+/* Copy centrado en su celda */
+.footer-copy{ text-align:center; }
+.footer-copy p{ margin:0; color:var(--c-muted); font-size:.9rem; }
+
+/* Redes a la derecha */
+.footer-social{
+  justify-self:end;      /* 👈 a la derecha del bloque */
+  display:flex; gap:16px;
+}
+.footer-social a{
+  width:36px;height:36px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  background:var(--brand); color:#1a0c00; font-size:18px;
+  transition:transform .2s ease, box-shadow .2s ease;
+}
+.footer-social a:hover{
+  transform:translateY(-2px) scale(1.05);
+  box-shadow:0 6px 14px var(--brand-glow);
+}
+
+/* Responsive: en móviles todo centrado y en columna */
+@media (max-width:768px){
+  .footer-bottom{
+    grid-template-columns: 1fr;  /* una sola columna */
+    row-gap:10px;
+  }
+  .footer-social{ justify-self:center; }
+}
