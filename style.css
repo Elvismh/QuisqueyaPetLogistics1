@@ -1059,3 +1059,45 @@ img, .card img { filter: none !important; }
   .footer-info > div:last-child{ border-bottom:none; }
   .footer-social-col .social-icons{ justify-content:center; }
 }
+
+/* === Footer: 4 columnas con "Redes sociales" a la derecha === */
+.footer-info{
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr auto; /* Dirección | Contacto | Horario | Redes */
+  align-items: start;
+  gap: 28px;
+}
+
+/* Borde vertical entre columnas (opcional) */
+.footer-info > div{
+  padding: 0 16px;
+  border-right: 1px solid rgba(255,255,255,.12);
+}
+.footer-info > div:last-child{ border-right: none; }
+
+/* La 4ta columna pegada a la derecha */
+.footer-social-col{ justify-self: end; text-align: left; }
+.footer-social-col .social-icons{ display:flex; gap:16px; margin-top:8px; }
+.footer-social-col .social-icons a{
+  width:36px; height:36px; border-radius:50%;
+  display:flex; align-items:center; justify-content:center;
+  background:var(--brand); color:#1a0c00; font-size:18px;
+  transition: transform .2s ease, box-shadow .2s ease;
+}
+.footer-social-col .social-icons a:hover{
+  transform: translateY(-2px) scale(1.05);
+  box-shadow: 0 6px 14px var(--brand-glow);
+}
+
+/* === Breakpoints: mantenemos 4 columnas hasta 900px === */
+/* (esto pisa tu regla antigua que lo bajaba a 2 columnas muy pronto) */
+@media (max-width: 900px){
+  .footer-info{ grid-template-columns: repeat(2, 1fr); }
+  .footer-social-col{ justify-self: center; }
+}
+@media (max-width: 560px){
+  .footer-info{ grid-template-columns: 1fr; }
+  .footer-info > div{ border-right:none; border-bottom:1px solid rgba(255,255,255,.08); padding:12px 0; }
+  .footer-info > div:last-child{ border-bottom:none; }
+  .footer-social-col .social-icons{ justify-content:center; }
+}
