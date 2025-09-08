@@ -1961,3 +1961,29 @@ body.home .footer > .container.footer-inner{ display:block !important; }
 @media (max-width: 760px){
   .footer .footer-columns{ flex-direction: column !important; gap: 20px !important; }
 }
+
+/* ======= Divisores entre columnas del footer ======= */
+
+/* Línea vertical entre columnas (desktop) */
+.footer .footer-col{
+  padding-right: 20px !important;             /* respiración antes del divisor */
+}
+.footer .footer-col:not(:last-child){
+  border-right: 1px solid rgba(255,255,255,.14) !important;
+}
+
+/* Cuando las columnas se apilen (tablet/móvil), usamos divisores horizontales */
+@media (max-width: 1024px){
+  .footer .footer-col{
+    border-right: 0 !important;
+    padding-right: 0 !important;
+    padding-bottom: 16px !important;
+    margin-bottom: 16px !important;
+    border-bottom: 1px solid rgba(255,255,255,.12) !important;
+  }
+  .footer .footer-col:last-child{
+    border-bottom: 0 !important;
+    margin-bottom: 0 !important;
+    padding-bottom: 0 !important;
+  }
+}
