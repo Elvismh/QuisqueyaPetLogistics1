@@ -714,3 +714,30 @@ img, .card img { filter: none !important; }
   transform: translateY(-2px) scale(1.05);
   box-shadow: 0 6px 14px var(--brand-glow);
 }
+
+/* Redes sociales en footer */
+.footer-social {
+  display: flex;
+  justify-content: flex-end;  /* 👈 A la derecha */
+  gap: 16px;
+  max-width: 1000px;          /* mismo ancho que el grid */
+  margin: 10px auto 0;        /* centrado del bloque */
+}
+
+.footer-social a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: var(--brand);
+  color: #1a0c00;
+  font-size: 18px;
+  transition: transform .2s ease, box-shadow .2s ease;
+}
+
+.footer-social a:hover {
+  transform: translateY(-2px) scale(1.05);
+  box-shadow: 0 6px 14px var(--brand-glow);
+}
