@@ -1003,3 +1003,59 @@ img, .card img { filter: none !important; }
   .footer-bottom { grid-template-columns: 1fr; row-gap: 10px; }
   .footer-social { justify-self: center; }
 }
+
+/* ==== Footer: 4 columnas ==== */
+.footer-info{
+  display:grid;
+  grid-template-columns:repeat(4,1fr); /* 👈 ahora 4 */
+  gap:32px;
+  max-width:1000px;
+  margin:0 auto;
+  padding-bottom:12px;
+  border-bottom:1px solid rgba(255,255,255,.08);
+}
+
+.footer-info > div{
+  padding:0 16px;
+  border-right:1px solid rgba(255,255,255,.12);
+}
+.footer-info > div:last-child{ border-right:none; }
+
+/* Columna de redes */
+.footer-social-col .social-icons{
+  display:flex;
+  gap:16px;
+  margin-top:8px;
+}
+.footer-social-col .social-icons a{
+  width:36px; height:36px; border-radius:50%;
+  display:flex; align-items:center; justify-content:center;
+  background:var(--brand); color:#1a0c00; font-size:18px;
+  transition:transform .2s ease, box-shadow .2s ease;
+}
+.footer-social-col .social-icons a:hover{
+  transform:translateY(-2px) scale(1.05);
+  box-shadow:0 6px 14px var(--brand-glow);
+}
+
+/* Copyright centrado abajo */
+.footer-copy{
+  text-align:center;
+  padding:15px 0 20px;
+}
+.footer-copy p{
+  margin:0;
+  color:var(--c-muted);
+  font-size:.9rem;
+}
+
+/* Responsive */
+@media (max-width:1000px){
+  .footer-info{ grid-template-columns:repeat(2,1fr); }
+}
+@media (max-width:640px){
+  .footer-info{ grid-template-columns:1fr; }
+  .footer-info > div{ border-right:none; border-bottom:1px solid rgba(255,255,255,.08); padding:12px 0; }
+  .footer-info > div:last-child{ border-bottom:none; }
+  .footer-social-col .social-icons{ justify-content:center; }
+}
