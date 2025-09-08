@@ -1822,3 +1822,86 @@ body.home .footer > .container.footer-inner{ display:block !important; }
 /* Por si alguna regla previa añade rayas extra al copy: las anulamos */
 .footer .footer-copy::before,
 .footer .footer-copy::after{ content: none !important; display: none !important; }
+
+/* =========================
+   FOOTER NUEVO (forzar sobre estilos viejos)
+   ========================= */
+
+/* Neutraliza cualquier grid/estilo viejo del footer que pudiera colarse */
+.footer .footer-top,
+.footer .footer-info,
+.footer .cols-grid {
+  display: contents !important;
+  border: 0 !important;
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+/* Contenedor de 4 columnas */
+.footer-columns{
+  display: grid !important;
+  grid-template-columns: 1.25fr 1.15fr 1fr 0.9fr; /* + ancho para Dirección y Horario */
+  gap: 32px;
+  border-top: 1px solid rgba(255,255,255,.12);
+  padding-top: 24px;
+}
+
+/* Columnas */
+.footer-col h4{
+  margin: 0 0 10px;
+  font-weight: 700;
+}
+.footer-col p{
+  margin: 0;
+  line-height: 1.6;
+}
+
+/* Iconos sociales */
+.footer .social-icons{
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+.footer .social-icons a{
+  display: inline-flex;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  align-items: center;
+  justify-content: center;
+  background: var(--brand, #f4810b);
+  color: #111;
+  text-decoration: none;
+  transition: transform .15s ease, filter .15s ease;
+}
+.footer .social-icons a:hover{
+  transform: translateY(-1px);
+  filter: brightness(1.07);
+}
+
+/* Franja inferior del copy */
+.footer-bottom{
+  border-top: 1px solid rgba(255,255,255,.12);
+  padding: 14px 0 20px;
+  text-align: center;
+}
+.footer-bottom p{
+  margin: 0;
+  color: var(--c-muted, #9aa3af);
+  font-size: .9rem;
+}
+
+/* Responsivo */
+@media (max-width: 1024px){
+  .footer-columns{
+    grid-template-columns: 1.2fr 1fr 1fr; /* junta Redes con Horario si hace falta */
+    grid-auto-flow: row;
+  }
+  .col-redes{ order: 4; }
+}
+@media (max-width: 760px){
+  .footer-columns{
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+}
