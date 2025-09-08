@@ -1,264 +1,125 @@
-/* =========================================================
-   Base / Reset
-   ========================================================= */
-*,
-*::before,
-*::after { box-sizing: border-box; }
-html, body { margin: 0; padding: 0; }
-img { max-width: 100%; display: block; }
-button, input, select, textarea { font: inherit; }
-a { color: inherit; text-decoration: none; }
-
-/* =========================================================
-   Tokens (Light) + Dark Mode
-   ========================================================= */
-:root{
-  --bg: #f7fafc;
-  --surface: #ffffff;
-  --surface-2: #f4f8fd;
-  --text: #0b1722;
-  --muted: #405361;
-  --border: #d9e4ef;
-
-  --brand: #F48C20;       /* naranja de marca */
-  --brand-2: #8458ff;
-  --ring: rgba(244,140,32,.18);
-
-  --radius: 16px;
-  --radius-lg: 18px;
-  --shadow: 0 10px 28px rgba(10,20,30,.08);
+/* ===== RESET ===== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
-@media (prefers-color-scheme: dark){
-  :root{
-    --bg:#0f1720;
-    --surface:#121a24;
-    --surface-2:#0f1620;
-    --text:#e8f1ff;
-    --muted:#9fb3c8;
-    --border:#213448;
-
-    --ring: rgba(244,140,32,.28);
-    --shadow: 0 10px 28px rgba(0,0,0,.35);
-  }
+body {
+  font-family: Arial, sans-serif;
+  background: #0e141b;
+  color: #fff;
+}
+a {
+  text-decoration: none;
+  color: inherit;
 }
 
-html, body {
-  background: var(--bg);
-  color: var(--text);
-  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Inter, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif;
-  line-height: 1.5;
+/* ===== NAVBAR ===== */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  background: #0e141b;
+  position: sticky;
+  top: 0;
+  z-index: 999;
+}
+.navbar .logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.navbar .logo img {
+  height: 40px;
+}
+.navbar nav a {
+  margin: 0 10px;
+  font-weight: 500;
+}
+.navbar .btn-contacto {
+  background: #2ecc71;
+  color: #fff;
+  padding: 8px 14px;
+  border-radius: 5px;
 }
 
-/* =========================================================
-   Layout
-   ========================================================= */
-.container { width: min(1100px, 92vw); margin: 0 auto; }
-.section { padding: 48px 0 72px; }
-.section-title { margin: 0 0 16px; font-size: clamp(26px, 4.5vw, 42px); line-height: 1.1; font-weight: 800; }
-.grid { display: grid; gap: 16px; }
-
-/* =========================================================
-   Header
-   ========================================================= */
-.header { position: sticky; top: 0; z-index: 50; background: var(--surface); border-bottom: 1px solid var(--border); }
-.header-inner { display: flex; align-items: center; justify-content: space-between; height: 64px; }
-.brand { display: inline-flex; align-items: center; gap: 10px; font-weight: 800; }
-.logo { width: 32px; height: 32px; }
-
-.nav { display: flex; align-items: center; gap: 22px; }
-.nav a { font-weight: 700; opacity: .9; }
-.nav a[aria-current="page"]{ color: var(--brand); }
-.nav .btn { margin-left: 8px; }
-
-.nav-toggle { display: none; background: none; border: 0; font-size: 24px; }
-@media (max-width: 840px){
-  .nav-toggle { display: inline-block; }
-  .nav {
-    position: fixed; inset: 64px 0 auto 0; background: var(--surface);
-    border-bottom: 1px solid var(--border); padding: 16px;
-    transform: translateY(-100%); transition: .25s ease;
-    flex-direction: column; gap: 12px;
-  }
-  .nav.open { transform: translateY(0); }
+/* ===== HERO (solo en home) ===== */
+.home .hero {
+  height: 80vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background: url("../img/hero-1.webp") no-repeat center center/cover;
+  position: relative;
+}
+.home .hero h1 {
+  font-size: 3rem;
+  margin-bottom: 10px;
+}
+.home .hero p {
+  font-size: 1.2rem;
+  opacity: 0.9;
 }
 
-/* =========================================================
-   Botones
-   ========================================================= */
-.btn{
-  display:inline-flex; align-items:center; justify-content:center; gap:.5rem;
-  padding:.7rem 1rem; border-radius:12px; border:1px solid transparent;
-  cursor:pointer; font-weight:800;
+/* ===== SERVICIOS (solo home) ===== */
+.home .servicios {
+  padding: 4rem 2rem;
+  background: #111a24;
 }
-.btn-sm{ padding:.56rem .9rem; border-radius:12px; font-size:.95rem; }
-.btn-solid{ background: var(--brand); color:#fff; }
-.btn-solid:hover{ filter: brightness(.95); }
-.btn-outline{ background: transparent; color: var(--brand); border-color: var(--brand); }
-.btn-outline:hover{ background: rgba(244,140,32,.08); }
-.btn-secondary{ background: transparent; border:1px solid rgba(0,0,0,.18); color: inherit; }
-@media (prefers-color-scheme: dark){ .btn-secondary{ border-color: rgba(255,255,255,.25); } }
-
-/* WhatsApp */
-.btn-whatsapp{ background:#25D366; color:#fff; border:0; }
-.btn-whatsapp:hover{ filter:brightness(.94); }
-
-/* =========================================================
-   Hero (portada)
-   ========================================================= */
-.hero{ position: relative; overflow: hidden; }
-.hero-slide{
-  min-height: 70vh;
-  display:none;
-  align-items:center;
-  justify-content:center;
-
-  /* Soporta ambas variables: --hero:url(...) o --bg:url(...) */
-  background-image: var(--hero, var(--bg));
-  background-color: var(--bg);
-  background-size: cover;
-  background-position: center;
+.home .servicios h2 {
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 2rem;
 }
-.hero-slide.is-active{ display:flex; }
-.hero-layer{ position:absolute; inset:0; background:linear-gradient(180deg, rgba(0,0,0,.25), rgba(0,0,0,.25)); }
-.hero-inner{ position:relative; z-index:1; width:min(1100px,92vw); margin:0 auto; color:#fff; }
-.hero-title{ font-size: clamp(28px, 5vw, 52px); font-weight: 900; margin: 0 0 10px; }
-.hero-sub{ font-size: clamp(15px, 2vw, 20px); opacity: .95; margin: 0 0 18px; }
-.hero-cta{ display:flex; flex-wrap:wrap; gap:12px; }
-.hero-dots{ position:absolute; inset:auto 0 12px 0; display:flex; justify-content:center; gap:8px; z-index:2; }
-.hero-dots .dot{ width:10px; height:10px; border-radius:999px; background:#fff8; border:0; }
-.hero-dots .dot.is-active{ background:#fff; }
-
-/* =========================================================
-   Cards (home grid)
-   ========================================================= */
-.cards{ grid-template-columns: repeat(1, minmax(0,1fr)); }
-@media (min-width:600px){ .cards{ grid-template-columns: repeat(2, minmax(0,1fr)); } }
-@media (min-width:960px){ .cards{ grid-template-columns: repeat(4, minmax(0,1fr)); } }
-
-.card{
-  background: var(--surface);
-  border:1px solid var(--border);
-  border-radius: var(--radius);
-  overflow:hidden;
-  box-shadow: var(--shadow);
-  transition: transform .15s ease;
+.home .service-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
 }
-.card:hover{ transform: translateY(-2px); }
-.card > img{ width:100%; height:180px; object-fit:cover; }
-.card-body{ padding: 12px 14px; }
-.card-body h3{ margin:0; font-size:1.05rem; }
-
-/* =========================================================
-   Tabs (reutilizable)
-   ========================================================= */
-.tabs{
-  display:flex; gap:8px; flex-wrap:wrap;
-  position:sticky; top:64px; background:linear-gradient(var(--bg),var(--bg));
-  padding:8px 0 12px; z-index:5;
+.home .service-card {
+  background: #1c2733;
+  border-radius: 16px;
+  overflow: hidden;
+  text-align: center;
+  padding-bottom: 1rem;
 }
-.tab-btn{
-  appearance:none; cursor:pointer; font-weight:800;
-  padding:10px 14px; border-radius:12px;
-  border:1px solid var(--border); background:var(--surface); color:var(--text);
+.home .service-card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
 }
-.tab-btn:hover{ border-color: var(--brand); color: var(--brand); }
-
-/* =========================================================
-   Servicios (servicios.html)
-   ========================================================= */
-#servicios .panel{ display:none; animation:fade .22s ease; }
-#servicios .panel.active{ display:block; }
-@keyframes fade{ from{ opacity:.6; transform:translateY(2px);} }
-
-#servicios .card{
-  background: radial-gradient(120% 140% at 80% -10%, var(--surface-2), var(--bg));
-  border: 1px solid var(--border);
-  border-radius: var(--radius-lg);
-  overflow:hidden;
-  box-shadow: var(--shadow);
-}
-#servicios .hero{ position:relative; min-height:240px; background:var(--surface); display:grid; place-items:center; }
-#servicios .hero img{ width:100%; height:100%; object-fit:cover; opacity:.95; filter:saturate(1.05); }
-#servicios .badge{ position:absolute; left:14px; bottom:12px; background:rgba(0,0,0,.45); color:#fff; padding:8px 10px; border-radius:12px; font-weight:800; }
-#servicios .content{ padding:18px; }
-#servicios .content h2{ margin:0 0 8px; font-size:22px; }
-#servicios .content p, #servicios .content ul{ color: var(--muted); }
-@media (min-width:960px){
-  #servicios .panel .card{ display:grid; grid-template-columns: 6fr 6fr; align-items:stretch; }
-  #servicios .hero{ min-height:100%; }
+.home .service-card h3 {
+  margin-top: 1rem;
 }
 
-/* =========================================================
-   Requisitos por destino
-   ========================================================= */
-#requisitos-destino{
-  --card-start: var(--surface-2);
-  --card-end: var(--bg);
+/* ===== REQUISITOS (solo requisitos) ===== */
+.requisitos .requisitos-main {
+  padding: 4rem 2rem;
 }
-#requisitos-destino .panel{ display:none; animation:fade .22s ease; }
-#requisitos-destino .panel.active{ display:block; }
-
-#requisitos-destino .card{
-  background: radial-gradient(120% 140% at 80% -10%, var(--card-start), var(--card-end));
-  border: 1px solid var(--border);
-  border-radius: var(--radius-lg);
-  overflow:hidden;
-  box-shadow: var(--shadow);
+.requisitos .grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+  margin-top: 2rem;
 }
-#requisitos-destino .hero{ position:relative; min-height:240px; background:var(--surface); display:grid; place-items:center; }
-#requisitos-destino .hero img{ width:100%; height:100%; object-fit:cover; opacity:.95; filter:saturate(1.05); }
-#requisitos-destino .badge{ position:absolute; left:14px; bottom:12px; background:rgba(0,0,0,.45); color:#fff; padding:8px 10px; border-radius:12px; font-weight:800; }
-#requisitos-destino .content{ padding:18px; }
-#requisitos-destino .content h3{ margin:0 0 8px; font-size:20px; }
-#requisitos-destino .content p, #requisitos-destino .content ul{ color: var(--muted); }
-
-/* Píldora ACTIVA (naranja) en Requisitos */
-#requisitos-destino .tabs > .tab-btn[aria-selected="true"]{
-  background: var(--surface) !important;
-  color: var(--brand) !important;
-  border-color: var(--brand) !important;
-  box-shadow: 0 0 0 3px var(--ring) inset !important;
+.requisitos .card {
+  background: #1c2733;
+  border-radius: 12px;
+  overflow: hidden;
+  text-align: center;
+  padding-bottom: 1rem;
 }
-
-/* =========================================================
-   Formulario
-   ========================================================= */
-.form{
-  background: var(--surface); border:1px solid var(--border);
-  border-radius: var(--radius); padding: 16px; box-shadow: var(--shadow);
+.requisitos .card img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
 }
-.form-grid{ display:grid; grid-template-columns:1fr; gap:12px; }
-.form-grid label{ display:grid; gap:6px; font-weight:700; }
-input[type="text"], input[type="email"], input[type="tel"], input[type="date"], input[type="number"], select, textarea{
-  padding:.7rem .8rem; border-radius:12px; border:1px solid var(--border);
-  background: var(--surface); color:var(--text);
+.requisitos .card h3 {
+  margin: 1rem 0 0.5rem 0;
 }
-textarea{ resize: vertical; }
-.form-actions{ display:flex; gap:10px; flex-wrap:wrap; margin-top:8px; }
-.form-note{ color: var(--muted); margin: 8px 0 0; }
-@media (min-width:860px){
-  .form-grid{ grid-template-columns: repeat(2, minmax(0,1fr)); }
-  .form-grid .full{ grid-column: 1/-1; }
+.requisitos .card p {
+  font-size: 0.95rem;
+  color: #ccc;
 }
-
-#btnWhatsapp{ opacity: 1 !important; pointer-events: auto !important; }
-
-/* =========================================================
-   Footer / utilidades
-   ========================================================= */
-.footer{ background: var(--surface); border-top:1px solid var(--border); margin-top: 48px; }
-.footer-inner{ display:flex; align-items:center; justify-content:space-between; gap:16px; padding:18px 0; }
-.footer .top{ font-weight:800; color: var(--brand); }
-
-.alt{ background: var(--surface); }
-.reveal{ animation: fadeIn .5s ease both; }
-@keyframes fadeIn{ from{ opacity:.4; transform: translateY(6px);} }
-
-.backtop{
-  position: fixed; right: 16px; bottom: 18px; z-index: 40;
-  width:44px; height:44px; border-radius:999px; border:0;
-  background: var(--brand); color:#fff; font-weight:900; cursor:pointer;
-  transform: translateY(120%); transition: transform .2s ease, opacity .2s ease; opacity:0;
-  box-shadow: var(--shadow);
-}
-.backtop.show{ transform: translateY(0); opacity:1; }
