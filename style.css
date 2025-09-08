@@ -5,6 +5,13 @@
   --brand-600: #e56e00;    /* hover */
   --brand-700: #c66200;    /* activo */
   --brand-glow: rgba(255,122,0,.35);
+  
+    /* Variables base */
+  --c-bg:#0f1320;
+  --c-bg-2:#111a24;
+  --c-card:#1c2733;
+  --c-text:#ffffff;
+  --c-muted:#cfd6df;
 }
 
 *{box-sizing:border-box;margin:0;padding:0}
@@ -212,3 +219,51 @@ img{height:auto;max-width:100%} /* comportamiento seguro */
   border:1px solid rgba(0,0,0,.25);
   box-shadow: 0 6px 16px rgba(0,0,0,.25);
 }
+/* ==== OVERRIDES FINALES (forzar marca) ==== */
+/* Botones: marca naranja obligatoria */
+.btn,
+.header .btn,
+.section .btn {
+  background: var(--brand) !important;
+  color: #1a0c00 !important;
+  border: none !important;
+  font-weight: 700;
+  transition: transform .18s ease, box-shadow .18s ease, filter .18s ease;
+}
+.btn:hover,
+.header .btn:hover,
+.section .btn:hover {
+  transform: translateY(-1px) scale(1.03);
+  filter: brightness(1.05);
+  box-shadow: 0 10px 28px var(--brand-glow);
+  background: var(--brand-600) !important;
+}
+.btn:active { transform: translateY(0) scale(.99); background: var(--brand-700) !important; }
+
+/* Variantes */
+.btn.btn-outline { background: transparent !important; color: #fff !important; border: 1.5px solid var(--brand) !important; }
+.btn.btn-outline:hover { background: var(--brand) !important; color: #1a0c00 !important; }
+.btn.btn-whatsapp { background: var(--brand) !important; color: #1a0c00 !important; border: none !important; }
+
+/* Recuadro (etiqueta) de las cards en HOME: naranja sí o sí */
+.home .cards .card > .card-body {
+  background: var(--brand) !important;
+  color: #1a0c00 !important;
+  position: relative;
+  overflow: hidden;
+}
+.home .cards .card:hover > .card-body {
+  filter: brightness(1.04);
+}
+.home .cards .card > .card-body::after{
+  content:"";
+  position:absolute; inset:0;
+  background: linear-gradient(120deg, transparent 0%, rgba(255,255,255,.22) 35%, transparent 70%);
+  transform: translateX(-120%);
+  transition: transform .6s ease;
+  pointer-events:none;
+}
+.home .cards .card:hover > .card-body::after{ transform: translateX(120%); }
+
+/* Por si algún CSS externo estaba poniendo filtros o colores raros */
+img, .card img { filter: none !important; }
