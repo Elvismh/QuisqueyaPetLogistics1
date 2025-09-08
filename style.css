@@ -616,3 +616,38 @@ img, .card img { filter: none !important; }
     justify-content: center;
   }
 }
+
+/* Footer info centrado + divisiones */
+.footer-info{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:32px;
+  max-width:1000px;         /* bloque centrado */
+  margin:0 auto 20px;
+  padding:30px 0;
+  border-top:1px solid rgba(255,255,255,.08);
+  border-bottom:1px solid rgba(255,255,255,.08);
+}
+
+/* Borde vertical entre columnas (soporta .footer-box o <div> directo) */
+.footer-info > div,
+.footer-info .footer-box{
+  padding:0 16px;
+  border-right:1px solid rgba(255,255,255,.12);
+}
+.footer-info > div:last-child,
+.footer-info .footer-box:last-child{
+  border-right:none;
+}
+
+/* Copyright 100% centrado, sin depender del container */
+.footer-copy{
+  width:100%;
+  display:flex;              /* fuerza centrado real */
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+  padding:12px 0 24px;
+  border-top:1px solid rgba(255,255,255,.08); /* opcional: línea arriba */
+}
+.footer-copy p{ margin:0; color:var(--c-muted); font-size:.9rem; }
