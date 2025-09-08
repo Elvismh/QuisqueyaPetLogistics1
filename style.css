@@ -437,3 +437,33 @@ img, .card img { filter: none !important; }
   filter: brightness(1.05);
   box-shadow: 0 8px 20px var(--brand-glow);
 }
+
+/* ==== CARDS EN FORMATO VERTICAL (imagen izquierda + texto derecha) ==== */
+.home .cards .card{
+  display: flex;
+  flex-direction: row;   /* en fila */
+  align-items: stretch;
+  height: 160px;         /* ajusta la altura como prefieras */
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+/* Imagen a la izquierda */
+.home .cards .card > img{
+  width: 55%;            /* ocupa un poco más de la mitad */
+  height: 100%;
+  object-fit: cover;
+  border-radius: 0;
+}
+
+/* Banda naranja a la derecha */
+.home .cards .card > .card-body{
+  width: 45%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--brand);
+  color: #1a0c00;
+  font-weight: 800;
+  padding: 0 10px;
+}
