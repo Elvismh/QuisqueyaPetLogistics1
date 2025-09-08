@@ -1287,3 +1287,69 @@ footer .footer-inner .footer-info.cols-grid{
   .footer-info.cols-grid > div:last-child{ border-bottom:none; }
   .footer-social-col .social-icons{ justify-content:center; }
 }
+
+/* ===== FOOTER FIX HOTPATCH ===== */
+
+/* 1) Línea única bajo el bloque superior del footer */
+footer.footer .footer-top{
+  max-width: 1000px;
+  margin: 0 auto;
+  padding-bottom: 12px;
+  border-bottom: 1px solid rgba(255,255,255,.08);
+}
+
+/* 2) Fuerza 4 columnas: Dirección | Contacto | Horario | Redes */
+footer.footer .footer-top .footer-info{
+  display: grid !important;
+  grid-template-columns: 1fr 1fr 1fr auto !important;
+  gap: 28px !important;
+  align-items: start !important;
+}
+
+/* 3) Divisores verticales sólo en las 3 primeras columnas */
+footer.footer .footer-top .footer-info > div{
+  padding: 0 16px;
+  border-right: 1px solid rgba(255,255,255,.12);
+}
+footer.footer .footer-top .footer-info > div:last-child{
+  border-right: none;
+}
+
+/* 4) Asegura Redes a la derecha (y sin divisor) */
+footer.footer .footer-top .footer-info .footer-social-col{
+  justify-self: end !important;
+  border-right: none !important;
+}
+
+/* 5) Copyright centrado y separado abajo */
+footer.footer .footer-copy{
+  text-align: center;
+  padding: 15px 0 24px;
+}
+footer.footer .footer-copy p{
+  margin: 0;
+  color: var(--c-muted);
+  font-size: .9rem;
+}
+
+/* 6) Responsive limpio */
+@media (max-width: 900px){
+  footer.footer .footer-top .footer-info{
+    grid-template-columns: 1fr 1fr !important;
+    gap: 20px !important;
+  }
+}
+@media (max-width: 560px){
+  footer.footer .footer-top .footer-info{
+    grid-template-columns: 1fr !important;
+    gap: 16px !important;
+  }
+  footer.footer .footer-top .footer-info > div{
+    border-right: none;
+    border-bottom: 1px solid rgba(255,255,255,.08);
+    padding: 12px 0;
+  }
+  footer.footer .footer-top .footer-info > div:last-child{
+    border-bottom: none;
+  }
+}
