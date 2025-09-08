@@ -1150,3 +1150,68 @@ footer .footer-inner .footer-info.cols-4 > div:last-child{ border-right: none; }
   footer .footer-inner .footer-info.cols-4 > div:last-child{ border-bottom:none; }
   .footer-social-col .social-icons{ justify-content:center; }
 }
+
+/* === Footer 4 columnas con grid-areas (fija "Redes" a la derecha) === */
+footer .footer-inner .footer-info.cols-grid{
+  display: grid !important;
+  grid-template-columns: 1fr 1fr 1fr auto !important;  /* Dir | Contacto | Horario | Redes */
+  grid-template-areas:
+    "dir contacto horario redes" !important;
+  align-items: start;
+  gap: 28px;
+}
+
+/* Mapea cada columna a su área */
+.footer-info.cols-grid .col-dir{       grid-area: dir; }
+.footer-info.cols-grid .col-contacto{  grid-area: contacto; }
+.footer-info.cols-grid .col-horario{   grid-area: horario; }
+.footer-info.cols-grid .col-redes{     grid-area: redes; justify-self: end; }
+
+/* Divisores verticales en desktop */
+.footer-info.cols-grid > div{
+  padding: 0 16px;
+  border-right: 1px solid rgba(255,255,255,.12);
+}
+.footer-info.cols-grid > div:last-child{ border-right: none; }
+
+/* Estilo de los iconos */
+.footer-social-col .social-icons{ display:flex; gap:16px; margin-top:8px; }
+.footer-social-col .social-icons a{
+  width:36px; height:36px; border-radius:50%;
+  display:flex; align-items:center; justify-content:center;
+  background:var(--brand); color:#1a0c00; font-size:18px;
+  transition: transform .2s ease, box-shadow .2s ease;
+}
+.footer-social-col .social-icons a:hover{
+  transform: translateY(-2px) scale(1.05);
+  box-shadow: 0 6px 14px var(--brand-glow);
+}
+
+/* ===== Responsivo: 2 columnas desde 900px, 1 columna en móvil ===== */
+@media (max-width: 900px){
+  footer .footer-inner .footer-info.cols-grid{
+    grid-template-columns: 1fr 1fr !important;
+    grid-template-areas:
+      "dir contacto"
+      "horario redes" !important;           /* Redes se queda al lado de Horario */
+  }
+  .footer-info.cols-grid > div{ border-right: none; }
+}
+
+@media (max-width: 560px){
+  footer .footer-inner .footer-info.cols-grid{
+    grid-template-columns: 1fr !important;
+    grid-template-areas:
+      "dir"
+      "contacto"
+      "horario"
+      "redes" !important;
+  }
+  .footer-info.cols-grid > div{
+    border-right: none;
+    border-bottom: 1px solid rgba(255,255,255,.08);
+    padding: 12px 0;
+  }
+  .footer-info.cols-grid > div:last-child{ border-bottom: none; }
+  .footer-social-col .social-icons{ justify-content: center; }
+}
